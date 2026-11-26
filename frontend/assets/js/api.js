@@ -1,7 +1,7 @@
 (function () {
   // Production default Render backend URL fallback if on Vercel or external host
   const defaultBase = (location.hostname.endsWith('vercel.app') || !['localhost','127.0.0.1'].includes(location.hostname))
-    ? 'https://rentzy-backend.onrender.com'
+    ? 'https://rentzy-backend-z3df.onrender.com'
     : '';
 
   const API_BASE = localStorage.getItem('API_BASE') || window.API_BASE || defaultBase;
