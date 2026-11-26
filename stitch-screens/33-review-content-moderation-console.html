@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Governance &amp; Custody Audit Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#50d9fe", "primary": "#003c90", "brand-primary-hover": "#0B3C8A", "tertiary": "#2c16c6", "surface-subtle": "#F1F5F9", "on-surface-variant": "#434653", "primary-container": "#0f52ba", "background": "#faf8ff", "on-tertiary-container": "#ccc9ff", "on-secondary-container": "#005c70", "trust-danger": "#DC2626", "trust-warning": "#D97706", "on-secondary": "#ffffff", "tertiary-fixed": "#e2dfff", "surface-variant": "#dae2fd", "border-focus": "#3B82F6", "surface-container-highest": "#dae2fd", "surface": "#faf8ff", "on-tertiary-fixed": "#0f0069", "outline": "#737784", "surface-dim": "#d2d9f4", "primary-fixed-dim": "#b0c6ff", "surface-card": "#FFFFFF", "canvas-slate": "#F8FAFC", "on-surface": "#131b2e", "on-error-container": "#93000a", "on-primary-fixed": "#001945", "outline-variant": "#c3c6d5", "on-tertiary-fixed-variant": "#3323cc", "inverse-surface": "#283044", "trust-warning-bg": "#FFFBEB", "on-primary": "#ffffff", "border-default": "#E2E8F0", "secondary-fixed": "#b3ebff", "on-background": "#131b2e", "trust-verified": "#059669", "tertiary-fixed-dim": "#c3c0ff", "surface-container-lowest": "#ffffff", "surface-container-low": "#f2f3ff", "on-secondary-fixed": "#001f27", "on-error": "#ffffff", "trust-verified-bg": "#ECFDF5", "on-tertiary": "#ffffff", "tertiary-container": "#463cdd", "on-secondary-fixed-variant": "#004e5f", "text-muted": "#94A3B8", "text-secondary": "#475569", "error-container": "#ffdad6", "surface-container-high": "#e2e7ff", "surface-tint": "#1d59c1", "inverse-primary": "#b0c6ff", "surface-bright": "#faf8ff", "brand-primary-light": "#EBF3FF", "primary-fixed": "#d9e2ff", "surface-container": "#eaedff", "inverse-on-surface": "#eef0ff", "on-primary-fixed-variant": "#00419c", "secondary": "#00677d", "error": "#ba1a1a", "secondary-fixed-dim": "#4cd6fb", "on-primary-container": "#bcceff", "trust-danger-bg": "#FEF2F2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "2rem", "gutter": "1rem", "gutter-tablet": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "1rem", "margin-desktop": "3rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-tablet": "2rem" }, "fontFamily": { "caption": ["Inter"], "headline-lg": ["Inter"], "caption-bold": ["Inter"], "display-hero-mobile": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Inter"], "headline-md": ["Inter"], "body-base": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "code-mono-sm": ["JetBrains Mono"] }, "fontSize": { "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }] } } } };</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-inverse-surface z-50 flex flex-col py-space-md shadow-[2px_0_12px_rgba(15,23,42,0.15)]"><div class="px-space-lg mb-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface-card font-bold tracking-tight leading-none">RentSecure</span><span class="font-caption text-caption text-inverse-primary text-[10px] tracking-widest uppercase font-semibold mt-0.5">Governance Core</span></div></div></div><div class="px-space-md mb-space-sm"><span class="font-caption-bold text-caption-bold text-outline-variant uppercase tracking-wider text-[11px] px-space-sm">Audit &amp; Operations</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-primary text-white font-semibold shadow-sm"><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="disputes" href="#">Disputes</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="users-accounts" href="#">Users &amp; Accounts</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="kyc-identity-audits" href="#">KYC &amp; Identity Audits</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="product-verifications-anti-theft" href="#">Product Verifications &amp; Anti-Theft</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-disbursal-ledger" href="#">Escrow &amp; Disbursal Ledger</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-on-surface/50 border border-outline-variant/30 text-surface-card"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold"><span class="material-symbols-outlined text-[16px]">lock_open</span>Level 4 Security</div><span class="font-code-mono-sm text-code-mono-sm text-inverse-primary text-[10px]">2FA OK</span></div><p class="font-caption text-caption text-outline-variant">Session ID: <strong class="font-code-mono text-surface-card">SEC-88219A</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-subtle border border-border-default rounded-lg font-body-base text-body-base text-on-surface placeholder:text-text-muted focus:outline-none focus:border-border-focus focus:ring-2 focus:ring-border-focus/15 transition-all" placeholder="Global search: Custody Escrow ID, Asset IMEI, User Hash..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-trust-danger-bg border border-trust-danger/20 rounded-full"><span class="material-symbols-outlined text-trust-danger text-[16px]">warning</span><span class="font-caption-bold text-caption-bold text-trust-danger">3 Risk Alerts</span></div><button class="flex items-center gap-1.5 px-space-sm py-1.5 text-on-surface-variant hover:text-primary hover:bg-brand-primary-light rounded-lg transition-colors font-body-base-medium text-body-base-medium"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="hidden lg:inline font-caption-bold text-caption-bold">Audit Logs</span></button><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-trust-danger"></span></div><div class="h-6 w-px bg-border-default"></div><div class="flex items-center gap-space-sm"><img alt="Admin Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Super Admin</span><span class="font-code-mono-sm text-code-mono-sm text-text-secondary leading-none">Custody Officer #04</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="px-margin-desktop py-space-xl max-w-[1440px] w-full mx-auto flex flex-col gap-space-xl">
+<!-- Console Header -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-mono-sm text-code-mono-sm text-primary uppercase tracking-widest">Governance Core / Content Integrity</span>
+<span class="text-text-muted">/</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">/admin/reviews</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Review &amp; Content Moderation Console</h1>
+<p class="font-body-base text-body-base text-text-secondary max-w-2xl">Automated fake-review ring detection, sentiment anomaly triage, and verified rental content governance.</p>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="flex items-center gap-space-sm px-space-md py-space-sm bg-trust-verified-bg rounded-full">
+<span class="w-2 h-2 rounded-full bg-trust-verified animate-pulse"></span>
+<span class="font-caption-bold text-caption-bold text-trust-verified">AI Sentinel v4.2 Active</span>
+</div>
+<button class="flex items-center gap-space-sm px-space-md py-space-sm bg-surface-card text-on-surface rounded-lg shadow-sm hover:shadow-md transition-all font-body-base-medium text-body-base-medium" onclick="showToast('Audit log CSV exported for SEC-88219A')" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">download</span>
+<span>Export Audit CSV</span>
+</button>
+</div>
+</div>
+<!-- KPI Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- KPI 1 -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Flagged Reviews Pending</span>
+<span class="px-space-sm py-0.5 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold">+2 last hr</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-display-hero text-display-hero text-on-surface">7</span>
+<svg class="w-20 h-8 text-trust-warning" fill="none" viewbox="0 0 80 32">
+<path d="M2 26 L16 22 L28 24 L42 14 L56 16 L78 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<circle cx="78" cy="6" fill="currentColor" r="3"></circle>
+</svg>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Auto-Blocked Spam</span>
+<span class="px-space-sm py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">98.4% precision</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-display-hero text-display-hero text-on-surface">23</span>
+<svg class="w-20 h-8 text-trust-verified" fill="none" viewbox="0 0 80 32">
+<rect fill="currentColor" fill-opacity="0.3" height="12" rx="2" width="8" x="4" y="18"></rect>
+<rect fill="currentColor" fill-opacity="0.5" height="18" rx="2" width="8" x="18" y="12"></rect>
+<rect fill="currentColor" fill-opacity="0.4" height="14" rx="2" width="8" x="32" y="16"></rect>
+<rect fill="currentColor" fill-opacity="0.7" height="22" rx="2" width="8" x="46" y="8"></rect>
+<rect fill="currentColor" height="26" rx="2" width="8" x="60" y="4"></rect>
+</svg>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Reciprocal Ring Alerts</span>
+<span class="px-space-sm py-0.5 rounded-full bg-trust-danger-bg text-trust-danger font-caption-bold text-caption-bold">High Severity</span>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-display-hero text-display-hero text-trust-danger">2</span>
+<div class="w-10 h-10 rounded-lg bg-trust-danger-bg flex items-center justify-center text-trust-danger">
+<span class="material-symbols-outlined text-[22px]">hub</span>
+</div>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Avg Moderation SLA</span>
+<span class="px-space-sm py-0.5 rounded-full bg-brand-primary-light text-primary font-caption-bold text-caption-bold">Target &lt; 5m</span>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex items-baseline gap-1">
+<span class="font-display-hero text-display-hero text-primary">4.2</span>
+<span class="font-body-base-medium text-body-base-medium text-text-secondary">mins</span>
+</div>
+<svg class="w-10 h-10 text-primary" viewbox="0 0 36 36">
+<path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" fill="none" stroke="currentColor" stroke-opacity="0.15" stroke-width="3.5"></path>
+<path d="M18 3 a 15 15 0 0 1 0 30 a 15 15 0 0 1 0 -30" fill="none" stroke="currentColor" stroke-dasharray="84, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-card p-space-sm rounded-xl shadow-sm">
+<div class="flex flex-wrap items-center gap-space-xs" id="filter-tabs">
+<button class="filter-tab px-space-md py-space-sm rounded-lg font-body-base-medium text-body-base-medium bg-primary text-on-primary shadow-sm transition-all" data-filter="all" type="button">All Flagged (7)</button>
+<button class="filter-tab px-space-md py-space-sm rounded-lg font-body-base-medium text-body-base-medium text-text-secondary hover:bg-surface-subtle transition-all" data-filter="ring" type="button">Reciprocal Ring Detected (2)</button>
+<button class="filter-tab px-space-md py-space-sm rounded-lg font-body-base-medium text-body-base-medium text-text-secondary hover:bg-surface-subtle transition-all" data-filter="profanity" type="button">Profanity / Harassment (3)</button>
+<button class="filter-tab px-space-md py-space-sm rounded-lg font-body-base-medium text-body-base-medium text-text-secondary hover:bg-surface-subtle transition-all" data-filter="unverified" type="button">Unverified Claim (2)</button>
+<button class="filter-tab px-space-md py-space-sm rounded-lg font-body-base-medium text-body-base-medium text-text-secondary hover:bg-surface-subtle transition-all" data-filter="resolved" type="button">Resolved</button>
+</div>
+<div class="flex items-center gap-space-sm px-space-sm">
+<span class="material-symbols-outlined text-[18px] text-text-muted">sort</span>
+<span class="font-caption-bold text-caption-bold text-text-secondary">Priority: Highest Risk First</span>
+</div>
+</div>
+<!-- Main Asymmetric Split -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Left 8 Cols: Moderation Queue Cards -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg" id="moderation-queue">
+<!-- Case #MOD-441 -->
+<div class="case-card bg-surface-card rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col gap-space-md" data-case="MOD-441" data-category="ring">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-mono text-code-mono text-on-surface bg-surface-subtle px-space-sm py-1 rounded-md">#MOD-441</span>
+<span class="px-space-sm py-1 rounded-full bg-trust-danger-bg text-trust-danger font-caption-bold text-caption-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                High Priority · Reciprocal Ring Alert
+              </span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Booking Ref: #RS-91204</span>
+</div>
+<!-- Reviewer -> Host Lockup -->
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-subtle p-space-md rounded-lg">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-caption-bold text-caption-bold">RK</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Rohit K.</span>
+<span class="font-caption text-caption text-text-secondary">Reviewer</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[20px]">arrow_forward</span>
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center font-caption-bold text-caption-bold">SX</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">StudioX Rentals</span>
+<span class="font-caption text-caption text-text-secondary">Host · 5.0 Stars</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-trust-warning">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-code-mono text-code-mono text-on-surface">5.0</span>
+</div>
+</div>
+<!-- AI Detection Signal -->
+<div class="bg-trust-danger-bg/60 p-space-md rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-trust-danger text-[20px] shrink-0 mt-0.5">psychology</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-caption-bold text-caption-bold text-trust-danger uppercase tracking-wider">AI Detection Signal</span>
+<p class="font-body-base text-body-base text-on-surface">3 bookings completed within 48h using same subnet IP &amp; shared device fingerprint.</p>
+</div>
+</div>
+<!-- Review Text Snippet -->
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider block mb-1">Review Content Snippet</span>
+<p class="font-body-base text-body-base text-on-surface italic">“Absolutely flawless cinema rig, StudioX Rentals is the best host in the city! 10/10 would rent again every week.”</p>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-sm rounded-lg bg-trust-danger text-on-error font-body-base-medium text-body-base-medium hover:opacity-90 transition-all" onclick="resolveCase('MOD-441', 'Masked &amp; Removed')" type="button">Mask &amp; Remove Review</button>
+<button class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-body-base-medium text-body-base-medium hover:bg-brand-primary-hover transition-all" onclick="resolveCase('MOD-441', 'Accounts Flagged for Risk')" type="button">Flag Accounts for Risk</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-subtle text-on-surface font-body-base-medium text-body-base-medium hover:bg-surface-container transition-all" onclick="resolveCase('MOD-441', 'Approved as Genuine')" type="button">Approve as Genuine</button>
+</div>
+</div>
+<!-- Case #MOD-442 -->
+<div class="case-card bg-surface-card rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col gap-space-md" data-case="MOD-442" data-category="profanity">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-mono text-code-mono text-on-surface bg-surface-subtle px-space-sm py-1 rounded-md">#MOD-442</span>
+<span class="px-space-sm py-1 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">report</span>
+                Medium Priority · Profanity / Personal Attack
+              </span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Disputes: 0</span>
+</div>
+<!-- Reviewer -> Host Lockup -->
+<div class="flex flex-wrap items-center justify-between gap-space-md bg-surface-subtle p-space-md rounded-lg">
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-inverse-surface text-inverse-on-surface flex items-center justify-center font-caption-bold text-caption-bold">VS</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Vikram S.</span>
+<span class="font-caption text-caption text-text-secondary">Reviewer</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-text-muted text-[20px]">arrow_forward</span>
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-caption-bold text-caption-bold">MS</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Meera Sen</span>
+<span class="font-caption text-caption text-text-secondary">Host · 1.0 Star</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 text-trust-danger">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-code-mono text-code-mono text-on-surface">1.0</span>
+</div>
+</div>
+<!-- AI Detection Signal -->
+<div class="bg-trust-warning-bg/70 p-space-md rounded-lg flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-trust-warning text-[20px] shrink-0 mt-0.5">shield_person</span>
+<div class="flex flex-col gap-0.5">
+<span class="font-caption-bold text-caption-bold text-trust-warning uppercase tracking-wider">AI Detection Signal</span>
+<p class="font-body-base text-body-base text-on-surface">Contains personal phone number &amp; abusive language; booking had 0 disputes.</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-body-base-medium text-body-base-medium hover:bg-brand-primary-hover transition-all" onclick="resolveCase('MOD-442', 'PII Redacted &amp; Masked')" type="button">Redact PII &amp; Mask</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-subtle text-on-surface font-body-base-medium text-body-base-medium hover:bg-surface-container transition-all" onclick="resolveCase('MOD-442', 'Flag Dismissed')" type="button">Dismiss Flag</button>
+</div>
+</div>
+<!-- Case #MOD-443 -->
+<div class="case-card bg-surface-card rounded-xl p-space-lg shadow-sm hover:shadow-md transition-all flex flex-col gap-space-md" data-case="MOD-443" data-category="unverified">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-code-mono text-code-mono text-on-surface bg-surface-subtle px-space-sm py-1 rounded-md">#MOD-443</span>
+<span class="px-space-sm py-1 rounded-full bg-brand-primary-light text-primary font-caption-bold text-caption-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">info</span>
+                Low Priority · Off-Platform Solicitation
+              </span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Policy: Anti-Bypass</span>
+</div>
+<!-- Review Text Snippet -->
+<div class="bg-surface-container-low p-space-md rounded-lg">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider block mb-1">Flagged Review Snippet</span>
+<p class="font-body-base text-body-base text-on-surface italic">“Call me directly on <span class="bg-trust-warning-bg text-trust-warning px-1 rounded font-code-mono-sm">98765XXXXX</span> for cash discount on next weekend.”</p>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<button class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-body-base-medium text-body-base-medium hover:bg-brand-primary-hover transition-all" onclick="resolveCase('MOD-443', 'Removed &amp; User Warned')" type="button">Remove &amp; Warn User</button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-subtle text-on-surface font-body-base-medium text-body-base-medium hover:bg-surface-container transition-all" onclick="resolveCase('MOD-443', 'Approved')" type="button">Approve</button>
+</div>
+</div>
+</div>
+<!-- Right 4 Cols: Ring Telemetry & Auto-Blocked Feed -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Reciprocal Ring Graph Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Ring Cluster #441</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-danger bg-trust-danger-bg px-space-sm py-0.5 rounded-full">IP: 103.42.88.14</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Shared device fingerprint <span class="font-code-mono-sm text-on-surface">FP-992A</span> across 3 rapid bookings.</p>
+<!-- SVG Network Graph -->
+<div class="bg-surface-subtle rounded-lg p-space-md flex items-center justify-center">
+<svg class="w-full h-40" fill="none" viewbox="0 0 260 140">
+<line stroke="#DC2626" stroke-dasharray="4 3" stroke-width="2" x1="130" x2="50" y1="70" y2="30"></line>
+<line stroke="#DC2626" stroke-dasharray="4 3" stroke-width="2" x1="130" x2="210" y1="70" y2="30"></line>
+<line stroke="#DC2626" stroke-dasharray="4 3" stroke-width="2" x1="130" x2="130" y1="70" y2="120"></line>
+<circle cx="130" cy="70" fill="#003c90" r="22"></circle>
+<text fill="#ffffff" font-family="Inter" font-size="10" font-weight="700" text-anchor="middle" x="130" y="74">StudioX</text>
+<circle cx="50" cy="30" fill="#DC2626" r="16"></circle>
+<text fill="#ffffff" font-family="Inter" font-size="9" font-weight="600" text-anchor="middle" x="50" y="34">RK-1</text>
+<circle cx="210" cy="30" fill="#DC2626" r="16"></circle>
+<text fill="#ffffff" font-family="Inter" font-size="9" font-weight="600" text-anchor="middle" x="210" y="34">RK-2</text>
+<circle cx="130" cy="120" fill="#DC2626" r="16"></circle>
+<text fill="#ffffff" font-family="Inter" font-size="9" font-weight="600" text-anchor="middle" x="130" y="124">FP-992A</text>
+</svg>
+</div>
+</div>
+<!-- Recent Auto-Blocked Spam -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface">Auto-Blocked Feed</span>
+<span class="font-caption-bold text-caption-bold text-trust-verified">Live</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<div class="p-space-sm rounded-lg bg-surface-subtle flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Bot Link Injection</span>
+<span class="font-caption text-caption text-text-secondary">User #U-88412 · 2m ago</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">BLOCKED</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-subtle flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Duplicate Copy-Paste</span>
+<span class="font-caption text-caption text-text-secondary">User #U-77109 · 11m ago</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">BLOCKED</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-subtle flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">VPN Velocity Anomaly</span>
+<span class="font-caption text-caption text-text-secondary">User #U-65021 · 19m ago</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">BLOCKED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Toast Notification -->
+<div class="fixed bottom-6 right-6 bg-inverse-surface text-inverse-on-surface px-space-lg py-space-md rounded-xl shadow-xl hidden items-center gap-space-sm z-50" id="mod-toast">
+<span class="material-symbols-outlined text-trust-verified text-[20px]">check_circle</span>
+<span class="font-body-base-medium text-body-base-medium" id="mod-toast-msg">Action completed</span>
+</div>
+<script>
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.filter-tab').forEach(t => {
+        t.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        t.classList.add('text-text-secondary', 'hover:bg-surface-subtle');
+      });
+      tab.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      tab.classList.remove('text-text-secondary', 'hover:bg-surface-subtle');
+
+      const filter = tab.getAttribute('data-filter');
+      document.querySelectorAll('.case-card').forEach(card => {
+        if (filter === 'all') {
+          card.style.display = 'flex';
+        } else if (filter === 'resolved') {
+          card.style.display = card.getAttribute('data-resolved') === 'true' ? 'flex' : 'none';
+        } else {
+          card.style.display = card.getAttribute('data-category') === filter ? 'flex' : 'none';
+        }
+      });
+    });
+  });
+
+  function resolveCase(caseId, actionLabel) {
+    const card = document.querySelector(`[data-case="${caseId}"]`);
+    if (card) {
+      card.setAttribute('data-resolved', 'true');
+      card.classList.add('opacity-70');
+      showToast(`Case #${caseId}: ${actionLabel}`);
+    }
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('mod-toast');
+    const msgEl = document.getElementById('mod-toast-msg');
+    msgEl.textContent = msg;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 3000);
+  }
+</script></main></div></body></html>

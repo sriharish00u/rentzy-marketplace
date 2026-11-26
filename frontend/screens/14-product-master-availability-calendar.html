@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "error-container": "#ffdad6",
+        "surface-dim": "#d2d9f4",
+        "on-primary-fixed": "#001945",
+        "surface-container-high": "#e2e7ff",
+        "on-tertiary": "#ffffff",
+        "outline": "#737784",
+        "error": "#ba1a1a",
+        "surface-bright": "#faf8ff",
+        "canvas-slate": "#F8FAFC",
+        "surface": "#faf8ff",
+        "trust-danger": "#DC2626",
+        "primary-container": "#0f52ba",
+        "inverse-surface": "#283044",
+        "on-secondary": "#ffffff",
+        "surface-container-low": "#f2f3ff",
+        "primary-fixed-dim": "#b0c6ff",
+        "on-tertiary-fixed-variant": "#3323cc",
+        "on-tertiary-fixed": "#0f0069",
+        "surface-tint": "#1d59c1",
+        "on-secondary-container": "#005c70",
+        "on-error-container": "#93000a",
+        "on-error": "#ffffff",
+        "border-focus": "#3B82F6",
+        "text-secondary": "#475569",
+        "surface-container-lowest": "#ffffff",
+        "secondary-fixed": "#b3ebff",
+        "primary-fixed": "#d9e2ff",
+        "on-surface": "#131b2e",
+        "tertiary-fixed": "#e2dfff",
+        "background": "#faf8ff",
+        "tertiary": "#2c16c6",
+        "on-tertiary-container": "#ccc9ff",
+        "on-background": "#131b2e",
+        "surface-card": "#FFFFFF",
+        "on-surface-variant": "#434653",
+        "on-secondary-fixed-variant": "#004e5f",
+        "trust-warning-bg": "#FFFBEB",
+        "on-primary-fixed-variant": "#00419c",
+        "outline-variant": "#c3c6d5",
+        "secondary": "#00677d",
+        "on-secondary-fixed": "#001f27",
+        "secondary-container": "#50d9fe",
+        "inverse-on-surface": "#eef0ff",
+        "surface-variant": "#dae2fd",
+        "on-primary-container": "#bcceff",
+        "surface-subtle": "#F1F5F9",
+        "border-default": "#E2E8F0",
+        "brand-primary-light": "#EBF3FF",
+        "inverse-primary": "#b0c6ff",
+        "trust-danger-bg": "#FEF2F2",
+        "on-primary": "#ffffff",
+        "surface-container-highest": "#dae2fd",
+        "trust-verified": "#059669",
+        "trust-verified-bg": "#ECFDF5",
+        "brand-primary-hover": "#0B3C8A",
+        "text-muted": "#94A3B8",
+        "primary": "#003c90",
+        "secondary-fixed-dim": "#4cd6fb",
+        "tertiary-container": "#463cdd",
+        "tertiary-fixed-dim": "#c3c0ff",
+        "trust-warning": "#D97706",
+        "surface-container": "#eaedff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-md": "1rem",
+        "gutter": "1rem",
+        "space-xs": "0.25rem",
+        "margin": "1rem",
+        "space-sm": "0.5rem",
+        "space-lg": "1.5rem",
+        "margin-desktop": "3rem",
+        "gutter-desktop": "2rem",
+        "margin-tablet": "2rem",
+        "gutter-tablet": "1.5rem",
+        "space-xl": "2rem"
+      },
+      "fontFamily": {
+        "headline-sm": ["Inter"],
+        "display-hero-mobile": ["Inter"],
+        "headline-lg-mobile": ["Inter"],
+        "caption": ["Inter"],
+        "caption-bold": ["Inter"],
+        "body-base": ["Inter"],
+        "body-base-medium": ["Inter"],
+        "headline-md": ["Inter"],
+        "code-mono": ["JetBrains Mono"],
+        "code-mono-sm": ["JetBrains Mono"],
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "display-hero": ["Inter"]
+      },
+      "fontSize": {
+        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "display-hero-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800"}],
+        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "caption-bold": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+        "body-base": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "body-base-medium": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+        "code-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "code-mono-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+        "display-hero": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+      }
+    }
+  }
+};</script></head><body class="bg-canvas-slate font-body-base text-body-base text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-50 flex flex-col justify-between p-space-lg"><div class="flex flex-col gap-space-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[30px]">verified_user</span><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">RentSecure</span><span class="font-caption text-caption text-text-muted leading-none tracking-wider uppercase mt-1">Custody Console</span></div></div><div class="bg-surface-subtle p-space-md rounded-xl shadow-[0_1px_3px_rgba(15,23,42,0.05)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Trust Score</span><span class="font-code-mono text-code-mono text-trust-verified font-bold">96.4</span></div><div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden mb-space-xs"><div class="h-full bg-trust-verified rounded-full w-[96%]"></div></div><div class="flex items-center justify-between text-text-muted font-caption text-caption"><span>Tier 1 Platinum</span><span class="flex items-center text-trust-verified gap-0.5"><span class="material-symbols-outlined text-[12px]">verified</span>Certified</span></div></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-body-base-medium shadow-[0_1px_3px_rgba(15,23,42,0.05)]"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all bg-primary-container text-on-primary font-body-base-medium shadow-[0_1px_3px_rgba(15,23,42,0.05)]" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-base text-body-base">Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="escrow-vault" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-base text-body-base">Escrow Vault</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="active-rentals" href="#"><span class="material-symbols-outlined text-[20px]">key</span><span class="font-body-base text-body-base">Active Rentals</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inspection-loupe" href="#"><span class="material-symbols-outlined text-[20px]">loupe</span><span class="font-body-base text-body-base">Inspection Loupe</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dispute-center" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span class="font-body-base text-body-base">Dispute Center</span></a></nav></div><div class="flex flex-col gap-space-sm pt-space-md"><div class="p-space-md rounded-xl bg-brand-primary-light flex items-start gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">shield_locked</span><div class="flex flex-col"><span class="font-caption-bold text-caption-bold text-primary">Bilateral Bond Intact</span><span class="font-caption text-caption text-text-secondary leading-tight mt-0.5">Deposits held in cold multi-sig custody vaults.</span></div></div><div class="flex items-center justify-between px-space-xs text-text-muted font-caption text-caption"><span>Node ID: RS-7704</span><span class="font-code-mono text-code-mono-sm">v4.18.2</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-subtle px-space-md py-space-xs rounded-lg text-text-secondary"><span class="material-symbols-outlined text-[18px]">terminal</span><span class="font-code-mono text-code-mono-sm text-on-surface">ESCROW_NET // LIVE_MAINNET</span></div><div class="hidden sm:flex items-center gap-space-xs text-trust-verified bg-trust-verified-bg px-space-sm py-space-xs rounded-full"><span class="material-symbols-outlined text-[14px]">verified</span><span class="font-caption-bold text-caption-bold">KYC Identity Level 3</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-text-secondary text-[20px]">shield</span><span class="font-caption text-caption text-text-secondary">Coverage:</span><span class="font-code-mono text-code-mono text-primary font-bold">$250,000</span></div><button class="relative p-space-xs rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-trust-warning"></span></button><button class="p-space-xs rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">help_center</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen px-gutter-desktop py-space-xl"><div class="flex flex-col w-full gap-space-xl">
+<!-- Top Product Context & Vault Assurance Banner -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex items-start gap-space-md">
+<div class="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Sony Alpha A7 IV mirrorless digital camera body paired with a Sony FE 24-70mm f2.8 G Master zoom lens sitting on a matte graphite studio block under soft professional ambient key lighting, high dynamic range photographic fidelity, clean corporate rental presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDmvhz-o4v2hn_0Gn2MCWpkEb1isumgWGUbbWemsAI_gcx0F74d_gyQ_TtnO42OSZpl3Hn1eHyXptboPbWG8UfSp_igbcanRl6pNCSw-lWyBwpgWwMbfYeQouMQgliJiTEVuSvOczbuYxLkF6jB4IadKTZY82FlPbhFzAVwd_W5gH3VPozr2VbNDzDM0uUHfKq9FZD5mbvM55a56nNBp8VZHgj0-vW55lJczDRHcs"/>
+<div class="absolute bottom-0 right-0 bg-primary px-1.5 py-0.5 rounded-tl text-on-primary">
+<span class="material-symbols-outlined text-[12px] block">photo_camera</span>
+</div>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs mb-1">
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">ID: ASSET-7782-IND</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption-bold text-caption-bold text-trust-verified bg-trust-verified-bg px-space-xs py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">verified</span> Active &amp; Bonded
+          </span>
+<span class="font-caption text-caption text-primary bg-brand-primary-light px-space-xs py-0.5 rounded-full flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">lock</span> Escrow Bond: ₹25,000
+          </span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface truncate">Sony Alpha A7 IV Kit + FE 24-70mm f/2.8 GM</h1>
+<div class="flex flex-wrap items-center gap-space-sm mt-1">
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-text-muted">barcode_reader</span> SN-8829-410A-IND
+          </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption text-caption text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-text-muted">location_on</span> SafeHub Indiranagar East (Bengaluru)
+          </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-caption text-caption text-text-secondary">Base Yield: <span class="font-code-mono font-bold text-on-surface">₹1,200/day</span></span>
+</div>
+</div>
+</div>
+<!-- Live Sync & Switch Actions -->
+<div class="flex flex-wrap items-center gap-space-sm bg-surface-subtle p-space-sm rounded-xl">
+<div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-card rounded-lg shadow-sm">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trust-verified"></div>
+</label>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface leading-none">Instant Book</span>
+<span class="font-caption text-[10px] text-trust-verified">Zero-wait approval</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-card rounded-lg shadow-sm">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary-container"></div>
+</label>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface leading-none">Auto-Snooze</span>
+<span class="font-caption text-[10px] text-text-muted">Conflict protection</span>
+</div>
+</div>
+<button class="flex items-center gap-space-xs px-space-md py-2 bg-surface-card hover:bg-surface-container text-on-surface rounded-lg shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">sync</span>
+<span class="font-body-base-medium text-body-base-medium">Sync iCal / Google</span>
+</button>
+<button class="p-2 bg-surface-card hover:bg-surface-container text-on-surface-variant rounded-lg shadow-sm transition-colors" title="Vault Audit Logs">
+<span class="material-symbols-outlined text-[20px]">policy</span>
+</button>
+</div>
+</div>
+<!-- Main Calendar Workspace & Control Drawer Layout (Desktop Bento Split) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-gutter-desktop items-start">
+<!-- Left Calendar Master Column (8 Cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Legend Ribbon & Quick Filter Toolbar -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-trust-verified"></span>
+<span class="font-caption text-caption text-text-secondary">Available (₹1,200)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span>
+<span class="font-caption text-caption text-text-secondary">Active Escrow Booking</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-caption text-caption text-text-secondary">Surge Peak (+25%)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-trust-warning"></span>
+<span class="font-caption text-caption text-text-secondary">Owner Blackout / Service</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-caption text-caption text-text-muted">Display currency:</span>
+<span class="font-code-mono-sm text-code-mono-sm px-2 py-0.5 rounded bg-surface-subtle font-bold text-on-surface">INR (₹)</span>
+</div>
+</div>
+<!-- Dual Month Master Interactive Calendar Canvas -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-xl">
+<!-- Navigation Header -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<button class="p-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">arrow_back_ios_new</span>
+</button>
+<span class="font-headline-sm text-headline-sm text-on-surface">November – December 2024</span>
+<button class="p-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">arrow_forward_ios</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-sm py-1.5 rounded-lg bg-brand-primary-light text-primary font-caption-bold text-caption-bold">Month View</button>
+<button class="px-space-sm py-1.5 rounded-lg text-text-secondary hover:bg-surface-subtle font-caption-bold text-caption-bold">Timeline Heatmap</button>
+</div>
+</div>
+<!-- Two-Month Split Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Month 1: November 2024 -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-body-lg text-body-lg text-on-surface">November 2024</span>
+<span class="font-caption text-caption text-text-muted">84% Yield Occupancy</span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center font-caption text-caption text-text-muted pb-1">
+<div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+</div>
+<div class="grid grid-cols-7 gap-1">
+<!-- Empty lead days (Nov 2024 starts on Friday) -->
+<div class="h-20 p-1 rounded-lg bg-surface-subtle/40 opacity-40"></div>
+<div class="h-20 p-1 rounded-lg bg-surface-subtle/40 opacity-40"></div>
+<div class="h-20 p-1 rounded-lg bg-surface-subtle/40 opacity-40"></div>
+<div class="h-20 p-1 rounded-lg bg-surface-subtle/40 opacity-40"></div>
+<div class="h-20 p-1 rounded-lg bg-surface-subtle/40 opacity-40"></div>
+<!-- Day 1-2 Available -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">1</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">2</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<!-- Days 3 to 7: Active Booking #RS-94821 Alex Rivera -->
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">3</span>
+<span class="material-symbols-outlined text-[13px]">key</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-[10px] leading-tight font-bold truncate">RS-94821</span>
+<span class="font-caption text-[9px] opacity-80 truncate">Alex R.</span>
+</div>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">4</span>
+<span class="font-caption text-[10px] opacity-90 truncate">Field Active</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">5</span>
+<span class="font-caption text-[10px] opacity-90 truncate">SafeHub In</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">6</span>
+<span class="font-caption text-[10px] opacity-90 truncate">Escrow Hold</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">7</span>
+<span class="material-symbols-outlined text-[13px]">assignment_turned_in</span>
+</div>
+<span class="font-caption text-[9px] opacity-90 truncate">Return 18:00</span>
+</div>
+<!-- Days 8 - 11: Available -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">8</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">9</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">10</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">11</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<!-- Days 12 - 15: Owner Blackout / Personal Shoot Goa -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#D97706_1px,transparent_1px)] [background-size:6px_6px]"></div>
+<div class="flex items-center justify-between relative z-10">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">12</span>
+<span class="material-symbols-outlined text-[13px] text-trust-warning">do_not_disturb_on</span>
+</div>
+<span class="font-caption text-[9px] text-trust-warning font-bold leading-tight relative z-10 truncate">Goa Shoot</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer relative overflow-hidden">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">13</span>
+<span class="font-caption text-[9px] text-trust-warning font-medium truncate">Personal</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer relative overflow-hidden">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">14</span>
+<span class="font-caption text-[9px] text-trust-warning font-medium truncate">Transit</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer relative overflow-hidden">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">15</span>
+<span class="font-caption text-[9px] text-trust-warning font-medium truncate">Safe Clean</span>
+</div>
+<!-- Days 16 - 21: Available -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">16</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">17</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">18</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">19</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">20</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">21</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">22</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<!-- Days 23 to 27: Booking #RS-95002 Meera Sen -->
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">23</span>
+<span class="font-caption text-[9px] font-bold truncate">RS-95002</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">24</span>
+<span class="font-caption text-[9px] truncate">Meera S.</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">25</span>
+<span class="font-caption text-[9px] truncate">Fashion Wk</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">26</span>
+<span class="font-caption text-[9px] truncate">Covered</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-primary-container text-on-primary flex flex-col justify-between shadow-sm cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">27</span>
+<span class="font-caption text-[9px] truncate">Return Done</span>
+</div>
+<!-- Days 28 - 30 Available -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">28</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">29</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">30</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+</div>
+</div>
+<!-- Month 2: December 2024 with Peak Holiday Surges & Active Inspector Selection -->
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center justify-between px-space-xs">
+<span class="font-body-lg text-body-lg text-on-surface">December 2024</span>
+<span class="font-caption-bold text-caption-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Peak Season Active
+              </span>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center font-caption text-caption text-text-muted pb-1">
+<div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
+</div>
+<div class="grid grid-cols-7 gap-1">
+<!-- Dec 1 starts on Sunday -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">1</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">2</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">3</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">4</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<!-- Days 5 - 8: Maintenance Blackout -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">5</span>
+<span class="material-symbols-outlined text-[13px] text-trust-warning">build</span>
+</div>
+<span class="font-caption text-[9px] text-trust-warning font-bold truncate">Sensor Cln</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">6</span>
+<span class="font-caption text-[9px] text-trust-warning truncate">SafeHub Lab</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">7</span>
+<span class="font-caption text-[9px] text-trust-warning truncate">Firmware</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-warning-bg flex flex-col justify-between cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-trust-warning">8</span>
+<span class="font-caption text-[9px] text-trust-warning truncate">Certified</span>
+</div>
+<!-- Days 9 - 14: Available Regular -->
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">9</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">10</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">11</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">12</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">13</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">14</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-trust-verified-bg flex flex-col justify-between hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-surface">15</span>
+<span class="font-code-mono-sm text-[11px] text-trust-verified font-bold">₹1.2k</span>
+</div>
+<!-- Days 16 - 21: Early Holiday Surge (+25% ₹1,500) -->
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">16</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.5k <span class="text-[9px] opacity-75">+25%</span></span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">17</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">18</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">19</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">20</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">21</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.5k</span>
+</div>
+<!-- Days 22 - 26: CURRENTLY SELECTED RANGE (Christmas Surge Inspector Mode) -->
+<div class="h-20 p-1.5 rounded-l-lg bg-primary text-on-primary flex flex-col justify-between shadow-md relative z-20">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">22</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption text-[10px] font-bold text-secondary-fixed">Selected</span>
+<span class="font-code-mono-sm text-[11px] font-bold">₹1.5k</span>
+</div>
+</div>
+<div class="h-20 p-1.5 bg-primary/95 text-on-primary flex flex-col justify-between shadow-md relative z-20">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">23</span>
+<span class="font-code-mono-sm text-[11px] font-bold text-secondary-fixed">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 bg-primary/95 text-on-primary flex flex-col justify-between shadow-md relative z-20">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">24</span>
+<span class="font-code-mono-sm text-[11px] font-bold text-secondary-fixed">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 bg-primary/95 text-on-primary flex flex-col justify-between shadow-md relative z-20">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">25</span>
+<span class="material-symbols-outlined text-[13px] text-secondary-fixed">celebration</span>
+</div>
+<span class="font-code-mono-sm text-[11px] font-bold text-secondary-fixed">₹1.5k</span>
+</div>
+<div class="h-20 p-1.5 rounded-r-lg bg-primary text-on-primary flex flex-col justify-between shadow-md relative z-20">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold">26</span>
+<span class="material-symbols-outlined text-[13px]">tune</span>
+</div>
+<span class="font-code-mono-sm text-[11px] font-bold text-secondary-fixed">₹1.5k</span>
+</div>
+<!-- Days 27 - 31 New Year Peak Surge -->
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">27</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.8k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">28</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.8k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">29</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.8k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">30</span>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹1.8k</span>
+</div>
+<div class="h-20 p-1.5 rounded-lg bg-secondary-fixed/50 flex flex-col justify-between cursor-pointer hover:bg-secondary-fixed transition-colors">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-on-secondary-fixed-variant">31</span>
+<span class="material-symbols-outlined text-[13px] text-secondary">flare</span>
+</div>
+<span class="font-code-mono-sm text-[10px] text-secondary font-bold">₹2.0k <span class="text-[9px]">+66%</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Calendar Micro Insights -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">insights</span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Dynamic Demand Predictor</span>
+<span class="font-caption text-caption text-text-secondary">Bengaluru Wedding &amp; Holiday season spikes demand by 3.4x from Dec 20–Jan 2.</span>
+</div>
+</div>
+<button class="px-space-md py-1.5 bg-surface-card hover:bg-surface-container text-primary font-caption-bold text-caption-bold rounded-lg shadow-sm transition-colors">
+            Apply Suggested Season Surges
+          </button>
+</div>
+</div>
+</div>
+<!-- Right Control Panel / Action Drawer (4 Cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Date Range Selection Inspector Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">date_range</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Batch Inspector</span>
+</div>
+<span class="font-caption-bold text-caption-bold text-primary bg-brand-primary-light px-space-sm py-0.5 rounded-full">
+            5 Days Selected
+          </span>
+</div>
+<!-- Selected Range Details -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col gap-space-xs">
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Active Window</span>
+<div class="flex items-baseline justify-between">
+<span class="font-body-lg text-body-lg text-on-surface font-bold">Dec 22 – Dec 26, 2024</span>
+<span class="font-code-mono text-code-mono text-primary font-bold">₹7,500 Est.</span>
+</div>
+<span class="font-caption text-caption text-secondary flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">celebration</span> Christmas Peak Holiday Window
+          </span>
+</div>
+<!-- Pricing Rule Engine -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<span class="font-caption-bold text-caption-bold text-on-surface uppercase tracking-wider">Pricing Rule Engine</span>
+<div class="flex flex-col gap-space-xs">
+<label class="font-caption text-caption text-text-secondary flex justify-between">
+<span>Daily Rate Modifier</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-bold">+25% Applied</span>
+</label>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="py-2 rounded-lg bg-surface-subtle text-text-secondary font-code-mono-sm text-code-mono-sm hover:bg-surface-container font-medium">+10%</button>
+<button class="py-2 rounded-lg bg-primary-container text-on-primary font-code-mono-sm text-code-mono-sm font-bold shadow-sm">+25% Peak</button>
+<button class="py-2 rounded-lg bg-surface-subtle text-text-secondary font-code-mono-sm text-code-mono-sm hover:bg-surface-container font-medium">+50% Fest</button>
+</div>
+</div>
+<!-- Custom Flat Rate Input -->
+<div class="flex flex-col gap-space-xs mt-1">
+<label class="font-caption text-caption text-text-secondary">Override Flat Daily Rate (₹)</label>
+<div class="relative flex items-center">
+<span class="absolute left-3 font-code-mono text-code-mono text-text-muted">₹</span>
+<input class="w-full bg-surface-subtle pl-8 pr-3 py-2.5 rounded-lg font-code-mono text-code-mono text-on-surface focus:outline-none focus:bg-surface-card focus:ring-2 focus:ring-primary" type="text" value="1,500"/>
+<span class="absolute right-3 font-caption text-caption text-text-muted">per day</span>
+</div>
+</div>
+<!-- Minimum Rental Duration Rule -->
+<div class="flex flex-col gap-space-xs mt-1">
+<div class="flex items-center justify-between">
+<label class="font-caption text-caption text-text-secondary">Minimum Rental Window</label>
+<span class="font-caption-bold text-caption-bold text-on-surface">2 Days Min</span>
+</div>
+<select class="w-full bg-surface-subtle px-3 py-2.5 rounded-lg font-body-base text-body-base text-on-surface focus:outline-none focus:bg-surface-card">
+<option>No minimum (1 Day allowed)</option>
+<option selected="">2 Days minimum (Recommended for weekends)</option>
+<option>3 Days minimum (Peak holiday constraint)</option>
+<option>5 Days full block only</option>
+</select>
+</div>
+<!-- Security Deposit Dynamic Hold Override -->
+<div class="flex flex-col gap-space-xs mt-2 bg-surface-subtle p-space-md rounded-xl">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Escrow Deposit Bond Hold</span>
+<span class="font-code-mono text-code-mono text-primary font-bold">₹6,500</span>
+</div>
+<input class="w-full accent-primary cursor-pointer mt-1" max="15000" min="5000" step="500" type="range" value="6500"/>
+<div class="flex justify-between font-code-mono-sm text-[11px] text-text-muted">
+<span>Standard (₹5,000)</span>
+<span>Max SafeGuard (₹15,000)</span>
+</div>
+<p class="font-caption text-[11px] text-text-secondary mt-1">
+              Escrow bond is locked on renter card at verification; released +4h post SafeHub inspection.
+            </p>
+</div>
+<!-- Action Buttons for Rule Engine -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<button class="w-full py-3 rounded-lg bg-primary hover:bg-brand-primary-hover text-on-primary font-body-base-medium text-body-base-medium shadow-sm transition-all flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+              Apply Surge Rates to 5 Days
+            </button>
+<button class="w-full py-2.5 rounded-lg bg-surface-subtle hover:bg-surface-container text-text-secondary font-body-base-medium text-body-base-medium transition-colors flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">history</span>
+              Reset to Base Rate (₹1,200)
+            </button>
+</div>
+</div>
+<!-- Personal Blackout One-Click Action -->
+<div class="pt-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Blackout / Personal Usage</span>
+<span class="material-symbols-outlined text-trust-warning text-[18px]">lock_person</span>
+</div>
+<p class="font-caption text-caption text-text-secondary leading-tight">
+            Reserve asset for personal production or SafeHub scheduled depot maintenance. All incoming requests will be auto-declined.
+          </p>
+<div class="grid grid-cols-3 gap-space-xs">
+<button class="px-2 py-1.5 rounded-lg bg-surface-subtle text-on-surface-variant font-caption text-caption hover:bg-surface-container truncate">
+              Personal Shoot
+            </button>
+<button class="px-2 py-1.5 rounded-lg bg-surface-subtle text-on-surface-variant font-caption text-caption hover:bg-surface-container truncate">
+              Depot Service
+            </button>
+<button class="px-2 py-1.5 rounded-lg bg-surface-subtle text-on-surface-variant font-caption text-caption hover:bg-surface-container truncate">
+              Travel Hold
+            </button>
+</div>
+<button class="w-full py-2.5 rounded-lg bg-trust-warning-bg hover:bg-trust-warning/20 text-trust-warning font-caption-bold text-caption-bold transition-colors flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px]">block</span>
+            Blackout Selected Dates (Dec 22–26)
+          </button>
+</div>
+</div>
+<!-- Quick Custody Protection Note -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-trust-verified text-[22px] flex-shrink-0 mt-0.5">verified_user</span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Bilateral Damage Guarantee Active</span>
+<span class="font-caption text-caption text-text-secondary leading-tight mt-0.5">
+            Every day booked on RentSecure is backed by ₹2,50,000 comprehensive underwriting with SafeHub digital check-in logs.
+          </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Upcoming Reservations Timeline Feed -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-md pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">event_available</span>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Locked Schedule &amp; Verified Reservations</h2>
+<span class="font-caption text-caption text-text-secondary">Confirmed escrow bookings bound to this serial unit</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-caption text-caption text-text-muted">Total Future Escrow Volume:</span>
+<span class="font-code-mono text-code-mono font-bold text-trust-verified">₹24,800</span>
+</div>
+</div>
+<!-- Reservations Table / Timeline Cards -->
+<div class="flex flex-col gap-space-sm">
+<!-- Booking 1: Live In-Field -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-md hover:bg-surface-container transition-colors">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-code-mono text-code-mono font-bold flex-shrink-0">
+            AR
+          </div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Alex Rivera</span>
+<span class="font-caption-bold text-[11px] text-trust-verified bg-trust-verified-bg px-space-xs py-0.5 rounded-full flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Trust Score 98.2 (Tier 1)
+              </span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">#RS-94821</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm text-text-secondary font-caption text-caption mt-1">
+<span class="flex items-center gap-1 font-bold text-primary">
+<span class="material-symbols-outlined text-[14px]">sensors</span> Currently in Field (Nov 3 – Nov 7)
+              </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Pickup: SafeHub Indiranagar East</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Telemetry: Battery 88%, Sensor Ok</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between lg:justify-end gap-space-lg">
+<div class="flex flex-col items-start lg:items-end">
+<span class="font-caption text-caption text-text-muted">Gross Earnings</span>
+<span class="font-code-mono text-code-mono text-on-surface font-bold">₹6,000</span>
+<span class="font-caption text-[11px] text-trust-verified">Bond ₹10,000 Locked</span>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-surface-card hover:bg-surface-dim text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">loupe</span> View Check-In
+          </button>
+</div>
+</div>
+<!-- Booking 2: Upcoming Fashion Week Meera Sen -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-md hover:bg-surface-container transition-colors">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center font-code-mono text-code-mono font-bold flex-shrink-0">
+            MS
+          </div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Meera Sen</span>
+<span class="font-caption-bold text-[11px] text-trust-verified bg-trust-verified-bg px-space-xs py-0.5 rounded-full flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Trust Score 94.6 (Tier 1)
+              </span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">#RS-95002</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm text-text-secondary font-caption text-caption mt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-text-muted">calendar_today</span> Nov 23 – Nov 27 (5 Days)
+              </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>SafeHub Node: Koramangala Hub #4</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-trust-verified font-medium">Bilateral Escrow Funded</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between lg:justify-end gap-space-lg">
+<div class="flex flex-col items-start lg:items-end">
+<span class="font-caption text-caption text-text-muted">Gross Earnings</span>
+<span class="font-code-mono text-code-mono text-on-surface font-bold">₹6,000</span>
+<span class="font-caption text-[11px] text-text-secondary">Deposit Hold: ₹5,000</span>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-surface-card hover:bg-surface-dim text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">inventory_2</span> Pre-Pack Note
+          </button>
+</div>
+</div>
+<!-- Booking 3: High Surge Holiday Booking Confirmed -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex flex-col lg:flex-row lg:items-center justify-between gap-space-md hover:bg-surface-container transition-colors">
+<div class="flex items-start sm:items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-code-mono text-code-mono font-bold flex-shrink-0">
+            VK
+          </div>
+<div class="flex flex-col min-w-0">
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Vikramaditya Kulkarni</span>
+<span class="font-caption-bold text-[11px] text-primary bg-brand-primary-light px-space-xs py-0.5 rounded-full flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">verified</span> Trust Score 91.0 (Tier 2)
+              </span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">#RS-96118</span>
+<span class="font-caption text-[11px] bg-secondary-fixed/50 text-secondary px-space-xs py-0.5 rounded-full font-bold">
+                Holiday Surge +25%
+              </span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm text-text-secondary font-caption text-caption mt-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-text-muted">calendar_today</span> Dec 16 – Dec 21 (6 Days)
+              </span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Pickup: SafeHub MG Road Concierge</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-trust-verified font-medium">Bilateral Escrow Sealed</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between lg:justify-end gap-space-lg">
+<div class="flex flex-col items-start lg:items-end">
+<span class="font-caption text-caption text-text-muted">Gross Earnings</span>
+<span class="font-code-mono text-code-mono text-on-surface font-bold">₹9,000</span>
+<span class="font-caption text-[11px] text-text-secondary">Deposit Hold: ₹7,500</span>
+</div>
+<button class="px-space-md py-2 rounded-lg bg-surface-card hover:bg-surface-dim text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span> Ledger Details
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

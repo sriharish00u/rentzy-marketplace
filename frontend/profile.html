@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Profile - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+const u=Auth.requireAuth(['customer','owner','admin']);
+UI.pageShell('profile','<section class="page"><div class="container" style="max-width:760px"><div class="card"><div class="card-body"><h1 class="section-title">Profile</h1><p class="section-sub" style="margin-bottom:20px">Manage your account details.</p><div id="msg"></div><form id="form"></form></div></div></div></section>');
+(async()=>{const me=await API.get('/api/auth/me');
+ document.getElementById('form').innerHTML=`<div class="form-grid"><div class="field"><label>Name</label><input class="input" name="name" value="${me.name||''}"></div><div class="field"><label>Phone</label><input class="input" name="phone" value="${me.phone||''}"></div></div>
+ <div class="form-grid"><div class="field"><label>Email</label><input class="input" value="${me.email||''}" disabled></div><div class="field"><label>Role</label><input class="input" value="${me.role||''}" disabled></div></div>
+ <div class="form-grid"><div class="field"><label>KYC Status</label><input class="input" value="${me.kyc_status||''}" disabled></div><div class="field"><label>Trust Score</label><input class="input mono" value="${me.trust_score||0}" disabled></div></div>
+ <button class="btn btn-primary" type="submit">Save profile</button>`;
+ document.getElementById('form').onsubmit=async(e)=>{e.preventDefault(); const msg=document.getElementById('msg');
+  try{const payload=Object.fromEntries(new FormData(e.target).entries()); const r=await API.put('/api/users/me',payload); localStorage.setItem('user',JSON.stringify(r)); msg.innerHTML='<div class="alert alert-success">Profile updated.</div>'; UI.nav('profile');}
+  catch(err){msg.innerHTML=`<div class="alert alert-danger">${err.message}</div>`}
+ };
+})();
+</script></body></html>

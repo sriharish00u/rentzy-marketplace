@@ -1,0 +1,21 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Booking Requests - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['customer','owner','admin']);
+UI.pageShell('requests', `<section class="page"><div class="container"><h1 class="section-title">Booking requests</h1><p class="section-sub">Approve or reject rental requests from customers.</p>
+<div class="card" style="margin-top:20px"><div class="card-body table-wrap"><table class="table"><thead><tr><th>Product</th><th>Customer</th><th>Dates</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="rows"></tbody></table></div></div></div></section>`);
+async function load(){const rows=document.getElementById('rows'); try{const items=await API.get('/api/bookings');
+ rows.innerHTML=items.map(b=>`<tr><td>${b.product_title||''}</td><td>${b.customer_name||''}</td><td class="mono" style="font-size:13px">${b.start_date} → ${b.end_date}</td><td class="mono">${UI.fmtINR(b.pricing_breakdown?.total)}</td><td>${UI.badge(b.status)}</td><td style="display:flex;gap:6px;flex-wrap:wrap">
+ ${b.status==='pending'?`<button class="btn btn-sm btn-primary" onclick="setStatus('${b.id}','approved')">Approve</button><button class="btn btn-sm btn-danger" onclick="setStatus('${b.id}','rejected')">Reject</button>`:''}
+ ${b.status==='confirmed'?`<button class="btn btn-sm btn-outline" onclick="setStatus('${b.id}','active')">Mark Active</button>`:''}
+ ${b.status==='active'?`<button class="btn btn-sm btn-outline" onclick="setStatus('${b.id}','completed')">Complete</button>`:''}
+ </td></tr>`).join('') || '<tr><td colspan="6"><div class="empty">No booking requests.</div></td></tr>';
+}catch(e){rows.innerHTML=`<tr><td colspan="6">${e.message}</td></tr>`}}
+window.setStatus=async(id,status)=>{await API.patch('/api/bookings/'+id+'/status',{status}); load();};
+load();
+</script></body></html>

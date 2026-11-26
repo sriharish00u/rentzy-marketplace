@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rentzy - Verified Rental Marketplace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body>
+<div id="app-nav"></div>
+<main id="app-main">
+  <section class="hero"><div class="container">
+    <span class="badge badge-info">Escrow-Protected Rentals</span>
+    <h1 style="margin-top:16px">Rent anything with <span style="color:var(--primary)">trust, verification,</span> and transparency.</h1>
+    <p>A multi-category rental marketplace for electronics, vehicles, tools, furniture, and more. Verified owners, condition evidence, and mock UPI intent payments in one flow.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/register.html">Create Account</a>
+      <a class="btn btn-outline" href="/search.html">Browse Rentals</a>
+    </div>
+  </div></section>
+  <section class="page"><div class="container">
+    <div class="grid grid-3">
+      <div class="card card-body"><div class="badge badge-success">Verified</div><h3 style="margin:12px 0 8px">Owner & Product Trust</h3><p class="text-secondary">KYC status, trust signals, and approval workflows keep listings accountable.</p></div>
+      <div class="card card-body"><div class="badge badge-info">Escrow</div><h3 style="margin:12px 0 8px">Transparent Pricing</h3><p class="text-secondary">Rental fee, platform fee, and refundable deposit are shown before payment.</p></div>
+      <div class="card card-body"><div class="badge badge-warning">UPI Intent</div><h3 style="margin:12px 0 8px">Mock UPI Payment</h3><p class="text-secondary">Generate a UPI intent link and simulate callback confirmation for MVP testing.</p></div>
+    </div>
+    <div style="margin-top:40px;display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap">
+      <div><h2 class="section-title">Featured listings</h2><p class="section-sub">Live products from the backend catalog.</p></div>
+      <a class="btn btn-outline" href="/search.html">View all</a>
+    </div>
+    <div id="featured" class="grid grid-3" style="margin-top:20px"></div>
+  </div></section>
+  <footer class="footer"><div class="container">Rentzy MVP — FastAPI + MongoDB + HTML frontend. Mock UPI intent & mock OTP for development.</div></footer>
+</main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+UI.nav('index');
+(async()=>{
+  const el=document.getElementById('featured'); UI.loading(el);
+  try{const items=await API.get('/api/products?status=approved'); 
+    if(!items.length){el.innerHTML='<div class="empty">No products yet. Seed data loads on backend startup.</div>';return;}
+    el.innerHTML=items.slice(0,6).map(p=>`
+      <a class="card product-card" href="/product-detail.html?id=${p.id}">
+        <img class="img" src="${(p.images&&p.images[0])||'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80'}" alt="${p.title}">
+        <div class="body"><div class="badge badge-success" style="margin-bottom:10px">Approved</div>
+        <div class="title">${p.title}</div><div class="meta">${p.category_name||''} · ${p.location||''}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px"><span class="price">${UI.fmtINR(p.pricing?.day||0)}/day</span><span class="text-secondary" style="font-size:13px">Deposit ${UI.fmtINR(p.deposit||0)}</span></div></div>
+      </a>`).join('');
+  }catch(e){UI.error(el,e)}
+})();
+</script></body></html>

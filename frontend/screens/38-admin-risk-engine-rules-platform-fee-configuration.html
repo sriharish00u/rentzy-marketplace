@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Governance &amp; Custody Audit Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-on-surface": "#eef0ff", "tertiary-fixed-dim": "#c3c0ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-container": "#bcceff", "on-secondary-fixed-variant": "#004e5f", "trust-warning-bg": "#FFFBEB", "trust-danger": "#DC2626", "surface-subtle": "#F1F5F9", "trust-verified-bg": "#ECFDF5", "tertiary-container": "#463cdd", "brand-primary-light": "#EBF3FF", "inverse-primary": "#b0c6ff", "tertiary-fixed": "#e2dfff", "tertiary": "#2c16c6", "surface-container": "#eaedff", "error-container": "#ffdad6", "trust-danger-bg": "#FEF2F2", "on-secondary-container": "#005c70", "on-tertiary-container": "#ccc9ff", "surface-variant": "#dae2fd", "background": "#faf8ff", "on-primary-fixed-variant": "#00419c", "trust-warning": "#D97706", "text-secondary": "#475569", "on-tertiary-fixed": "#0f0069", "on-primary": "#ffffff", "surface-tint": "#1d59c1", "primary-container": "#0f52ba", "border-default": "#E2E8F0", "on-surface-variant": "#434653", "on-surface": "#131b2e", "primary-fixed-dim": "#b0c6ff", "secondary-container": "#50d9fe", "border-focus": "#3B82F6", "surface-container-highest": "#dae2fd", "on-background": "#131b2e", "on-primary-fixed": "#001945", "inverse-surface": "#283044", "text-muted": "#94A3B8", "secondary-fixed-dim": "#4cd6fb", "secondary-fixed": "#b3ebff", "trust-verified": "#059669", "surface-card": "#FFFFFF", "surface": "#faf8ff", "surface-dim": "#d2d9f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "on-error": "#ffffff", "canvas-slate": "#F8FAFC", "on-secondary-fixed": "#001f27", "surface-bright": "#faf8ff", "error": "#ba1a1a", "brand-primary-hover": "#0B3C8A", "primary": "#003c90", "on-secondary": "#ffffff", "on-error-container": "#93000a", "outline": "#737784", "primary-fixed": "#d9e2ff", "surface-container-low": "#f2f3ff", "surface-container-lowest": "#ffffff", "surface-container-high": "#e2e7ff", "secondary": "#00677d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "margin-desktop": "3rem", "gutter-desktop": "2rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-md": "1rem", "gutter-tablet": "1.5rem", "margin-tablet": "2rem" }, "fontFamily": { "body-lg": ["Inter"], "body-base": ["Inter"], "caption-bold": ["Inter"], "display-hero-mobile": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "display-hero": ["Inter"], "code-mono": ["JetBrains Mono"], "headline-lg": ["Inter"], "headline-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "caption": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }] } } } };</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-inverse-surface z-50 flex flex-col py-space-md shadow-[2px_0_12px_rgba(15,23,42,0.15)]"><div class="px-space-lg mb-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface-card font-bold tracking-tight leading-none">RentSecure</span><span class="font-caption text-caption text-inverse-primary text-[10px] tracking-widest uppercase font-semibold mt-0.5">Governance Core</span></div></div></div><div class="px-space-md mb-space-sm"><span class="font-caption-bold text-caption-bold text-outline-variant uppercase tracking-wider text-[11px] px-space-sm">Audit &amp; Operations</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-primary text-white font-semibold shadow-sm"><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="admin-category-builder-deposit-policy-configurator" href="#">Category Policies</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="disputes" href="#">Disputes</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="users-accounts" href="#">Users &amp; Accounts</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="kyc-identity-audits" href="#">KYC &amp; Identity Audits</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="product-verifications-anti-theft" href="#">Product Verifications &amp; Anti-Theft</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-disbursal-ledger" href="#">Escrow &amp; Disbursal Ledger</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="admin-reports-financial-analytics-suite" href="#">Reports &amp; Financial Analytics</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="admin-risk-engine-rules-platform-fee-configuration" href="#">Risk Engine &amp; Platform Fees</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-on-surface/50 border border-outline-variant/30 text-surface-card"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold"><span class="material-symbols-outlined text-[16px]">lock_open</span>Level 4 Security</div><span class="font-code-mono-sm text-code-mono-sm text-inverse-primary text-[10px]">2FA OK</span></div><p class="font-caption text-caption text-outline-variant">Session ID: <strong class="font-code-mono text-surface-card">SEC-88219A</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-subtle border border-border-default rounded-lg font-body-base text-body-base text-on-surface placeholder:text-text-muted focus:outline-none focus:border-border-focus focus:ring-2 focus:ring-border-focus/15 transition-all" placeholder="Global search: Custody Escrow ID, Asset IMEI, User Hash..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-trust-danger-bg border border-trust-danger/20 rounded-full"><span class="material-symbols-outlined text-trust-danger text-[16px]">warning</span><span class="font-caption-bold text-caption-bold text-trust-danger">3 Risk Alerts</span></div><button class="flex items-center gap-1.5 px-space-sm py-1.5 text-on-surface-variant hover:text-primary hover:bg-brand-primary-light rounded-lg transition-colors font-body-base-medium text-body-base-medium"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="hidden lg:inline font-caption-bold text-caption-bold">Audit Logs</span></button><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-trust-danger"></span></div><div class="h-6 w-px bg-border-default"></div><div class="flex items-center gap-space-sm"><img alt="Admin Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Super Admin</span><span class="font-code-mono-sm text-code-mono-sm text-text-secondary leading-none">Custody Officer #04</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-space-xl space-y-space-xl max-w-[1360px] mx-auto w-full">
+<!-- Top Action Bar & Version Indicator -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-md">
+<div class="flex flex-col space-y-1">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">Platform Settings &amp; Risk Engine</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-code-mono-sm text-code-mono-sm shadow-sm">
+<span class="w-2 h-2 rounded-full bg-trust-verified animate-pulse"></span>
+            Risk Protocol v4.8 Active
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container font-caption-bold text-caption-bold text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">shield_with_heart</span>
+            Custody Level 4
+          </span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary max-w-3xl">
+          Define global fee schedules, dynamic escrow multipliers, automated fraud detection heuristics, and multi-signature release thresholds.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-center shrink-0">
+<!-- Draft Status Chip -->
+<div class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold shadow-sm">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>Draft: 2 Unsaved Parameters</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-surface-card text-on-surface-variant hover:text-primary hover:bg-surface-subtle transition-all font-body-base-medium text-body-base-medium shadow-sm">
+<span class="material-symbols-outlined text-[18px]">history</span>
+<span class="hidden md:inline">Audit Log (3 changes today)</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary hover:bg-brand-primary-hover text-on-primary transition-all font-body-base-medium text-body-base-medium shadow-md shadow-primary/20 hover:scale-[1.01] active:scale-[0.99]" id="publishBtn">
+<span class="material-symbols-outlined text-[18px]">security_update_good</span>
+<span>Publish Rule Set</span>
+</button>
+</div>
+</div>
+<!-- Live Impact Simulation Ribbon -->
+<div class="p-space-md lg:p-space-lg rounded-xl bg-surface-container-high text-on-surface shadow-sm relative overflow-hidden">
+<div class="absolute right-0 top-0 bottom-0 w-96 bg-gradient-to-l from-primary/10 via-primary/5 to-transparent pointer-events-none hidden md:block"></div>
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md relative z-10">
+<div class="flex items-start gap-3">
+<div class="p-2.5 rounded-xl bg-primary text-on-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Live Risk Engine Simulation</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-card text-primary font-code-mono-sm text-code-mono-sm">MODEL: MONTE-CARLO 98.4% CONF</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-0.5">
+              Simulated impact based on past 30 days transactions (14,820 bookings / ₹4.82 Cr escrow custody).
+            </p>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 lg:gap-6 shrink-0">
+<div class="p-3 rounded-lg bg-surface-card shadow-sm">
+<div class="font-caption text-caption text-text-muted">Take-Rate Revenue</div>
+<div class="font-code-mono text-code-mono text-primary font-bold">13.5% avg</div>
+<div class="font-caption text-caption text-trust-verified flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">trending_up</span> +0.4%
+            </div>
+</div>
+<div class="p-3 rounded-lg bg-surface-card shadow-sm">
+<div class="font-caption text-caption text-text-muted">Interception Rate</div>
+<div class="font-code-mono text-code-mono text-trust-verified font-bold">99.82%</div>
+<div class="font-caption text-caption text-text-muted">High-value fraud</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-card shadow-sm">
+<div class="font-caption text-caption text-text-muted">Review Queue Load</div>
+<div class="font-code-mono text-code-mono text-on-surface font-bold">4.2 / hr</div>
+<div class="font-caption text-caption text-text-muted">Manual review items</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-card shadow-sm">
+<div class="font-caption text-caption text-text-muted">Dispute Risk Score</div>
+<div class="font-code-mono text-code-mono text-trust-verified font-bold">Low (14.2)</div>
+<div class="font-caption text-caption text-trust-verified flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> Stable
+            </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 1: Global Fee & Monetization Structure -->
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-6 rounded-full bg-primary"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Global Fee &amp; Monetization Structure</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary bg-surface-card px-2.5 py-1 rounded shadow-sm">MOD-FEE-2025</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Standard Host Commission -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="p-2 rounded-lg bg-brand-primary-light text-primary">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+</div>
+<span class="font-caption-bold text-caption-bold text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded-full">Primary</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">Standard Host Commission</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+              Gross take-rate retained by RentSecure from asset supplier payout on confirmed rental completion.
+            </p>
+</div>
+<div class="space-y-3 pt-2">
+<div class="flex items-baseline justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary">Take-rate</span>
+<div class="flex items-center gap-1">
+<input class="w-16 text-right font-code-mono text-code-mono font-bold text-primary bg-surface-subtle px-1.5 py-0.5 rounded focus:outline-none" id="hostCommissionInput" max="25" min="2" step="0.5" type="number" value="10.0"/>
+<span class="font-code-mono text-code-mono font-bold text-primary">%</span>
+</div>
+</div>
+<input class="w-full accent-primary cursor-pointer bg-surface-subtle h-2 rounded-lg" id="hostCommissionSlider" max="25" min="2" step="0.5" type="range" value="10.0"/>
+<div class="flex justify-between font-code-mono-sm text-code-mono-sm text-text-muted">
+<span>Min 2.0%</span>
+<span>Default 10.0%</span>
+<span>Max 25.0%</span>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-subtle font-caption text-caption text-text-secondary flex items-center justify-between">
+<span>Projected Annual Net:</span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface font-semibold">₹1,42,80,000</span>
+</div>
+</div>
+<!-- Card 2: Renter Convenience Fee -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="p-2 rounded-lg bg-surface-container text-tertiary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+<span class="font-caption-bold text-caption-bold text-on-surface-variant bg-surface-subtle px-2 py-0.5 rounded-full">Per-Booking</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">Custody &amp; Convenience</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+              Flat administrative fee levied on renter for escrow cryptographic lock, identity attestation &amp; telemetry.
+            </p>
+</div>
+<div class="space-y-3 pt-2">
+<div class="flex items-baseline justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary">Fixed Levy</span>
+<div class="flex items-center gap-1">
+<span class="font-code-mono text-code-mono font-bold text-on-surface">₹</span>
+<input class="w-20 text-right font-code-mono text-code-mono font-bold text-on-surface bg-surface-subtle px-2 py-0.5 rounded focus:outline-none" max="500" min="50" step="10" type="number" value="180"/>
+<span class="font-caption text-caption text-text-muted">flat</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-2 pt-2">
+<button class="flex-1 py-1.5 rounded bg-surface-subtle hover:bg-surface-container font-caption-bold text-caption-bold text-on-surface-variant transition-colors text-center">₹150</button>
+<button class="flex-1 py-1.5 rounded bg-primary text-on-primary font-caption-bold text-caption-bold text-center">₹180</button>
+<button class="flex-1 py-1.5 rounded bg-surface-subtle hover:bg-surface-container font-caption-bold text-caption-bold text-on-surface-variant transition-colors text-center">₹220</button>
+</div>
+<div class="font-caption text-caption text-text-muted text-center">Standard baseline: ₹180 per checkout</div>
+</div>
+<div class="p-2 rounded bg-surface-subtle font-caption text-caption text-text-secondary flex items-center justify-between">
+<span>Server Infra Offsetting:</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-semibold">100% Covered</span>
+</div>
+</div>
+<!-- Card 3: Equipment Protection & Damage Waiver -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="p-2 rounded-lg bg-trust-verified-bg text-trust-verified">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<span class="font-caption-bold text-caption-bold text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded-full">Underwritten</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">Damage Waiver Levy</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+              Escrow-integrated zero-deductible hardware replacement buffer fund underwritten by partner syndicate.
+            </p>
+</div>
+<div class="space-y-3 pt-2">
+<div class="flex items-baseline justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary">Waiver Share</span>
+<div class="flex items-center gap-1">
+<input class="w-16 text-right font-code-mono text-code-mono font-bold text-trust-verified bg-surface-subtle px-1.5 py-0.5 rounded focus:outline-none" id="waiverInput" max="8.0" min="1.0" step="0.25" type="number" value="3.5"/>
+<span class="font-code-mono text-code-mono font-bold text-trust-verified">%</span>
+</div>
+</div>
+<input class="w-full accent-trust-verified cursor-pointer bg-surface-subtle h-2 rounded-lg" id="waiverSlider" max="8.0" min="1.0" step="0.25" type="range" value="3.5"/>
+<div class="flex justify-between font-code-mono-sm text-code-mono-sm text-text-muted">
+<span>Min 1.0%</span>
+<span>Standard 3.5%</span>
+<span>Max 8.0%</span>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-subtle font-caption text-caption text-text-secondary flex items-center justify-between">
+<span>Pool Solvency Ratio:</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-semibold">4.82x Claims</span>
+</div>
+</div>
+<!-- Card 4: SafeHub Locker Handling Fee -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-2">
+<div class="p-2 rounded-lg bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[20px]">meeting_room</span>
+</div>
+<span class="font-caption-bold text-caption-bold text-secondary bg-surface-container px-2 py-0.5 rounded-full">Physical Hub</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">SafeHub Locker Handling</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+              Stationary drop-box kiosk usage, optical loupe sanitization, and automated dual-token locker checkout.
+            </p>
+</div>
+<div class="space-y-3 pt-2">
+<div class="flex items-baseline justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary">Handling Price</span>
+<div class="flex items-center gap-1">
+<span class="font-code-mono text-code-mono font-bold text-on-surface">₹</span>
+<input class="w-20 text-right font-code-mono text-code-mono font-bold text-on-surface bg-surface-subtle px-2 py-0.5 rounded focus:outline-none" max="400" min="0" step="25" type="number" value="150"/>
+<span class="font-caption text-caption text-text-muted">/cycle</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-subtle">
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Promo Zero-Charge</span>
+<span class="font-caption text-caption text-text-muted text-[11px]">Free on Tier-1 Rentals</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trust-verified"></div>
+</label>
+</div>
+</div>
+<div class="p-2 rounded bg-surface-subtle font-caption text-caption text-text-secondary flex items-center justify-between">
+<span>Kiosk Footprint Load:</span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface font-semibold">68% Utilized</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 2: Dynamic Fraud & Risk Engine Thresholds -->
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-6 rounded-full bg-trust-warning"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Dynamic Fraud &amp; Risk Engine Thresholds</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="hidden sm:inline font-caption text-caption text-text-muted">Heuristic Evaluation Model:</span>
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold bg-brand-primary-light px-2 py-0.5 rounded">HEURISTIC-X9</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Rule 1: High-Value Asset Review Trigger -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md border-l-4 border-l-primary">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="p-2.5 rounded-lg bg-brand-primary-light text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">gavel</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Rule #1: High-Value Asset Review Trigger</span>
+<span class="px-2 py-0.5 rounded bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">Enforced</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                  Require manual admin review if item replacement value exceeds threshold for renters with low completed rental velocity.
+                </p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Parameter Steppers -->
+<div class="p-space-md rounded-lg bg-surface-subtle grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Item Replacement Threshold</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm">
+<span class="font-code-mono text-code-mono font-bold text-text-secondary mr-1">₹</span>
+<input class="w-full font-code-mono text-code-mono font-bold text-on-surface bg-transparent focus:outline-none" type="text" value="50,000"/>
+<button class="text-text-muted hover:text-primary"><span class="material-symbols-outlined text-[16px]">tune</span></button>
+</div>
+</div>
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Completed History Floor</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<input class="w-20 font-code-mono text-code-mono font-bold text-on-surface bg-transparent focus:outline-none" max="20" min="0" type="number" value="3"/>
+<span class="font-caption text-caption text-text-muted">rentals completed</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption text-text-muted">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">flag</span> Triggers approx. 12 manual queue audits/day</span>
+<span class="font-code-mono-sm text-code-mono-sm text-primary">SLO: 15-min SLA</span>
+</div>
+</div>
+<!-- Rule 2: Device Fingerprint & IP Collisions -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md border-l-4 border-l-trust-danger">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="p-2.5 rounded-lg bg-trust-danger-bg text-trust-danger shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">fingerprint</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Rule #2: Device Fingerprint &amp; IP Collisions</span>
+<span class="px-2 py-0.5 rounded bg-trust-danger-bg text-trust-danger font-caption-bold text-caption-bold">Zero-Tolerance</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                  Instantly freeze booking and trigger biometric re-liveness check if WebGL hash or MAC collision is detected.
+                </p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-trust-danger"></div>
+</label>
+</div>
+<!-- Parameter Steppers -->
+<div class="p-space-md rounded-lg bg-surface-subtle grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Canvas / WebGL Tolerance</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<span class="font-code-mono text-code-mono font-bold text-trust-danger">0 Collisions</span>
+<span class="material-symbols-outlined text-trust-danger text-[18px]">lock</span>
+</div>
+</div>
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Action Protocol</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Freeze + Face-Liveness</span>
+<span class="material-symbols-outlined text-[18px] text-text-secondary">badge</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption text-text-muted">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">shield</span> Blocks syndicates &amp; multi-account sybil attacks</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-danger font-semibold">100% Intercept</span>
+</div>
+</div>
+<!-- Rule 3: Velocity Spike Detector -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md border-l-4 border-l-trust-warning">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="p-2.5 rounded-lg bg-trust-warning-bg text-trust-warning shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">speed</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Rule #3: Velocity Spike Detector</span>
+<span class="px-2 py-0.5 rounded bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold">Active</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                  Flag account if multiple high-value bookings are requested rapidly within initial signup window.
+                </p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-trust-warning"></div>
+</label>
+</div>
+<!-- Parameter Steppers -->
+<div class="p-space-md rounded-lg bg-surface-subtle grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Max Concurrent Bookings</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<input class="w-16 font-code-mono text-code-mono font-bold text-on-surface bg-transparent focus:outline-none" max="10" min="1" type="number" value="2"/>
+<span class="font-caption text-caption text-text-muted">rentals</span>
+</div>
+</div>
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Time Window Post-KYC</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<input class="w-16 font-code-mono text-code-mono font-bold text-on-surface bg-transparent focus:outline-none" max="720" min="10" step="10" type="number" value="60"/>
+<span class="font-caption text-caption text-text-muted">minutes</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption text-text-muted">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">bolt</span> Automated escrow hold pending identity confirmation</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-warning font-semibold">Tier-2 Flag</span>
+</div>
+</div>
+<!-- Rule 4: Geofence Deviation Alert -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between space-y-space-md border-l-4 border-l-secondary">
+<div class="flex items-start justify-between gap-space-md">
+<div class="flex items-start gap-3">
+<div class="p-2.5 rounded-lg bg-surface-container text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[22px]">fmd_bad</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Rule #4: Geofence Deviation Alert</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-caption-bold text-caption-bold">Live GPS Telemetry</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                  Notify owner &amp; insurer if active rental GPS moves beyond declared rental jurisdiction perimeter.
+                </p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0 mt-1">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Parameter Steppers -->
+<div class="p-space-md rounded-lg bg-surface-subtle grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Max Deviation Radius</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<input class="w-16 font-code-mono text-code-mono font-bold text-on-surface bg-transparent focus:outline-none" max="500" min="10" step="10" type="number" value="100"/>
+<span class="font-caption text-caption text-text-muted">km from base</span>
+</div>
+</div>
+<div>
+<label class="font-caption-bold text-caption-bold text-text-secondary block mb-1">Alert Escalation</label>
+<div class="flex items-center bg-surface-card rounded-lg px-2.5 py-1.5 shadow-sm justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Owner + Underwriter</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">satellite_alt</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between text-caption text-text-muted">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">cell_tower</span> Cellular + LoRaWAN hardware ping checks</span>
+<span class="font-code-mono-sm text-code-mono-sm text-secondary font-semibold">120s Ping Cycle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3 & 4: Dual Architecture Columns -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Section 3: Dynamic Escrow & Custody Holding Policies (7 Cols) -->
+<div class="lg:col-span-7 space-y-space-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-6 rounded-full bg-tertiary"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Dynamic Escrow &amp; Custody Holding Policies</span>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm space-y-space-lg">
+<!-- Escrow Deposit Floor -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-md border-b-0">
+<div class="space-y-1 max-w-md">
+<div class="flex items-center gap-2">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Minimum Escrow Deposit Floor</span>
+<span class="font-caption text-caption text-primary bg-brand-primary-light px-2 py-0.5 rounded">All Tiers</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+                Absolute minimum financial lock held in cold smart contract custody regardless of daily rental rate.
+              </p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<span class="font-code-mono text-code-mono font-bold text-on-surface">₹</span>
+<input class="w-28 font-code-mono text-code-mono font-bold text-on-surface bg-surface-subtle px-3 py-2 rounded-lg focus:outline-none" max="20000" min="500" step="500" type="number" value="2000"/>
+<button class="p-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-text-secondary transition-colors">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+</div>
+</div>
+<!-- Late Return Penalty Multiplier -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md pb-space-md">
+<div class="space-y-1 max-w-md">
+<div class="flex items-center gap-2">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Late Return Penalty Multiplier</span>
+<span class="font-caption text-caption text-trust-warning bg-trust-warning-bg px-2 py-0.5 rounded">Auto-Deducted</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+                Compounding deduction against escrow balance after declared return window expiration.
+              </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-1">
+<input class="w-16 text-right font-code-mono text-code-mono font-bold text-trust-warning bg-surface-subtle px-2 py-1.5 rounded-lg focus:outline-none" max="4.0" min="1.0" step="0.25" type="number" value="1.5"/>
+<span class="font-code-mono text-code-mono font-bold text-trust-warning">x</span>
+</div>
+<span class="font-caption text-caption text-text-muted mt-0.5">hourly rate</span>
+</div>
+<div class="px-2.5 py-1.5 rounded-lg bg-surface-subtle font-caption-bold text-caption-bold text-text-secondary">
+                60 min grace
+              </div>
+</div>
+</div>
+<!-- Deposit Auto-Release Window -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md">
+<div class="space-y-1 max-w-md">
+<div class="flex items-center gap-2">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Deposit Auto-Release Window</span>
+<span class="font-caption text-caption text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">Dual-Loupe SLA</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+                Escrow funds automatically refund to renter unless a physical condition dispute claim is registered.
+              </p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="flex items-center gap-1.5 bg-surface-subtle px-3 py-2 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-primary">timer</span>
+<input class="w-12 text-center font-code-mono text-code-mono font-bold text-on-surface bg-transparent focus:outline-none" max="48" min="1" type="number" value="2"/>
+<span class="font-caption-bold text-caption-bold text-text-secondary">Hours post SafeHub sign-off</span>
+</div>
+</div>
+</div>
+<!-- Escrow Flow Summary Footnote -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">verified</span>
+<div class="font-caption text-caption text-text-secondary">
+<strong class="font-caption-bold text-caption-bold text-on-surface">Escrow Protection Guarantee:</strong>
+              Funds are segregated into multi-tenant cold reserves with automated cryptographic locks. Neither host nor platform can liquidate funds while an active rental session is in non-disputed status.
+            </div>
+</div>
+</div>
+</div>
+<!-- Section 4: Multi-Signature Authorization Policy (5 Cols) -->
+<div class="lg:col-span-5 space-y-space-md">
+<div class="flex items-center gap-2">
+<span class="w-2 h-6 rounded-full bg-trust-danger"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Multi-Signature Governance</span>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm space-y-space-md flex flex-col justify-between">
+<div class="space-y-space-md">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">High-Value Escrow Disbursal Cap</span>
+<span class="px-2 py-0.5 rounded bg-trust-danger-bg text-trust-danger font-code-mono-sm text-code-mono-sm font-bold">M-of-N: 2/3</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                Any custodial escrow release, manual clawback, or override exceeding the limit requires quorum sign-off via physical FIDO2 hardware tokens.
+              </p>
+</div>
+<!-- Value Cap Input -->
+<div class="p-space-md rounded-xl bg-surface-subtle space-y-2">
+<span class="font-caption-bold text-caption-bold text-text-secondary">Quorum Trigger Limit</span>
+<div class="flex items-baseline justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">₹</span>
+<input class="w-48 font-headline-md text-headline-md font-extrabold text-on-surface bg-transparent focus:outline-none" type="text" value="10,00,000"/>
+</div>
+<span class="font-caption text-caption text-text-muted">Ten Lakhs INR</span>
+</div>
+</div>
+<!-- Designated Master Custody Officers -->
+<div class="space-y-2">
+<span class="font-caption-bold text-caption-bold text-text-secondary">Designated Master Custody Officers (MCO)</span>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-bold text-caption">M1</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface leading-tight font-semibold">Elena Vance</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">MCO-01 • FIDO2 Certified</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Active
+                  </span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary/20 text-secondary flex items-center justify-center font-bold text-caption">M2</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface leading-tight font-semibold">Devon Rashad</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">MCO-02 • FIDO2 Certified</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Active
+                  </span>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-subtle shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-tertiary/20 text-tertiary flex items-center justify-center font-bold text-caption">M3</div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface leading-tight font-semibold">Super Admin Vault #04</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">MCO-03 • HSM Cold Key</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Standby
+                  </span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface-variant font-body-base-medium text-body-base-medium transition-colors">
+<span class="material-symbols-outlined text-[18px]">key</span>
+<span>Rotate Custodial Signer Keys</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Parameter Change Log Preview / Staging Tray -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">difference</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Rule Set Staged Modifications (Pending Deployment)</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Diff comparison against Production v4.8</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-base text-body-base">
+<thead>
+<tr class="bg-surface-subtle text-text-secondary font-caption-bold text-caption-bold uppercase tracking-wider text-[11px]">
+<th class="py-2.5 px-4 rounded-l-lg">Parameter Identifier</th>
+<th class="py-2.5 px-4">Live Protocol (v4.8)</th>
+<th class="py-2.5 px-4">Staged Revision (v4.9-draft)</th>
+<th class="py-2.5 px-4">Impact Scope</th>
+<th class="py-2.5 px-4 rounded-r-lg text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 space-y-1">
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-3 px-4 font-code-mono-sm text-code-mono-sm text-primary font-bold">FEE.HOST_COMMISSION_PCT</td>
+<td class="py-3 px-4 font-code-mono text-code-mono text-text-muted">9.5%</td>
+<td class="py-3 px-4 font-code-mono text-code-mono text-trust-verified font-bold flex items-center gap-1.5">
+<span>10.0%</span>
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+</td>
+<td class="py-3 px-4 text-text-secondary text-caption">All Category P2P Hosts</td>
+<td class="py-3 px-4 text-right">
+<button class="font-caption-bold text-caption-bold text-error hover:underline">Revert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-3 px-4 font-code-mono-sm text-code-mono-sm text-primary font-bold">RISK.HIGH_VAL_REPLACEMENT_INR</td>
+<td class="py-3 px-4 font-code-mono text-code-mono text-text-muted">₹35,000</td>
+<td class="py-3 px-4 font-code-mono text-code-mono text-trust-verified font-bold flex items-center gap-1.5">
+<span>₹50,000</span>
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+</td>
+<td class="py-3 px-4 text-text-secondary text-caption">New renter manual triage queue</td>
+<td class="py-3 px-4 text-right">
+<button class="font-caption-bold text-caption-bold text-error hover:underline">Revert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple bidirectional binding for sliders & inputs
+  const hostSlider = document.getElementById('hostCommissionSlider');
+  const hostInput = document.getElementById('hostCommissionInput');
+  if (hostSlider && hostInput) {
+    hostSlider.addEventListener('input', (e) => {
+      hostInput.value = parseFloat(e.target.value).toFixed(1);
+    });
+    hostInput.addEventListener('input', (e) => {
+      hostSlider.value = e.target.value;
+    });
+  }
+
+  const waiverSlider = document.getElementById('waiverSlider');
+  const waiverInput = document.getElementById('waiverInput');
+  if (waiverSlider && waiverInput) {
+    waiverSlider.addEventListener('input', (e) => {
+      waiverInput.value = parseFloat(e.target.value).toFixed(2);
+    });
+    waiverInput.addEventListener('input', (e) => {
+      waiverSlider.value = e.target.value;
+    });
+  }
+
+  const publishBtn = document.getElementById('publishBtn');
+  if (publishBtn) {
+    publishBtn.addEventListener('click', () => {
+      publishBtn.classList.add('bg-trust-verified');
+      publishBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[18px]">done_all</span>
+        <span>Protocol v4.9 Published</span>
+      `;
+      setTimeout(() => {
+        publishBtn.classList.remove('bg-trust-verified');
+        publishBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px]">security_update_good</span>
+          <span>Publish Rule Set</span>
+        `;
+      }, 3000);
+    });
+  }
+</script></main></div></body></html>

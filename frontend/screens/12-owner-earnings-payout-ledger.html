@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Console - Escrow &amp; Fleet</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "primary": "#003c90", "on-surface-variant": "#434653", "brand-primary-light": "#EBF3FF", "surface-container-high": "#e2e7ff", "surface-variant": "#dae2fd", "on-primary-fixed": "#001945", "error-container": "#ffdad6", "on-primary-container": "#bcceff", "trust-verified": "#059669", "border-focus": "#3B82F6", "on-secondary-container": "#005c70", "background": "#faf8ff", "tertiary-fixed-dim": "#c3c0ff", "text-muted": "#94A3B8", "trust-warning": "#D97706", "surface-dim": "#d2d9f4", "trust-danger-bg": "#FEF2F2", "surface": "#faf8ff", "inverse-primary": "#b0c6ff", "primary-container": "#0f52ba", "surface-bright": "#faf8ff", "inverse-surface": "#283044", "on-secondary-fixed-variant": "#004e5f", "surface-container": "#eaedff", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "text-secondary": "#475569", "secondary-fixed": "#b3ebff", "primary-fixed": "#d9e2ff", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-container": "#463cdd", "on-secondary": "#ffffff", "trust-warning-bg": "#FFFBEB", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#4cd6fb", "outline": "#737784", "surface-tint": "#1d59c1", "on-surface": "#131b2e", "border-default": "#E2E8F0", "primary-fixed-dim": "#b0c6ff", "tertiary": "#2c16c6", "trust-verified-bg": "#ECFDF5", "on-error-container": "#93000a", "on-tertiary-container": "#ccc9ff", "brand-primary-hover": "#0B3C8A", "on-primary-fixed-variant": "#00419c", "tertiary-fixed": "#e2dfff", "inverse-on-surface": "#eef0ff", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#0f0069", "on-secondary-fixed": "#001f27", "canvas-slate": "#F8FAFC", "trust-danger": "DC2626", "secondary-container": "#50d9fe", "on-background": "#131b2e", "secondary": "#00677d", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-subtle": "#F1F5F9", "on-tertiary-fixed-variant": "#3323cc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "gutter-desktop": "2rem" }, "fontFamily": { "caption-bold": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "display-hero-mobile": ["Inter"], "body-lg": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "headline-sm": ["Inter"], "caption": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-card z-50 flex flex-col py-space-md shadow-[1px_0_8px_rgba(15,23,42,0.04)]"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-brand-primary-light text-primary font-bold"><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="owner-fleet-dashboard" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span>Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-vault" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">shield</span>Escrow Vault</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="my-bookings" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">receipt_long</span>Active Rentals</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="inspection-manager" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">compare</span>Inspection Loupe</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="dispute-resolution" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">gavel</span>Dispute Center</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-surface-subtle border border-border-default"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold mb-1"><span class="material-symbols-outlined text-[16px]">verified</span>Tier 1 Host</div><p class="font-caption text-caption text-text-secondary">Trust Score: <strong class="font-code-mono text-on-surface">98/100</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/90 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-body-base-medium text-body-base-medium text-text-secondary">Workspace:</span><span class="font-body-base-medium text-body-base-medium font-semibold text-on-surface">Asset &amp; Custody Console</span></div><div class="flex items-center gap-space-md"><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary"></span></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Fleet Manager</span><span class="font-code-mono-sm text-code-mono-sm text-trust-verified leading-none">Bonded • Active</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full px-margin-desktop py-space-xl max-w-[1280px] mx-auto gap-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Earnings &amp; Payout Ledger</h1>
+<p class="font-body-base text-body-base text-text-secondary">Real-time escrow settlements, commission breakdowns, and instant IMPS/UPI withdrawals.</p>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface-card text-on-surface shadow-sm hover:bg-surface-subtle transition-colors font-body-base-medium text-body-base-medium" onclick="showToast('GST Statement (PDF) generated for Q3-Q4 FY25')" type="button">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">picture_as_pdf</span>
+        Download GST Statement (PDF)
+      </button>
+<button class="inline-flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface-card text-on-surface shadow-sm hover:bg-surface-subtle transition-colors font-body-base-medium text-body-base-medium" onclick="showToast('Exported 24 ledger entries to CSV')" type="button">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">download</span>
+        Export CSV
+      </button>
+<button class="inline-flex items-center gap-space-sm px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary hover:bg-brand-primary-hover transition-all shadow-md font-body-base-medium text-body-base-medium" onclick="focusWithdrawal()" type="button">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+        Withdraw ₹25,800 Now
+      </button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Total Lifetime Earned</span>
+<span class="w-8 h-8 rounded-lg bg-trust-verified-bg text-trust-verified flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-code-mono text-headline-md text-on-surface">₹4,82,400</span>
+<span class="inline-flex items-center self-start gap-1 px-2 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">+18% YoY</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Pending Escrow Settlements</span>
+<span class="w-8 h-8 rounded-lg bg-surface-container text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lock_clock</span>
+</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-code-mono text-headline-md text-on-surface">₹12,600</span>
+<span class="inline-flex items-center self-start gap-1 px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-caption-bold text-caption-bold">3 active rentals</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Available for Withdrawal</span>
+<span class="w-8 h-8 rounded-lg bg-brand-primary-light text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-code-mono text-headline-md text-primary-container">₹25,800</span>
+<span class="inline-flex items-center self-start gap-1 px-2 py-0.5 rounded-full bg-brand-primary-light text-primary-container font-caption-bold text-caption-bold">Instant IMPS/UPI Enabled</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Platform Commission Paid</span>
+<span class="w-8 h-8 rounded-lg bg-surface-subtle text-text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">percent</span>
+</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-code-mono text-headline-md text-on-surface">₹48,240</span>
+<span class="inline-flex items-center self-start gap-1 px-2 py-0.5 rounded-full bg-surface-subtle text-text-secondary font-caption-bold text-caption-bold">10% Pro Host Tier</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<div class="lg:col-span-2 bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Revenue &amp; Settlement Velocity</h2>
+<div class="flex items-center gap-space-md">
+<span class="inline-flex items-center gap-space-xs font-caption-bold text-caption-bold text-text-secondary">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary-container"></span>Gross Rental
+            </span>
+<span class="inline-flex items-center gap-space-xs font-caption-bold text-caption-bold text-text-secondary">
+<span class="w-2.5 h-2.5 rounded-sm bg-trust-verified"></span>Net Payout
+            </span>
+</div>
+</div>
+<div class="inline-flex items-center bg-surface-subtle p-1 rounded-lg self-start">
+<button class="px-space-md py-1.5 rounded-md bg-surface-card text-on-surface shadow-sm font-caption-bold text-caption-bold transition-all" id="btn-monthly" onclick="setChartPeriod('monthly')" type="button">Monthly</button>
+<button class="px-space-md py-1.5 rounded-md text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold transition-all" id="btn-weekly" onclick="setChartPeriod('weekly')" type="button">Weekly</button>
+</div>
+</div>
+<div class="w-full h-64 flex items-end justify-between gap-space-md pt-space-lg px-space-sm" id="chart-container">
+<div class="flex-1 flex flex-col items-center gap-space-sm h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-48">
+<div class="w-5 sm:w-7 bg-primary-container rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 62%;">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded font-code-mono-sm text-code-mono-sm whitespace-nowrap z-10">₹62k</span>
+</div>
+<div class="w-5 sm:w-7 bg-trust-verified rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 55%;"></div>
+</div>
+<span class="font-caption-bold text-caption-bold text-text-secondary chart-label">Jul</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-sm h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-48">
+<div class="w-5 sm:w-7 bg-primary-container rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 74%;">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded font-code-mono-sm text-code-mono-sm whitespace-nowrap z-10">₹74k</span>
+</div>
+<div class="w-5 sm:w-7 bg-trust-verified rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 66%;"></div>
+</div>
+<span class="font-caption-bold text-caption-bold text-text-secondary chart-label">Aug</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-sm h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-48">
+<div class="w-5 sm:w-7 bg-primary-container rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 68%;">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded font-code-mono-sm text-code-mono-sm whitespace-nowrap z-10">₹68k</span>
+</div>
+<div class="w-5 sm:w-7 bg-trust-verified rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 61%;"></div>
+</div>
+<span class="font-caption-bold text-caption-bold text-text-secondary chart-label">Sep</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-sm h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-48">
+<div class="w-5 sm:w-7 bg-primary-container rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 85%;">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded font-code-mono-sm text-code-mono-sm whitespace-nowrap z-10">₹85k</span>
+</div>
+<div class="w-5 sm:w-7 bg-trust-verified rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 76%;"></div>
+</div>
+<span class="font-caption-bold text-caption-bold text-text-secondary chart-label">Oct</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-sm h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-48">
+<div class="w-5 sm:w-7 bg-primary-container rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 92%;">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded font-code-mono-sm text-code-mono-sm whitespace-nowrap z-10">₹92k</span>
+</div>
+<div class="w-5 sm:w-7 bg-trust-verified rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 83%;"></div>
+</div>
+<span class="font-caption-bold text-caption-bold text-text-secondary chart-label">Nov</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-space-sm h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-1.5 h-48">
+<div class="w-5 sm:w-7 bg-primary-container rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 100%;">
+<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-7 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-1.5 py-0.5 rounded font-code-mono-sm text-code-mono-sm whitespace-nowrap z-10">₹1.01L</span>
+</div>
+<div class="w-5 sm:w-7 bg-trust-verified rounded-t-md transition-all duration-500 relative group-hover:opacity-90" style="height: 91%;"></div>
+</div>
+<span class="font-caption-bold text-caption-bold text-text-secondary chart-label">Dec</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-1 bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col justify-between gap-space-md" id="withdrawal-widget">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Instant Withdrawal</h2>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-tertiary font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">shield</span>
+          Escrow Shield
+        </span>
+</div>
+<div class="bg-surface-subtle rounded-lg p-space-md flex items-start gap-space-sm">
+<span class="w-9 h-9 rounded-lg bg-surface-card shadow-sm flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</span>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">HDFC Bank •••• 9210</span>
+<span class="material-symbols-outlined text-[16px] text-trust-verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">IFSC: HDFC0000124 • Penny-Drop Verified</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm">
+<label class="font-caption-bold text-caption-bold text-text-secondary" for="withdraw-amount">Withdrawal Amount</label>
+<div class="relative flex items-center bg-surface-subtle rounded-lg px-space-md py-space-sm">
+<span class="font-code-mono text-body-lg text-text-secondary mr-2">₹</span>
+<input class="w-full bg-transparent font-code-mono text-headline-sm text-on-surface focus:outline-none" id="withdraw-amount" type="text" value="25,800"/>
+<span class="font-caption-bold text-caption-bold text-primary-container cursor-pointer hover:underline" onclick="document.getElementById('withdraw-amount').value='25,800'">MAX</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-sm">
+<label class="font-caption-bold text-caption-bold text-text-secondary" for="transfer-mode">Transfer Mode</label>
+<select class="w-full bg-surface-subtle rounded-lg px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface focus:outline-none cursor-pointer" id="transfer-mode">
+<option value="imps">Instant IMPS / UPI — Free (Arrives in &lt; 30s)</option>
+<option value="neft">NEFT Settlement — Free (2-4 hours)</option>
+</select>
+</div>
+<button class="w-full py-3 px-space-lg rounded-lg bg-tertiary-container text-on-tertiary hover:bg-tertiary transition-all shadow-md font-body-base-medium text-body-base-medium flex items-center justify-center gap-space-sm" id="transfer-btn" onclick="executeTransfer()" type="button">
+<span class="material-symbols-outlined text-[18px]">send_money</span>
+        Transfer ₹25,800 to HDFC •••• 9210
+      </button>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Itemized Financial Ledger</h2>
+<p class="font-caption text-caption text-text-secondary">GST-compliant settlement records with automated 10% Pro Host commission deductions.</p>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs bg-surface-subtle p-1 rounded-lg">
+<button class="ledger-tab px-space-md py-1.5 rounded-md bg-surface-card text-on-surface shadow-sm font-caption-bold text-caption-bold transition-all" onclick="filterLedger('all', this)" type="button">All Transactions</button>
+<button class="ledger-tab px-space-md py-1.5 rounded-md text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold transition-all" onclick="filterLedger('processed', this)" type="button">Processed</button>
+<button class="ledger-tab px-space-md py-1.5 rounded-md text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold transition-all" onclick="filterLedger('escrow', this)" type="button">In Escrow</button>
+<button class="ledger-tab px-space-md py-1.5 rounded-md text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold transition-all" onclick="filterLedger('processing', this)" type="button">Processing</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-subtle text-text-secondary font-caption-bold text-caption-bold uppercase tracking-wider">
+<th class="py-3 px-space-md rounded-l-lg">Transaction ID</th>
+<th class="py-3 px-space-md">Booking ID</th>
+<th class="py-3 px-space-md">Equipment Name</th>
+<th class="py-3 px-space-md text-right">Gross Rental</th>
+<th class="py-3 px-space-md text-right">Platform Fee (-10%)</th>
+<th class="py-3 px-space-md text-right">Net Payout</th>
+<th class="py-3 px-space-md">Status</th>
+<th class="py-3 px-space-md rounded-r-lg text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-base text-body-base" id="ledger-body">
+<tr class="ledger-row hover:bg-surface-subtle/60 transition-colors" data-status="processed">
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-on-surface">TXN-88412</td>
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-primary-container">#RS-94821</td>
+<td class="py-4 px-space-md font-body-base-medium text-body-base-medium text-on-surface">Sony Alpha A7 IV Kit</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹14,000</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-danger">-₹1,400</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-verified">₹12,600</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>Processed
+              </span>
+</td>
+<td class="py-4 px-space-md text-right">
+<button class="inline-flex items-center gap-1 text-primary-container hover:text-brand-primary-hover font-caption-bold text-caption-bold" onclick="showToast('Downloaded GST Invoice for #RS-94821')" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>GST Invoice
+              </button>
+</td>
+</tr>
+<tr class="ledger-row even:bg-surface-subtle/30 hover:bg-surface-subtle/60 transition-colors" data-status="escrow">
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-on-surface">TXN-88409</td>
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-primary-container">#RS-95104</td>
+<td class="py-4 px-space-md font-body-base-medium text-body-base-medium text-on-surface">DJI RS3 Pro Gimbal</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹6,500</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-danger">-₹650</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹5,850</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-tertiary font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">lock</span>In Escrow
+              </span>
+</td>
+<td class="py-4 px-space-md text-right">
+<button class="inline-flex items-center gap-1 text-primary-container hover:text-brand-primary-hover font-caption-bold text-caption-bold" onclick="showToast('Downloaded GST Invoice for #RS-95104')" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>GST Invoice
+              </button>
+</td>
+</tr>
+<tr class="ledger-row hover:bg-surface-subtle/60 transition-colors" data-status="processed">
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-on-surface">TXN-88395</td>
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-primary-container">#RS-94788</td>
+<td class="py-4 px-space-md font-body-base-medium text-body-base-medium text-on-surface">Nanlite Forza 300B II</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹8,000</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-danger">-₹800</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-verified">₹7,200</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>Processed
+              </span>
+</td>
+<td class="py-4 px-space-md text-right">
+<button class="inline-flex items-center gap-1 text-primary-container hover:text-brand-primary-hover font-caption-bold text-caption-bold" onclick="showToast('Downloaded GST Invoice for #RS-94788')" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>GST Invoice
+              </button>
+</td>
+</tr>
+<tr class="ledger-row even:bg-surface-subtle/30 hover:bg-surface-subtle/60 transition-colors" data-status="processing">
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-on-surface">TXN-88381</td>
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-primary-container">#RS-94612</td>
+<td class="py-4 px-space-md font-body-base-medium text-body-base-medium text-on-surface">BMPCC 6K Pro Rig</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹18,500</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-danger">-₹1,850</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹16,650</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">schedule</span>Processing
+              </span>
+</td>
+<td class="py-4 px-space-md text-right">
+<button class="inline-flex items-center gap-1 text-primary-container hover:text-brand-primary-hover font-caption-bold text-caption-bold" onclick="showToast('Downloaded GST Invoice for #RS-94612')" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>GST Invoice
+              </button>
+</td>
+</tr>
+<tr class="ledger-row hover:bg-surface-subtle/60 transition-colors" data-status="escrow">
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-on-surface">TXN-88364</td>
+<td class="py-4 px-space-md font-code-mono-sm text-code-mono-sm text-primary-container">#RS-94509</td>
+<td class="py-4 px-space-md font-body-base-medium text-body-base-medium text-on-surface">Sony FE 70-200mm f/2.8 GM II</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹7,500</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-trust-danger">-₹750</td>
+<td class="py-4 px-space-md text-right font-code-mono text-code-mono text-on-surface">₹6,750</td>
+<td class="py-4 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-tertiary font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">lock</span>In Escrow
+              </span>
+</td>
+<td class="py-4 px-space-md text-right">
+<button class="inline-flex items-center gap-1 text-primary-container hover:text-brand-primary-hover font-caption-bold text-caption-bold" onclick="showToast('Downloaded GST Invoice for #RS-94509')" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>GST Invoice
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="fixed bottom-6 right-6 bg-inverse-surface text-inverse-on-surface px-space-lg py-space-md rounded-xl shadow-xl hidden items-center gap-space-sm z-50" id="toast-banner">
+<span class="material-symbols-outlined text-trust-verified text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-base-medium text-body-base-medium" id="toast-message"></span>
+</div>
+</div>
+<script>
+  function showToast(msg) {
+    const toast = document.getElementById('toast-banner');
+    const text = document.getElementById('toast-message');
+    text.textContent = msg;
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('flex');
+    }, 3200);
+  }
+
+  function focusWithdrawal() {
+    const widget = document.getElementById('withdrawal-widget');
+    widget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('withdraw-amount').focus();
+  }
+
+  function executeTransfer() {
+    const btn = document.getElementById('transfer-btn');
+    const amt = document.getElementById('withdraw-amount').value || '25,800';
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> Processing IMPS...';
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: \'FILL\' 1;">check_circle</span> Transferred &#8377;' + amt;
+      btn.classList.remove('bg-tertiary-container', 'hover:bg-tertiary');
+      btn.classList.add('bg-trust-verified');
+      showToast('Instant IMPS transfer of ₹' + amt + ' to HDFC •••• 9210 initiated!');
+    }, 900);
+  }
+
+  function filterLedger(status, clickedBtn) {
+    document.querySelectorAll('.ledger-tab').forEach(btn => {
+      btn.classList.remove('bg-surface-card', 'text-on-surface', 'shadow-sm');
+      btn.classList.add('text-text-secondary');
+    });
+    clickedBtn.classList.add('bg-surface-card', 'text-on-surface', 'shadow-sm');
+    clickedBtn.classList.remove('text-text-secondary');
+
+    document.querySelectorAll('.ledger-row').forEach(row => {
+      if (status === 'all' || row.dataset.status === status) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  function setChartPeriod(period) {
+    const btnM = document.getElementById('btn-monthly');
+    const btnW = document.getElementById('btn-weekly');
+    const labels = document.querySelectorAll('.chart-label');
+    const monthlyLabels = ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const weeklyLabels = ['W1', 'W2', 'W3', 'W4', 'W5', 'W6'];
+
+    if (period === 'monthly') {
+      btnM.classList.add('bg-surface-card', 'text-on-surface', 'shadow-sm');
+      btnM.classList.remove('text-text-secondary');
+      btnW.classList.remove('bg-surface-card', 'text-on-surface', 'shadow-sm');
+      btnW.classList.add('text-text-secondary');
+      labels.forEach((el, i) => el.textContent = monthlyLabels[i]);
+    } else {
+      btnW.classList.add('bg-surface-card', 'text-on-surface', 'shadow-sm');
+      btnW.classList.remove('text-text-secondary');
+      btnM.classList.remove('bg-surface-card', 'text-on-surface', 'shadow-sm');
+      btnM.classList.add('text-text-secondary');
+      labels.forEach((el, i) => el.textContent = weeklyLabels[i]);
+    }
+  }
+</script></main></div></body></html>

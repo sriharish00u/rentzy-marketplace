@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>RentSecure - Verified Rental Marketplace</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "primary": "#003c90", "on-surface-variant": "#434653", "brand-primary-light": "#EBF3FF", "surface-container-high": "#e2e7ff", "surface-variant": "#dae2fd", "on-primary-fixed": "#001945", "error-container": "#ffdad6", "on-primary-container": "#bcceff", "trust-verified": "#059669", "border-focus": "#3B82F6", "on-secondary-container": "#005c70", "background": "#faf8ff", "tertiary-fixed-dim": "#c3c0ff", "text-muted": "#94A3B8", "trust-warning": "#D97706", "surface-dim": "#d2d9f4", "trust-danger-bg": "#FEF2F2", "surface": "#faf8ff", "inverse-primary": "#b0c6ff", "primary-container": "#0f52ba", "surface-bright": "#faf8ff", "inverse-surface": "#283044", "on-secondary-fixed-variant": "#004e5f", "surface-container": "#eaedff", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "text-secondary": "#475569", "secondary-fixed": "#b3ebff", "primary-fixed": "#d9e2ff", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-container": "#463cdd", "on-secondary": "#ffffff", "trust-warning-bg": "#FFFBEB", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#4cd6fb", "outline": "#737784", "surface-tint": "#1d59c1", "on-surface": "#131b2e", "border-default": "#E2E8F0", "primary-fixed-dim": "#b0c6ff", "tertiary": "#2c16c6", "trust-verified-bg": "#ECFDF5", "on-error-container": "#93000a", "on-tertiary-container": "#ccc9ff", "brand-primary-hover": "#0B3C8A", "on-primary-fixed-variant": "#00419c", "tertiary-fixed": "#e2dfff", "inverse-on-surface": "#eef0ff", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#0f0069", "on-secondary-fixed": "#001f27", "canvas-slate": "#F8FAFC", "trust-danger": "DC2626", "secondary-container": "#50d9fe", "on-background": "#131b2e", "secondary": "#00677d", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-subtle": "#F1F5F9", "on-tertiary-fixed-variant": "#3323cc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "gutter-desktop": "2rem" }, "fontFamily": { "caption-bold": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "display-hero-mobile": ["Inter"], "body-lg": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "headline-sm": ["Inter"], "caption": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)]"><div class="h-20 max-w-7xl mx-auto px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="home" href="#"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></a><div class="hidden xl:flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-subtle text-on-surface cursor-pointer hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-primary text-[20px]">location_on</span><div class="flex flex-col text-left"><span class="font-caption text-caption text-text-secondary leading-none">Deliver to</span><span class="font-caption-bold text-caption-bold text-on-surface flex items-center gap-1 leading-tight">Mumbai 400001<span class="material-symbols-outlined text-[16px]">expand_more</span></span></div></div></div><div class="hidden md:flex flex-1 max-w-2xl items-center bg-surface-subtle rounded-xl p-1 shadow-[0_1px_3px_rgba(15,23,42,0.04)]"><div class="flex items-center gap-space-xs px-space-md py-space-xs text-on-surface border-r border-border-default cursor-pointer"><span class="font-body-base-medium text-body-base-medium">All Categories</span><span class="material-symbols-outlined text-[18px] text-text-secondary">keyboard_arrow_down</span></div><div class="flex-1 flex items-center px-space-md gap-space-xs"><span class="material-symbols-outlined text-text-muted text-[20px]">search</span><input class="w-full bg-transparent text-on-surface font-body-base text-body-base placeholder-text-muted focus:outline-none" placeholder="Search camera gear, EVs, precision tools..." type="text"/></div><div class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-card rounded-lg text-on-surface shadow-[0_1px_2px_rgba(15,23,42,0.05)] cursor-pointer"><span class="material-symbols-outlined text-primary text-[18px]">calendar_month</span><span class="font-code-mono-sm text-code-mono-sm font-semibold">Select Dates</span></div></div><div class="flex items-center gap-space-md"><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-brand-primary-light text-primary font-bold rounded-lg"><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface-variant hover:text-on-surface transition-colors" data-path="explore-marketplace" href="#">Explore</a><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface-variant hover:text-on-surface transition-colors" data-path="my-bookings" href="#">My Bookings</a><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-primary hover:bg-brand-primary-light hover:text-brand-primary-hover rounded-lg transition-colors font-semibold" data-path="list-item" href="#">List Item</a></nav><div class="flex items-center gap-space-xs"><a aria-label="Wishlist" class="relative p-space-sm text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-subtle transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[24px]">favorite</span><span class="absolute top-1 right-1 bg-primary text-on-primary font-caption-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center leading-none">3</span></a><a aria-label="Notifications" class="relative p-space-sm text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-subtle transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-trust-verified"></span></a></div><div class="flex items-center gap-space-xs pl-space-xs"><div class="relative cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><span class="absolute -bottom-0.5 -right-0.5 bg-trust-verified text-on-primary rounded-full p-0.5 flex items-center justify-center" title="Identity &amp; Deposit Verified"><span class="material-symbols-outlined text-[10px]">verified</span></span></div></div></div></div></header><main class="w-full pt-20 bg-canvas-slate flex-1"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Top Gradient Grid -->
+<div class="relative w-full bg-canvas-slate">
+<div class="absolute inset-0 bg-gradient-to-b from-brand-primary-light/40 via-transparent to-transparent pointer-events-none h-96"></div>
+<div class="relative max-w-7xl mx-auto px-gutter-desktop py-space-lg w-full">
+<!-- Top Breadcrumbs & Security Telemetry Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md">
+<nav class="flex items-center gap-space-xs font-caption text-caption text-text-secondary">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">home</span>
+            Dashboard
+          </a>
+<span class="text-text-muted">/</span>
+<span class="text-on-surface font-caption-bold">Customer Bookings &amp; Custody Vault</span>
+</nav>
+<div class="flex items-center gap-space-sm bg-surface-card px-space-md py-1.5 rounded-full shadow-sm">
+<span class="w-2 h-2 rounded-full bg-trust-verified animate-ping"></span>
+<span class="w-2 h-2 rounded-full bg-trust-verified -ml-3"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface font-semibold tracking-wide">LEDGER SYNC: ACTIVE</span>
+<span class="text-text-muted text-[10px]">|</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">SESSION #SEC-88219</span>
+</div>
+</div>
+<!-- Header & Financial Escrow KPI Matrix -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg mb-space-xl">
+<div>
+<div class="inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-brand-primary-light text-primary font-caption-bold text-caption-bold mb-space-xs">
+<span class="material-symbols-outlined text-[14px]">shield_with_heart</span>
+            GUARANTEED CUSTODY &amp; BOND REPOSITORY
+          </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">My Rentals &amp; Escrow Tracking</h1>
+<p class="font-body-base text-body-base text-text-secondary mt-1">Real-time custody tracking, cryptographically logged inspections, and bonded security reserves.</p>
+</div>
+<!-- Metric Stat Tiles (Bento style, high visual contrast) -->
+<div class="grid grid-cols-3 gap-space-md min-w-[320px] sm:min-w-[440px]">
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-caption text-caption text-text-secondary flex items-center justify-between">
+              In Hand
+              <span class="w-2 h-2 rounded-full bg-primary"></span>
+</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">1</span>
+<span class="font-caption text-caption text-text-secondary">asset</span>
+</div>
+<span class="font-caption text-[11px] text-trust-verified mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">verified</span> Active SLA
+            </span>
+</div>
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-3 -bottom-3 w-12 h-12 rounded-full bg-tertiary-fixed opacity-60 pointer-events-none"></div>
+<span class="font-caption text-caption text-text-secondary flex items-center justify-between">
+              Escrow Shield
+              <span class="material-symbols-outlined text-[16px] text-tertiary">lock</span>
+</span>
+<div class="mt-2 flex items-baseline gap-0.5">
+<span class="font-code-mono text-headline-md text-tertiary">₹5,000</span>
+</div>
+<span class="font-caption text-[11px] text-text-secondary mt-1">Safe-vaulted hold</span>
+</div>
+<div class="bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<span class="font-caption text-caption text-text-secondary flex items-center justify-between">
+              Completed
+              <span class="material-symbols-outlined text-[16px] text-trust-verified">task_alt</span>
+</span>
+<div class="mt-2 flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface">8</span>
+<span class="font-caption text-caption text-text-secondary">rentals</span>
+</div>
+<span class="font-caption text-[11px] text-trust-verified mt-1">100% deposit return</span>
+</div>
+</div>
+</div>
+<!-- Navigation Segment Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-space-sm mb-space-lg">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-card font-body-base-medium text-body-base-medium text-text-secondary shadow-sm hover:text-on-surface transition-colors whitespace-nowrap">
+          All Rentals (9)
+        </button>
+<button class="px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-body-base-medium text-body-base-medium shadow-sm whitespace-nowrap flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+          Active in Hand (1)
+        </button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-card font-body-base-medium text-body-base-medium text-text-secondary shadow-sm hover:text-on-surface transition-colors whitespace-nowrap">
+          Upcoming Pickup (1)
+        </button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-card font-body-base-medium text-body-base-medium text-text-secondary shadow-sm hover:text-on-surface transition-colors whitespace-nowrap">
+          Completed (6)
+        </button>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-card font-body-base-medium text-body-base-medium text-text-secondary shadow-sm hover:text-on-surface transition-colors whitespace-nowrap flex items-center gap-1">
+<span>Disputes / Claims</span>
+<span class="bg-trust-warning-bg text-trust-warning font-caption-bold text-[10px] px-1.5 py-0.5 rounded-full">1 Resolved</span>
+</button>
+</div>
+<!-- Main Layout Grid (2 Columns: Dominant Active Workspace + Defensive Escrow Sidebar) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left / Primary Track: Active Rental & Upcoming (8 Columns) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- HERO CARD: LIVE ACTIVE CUSTODY -->
+<div class="bg-surface-card rounded-xl shadow-md overflow-hidden transition-all">
+<!-- Card Header Bar -->
+<div class="bg-gradient-to-r from-primary to-primary-container p-space-md text-on-primary flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-on-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px] text-on-primary">videocam</span>
+</span>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-code-mono text-code-mono text-on-primary font-bold">#RS-94821</span>
+<span class="bg-trust-verified px-2 py-0.5 rounded-full text-[11px] font-caption-bold text-on-primary flex items-center gap-1 shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary animate-ping"></span>
+                      ACTIVE CUSTODY
+                    </span>
+</div>
+<p class="font-caption text-caption text-on-primary-container">Smart Lock Chain: 0x9f4a...b31e • Handover Certified</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-on-primary-container block">Time to Return Window</span>
+<span class="font-code-mono text-headline-sm text-secondary-container font-bold flex items-center gap-1 justify-end">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+                  5h 20m remaining
+                </span>
+</div>
+</div>
+<!-- Product Overview Section -->
+<div class="p-space-lg">
+<div class="flex flex-col sm:flex-row gap-space-md items-start">
+<div class="relative w-full sm:w-44 h-36 rounded-lg overflow-hidden bg-surface-subtle shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional Sony Alpha A7 IV mirrorless camera mounted with a pristine FE 24-70mm f2.8 GM lens, resting securely in a protective padded Pelican case with subtle studio lighting, crisp silver metallic accents, high-end photography rental gear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1rUU1_rWG8SO2_qGUsSq7VFJGb_HnGr263N0kr0tm301fqDep4aTNQPXwsBwHLLYfaRV_pD6HAZNL1MpoERns1vOzt05UUMBWGFlntgX3d8ytAvXScG4eSvItIfH1g6S_Mq9agZJ4FKR4BkuDyxZCWEE1XAhf_eczhCU8CQpH3pKzml0c5CN4lif22O2h4YOo892ZKp5BxzeJJZEbFLq9-PY4_EHHib-pzdh8p1g"/>
+<span class="absolute bottom-2 left-2 bg-inverse-surface/80 text-inverse-on-surface text-[10px] font-caption-bold px-1.5 py-0.5 rounded backdrop-blur-sm">
+                    4K/60p Kit
+                  </span>
+</div>
+<div class="flex-1 flex flex-col justify-between h-full">
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Sony Alpha A7 IV Kit + FE 24-70mm f/2.8 GM</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Asset Tag: SN-SONY-7734102 • Includes 2x 128GB V90 Cards &amp; Dual Charger</p>
+</div>
+<span class="font-code-mono text-body-lg text-primary font-bold whitespace-nowrap">₹3,200<span class="text-caption font-normal text-text-muted">/day</span></span>
+</div>
+<!-- Host Trust Snapshot -->
+<div class="mt-space-md p-space-sm bg-surface-subtle rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover" data-alt="Portrait of Vikram Sharma, an Indian verified host in his late 30s with warm smile, professional attire, studio portrait with clean neutral backdrop, verified checkmark aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV-wm5KZMkWvUawjWlqTbmOYhLiXWJbK7uDW0HogP-aE_J0xr6S28sxQ5GgIKg-YdbI4B36Ci7BydaHN-cYk5MbP3Eb-bKqDZJdxy198ewXaXEa9AenV4wZlEB6Z0NDGXigLYb1xkBtMrZhBk_TX0wF8bsLFiqHUih1x10v-VTCYq7b_yW5JbTWcIH0tQFNzTcxCGAkuS9iYwhHi5WdMpJ2duvfkg06LzU4xQtmjw"/>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Vikram Sharma</span>
+<span class="material-symbols-outlined text-[16px] text-trust-verified" title="Identity Verified &amp; Commercial Insurance Active">verified</span>
+</div>
+<span class="font-caption text-[11px] text-text-secondary flex items-center gap-1">
+<span class="text-trust-warning">★ 4.9</span> (142 completed rentals) • <span class="text-primary font-medium">Platinum Host</span>
+</span>
+</div>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface-card text-primary hover:bg-brand-primary-light font-caption-bold text-caption-bold transition-colors flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">chat</span>
+                      Host Message
+                    </button>
+</div>
+</div>
+</div>
+<!-- LIVE STATUS STEPPER -->
+<div class="mt-space-xl pt-space-lg bg-surface-card">
+<div class="flex items-center justify-between mb-space-md">
+<h3 class="font-body-base-medium text-body-base-medium text-on-surface font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">alt_route</span>
+                    Custody &amp; Settlement Stepper
+                  </h3>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Stage 4 of 6</span>
+</div>
+<!-- Step Matrix Timeline -->
+<div class="relative pl-6 space-y-6 sm:space-y-0 sm:pl-0 sm:grid sm:grid-cols-6 sm:gap-2">
+<!-- Stepper Track line on Desktop -->
+<div class="hidden sm:block absolute top-4 left-6 right-6 h-1 bg-surface-container -z-0">
+<div class="h-full bg-primary" style="width: 60%;"></div>
+</div>
+<!-- Step 1 -->
+<div class="relative flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-3 sm:gap-2 z-10">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Booked</p>
+<p class="font-code-mono-sm text-[11px] text-text-muted">Nov 20, 10:14 AM</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-3 sm:gap-2 z-10">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+</div>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Bonded</p>
+<p class="font-code-mono-sm text-[11px] text-text-muted">₹5k Vaulted</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-3 sm:gap-2 z-10">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">document_scanner</span>
+</div>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Handover</p>
+<p class="font-code-mono-sm text-[11px] text-text-muted">6/6 Photos Logged</p>
+</div>
+</div>
+<!-- Step 4: ACTIVE CURRENT -->
+<div class="relative flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-3 sm:gap-2 z-10">
+<div class="w-8 h-8 rounded-full bg-trust-verified text-on-primary flex items-center justify-center shrink-0 ring-4 ring-trust-verified-bg shadow-md animate-pulse">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div>
+<p class="font-caption-bold text-caption-bold text-primary">In Custody</p>
+<span class="bg-trust-verified-bg text-trust-verified font-code-mono-sm text-[10px] px-1 rounded block">Due 08:00 PM</span>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-3 sm:gap-2 z-10 opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface-container text-text-muted flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">flaky</span>
+</div>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Return Sign-Off</p>
+<p class="font-code-mono-sm text-[11px] text-text-muted">Pending Hub</p>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="relative flex sm:flex-col items-start sm:items-center text-left sm:text-center gap-3 sm:gap-2 z-10 opacity-60">
+<div class="w-8 h-8 rounded-full bg-surface-container text-text-muted flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">currency_rupee</span>
+</div>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Escrow Refund</p>
+<p class="font-code-mono-sm text-[11px] text-text-muted">Auto within 45m</p>
+</div>
+</div>
+</div>
+</div>
+<!-- RETURN HANDOVER PASS & OTP WIDGET -->
+<div class="mt-space-xl p-space-md rounded-xl bg-surface-subtle shadow-inner">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md items-center">
+<!-- OTP & QR Handover Column -->
+<div class="md:col-span-6 bg-surface-card p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption-bold text-caption-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+                        RETURN HANDOVER PASS
+                      </span>
+<span class="font-caption text-[11px] text-text-muted">Valid for Return</span>
+</div>
+<!-- 6-digit OTP Box -->
+<div class="flex flex-col items-center justify-center my-space-sm">
+<span class="font-caption text-[11px] text-text-secondary mb-1">Show this OTP to Hub Inspector:</span>
+<div class="flex items-center gap-1.5 font-code-mono text-headline-sm text-primary font-bold tracking-widest bg-brand-primary-light px-space-md py-space-xs rounded-lg shadow-sm">
+<span>9</span><span>4</span><span>8</span>
+<span class="text-text-muted mx-0.5">-</span>
+<span>2</span><span>1</span><span>0</span>
+</div>
+<span class="font-caption text-[11px] text-trust-verified mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">shield</span> Hardware Verified Safe Token
+                      </span>
+</div>
+<!-- QR code representation -->
+<div class="flex items-center gap-space-sm pt-space-sm bg-surface-subtle/50 p-space-xs rounded-lg">
+<div class="w-14 h-14 bg-surface-card rounded p-1 shrink-0 flex items-center justify-center shadow-sm">
+<!-- Clean Inline SVG QR Mock -->
+<svg class="w-full h-full text-on-surface" fill="currentColor" viewbox="0 0 40 40">
+<rect fill="currentColor" height="12" width="12" x="2" y="2"></rect>
+<rect fill="#FFFFFF" height="8" width="8" x="4" y="4"></rect>
+<rect fill="currentColor" height="4" width="4" x="6" y="6"></rect>
+<rect fill="currentColor" height="12" width="12" x="26" y="2"></rect>
+<rect fill="#FFFFFF" height="8" width="8" x="28" y="4"></rect>
+<rect fill="currentColor" height="4" width="4" x="30" y="6"></rect>
+<rect fill="currentColor" height="12" width="12" x="2" y="26"></rect>
+<rect fill="#FFFFFF" height="8" width="8" x="4" y="28"></rect>
+<rect fill="currentColor" height="4" width="4" x="6" y="30"></rect>
+<rect height="6" width="4" x="18" y="4"></rect>
+<rect height="4" width="8" x="18" y="14"></rect>
+<rect height="8" width="4" x="18" y="22"></rect>
+<rect height="4" width="10" x="26" y="18"></rect>
+<rect height="10" width="4" x="26" y="26"></rect>
+<rect height="6" width="4" x="34" y="32"></rect>
+</svg>
+</div>
+<div class="min-w-0">
+<p class="font-body-base-medium text-body-base-medium text-on-surface truncate">Instant Optical Check-in</p>
+<p class="font-caption text-caption text-text-secondary">Scan directly at Bandra Smart Kiosk for instant camera alignment test.</p>
+</div>
+</div>
+</div>
+<!-- Return Hub Location Column with Map Pin -->
+<div class="md:col-span-6 flex flex-col justify-between h-full">
+<div>
+<div class="flex items-center gap-1.5 mb-space-xs">
+<span class="material-symbols-outlined text-[18px] text-error">location_on</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Return Hub Location</span>
+</div>
+<p class="font-body-base-medium text-body-base text-on-surface">Bandra SafeHub Terminal #04</p>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Plot 42, Waterfield Rd, Bandra West, Mumbai 400050 (Behind Starbucks)</p>
+<div class="flex items-center gap-space-sm mt-2">
+<span class="inline-flex items-center gap-1 text-[11px] font-caption-bold bg-trust-verified-bg text-trust-verified px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[13px]">lock_clock</span> 24/7 Vault Open
+                        </span>
+<span class="inline-flex items-center gap-1 text-[11px] font-caption text-text-secondary">
+<span class="material-symbols-outlined text-[13px]">phone</span> +91 22 4910 8200
+                        </span>
+</div>
+</div>
+<!-- Mini location preview trigger -->
+<div class="relative mt-space-sm h-20 rounded-lg overflow-hidden bg-cover bg-center shadow-sm" data-location="Bandra West Mumbai SafeHub Terminal" style="">
+<div class="absolute inset-0 bg-primary/20 backdrop-blur-[1px] flex items-center justify-between px-space-md text-on-primary">
+<div class="flex items-center gap-1.5 font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[18px]">directions</span>
+<span>Get Route &amp; Parking Gate</span>
+</div>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- PHOTO CONDITION BASELINE SUMMARY (SHA-256 Verified) -->
+<div class="mt-space-lg pt-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-sm">
+<div>
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-trust-verified text-[18px]">verified</span>
+                      Certified Pickup Condition Baseline (6 Angles)
+                    </h4>
+<span class="font-code-mono-sm text-[11px] text-text-muted">SHA-256: 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069</span>
+</div>
+<button class="font-caption-bold text-caption text-primary hover:underline flex items-center gap-0.5">
+                    View Full 4K Loupe Inspector
+                    <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- 6 Verified Baseline Thumbnails -->
+<div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
+<div class="group relative rounded-lg overflow-hidden bg-surface-subtle aspect-square shadow-sm cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Macro close-up inspection photo of Sony Alpha A7 IV front sensor and mount ring showing zero dust or scratches under clean white laboratory inspection light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU5jmH9TLgqGnO4SAKCh0CpVOZuSC6hjgI-4-CU2tVeQnplWmqIebh9M0TpL6KNDyXyPIFU4-9nKiBg7GJVLcUidMcec7jv4E5pZ4QOcpWJ7pWZGwgtgDdvyiV53qcljv_TE1WH6omvC7HeF5g54OamuurFeqFTi4yW-181f1x3OGvRKmF7HuGzdjvm9BBgEEpKPEO9XjMrJ_PrborAOoKtEiu3B5f3kFNV3RwxC0"/>
+<span class="absolute bottom-1 left-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded font-code-mono">Front / Mount</span>
+</div>
+<div class="group relative rounded-lg overflow-hidden bg-surface-subtle aspect-square shadow-sm cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Top inspection photo of Sony Alpha A7 IV dials, hot shoe, and mode selector in flawless condition with timestamp watermark overlay." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiDsDD70DZ5HLNVzXte0BtVuV7wYGIEPeA3DH75B_Due7ScOsLUJ0f9zxqd-YeV1gpv-v7yo7GCmNH-Ebg8abekkhQ8WkXxPRy_kp6U9v3vuGJ0BN7wQyKIJy9Zngs0ajY65ZUq7LSbtr-BSPGXm0wFwU9hrJwWvu409s9BG7ntdIC3zCwu3N0FcanetCYjCIzGoImh5XXrVe8fIwYUaJgjGRsxaz4zk4sIH-iaBE"/>
+<span class="absolute bottom-1 left-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded font-code-mono">Top / Dials</span>
+</div>
+<div class="group relative rounded-lg overflow-hidden bg-surface-subtle aspect-square shadow-sm cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Rear view of the camera displaying clean LCD touch screen and viewfinder rubber cup without tears or abrasions." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfXvwbqBCK3qUvYRRtiMLi_B1V6W5jI8LJOzSH3GzFYZPFNYjAoVhG7u8ZPrbqAwGVdwcAOMLUX9o8UpctXKIyrIDqUM846zNCPbCsuLS5jIr9roae2jYVUqehXVJasMwb8hy1dJw2abJt1Sz0CBQVdT7GVOdT_ot7TkJTJDwgMmjKya8p9HwbvzezIPZ0rlolKs-EArpwWWKglPs76GbIveB0XoNIEnCOItuQ-JQ"/>
+<span class="absolute bottom-1 left-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded font-code-mono">Rear / LCD</span>
+</div>
+<div class="group relative rounded-lg overflow-hidden bg-surface-subtle aspect-square shadow-sm cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Close-up of the Sony FE 24-70mm GM front element lens glass, reflecting purple-green anti-reflective multi-coating with zero micro-blemishes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCthp_vpiiaGjinmU7yODxHUiC-kQiWgi-mEfTL5KFFIzzWF70gYqaGRNSN5c3kuPQ1GdoQ8hlWppYHgCHRioPJL_z6ktBSFx2ZLyN40IyCnzdDG1-o5uei-z_pTTL4ZDX_BKKswkFmTHpjZKeLDWwITQBBLZhgH9ohN-iSCPpRkBIvrMo-dp0_pq9nUtof6cygt2aN8_LiLCTr61zIADvruv_SHnWgw1pR8Tj6gQA"/>
+<span class="absolute bottom-1 left-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded font-code-mono">Optics / Glass</span>
+</div>
+<div class="group relative rounded-lg overflow-hidden bg-surface-subtle aspect-square shadow-sm cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Camera baseplate photo revealing intact serial number plate SN-SONY-7734102 and pristine tripod mount threads." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmKvkJLI2fejc_RynIopgS3FHPmvoSdlwyT5ZC5IQrBXcEbPxMTZZtP_j6agYqR6cdoxUiMlvimbzV050G13eSGSLucl0p2lltPIHUXq7RUp5j2qXPZNnJ4ysXtMu13Ze2T0jD7OqfsOBQO63qeMXULI_KnFcTwTm3xTEJ-6-Uuz5ICY9M1okgL4OkAhek6wMzWQA-_oIVpvpHuZ7TsbQyGiPJlugIHUomAwW2tzI"/>
+<span class="absolute bottom-1 left-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded font-code-mono">Base / Serial</span>
+</div>
+<div class="group relative rounded-lg overflow-hidden bg-surface-subtle aspect-square shadow-sm cursor-pointer">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="All accessories neatly laid out: 2 batteries, Sony dual slot fast charger, strap, lens hood, and heavy duty hard shell carry case." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_qHfBXSuIzuVdfsk54I1n4JUurI5MKXMuea2XdEQY2bRv4Wbdlohuc0zs4LeslN4GnuwYIUeekAwmPC4HOagy6i1alPje_yG_mo2S85_T9iNNbKSxmnV1u8v6wzix-swiKwlA2gHOtErbRNU2vlw3XzzF428Nyi7YawJyGiHC0Mn4OGBYlS24_h_ybR95ZE1V4X7kzmRwZHgBJHG_BZ6d6tF30VTjzaIXiZlbS9c"/>
+<span class="absolute bottom-1 left-1 bg-inverse-surface/80 text-inverse-on-surface text-[9px] px-1 rounded font-code-mono">Kit &amp; Cords</span>
+</div>
+</div>
+</div>
+<!-- ACTION BAR BUTTONS -->
+<div class="mt-space-xl pt-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-md py-space-sm bg-primary text-on-primary hover:bg-brand-primary-hover font-body-base-medium text-body-base-medium rounded-lg shadow-sm transition-all flex items-center gap-1.5 active:translate-y-px">
+<span class="material-symbols-outlined text-[18px]">camera</span>
+                    Initiate Return Inspection
+                  </button>
+<button class="px-space-md py-space-sm bg-surface-card text-on-surface hover:bg-surface-subtle font-body-base-medium text-body-base-medium rounded-lg shadow-sm transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">more_time</span>
+                    Request Extension (+1 Day)
+                  </button>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-space-sm rounded-lg bg-surface-subtle text-text-secondary hover:text-on-surface hover:bg-surface-card transition-colors shadow-sm" title="Download Rental Bond Contract (PDF)">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</button>
+<button class="p-space-sm rounded-lg bg-surface-subtle text-text-secondary hover:text-on-surface hover:bg-surface-card transition-colors shadow-sm" title="Tax Invoice">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</button>
+<button class="px-space-md py-space-sm bg-trust-danger-bg text-error hover:bg-red-100 font-caption-bold text-caption-bold rounded-lg transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">emergency</span>
+                    Support Hotline
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- UPCOMING BOOKING CARD -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">calendar_clock</span>
+                Upcoming Booking Confirmed
+              </span>
+<span class="bg-brand-primary-light text-primary font-code-mono-sm text-code-mono-sm px-2.5 py-0.5 rounded-full font-bold">
+                Pickup in 4 Days
+              </span>
+</div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md w-full sm:w-auto">
+<div class="w-20 h-20 rounded-lg bg-surface-subtle overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="DJI RS3 Pro Gimbal Stabilizer in clean studio setup, carbon fiber arms with automated axis locks, professional camera stabilization kit for video creators." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQDuzmXklPSgKtlQ6HXdJQa2e2ERNx5sRXECYfI3ySZnaw1TrpCtqZ9uzPdPofATM7UjDjAT9jlcTuQAo1dzIsxJshS4tWlxpgrp4ioDBoiWnVbeILbF-1rZUUYPxHI9rbIR4xwe7CouS-bGOLFCL5aFGIxXksHiko8v8mqSW2-SX20uDqRgCcdwG_LbxlztK7Hv00jV0KIJeAWn2ohvXsNvflhyQ_6wxlo1SOWV8"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">DJI RS3 Pro Gimbal Stabilizer</h3>
+<p class="font-caption text-caption text-text-secondary">Ref #RS-95104 • 3-Day Shoot Bundle</p>
+<div class="flex items-center gap-space-sm mt-1.5">
+<span class="font-caption text-[11px] text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">event</span> Nov 28, 09:30 AM
+                    </span>
+<span class="font-caption text-[11px] text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">location_on</span> Bandra SafeHub
+                    </span>
+</div>
+</div>
+</div>
+<div class="flex sm:flex-col items-center sm:items-end justify-between w-full sm:w-auto gap-space-sm">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-[12px]">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>
+                  Escrow Vaulted (₹3,000)
+                </span>
+<button class="px-space-md py-space-xs bg-surface-subtle text-primary font-caption-bold text-caption-bold rounded-lg hover:bg-brand-primary-light transition-colors shadow-sm">
+                  View Handover Pass &amp; OTP
+                </button>
+</div>
+</div>
+</div>
+<!-- PAST COMPLETED RENTALS & FAST REFUND AUDIT -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Recent Completed Rentals</h3>
+<p class="font-caption text-caption text-text-secondary">Instant cryptographic releases with direct settlement receipts</p>
+</div>
+<a class="font-caption-bold text-caption text-primary hover:underline" href="#">View All (6 Completed)</a>
+</div>
+<div class="space-y-space-sm">
+<!-- Item 1 -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded bg-surface-card flex items-center justify-center text-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+</div>
+<div>
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Sennheiser EW-DP Wireless Mic System</h4>
+<p class="font-caption text-caption text-text-secondary">Nov 14 – Nov 16 • Booking #RS-92014</p>
+</div>
+</div>
+<div class="flex items-center justify-between sm:justify-end gap-space-lg">
+<div class="text-right">
+<span class="font-code-mono text-body-base-medium text-trust-verified font-bold block">+₹3,500 Refunded</span>
+<span class="font-caption text-[11px] text-text-secondary">To GPay (UPI ID: **@okaxis)</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-trust-verified-bg text-trust-verified font-caption-bold text-[10px] whitespace-nowrap">
+                    In 38 mins
+                  </span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded bg-surface-card flex items-center justify-center text-primary shadow-sm shrink-0">
+<span class="material-symbols-outlined text-[24px]">electric_scooter</span>
+</div>
+<div>
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Ather 450X Gen 3 High-Speed EV</h4>
+<p class="font-caption text-caption text-text-secondary">Nov 02 – Nov 05 • Booking #RS-88349</p>
+</div>
+</div>
+<div class="flex items-center justify-between sm:justify-end gap-space-lg">
+<div class="text-right">
+<span class="font-code-mono text-body-base-medium text-trust-verified font-bold block">+₹7,000 Refunded</span>
+<span class="font-caption text-[11px] text-text-secondary">To HDFC Direct Card Rollback</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-trust-verified-bg text-trust-verified font-caption-bold text-[10px] whitespace-nowrap">
+                    In 21 mins
+                  </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Track: Escrow Shield Vault, Trust Score & Telemetry (4 Columns) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- ESCROW SHIELD BREAKDOWN MODULE -->
+<div class="bg-surface-card rounded-xl shadow-md overflow-hidden">
+<!-- Escrow Badge Header -->
+<div class="bg-tertiary p-space-md text-on-tertiary flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[22px]">account_balance</span>
+<div>
+<h3 class="font-body-base-medium text-body-base-medium font-bold leading-tight">Escrow Custody Vault</h3>
+<span class="font-caption text-[11px] text-on-tertiary-container block">RBI-Regulated Bond Account</span>
+</div>
+</div>
+<span class="bg-on-tertiary/10 font-code-mono-sm text-code-mono-sm text-on-tertiary px-2 py-1 rounded">
+                SECURED
+              </span>
+</div>
+<div class="p-space-md">
+<p class="font-caption text-caption text-text-secondary mb-space-md">
+                Your deposit is isolated from the owner in a neutral escrow vault until both parties submit matching condition checkouts.
+              </p>
+<!-- Escrow Financial Line Breakdown -->
+<div class="space-y-space-xs pb-space-sm">
+<div class="flex items-center justify-between text-body-base font-body-base text-text-secondary">
+<span>Active Rental Fee (2 Days)</span>
+<span class="font-code-mono text-on-surface">₹6,400</span>
+</div>
+<div class="flex items-center justify-between text-body-base font-body-base text-text-secondary">
+<span class="flex items-center gap-1">
+                    Security Deposit Hold
+                    <span class="material-symbols-outlined text-[14px] text-text-muted cursor-help" title="100% refundable upon zero damage sign-off">info</span>
+</span>
+<span class="font-code-mono text-tertiary font-bold">₹5,000</span>
+</div>
+<div class="flex items-center justify-between text-body-base font-body-base text-text-secondary">
+<span>Comprehensive Damage Waiver</span>
+<span class="font-code-mono text-on-surface">₹399</span>
+</div>
+<div class="flex items-center justify-between text-body-base font-body-base text-text-secondary">
+<span>Platform Verification Fee</span>
+<span class="font-code-mono text-on-surface">₹149</span>
+</div>
+</div>
+<!-- Total In Vault Status -->
+<div class="p-space-sm bg-surface-subtle rounded-lg flex items-center justify-between mt-space-sm">
+<div>
+<span class="font-caption text-caption text-text-secondary block">Pending Renter Refund</span>
+<span class="font-code-mono text-headline-sm text-trust-verified font-bold">₹5,000.00</span>
+</div>
+<span class="w-8 h-8 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</span>
+</div>
+<!-- Timed Release SLA Guarantee -->
+<div class="mt-space-md p-space-sm rounded-lg bg-brand-primary-light flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">verified_user</span>
+<p class="font-caption text-caption text-on-primary-fixed-variant leading-snug">
+<strong>RentSecure Release Guarantee:</strong> Following terminal return inspection at Bandra SafeHub, deposit release initiates automatically within 45 minutes to your original source account.
+                </p>
+</div>
+<!-- Audit Trail Action -->
+<button class="w-full mt-space-md py-space-sm bg-surface-subtle hover:bg-surface-container font-caption-bold text-caption text-text-secondary hover:text-on-surface rounded-lg transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+                View Cryptographic Escrow Deed
+              </button>
+</div>
+</div>
+<!-- TRUST SCORE GAUGE & RENTER IDENTITY REPUTATION (85-100 Platinum Tier) -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-md">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-trust-verified">shield</span>
+                Renter Trust Rating
+              </span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-bold">TIER 1 • PLATINUM</span>
+</div>
+<!-- Gauge Lockup -->
+<div class="flex items-center gap-space-md my-space-sm">
+<!-- Radial SVG Progress Ring -->
+<div class="relative w-20 h-20 shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<!-- Dasharray for 96 score -->
+<path class="text-trust-verified" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="96, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-code-mono text-headline-sm font-bold text-on-surface leading-none">96</span>
+<span class="font-caption text-[9px] text-text-muted">/100</span>
+</div>
+</div>
+<div>
+<p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Exemplary Renter Track</p>
+<p class="font-caption text-caption text-text-secondary mt-0.5">8 dispute-free handovers, verified Aadhaar &amp; DigiLocker credentials.</p>
+<span class="inline-flex items-center gap-1 font-caption-bold text-[11px] text-trust-verified mt-1">
+<span class="material-symbols-outlined text-[13px]">trending_up</span> 0% Claim Incident Rate
+                </span>
+</div>
+</div>
+<!-- Privilege Checklist -->
+<div class="space-y-1.5 pt-space-xs">
+<div class="flex items-center gap-space-xs text-caption font-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+<span>Reduced 50% deposit tier unlocked</span>
+</div>
+<div class="flex items-center gap-space-xs text-caption font-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+<span>Priority 15-minute express return lanes</span>
+</div>
+<div class="flex items-center gap-space-xs text-caption font-caption text-text-secondary">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+<span>Automatic ₹25,000 instant liability coverage</span>
+</div>
+</div>
+</div>
+<!-- ASSET TELEMETRY & HARDWARE TAMPER MONITOR -->
+<div class="bg-surface-card rounded-xl shadow-sm p-space-md">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">sensors</span>
+                Device Telemetry &amp; Geofence
+              </span>
+<span class="flex items-center gap-1 font-code-mono-sm text-[11px] text-trust-verified font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified"></span> ONLINE
+              </span>
+</div>
+<!-- Telemetry Spec Rows -->
+<div class="space-y-space-xs font-body-base text-body-base">
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-subtle">
+<span class="font-caption text-text-secondary">Battery Status (Pack A)</span>
+<span class="font-code-mono-sm font-semibold text-on-surface">84% (Approx 2h 40m 4K)</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-subtle">
+<span class="font-caption text-text-secondary">Assigned Geozone</span>
+<span class="font-code-mono-sm font-semibold text-on-surface">Mumbai Metropolitan</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded bg-surface-subtle">
+<span class="font-caption text-text-secondary">Tamper Tag Sensor</span>
+<span class="font-code-mono-sm font-semibold text-trust-verified flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[13px]">lock</span> Untouched
+                </span>
+</div>
+</div>
+<p class="font-caption text-[11px] text-text-muted mt-space-sm leading-normal">
+              Telemetry transmitted via secure BLE Beacon on Pelican Case #RS-94821. No audio or footage metadata is monitored.
+            </p>
+</div>
+<!-- EMERGENCY ROADSIDE / TECH CONCIERGE -->
+<div class="rounded-xl p-space-md bg-gradient-to-br from-surface-card to-surface-subtle shadow-sm flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">headset_mic</span>
+</div>
+<div class="flex-1">
+<p class="font-body-base-medium text-body-base-medium text-on-surface font-bold leading-tight">Need On-Set Equipment Tech?</p>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Firmware issues or lens mount calibration support available 24/7.</p>
+</div>
+<button class="p-2 rounded-lg bg-surface-card hover:bg-brand-primary-light text-primary shadow-sm transition-colors" title="Contact Tech Desk">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-card shadow-[0_-1px_6px_rgba(15,23,42,0.03)]"><div class="w-full bg-surface-subtle py-space-md"><div class="max-w-7xl mx-auto px-gutter-desktop grid grid-cols-1 md:grid-cols-3 gap-space-md"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">shield_locked</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">100% Escrow Protection</p><p class="font-caption text-caption text-text-secondary">Rental funds held securely until post-inspection check</p></div></div><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">verified_user</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">KYC &amp; Product Verified</p><p class="font-caption text-caption text-text-secondary">Serial number inspection, legal ID, and tamper audits</p></div></div><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">gavel</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Resolution Guarantee</p><p class="font-caption text-caption text-text-secondary">Objective digital condition logs &amp; instant mediation</p></div></div></div></div><div class="max-w-7xl mx-auto px-gutter-desktop py-space-xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-space-lg"><div class="col-span-2"><div class="flex items-center gap-space-sm mb-space-md"><img alt="RentSecure Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold">RentSecure</span></div><p class="font-body-base text-body-base text-text-secondary max-w-sm mb-space-md">The verified peer-to-peer and B2C infrastructure for high-value equipment, mobility, and property leasing. Backed by institutional collateral custody.</p><div class="flex items-center gap-space-xs text-text-muted font-caption text-caption"><span class="material-symbols-outlined text-[16px] text-trust-verified">lock</span>ISO 27001 Certified • Encrypted Telemetry</div></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Rental Categories</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Cinema &amp; Audio Gear</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Electric Mobility &amp; EVs</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Precision Industrial Tools</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Medical &amp; Lab Tech</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Premium Event Tech</a></li></ul></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Trust &amp; Escrow</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Escrow Custody Model</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Condition Logs &amp; Loupe</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Dispute Arbitration</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Security Deposit Shield</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Insurance Coverage Tiers</a></li></ul></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Platform</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="list-item" href="#">Owner Protection Pact</a></li><li><a class="hover:text-primary transition-colors" data-path="my-bookings" href="#">Identity Verification (KYC)</a></li><li><a class="hover:text-primary transition-colors" data-path="home" href="#">API &amp; Commercial Fleet</a></li><li><a class="hover:text-primary transition-colors" data-path="home" href="#">Safety Guidelines</a></li><li><a class="hover:text-primary transition-colors" data-path="home" href="#">Support Center</a></li></ul></div></div><div class="border-t border-border-default"><div class="max-w-7xl mx-auto px-gutter-desktop py-space-md flex flex-col sm:flex-row items-center justify-between text-text-secondary font-caption text-caption gap-space-sm"><p>© 2025 RentSecure Technologies Inc. All escrow transactions legally bonded and monitored.</p><div class="flex items-center gap-space-lg"><a class="hover:text-primary transition-colors" href="#">Terms of Custody</a><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">Audit Reports</a></div></div></div></footer></body></html>

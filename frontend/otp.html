@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>OTP Verification - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+const params=new URLSearchParams(location.search); const email=params.get('email')||Auth.getUser()?.email||'';
+const mock=localStorage.getItem('mock_otp')||'';
+UI.pageShell('otp', `<section class="page"><div class="container" style="max-width:560px"><div class="card"><div class="card-body">
+  <h1 class="section-title">Verify OTP</h1><p class="section-sub" style="margin-bottom:20px">Mock OTP verification for MVP. Enter the code sent to <span class="mono">${email}</span>.</p>
+  ${mock?`<div class="alert alert-success">Dev mock OTP: <span class="mono" style="font-weight:700">${mock}</span></div>`:''}
+  <div id="msg"></div>
+  <form id="form">
+    <div class="field"><label>Email</label><input class="input" name="email" type="email" value="${email}" required></div>
+    <div class="field"><label>OTP Code</label><input class="input mono" name="code" value="${mock}" required></div>
+    <button class="btn btn-primary" style="width:100%" type="submit">Verify</button>
+  </form>
+</div></div></div></section>`);
+document.getElementById('form').onsubmit = async (e) => {
+  e.preventDefault(); const msg=document.getElementById('msg'); msg.innerHTML='';
+  const payload=Object.fromEntries(new FormData(e.target).entries()); payload.purpose='verify';
+  try{await API.post('/api/auth/otp/verify', payload); localStorage.removeItem('mock_otp');
+    const u=Auth.getUser(); location.href = u?.role==='owner'?'/owner-dashboard.html':'/home.html';
+  }catch(err){msg.innerHTML=`<div class="alert alert-danger">${err.message}</div>`}
+};
+</script></body></html>

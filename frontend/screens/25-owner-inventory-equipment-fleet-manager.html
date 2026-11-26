@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Console - Escrow &amp; Fleet</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "primary": "#003c90", "on-surface-variant": "#434653", "brand-primary-light": "#EBF3FF", "surface-container-high": "#e2e7ff", "surface-variant": "#dae2fd", "on-primary-fixed": "#001945", "error-container": "#ffdad6", "on-primary-container": "#bcceff", "trust-verified": "#059669", "border-focus": "#3B82F6", "on-secondary-container": "#005c70", "background": "#faf8ff", "tertiary-fixed-dim": "#c3c0ff", "text-muted": "#94A3B8", "trust-warning": "#D97706", "surface-dim": "#d2d9f4", "trust-danger-bg": "#FEF2F2", "surface": "#faf8ff", "inverse-primary": "#b0c6ff", "primary-container": "#0f52ba", "surface-bright": "#faf8ff", "inverse-surface": "#283044", "on-secondary-fixed-variant": "#004e5f", "surface-container": "#eaedff", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "text-secondary": "#475569", "secondary-fixed": "#b3ebff", "primary-fixed": "#d9e2ff", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-container": "#463cdd", "on-secondary": "#ffffff", "trust-warning-bg": "#FFFBEB", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#4cd6fb", "outline": "#737784", "surface-tint": "#1d59c1", "on-surface": "#131b2e", "border-default": "#E2E8F0", "primary-fixed-dim": "#b0c6ff", "tertiary": "#2c16c6", "trust-verified-bg": "#ECFDF5", "on-error-container": "#93000a", "on-tertiary-container": "#ccc9ff", "brand-primary-hover": "#0B3C8A", "on-primary-fixed-variant": "#00419c", "tertiary-fixed": "#e2dfff", "inverse-on-surface": "#eef0ff", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#0f0069", "on-secondary-fixed": "#001f27", "canvas-slate": "#F8FAFC", "trust-danger": "DC2626", "secondary-container": "#50d9fe", "on-background": "#131b2e", "secondary": "#00677d", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-subtle": "#F1F5F9", "on-tertiary-fixed-variant": "#3323cc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "gutter-desktop": "2rem" }, "fontFamily": { "caption-bold": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "display-hero-mobile": ["Inter"], "body-lg": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "headline-sm": ["Inter"], "caption": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-card z-50 flex flex-col py-space-md shadow-[1px_0_8px_rgba(15,23,42,0.04)]"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-brand-primary-light text-primary font-bold"><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="owner-fleet-dashboard" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span>Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-vault" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">shield</span>Escrow Vault</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="my-bookings" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">receipt_long</span>Active Rentals</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="inspection-manager" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">compare</span>Inspection Loupe</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="dispute-resolution" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">gavel</span>Dispute Center</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-surface-subtle border border-border-default"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold mb-1"><span class="material-symbols-outlined text-[16px]">verified</span>Tier 1 Host</div><p class="font-caption text-caption text-text-secondary">Trust Score: <strong class="font-code-mono text-on-surface">98/100</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/90 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-body-base-medium text-body-base-medium text-text-secondary">Workspace:</span><span class="font-body-base-medium text-body-base-medium font-semibold text-on-surface">Asset &amp; Custody Console</span></div><div class="flex items-center gap-space-md"><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary"></span></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Fleet Manager</span><span class="font-code-mono-sm text-code-mono-sm text-trust-verified leading-none">Bonded • Active</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-margin-desktop space-y-space-xl">
+<!-- Top Meta Strip & Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg">
+<div class="space-y-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm text-text-secondary font-code-mono-sm text-code-mono-sm uppercase tracking-wider">
+<span>PORTAL // ASSET REPOSITORY</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-trust-verified"></span>
+<span class="text-trust-verified font-caption-bold">TELEMETRY SYNCED</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Inventory &amp; Fleet Management
+        </h1>
+<p class="font-body-base text-body-base text-text-secondary">
+          Manage listed equipment, track maintenance schedules, serial-tracked assets, and toggle live availability across rental networks.
+        </p>
+</div>
+<div class="flex items-center gap-space-md self-start md:self-auto shrink-0">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-card text-on-surface font-body-base-medium text-body-base-medium shadow-sm hover:bg-surface-subtle transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">file_download</span>
+<span>Ledger Export</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-lg py-2.5 rounded-lg bg-primary-container text-on-primary font-body-base-medium text-body-base-medium shadow-md hover:bg-brand-primary-hover transition-all cursor-pointer active:translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-[20px]">add_circle</span>
+<span>+ Add New Product</span>
+</button>
+</div>
+</div>
+<!-- Quick Vital KPI Mosaics -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-caption text-caption text-text-secondary uppercase">Active Vaulted Units</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">18</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified">+2 this mo</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-brand-primary-light flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">devices</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-caption text-caption text-text-secondary uppercase">Live Custody Utilization</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface">78.4%</span>
+<span class="font-code-mono-sm text-code-mono-sm text-primary">4 in transit</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">trending_up</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-caption text-caption text-text-secondary uppercase">Escrow Bond Held</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-code-mono">₹48,500</span>
+<span class="font-caption text-caption text-text-muted">Protected</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[22px]">shield_locked</span>
+</div>
+</div>
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-caption text-caption text-text-secondary uppercase">Fleet Quality Index</span>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-trust-verified font-code-mono">99.1%</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">0 Disputes</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-trust-verified-bg flex items-center justify-center text-trust-verified">
+<span class="material-symbols-outlined text-[22px]">verified_user</span>
+</div>
+</div>
+</div>
+<!-- Filter & Search Controls Bar -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm space-y-space-md">
+<!-- Top Row Filters -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search field -->
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-text-muted text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-space-md rounded-lg bg-surface-subtle font-body-base text-body-base text-on-surface placeholder:text-text-muted focus:outline-none focus:bg-surface-card transition-colors" placeholder="Search by asset title, serial number (SN), or safe locker tag..." type="text"/>
+</div>
+<!-- Filter Dropdowns -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-sm">
+<div class="relative">
+<select class="h-11 pl-space-md pr-8 rounded-lg bg-surface-subtle font-body-base-medium text-body-base-medium text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>All Categories</option>
+<option>Cinema &amp; Optics</option>
+<option>Audio &amp; Lighting</option>
+<option>Drones &amp; Robotics</option>
+<option>Surveying &amp; 3D Scanners</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none text-[18px]">expand_more</span>
+</div>
+<div class="relative">
+<select class="h-11 pl-space-md pr-8 rounded-lg bg-surface-subtle font-body-base-medium text-body-base-medium text-on-surface appearance-none focus:outline-none cursor-pointer">
+<option>All Hub Locations</option>
+<option>Indiranagar Hub #4B</option>
+<option>Bandra Pods #12</option>
+<option>Koramangala SafeVault #2</option>
+<option>CyberCity Hub #9</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-text-secondary pointer-events-none text-[18px]">location_on</span>
+</div>
+<button class="h-11 px-space-md rounded-lg bg-surface-subtle text-on-surface font-body-base-medium text-body-base-medium flex items-center gap-space-xs hover:bg-surface-container transition-colors cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>More Filters</span>
+</button>
+</div>
+</div>
+<!-- Segmented Status Tabs -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 pt-1 no-scrollbar">
+<button class="px-space-md py-1.5 rounded-full bg-primary-container text-on-primary font-caption-bold text-caption-bold shrink-0 transition-colors">
+          All (18)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-subtle hover:bg-surface-container text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold shrink-0 transition-colors">
+          Active &amp; Listed (12)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-subtle hover:bg-surface-container text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold shrink-0 transition-colors">
+          Rented Out (4)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-subtle hover:bg-surface-container text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold shrink-0 transition-colors">
+          Pending Verification (1)
+        </button>
+<button class="px-space-md py-1.5 rounded-full bg-surface-subtle hover:bg-surface-container text-text-secondary hover:text-on-surface font-caption-bold text-caption-bold shrink-0 transition-colors">
+          Paused / Snoozed (1)
+        </button>
+</div>
+</div>
+<!-- Master Inventory Data Table Canvas -->
+<div class="bg-surface-card rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-subtle text-text-secondary font-caption-bold text-caption-bold uppercase tracking-wider">
+<th class="py-space-md px-space-lg w-12 text-center">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+</th>
+<th class="py-space-md px-space-md min-w-[320px]">Asset &amp; Primary Identification</th>
+<th class="py-space-md px-space-md min-w-[200px]">Rates &amp; Deposit Bond</th>
+<th class="py-space-md px-space-md min-w-[220px]">Status &amp; Utilization</th>
+<th class="py-space-md px-space-md min-w-[160px]">Lifetime Yield</th>
+<th class="py-space-md px-space-md min-w-[190px]">SafeHub / Custody</th>
+<th class="py-space-md px-space-lg text-right min-w-[140px]">Quick Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface font-body-base text-body-base">
+<!-- Item 1: Sony Alpha A7 IV -->
+<tr class="hover:bg-canvas-slate/80 transition-colors group">
+<td class="py-space-md px-space-lg text-center align-middle">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Professional mirrorless Sony A7 IV camera with 24-70mm G Master lens resting securely on sleek slate surface under precision studio softbox lighting with high-contrast mechanical details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBuNGidn4VIjQtkhrwBk0RthV9joqK-Ddqw541455tj7hTkCK5XM9hFarMREcNBtDLaH5C5Ty5PtSOAHsJjG-ng27WRTEw1M1MqYAgwOfmLS1gGS4VqSCENmEW4OxMghAjrcJ76dGXqEcvkqjAxXVqQbhq3EtLRRe7WPHDj4MWYF08Q3UjFZ7zm9BZ46efal8_92cLBIGJFFE9YpHaUh3rbTjIOWfeDuj-eXew8zo"/>
+<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-trust-verified" title="Online Telemetry Ping"></span>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold truncate">Sony Alpha A7 IV Kit + FE 24-70mm GM</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                        Verified
+                      </span>
+</div>
+<div class="flex items-center gap-space-sm text-text-secondary font-caption text-caption">
+<span class="bg-surface-subtle px-1.5 py-0.5 rounded text-text-secondary font-body-base-medium text-[11px]">Cinema &amp; Optics</span>
+<span class="font-code-mono text-on-surface-variant text-[11px]">SN: 8829-410A-IND</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<div class="flex items-baseline gap-1">
+<span class="font-code-mono text-on-surface font-bold">₹1,200</span>
+<span class="font-caption text-caption text-text-secondary">/ day</span>
+</div>
+<div class="font-caption text-caption text-text-secondary">Weekly: <span class="font-code-mono-sm text-on-surface">₹7,200</span></div>
+<div class="inline-flex items-center gap-1 font-code-mono-sm text-[11px] text-tertiary-container bg-surface-container-high px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    ₹5,000 Escrow Bond
+                  </div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified animate-pulse"></span>
+                    Live &amp; Available
+                  </span>
+<div>
+<div class="flex justify-between items-center text-caption text-text-secondary mb-1">
+<span>Occupancy</span>
+<span class="font-code-mono-sm text-on-surface font-semibold">84%</span>
+</div>
+<div class="w-36 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-trust-verified rounded-full" style="width: 84%"></div>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<span class="font-code-mono text-on-surface font-bold">₹1,28,400</span>
+<div class="font-caption text-caption text-text-secondary">24 verified rentals</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-on-surface font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-secondary text-[16px]">pin_drop</span>
+<span>Indiranagar Hub #4B</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Smart Vault #L-09</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right align-middle">
+<div class="flex items-center justify-end gap-space-sm">
+<!-- Live / Snooze Toggle -->
+<label class="relative inline-flex items-center cursor-pointer" title="Toggle Live Availability">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-subtle peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-card after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:border-border-default after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trust-verified"></div>
+</label>
+<!-- Context Action Dropdown Button -->
+<div class="relative">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+</td>
+</tr>
+<!-- Item 2: RED Komodo 6K -->
+<tr class="hover:bg-canvas-slate/80 transition-colors group">
+<td class="py-space-md px-space-lg text-center align-middle">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="RED Komodo 6K cinema camera setup rigged with cinema monitors, gold mount battery plate, top handle on high-end production rig setup in cinematic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1xuSsUoBatn1fPLRpjerobEHb4NQyuF6hp03Cb3HOMSwpFzjX2NA6GZamjz6DzPCuEZBJ-pInz1TxMvt2JEBuqA2tIyVY9FHyKls-Y9_1LHLNnGPmRAHMWQ2seAbr_VibJsxSNfJuMCSDVEJqTgdTL8RgmDTfENRp-pv4R6Mo4I4uT3asEWyjWzP-PQmqjS6UzUlFvopeO0N92RsEEKWq-D-QzRsEpHRNT7EaPJs"/>
+<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-primary-container" title="Actively Rented"></span>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold truncate">RED Komodo 6K Cinema Package</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                        Verified
+                      </span>
+</div>
+<div class="flex items-center gap-space-sm text-text-secondary font-caption text-caption">
+<span class="bg-surface-subtle px-1.5 py-0.5 rounded text-text-secondary font-body-base-medium text-[11px]">Cinema &amp; Optics</span>
+<span class="font-code-mono text-on-surface-variant text-[11px]">SN: 4401-KOM-898</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<div class="flex items-baseline gap-1">
+<span class="font-code-mono text-on-surface font-bold">₹3,200</span>
+<span class="font-caption text-caption text-text-secondary">/ day</span>
+</div>
+<div class="font-caption text-caption text-text-secondary">Weekly: <span class="font-code-mono-sm text-on-surface">₹18,500</span></div>
+<div class="inline-flex items-center gap-1 font-code-mono-sm text-[11px] text-tertiary-container bg-surface-container-high px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    ₹15,000 Escrow Bond
+                  </div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-primary-light text-primary-container font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+                    Rented (Return in 2d)
+                  </span>
+<div>
+<div class="flex justify-between items-center text-caption text-text-secondary mb-1">
+<span>Occupancy</span>
+<span class="font-code-mono-sm text-on-surface font-semibold">92%</span>
+</div>
+<div class="w-36 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<span class="font-code-mono text-on-surface font-bold">₹2,84,000</span>
+<div class="font-caption text-caption text-text-secondary">38 verified rentals</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-on-surface font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-secondary text-[16px]">pin_drop</span>
+<span>Bandra Pods #12</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Custodian Custody</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right align-middle">
+<div class="flex items-center justify-end gap-space-sm">
+<label class="relative inline-flex items-center cursor-pointer" title="In Rental Execution">
+<input checked="" class="sr-only peer" disabled="" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-subtle opacity-70 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-4 after:w-4 peer-checked:bg-primary-container"></div>
+</label>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 3: DJI Inspire 3 -->
+<tr class="hover:bg-canvas-slate/80 transition-colors group">
+<td class="py-space-md px-space-lg text-center align-middle">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="DJI Inspire 3 industrial cinema drone with dual RC Plus controllers, carbon fiber folding arms, and Zenmuse full-frame gimbal camera on technical flight case" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4hj7lptcd0g6mjBn6xxcEJujRsJ3_S9lE_M8B42_RkZzmHWs_BWiEW6TJECimxrTyh26R9toJp2zK-thVOnkBaK4ZpqZLvw7wEhswzgWKDLKJGpWbKP_LmFGUmga3JBpFTpakkc8djxKfYRk-9hwYaKYkOYpB6kyDSDXAavQmX39tn6guII0rBXyd1Ey6wSopt2aPypq6MacKoeQ0WAfCYi0OeH5_GRq_o85pSOU"/>
+<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-trust-verified" title="Ready to Fly"></span>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold truncate">DJI Inspire 3 Cinema Drone Complete</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-[10px]">
+<span class="material-symbols-outlined text-[12px]">verified</span>
+                        Verified
+                      </span>
+</div>
+<div class="flex items-center gap-space-sm text-text-secondary font-caption text-caption">
+<span class="bg-surface-subtle px-1.5 py-0.5 rounded text-text-secondary font-body-base-medium text-[11px]">Drones &amp; Robotics</span>
+<span class="font-code-mono text-on-surface-variant text-[11px]">SN: IN3-9921-BLR</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<div class="flex items-baseline gap-1">
+<span class="font-code-mono text-on-surface font-bold">₹8,500</span>
+<span class="font-caption text-caption text-text-secondary">/ day</span>
+</div>
+<div class="font-caption text-caption text-text-secondary">Weekly: <span class="font-code-mono-sm text-on-surface">₹48,000</span></div>
+<div class="inline-flex items-center gap-1 font-code-mono-sm text-[11px] text-tertiary-container bg-surface-container-high px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    ₹35,000 Escrow Bond
+                  </div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified animate-pulse"></span>
+                    Live &amp; Available
+                  </span>
+<div>
+<div class="flex justify-between items-center text-caption text-text-secondary mb-1">
+<span>Occupancy</span>
+<span class="font-code-mono-sm text-on-surface font-semibold">65%</span>
+</div>
+<div class="w-36 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-trust-verified rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<span class="font-code-mono text-on-surface font-bold">₹3,40,000</span>
+<div class="font-caption text-caption text-text-secondary">16 high-yield rentals</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-on-surface font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-secondary text-[16px]">pin_drop</span>
+<span>Koramangala SafeVault #2</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Aero Locker #A-01</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right align-middle">
+<div class="flex items-center justify-end gap-space-sm">
+<label class="relative inline-flex items-center cursor-pointer" title="Toggle Live Availability">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-subtle peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-card after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:border-border-default after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trust-verified"></div>
+</label>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 4: Aputure Electro Storm CS15 -->
+<tr class="hover:bg-canvas-slate/80 transition-colors group">
+<td class="py-space-md px-space-lg text-center align-middle">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Heavy-duty high-output Aputure Electro Storm CS15 cinema LED point source light with motorized yoke and large hyper-reflector on industrial stand" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIxImFOhZphz3vya4qMNw8lgqadVVMmeb08DhV245ExFMJxWzFmVqLeicjSohqQsum6cUFuiMv9yuLNiurI8pe6hT_SogvvL7dwVnhf4iz9LsioI_lPRa7IxTct9FPLwkBK2NU1F6DWuWENENSU0rb00HFCWbyXtXuprpbB_AlkfFOAV6u2pzNzm-2RqgDPIxcN29dAtmNnQfka41NUK-xWPlvrmzgViowuXI18V0"/>
+<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-trust-warning" title="Awaiting Loupe Check"></span>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold truncate">Aputure Electro Storm CS15 (1500W RGB)</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-[10px]">
+<span class="material-symbols-outlined text-[12px]">pending</span>
+                        Inspection Pending
+                      </span>
+</div>
+<div class="flex items-center gap-space-sm text-text-secondary font-caption text-caption">
+<span class="bg-surface-subtle px-1.5 py-0.5 rounded text-text-secondary font-body-base-medium text-[11px]">Audio &amp; Lighting</span>
+<span class="font-code-mono text-on-surface-variant text-[11px]">SN: AP-CS15-773</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<div class="flex items-baseline gap-1">
+<span class="font-code-mono text-on-surface font-bold">₹2,800</span>
+<span class="font-caption text-caption text-text-secondary">/ day</span>
+</div>
+<div class="font-caption text-caption text-text-secondary">Weekly: <span class="font-code-mono-sm text-on-surface">₹16,000</span></div>
+<div class="inline-flex items-center gap-1 font-code-mono-sm text-[11px] text-tertiary-container bg-surface-container-high px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    ₹10,000 Escrow Bond
+                  </div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">fact_check</span>
+                    Awaiting Verification
+                  </span>
+<div>
+<div class="flex justify-between items-center text-caption text-text-secondary mb-1">
+<span>Occupancy</span>
+<span class="font-code-mono-sm text-text-muted">Unlisted</span>
+</div>
+<div class="w-36 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-trust-warning rounded-full" style="width: 15%"></div>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<span class="font-code-mono text-text-muted">₹0</span>
+<div class="font-caption text-caption text-text-secondary">New listing intake</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-on-surface font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-secondary text-[16px]">pin_drop</span>
+<span>Indiranagar Hub #4B</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Intake Bay #03</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right align-middle">
+<div class="flex items-center justify-end gap-space-sm">
+<label class="relative inline-flex items-center cursor-not-allowed opacity-50" title="Locked until verification passes">
+<input class="sr-only peer" disabled="" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-subtle rounded-full peer after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-4 after:w-4"></div>
+</label>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Item 5: Leica RTC360 3D Scanner -->
+<tr class="hover:bg-canvas-slate/80 transition-colors group">
+<td class="py-space-md px-space-lg text-center align-middle">
+<input class="w-4 h-4 rounded text-primary-container focus:ring-0 cursor-pointer accent-primary-container" type="checkbox"/>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 grayscale" data-alt="Leica RTC360 high-speed 3D reality capture laser scanner mounted on precision carbon tripod in an architectural construction inspection setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4IuwMV3ujWaIVlvBuqcyVlOugJKPBRSidVz82mG-0CTz2VHFunDOgxT-rgIZUTTB6B_uUsO48gN3_QvA0KelhxgOibwnzRmcdCARPy19kEeV3bWLzOnTb8uZOLGdgcJaCnNyYiUpNfgoZTHKho8bhL0iOC6zpt60M2q39zyAcQ6gAfrnjTtUrwBOwkDaPNoArqyxV35XlEvfYN71kP8IdVEFpTmVJNKYgr3cLJ4A"/>
+<span class="absolute bottom-1 right-1 w-2.5 h-2.5 rounded-full bg-text-muted" title="Snoozed Maintenance"></span>
+</div>
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-semibold truncate">Leica RTC360 3D Laser Scanner</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-surface-subtle text-text-secondary font-caption-bold text-[10px]">
+                        Calibration Hold
+                      </span>
+</div>
+<div class="flex items-center gap-space-sm text-text-secondary font-caption text-caption">
+<span class="bg-surface-subtle px-1.5 py-0.5 rounded text-text-secondary font-body-base-medium text-[11px]">Surveying &amp; 3D</span>
+<span class="font-code-mono text-on-surface-variant text-[11px]">SN: LCA-990-RTC</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<div class="flex items-baseline gap-1">
+<span class="font-code-mono text-on-surface font-bold">₹12,000</span>
+<span class="font-caption text-caption text-text-secondary">/ day</span>
+</div>
+<div class="font-caption text-caption text-text-secondary">Weekly: <span class="font-code-mono-sm text-on-surface">₹70,000</span></div>
+<div class="inline-flex items-center gap-1 font-code-mono-sm text-[11px] text-tertiary-container bg-surface-container-high px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[12px]">lock</span>
+                    ₹50,000 Escrow Bond
+                  </div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-subtle text-text-secondary font-caption-bold text-caption-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-text-muted"></span>
+                    Snoozed / Calibration
+                  </span>
+<div>
+<div class="flex justify-between items-center text-caption text-text-secondary mb-1">
+<span>Occupancy</span>
+<span class="font-code-mono-sm text-text-secondary">51%</span>
+</div>
+<div class="w-36 h-1.5 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full bg-text-muted rounded-full" style="width: 51%"></div>
+</div>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-0.5">
+<span class="font-code-mono text-on-surface font-bold">₹4,20,000</span>
+<div class="font-caption text-caption text-text-secondary">11 enterprise rentals</div>
+</div>
+</td>
+<td class="py-space-md px-space-md align-middle">
+<div class="space-y-1">
+<div class="flex items-center gap-1 text-on-surface font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-secondary text-[16px]">pin_drop</span>
+<span>CyberCity Hub #9</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Bench #4 (Service)</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right align-middle">
+<div class="flex items-center justify-end gap-space-sm">
+<label class="relative inline-flex items-center cursor-pointer" title="Listing Snoozed">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-subtle peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-card after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-trust-verified"></div>
+</label>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center text-text-secondary hover:text-on-surface hover:bg-surface-subtle transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Quick Action Floating Flyout (Mocked State Reference) -->
+<div class="hidden absolute" id="action-popover">
+<!-- Interactive popover hooks available via JS -->
+</div>
+<!-- Footer & Bulk Action Bar -->
+<div class="bg-surface-subtle px-space-lg py-space-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<!-- Bulk Execution Controls -->
+<div class="flex items-center gap-space-sm flex-wrap w-full md:w-auto">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase">Bulk Actions:</span>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-canvas-slate text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors text-xs flex items-center gap-1 cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[16px]">price_change</span>
+            Bulk Price Modifier
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-canvas-slate text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors text-xs flex items-center gap-1 cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[16px]">event_busy</span>
+            Schedule Blackout
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-canvas-slate text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors text-xs flex items-center gap-1 cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+            Print Asset Tags
+          </button>
+</div>
+<!-- Pagination Controls -->
+<div class="flex items-center justify-between md:justify-end gap-space-lg w-full md:w-auto">
+<span class="font-caption text-caption text-text-secondary">
+            Showing <strong class="text-on-surface font-code-mono-sm">5</strong> of <strong class="text-on-surface font-code-mono-sm">18</strong> fleet items
+          </span>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-card text-text-muted cursor-not-allowed opacity-50 shadow-sm" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-primary-container text-on-primary font-caption-bold text-caption-bold shadow-sm" type="button">
+              1
+            </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-card hover:bg-canvas-slate text-on-surface font-caption-bold text-caption-bold shadow-sm transition-colors" type="button">
+              2
+            </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-card hover:bg-canvas-slate text-on-surface font-caption-bold text-caption-bold shadow-sm transition-colors" type="button">
+              3
+            </button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center bg-surface-card hover:bg-canvas-slate text-on-surface shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Escrow & Inspection Guarantee Disclaimer Strip -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[28px]">shield_with_heart</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface">RentSecure Institutional Guarantee</h4>
+<span class="bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold px-2 py-0.5 rounded-full text-xs">Active Coverage</span>
+</div>
+<p class="font-caption text-caption text-text-secondary max-w-2xl">
+            All listed serial items are cross-indexed with digital condition passports prior to release. Escrow holds remain bonded until return verification passes physical loupe inspection.
+          </p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 font-body-base-medium text-body-base-medium text-primary hover:text-brand-primary-hover shrink-0" href="#">
+<span>Review Loupe Standards</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic interaction handles for table switches
+  document.querySelectorAll('input[type="checkbox"].peer').forEach(function(toggle) {
+    toggle.addEventListener('change', function(e) {
+      const row = e.target.closest('tr');
+      if (row) {
+        const title = row.querySelector('.font-semibold');
+        const assetName = title ? title.innerText : 'Asset';
+        console.log(`[RentSecure Inventory] Live availability toggled for: ${assetName} -> ${e.target.checked}`);
+      }
+    });
+  });
+</script></main></div></body></html>

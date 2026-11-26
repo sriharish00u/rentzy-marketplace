@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>User Dashboard - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=3"></script><script src="/assets/js/auth.js?v=3"></script><script src="/assets/js/ui.js?v=3"></script>
+<script>
+const u = Auth.requireAuth(['customer','owner','admin']);
+UI.pageShell('dashboard', `
+<section class="page"><div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <div>
+      <h1 class="section-title">Dashboard</h1>
+      <p class="section-sub">Welcome back, ${u ? u.name : ''}. Real-time statistics across your listings and rentals.</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <a class="btn btn-primary" href="/add-product.html">+ List New Item</a>
+      <a class="btn btn-outline" href="/search.html">Explore & Rent</a>
+    </div>
+  </div>
+
+  <div id="live-indicator" style="margin-top:16px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary)">
+    <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10B981;animation:pulse 2s infinite"></span>
+    Live Data Streaming (updates automatically every 5s)
+  </div>
+
+  <div id="kpis" class="grid grid-4" style="margin-top:16px">
+    <div class="card kpi"><div class="label">My Listed Items</div><div class="value" id="val-prods">-</div></div>
+    <div class="card kpi"><div class="label">Incoming Requests</div><div class="value" id="val-incoming">-</div></div>
+    <div class="card kpi"><div class="label">Items I Rented</div><div class="value" id="val-rented">-</div></div>
+    <div class="card kpi"><div class="label">Rental Earnings</div><div class="value" id="val-earn">-</div></div>
+  </div>
+
+  <div class="grid grid-2" style="margin-top:24px;gap:20px">
+    <div class="card"><div class="card-body">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="font-weight:700">Quick Actions</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="card card-body" href="/manage-products.html" style="padding:14px;display:flex;justify-content:space-between;align-items:center;text-decoration:none">
+          <div><strong>Manage My Listings</strong><div class="text-secondary" style="font-size:12px">Edit products, update daily rates, availability</div></div>
+          <span style="font-size:18px">→</span>
+        </a>
+        <a class="card card-body" href="/booking-requests.html" style="padding:14px;display:flex;justify-content:space-between;align-items:center;text-decoration:none">
+          <div><strong>Incoming Rent Requests</strong><div class="text-secondary" style="font-size:12px">Approve or fulfill bookings for items you listed</div></div>
+          <span style="font-size:18px">→</span>
+        </a>
+        <a class="card card-body" href="/my-bookings.html" style="padding:14px;display:flex;justify-content:space-between;align-items:center;text-decoration:none">
+          <div><strong>My Rental Orders</strong><div class="text-secondary" style="font-size:12px">Track items you have rented or paid for</div></div>
+          <span style="font-size:18px">→</span>
+        </a>
+      </div>
+    </div></div>
+
+    <div class="card"><div class="card-body">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <h3 style="font-weight:700">Recent Live Activity</h3>
+        <span class="badge badge-info" id="act-count">0 items</span>
+      </div>
+      <div class="table-wrap">
+        <table class="table" style="font-size:13px">
+          <thead><tr><th>Item</th><th>Dates</th><th>Status</th><th>Amount</th></tr></thead>
+          <tbody id="live-rows"><tr><td colspan="4"><div class="empty">Loading live activity...</div></td></tr></tbody>
+        </table>
+      </div>
+    </div></div>
+  </div>
+</div></section>
+<style>
+@keyframes pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+</style>
+`);
+
+let timer = null;
+async function fetchLiveData() {
+  try {
+    const s = await API.get('/api/dashboard/user');
+    document.getElementById('val-prods').textContent = s.total_products;
+    document.getElementById('val-incoming').textContent = s.pending_requests;
+    document.getElementById('val-rented').textContent = s.as_renter_bookings;
+    document.getElementById('val-earn').textContent = UI.fmtINR(s.earnings);
+
+    const rows = s.recent_bookings || [];
+    document.getElementById('act-count').textContent = rows.length + ' bookings';
+    if (!rows.length) {
+      document.getElementById('live-rows').innerHTML = '<tr><td colspan="4"><div class="empty">No recent activity.</div></td></tr>';
+    } else {
+      document.getElementById('live-rows').innerHTML = rows.map(b => `
+        <tr>
+          <td><strong>${b.product_title || 'Item'}</strong></td>
+          <td class="mono" style="font-size:12px">${b.start_date} → ${b.end_date}</td>
+          <td>${UI.badge(b.status)}</td>
+          <td class="mono">${UI.fmtINR(b.pricing_breakdown?.total)}</td>
+        </tr>
+      `).join('');
+    }
+  } catch (err) {
+    console.error('Live dashboard poll error:', err);
+  }
+}
+
+fetchLiveData();
+timer = setInterval(fetchLiveData, 5000);
+window.addEventListener('beforeunload', () => clearInterval(timer));
+</script></body></html>

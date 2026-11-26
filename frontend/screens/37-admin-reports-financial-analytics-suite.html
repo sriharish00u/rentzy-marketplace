@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Governance &amp; Custody Audit Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "inverse-on-surface": "#eef0ff", "tertiary-fixed-dim": "#c3c0ff", "on-tertiary-fixed-variant": "#3323cc", "on-primary-container": "#bcceff", "on-secondary-fixed-variant": "#004e5f", "trust-warning-bg": "#FFFBEB", "trust-danger": "#DC2626", "surface-subtle": "#F1F5F9", "trust-verified-bg": "#ECFDF5", "tertiary-container": "#463cdd", "brand-primary-light": "#EBF3FF", "inverse-primary": "#b0c6ff", "tertiary-fixed": "#e2dfff", "tertiary": "#2c16c6", "surface-container": "#eaedff", "error-container": "#ffdad6", "trust-danger-bg": "#FEF2F2", "on-secondary-container": "#005c70", "on-tertiary-container": "#ccc9ff", "surface-variant": "#dae2fd", "background": "#faf8ff", "on-primary-fixed-variant": "#00419c", "trust-warning": "#D97706", "text-secondary": "#475569", "on-tertiary-fixed": "#0f0069", "on-primary": "#ffffff", "surface-tint": "#1d59c1", "primary-container": "#0f52ba", "border-default": "#E2E8F0", "on-surface-variant": "#434653", "on-surface": "#131b2e", "primary-fixed-dim": "#b0c6ff", "secondary-container": "#50d9fe", "border-focus": "#3B82F6", "surface-container-highest": "#dae2fd", "on-background": "#131b2e", "on-primary-fixed": "#001945", "inverse-surface": "#283044", "text-muted": "#94A3B8", "secondary-fixed-dim": "#4cd6fb", "secondary-fixed": "#b3ebff", "trust-verified": "#059669", "surface-card": "#FFFFFF", "surface": "#faf8ff", "surface-dim": "#d2d9f4", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "on-error": "#ffffff", "canvas-slate": "#F8FAFC", "on-secondary-fixed": "#001f27", "surface-bright": "#faf8ff", "error": "#ba1a1a", "brand-primary-hover": "#0B3C8A", "primary": "#003c90", "on-secondary": "#ffffff", "on-error-container": "#93000a", "outline": "#737784", "primary-fixed": "#d9e2ff", "surface-container-low": "#f2f3ff", "surface-container-lowest": "#ffffff", "surface-container-high": "#e2e7ff", "secondary": "#00677d" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "margin": "1rem", "margin-desktop": "3rem", "gutter-desktop": "2rem", "space-sm": "0.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-xs": "0.25rem", "gutter": "1rem", "space-md": "1rem", "gutter-tablet": "1.5rem", "margin-tablet": "2rem" }, "fontFamily": { "body-lg": ["Inter"], "body-base": ["Inter"], "caption-bold": ["Inter"], "display-hero-mobile": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "display-hero": ["Inter"], "code-mono": ["JetBrains Mono"], "headline-lg": ["Inter"], "headline-sm": ["Inter"], "headline-lg-mobile": ["Inter"], "caption": ["Inter"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }] } } } };</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-inverse-surface z-50 flex flex-col py-space-md shadow-[2px_0_12px_rgba(15,23,42,0.15)]"><div class="px-space-lg mb-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface-card font-bold tracking-tight leading-none">RentSecure</span><span class="font-caption text-caption text-inverse-primary text-[10px] tracking-widest uppercase font-semibold mt-0.5">Governance Core</span></div></div></div><div class="px-space-md mb-space-sm"><span class="font-caption-bold text-caption-bold text-outline-variant uppercase tracking-wider text-[11px] px-space-sm">Audit &amp; Operations</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-primary text-white font-semibold shadow-sm"><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="admin-category-builder-deposit-policy-configurator" href="#">Category Policies</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="disputes" href="#">Disputes</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="users-accounts" href="#">Users &amp; Accounts</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="kyc-identity-audits" href="#">KYC &amp; Identity Audits</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="product-verifications-anti-theft" href="#">Product Verifications &amp; Anti-Theft</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-disbursal-ledger" href="#">Escrow &amp; Disbursal Ledger</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="admin-reports-financial-analytics-suite" href="#">Reports &amp; Financial Analytics</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="admin-risk-engine-rules-platform-fee-configuration" href="#">Risk Engine &amp; Platform Fees</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-on-surface/50 border border-outline-variant/30 text-surface-card"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold"><span class="material-symbols-outlined text-[16px]">lock_open</span>Level 4 Security</div><span class="font-code-mono-sm text-code-mono-sm text-inverse-primary text-[10px]">2FA OK</span></div><p class="font-caption text-caption text-outline-variant">Session ID: <strong class="font-code-mono text-surface-card">SEC-88219A</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-subtle border border-border-default rounded-lg font-body-base text-body-base text-on-surface placeholder:text-text-muted focus:outline-none focus:border-border-focus focus:ring-2 focus:ring-border-focus/15 transition-all" placeholder="Global search: Custody Escrow ID, Asset IMEI, User Hash..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-trust-danger-bg border border-trust-danger/20 rounded-full"><span class="material-symbols-outlined text-trust-danger text-[16px]">warning</span><span class="font-caption-bold text-caption-bold text-trust-danger">3 Risk Alerts</span></div><button class="flex items-center gap-1.5 px-space-sm py-1.5 text-on-surface-variant hover:text-primary hover:bg-brand-primary-light rounded-lg transition-colors font-body-base-medium text-body-base-medium"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="hidden lg:inline font-caption-bold text-caption-bold">Audit Logs</span></button><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-trust-danger"></span></div><div class="h-6 w-px bg-border-default"></div><div class="flex items-center gap-space-sm"><img alt="Admin Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Super Admin</span><span class="font-code-mono-sm text-code-mono-sm text-text-secondary leading-none">Custody Officer #04</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="px-space-lg py-space-xl max-w-7xl w-full mx-auto space-y-space-xl">
+<!-- Top Executive Header & Telemetry Subtitle -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-secondary font-caption-bold text-caption-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span>Fiscal Governance &amp; Escrow Telemetry</span>
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-trust-verified animate-pulse"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified">SYSTEM LIVE</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+          Reports &amp; Financial Analytics Suite
+        </h1>
+<p class="font-body-base text-body-base text-text-secondary max-w-3xl">
+          Comprehensive platform rental volume, seasonal velocity, category loss ratios, and escrow liquidity telemetry across active nodes.
+        </p>
+</div>
+<!-- Action Bar Controls -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Date Range Filter -->
+<div class="flex items-center gap-space-xs bg-surface-card px-space-md py-2.5 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">calendar_today</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Last 90 Days: Oct 01 - Dec 31, 2024</span>
+<span class="material-symbols-outlined text-outline text-[16px] ml-1">expand_more</span>
+</div>
+<!-- Category Filter -->
+<div class="flex items-center gap-space-xs bg-surface-card px-space-md py-2.5 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">category</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">All Categories</span>
+<span class="material-symbols-outlined text-outline text-[16px]">expand_more</span>
+</div>
+<!-- City Node Filter -->
+<div class="flex items-center gap-space-xs bg-surface-card px-space-md py-2.5 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-outline text-[18px]">location_on</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">All India Nodes</span>
+<span class="material-symbols-outlined text-outline text-[16px]">expand_more</span>
+</div>
+<!-- Primary Export Action -->
+<button class="flex items-center gap-space-xs bg-primary text-on-primary hover:bg-brand-primary-hover px-space-md py-2.5 rounded-lg shadow-sm transition-all active:translate-y-0.5">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+<span class="font-body-base-medium text-body-base-medium font-semibold">Export CSV / PDF Dossier</span>
+</button>
+</div>
+</div>
+<!-- Top KPI Summary Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1: Gross Merchandise Value -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Gross Merchandise Value (GMV)</span>
+<div class="font-display-hero-mobile text-display-hero-mobile font-extrabold text-on-surface tracking-tight mt-1">₹4.82 Cr</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-brand-primary-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="mt-space-md flex items-end justify-between">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-trust-verified text-[16px]">trending_up</span>
+<span class="font-caption-bold text-caption-bold text-trust-verified">+24.8% YoY</span>
+<span class="font-caption text-caption text-text-muted ml-1">vs Q4 FY23</span>
+</div>
+<!-- Inline Sparkline SVG -->
+<div class="w-24 h-7 text-primary">
+<svg class="w-full h-full overflow-visible" fill="none" viewbox="0 0 96 28">
+<path d="M0 24 L16 20 L32 22 L48 14 L64 16 L80 6 L96 2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M0 24 L16 20 L32 22 L48 14 L64 16 L80 6 L96 2 L96 28 L0 28 Z" fill="currentColor" fill-opacity="0.1"></path>
+</svg>
+</div>
+</div>
+</div>
+<!-- KPI 2: Net Take Rate -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Net Platform Commission</span>
+<div class="font-display-hero-mobile text-display-hero-mobile font-extrabold text-on-surface tracking-tight mt-1">₹53.4 Lakh</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-space-xs bg-surface-subtle px-2 py-1 rounded">
+<span class="font-caption text-caption text-text-secondary">Effective Take:</span>
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-primary">11.08%</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Target: 11.00%</span>
+</div>
+</div>
+<!-- KPI 3: Escrow Volume -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Cumulative Escrow Custody</span>
+<div class="font-display-hero-mobile text-display-hero-mobile font-extrabold text-on-surface tracking-tight mt-1">₹18.6 Cr</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[22px]">assured_workload</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1 text-trust-verified">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span class="font-caption-bold text-caption-bold">100% Bonded</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-semibold bg-trust-verified-bg px-2 py-0.5 rounded-full">0 DEFAULTS</span>
+</div>
+</div>
+<!-- KPI 4: Platform Loss Ratio -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Platform Loss Ratio (Claims)</span>
+<div class="font-display-hero-mobile text-display-hero-mobile font-extrabold text-trust-verified tracking-tight mt-1">0.14%</div>
+</div>
+<div class="w-10 h-10 rounded-lg bg-trust-verified-bg flex items-center justify-center text-trust-verified">
+<span class="material-symbols-outlined text-[22px]">shield</span>
+</div>
+</div>
+<div class="mt-space-md flex items-center justify-between">
+<div class="flex items-center gap-1 text-text-secondary">
+<span class="font-caption text-caption">Ceiling: &lt; 0.50%</span>
+</div>
+<span class="font-caption-bold text-caption-bold text-primary bg-brand-primary-light px-2 py-0.5 rounded">Best-in-Class Tier</span>
+</div>
+</div>
+</div>
+<!-- Visual Analytics Bento Grid: Section 1 & Section 2 -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Chart Section 1: GMV & Seasonal Velocity Trends (8 cols) -->
+<div class="lg:col-span-8 bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-lg">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Rental GMV &amp; Seasonal Velocity Trends</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Quarterly volume breakdown indexed against historical fulfillment velocity</p>
+</div>
+<div class="flex items-center gap-space-md text-caption-bold text-caption-bold">
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-sm bg-primary"></span>
+<span class="text-text-secondary">Gross Volume</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-text-secondary">Active Escrows</span>
+</div>
+</div>
+</div>
+<!-- Custom Inline High-Density Bar Chart Visualization -->
+<div class="w-full h-64 flex flex-col justify-end pt-4 pb-2">
+<div class="h-full w-full grid grid-cols-4 gap-6 items-end">
+<!-- Q1 -->
+<div class="flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-2 h-44">
+<div class="w-10 bg-primary/20 hover:bg-primary/30 rounded-t-md transition-all h-[52%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹84L</div>
+</div>
+<div class="w-10 bg-primary rounded-t-md transition-all h-[64%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹1.05 Cr</div>
+</div>
+</div>
+<div class="mt-3 text-center">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Q1 FY24</span>
+<span class="block font-caption text-caption text-text-muted">Winter Surge</span>
+</div>
+</div>
+<!-- Q2 -->
+<div class="flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-2 h-44">
+<div class="w-10 bg-primary/20 hover:bg-primary/30 rounded-t-md transition-all h-[42%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹68L</div>
+</div>
+<div class="w-10 bg-primary rounded-t-md transition-all h-[58%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹96L</div>
+</div>
+</div>
+<div class="mt-3 text-center">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Q2 FY24</span>
+<span class="block font-caption text-caption text-text-muted">Spring Run</span>
+</div>
+</div>
+<!-- Q3 -->
+<div class="flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-2 h-44">
+<div class="w-10 bg-primary/20 hover:bg-primary/30 rounded-t-md transition-all h-[68%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹1.10 Cr</div>
+</div>
+<div class="w-10 bg-primary rounded-t-md transition-all h-[78%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹1.28 Cr</div>
+</div>
+</div>
+<div class="mt-3 text-center">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Q3 FY24</span>
+<span class="block font-caption text-caption text-text-muted">Monsoon Peak</span>
+</div>
+</div>
+<!-- Q4 (Current) -->
+<div class="flex flex-col items-center h-full justify-end group">
+<div class="w-full flex items-end justify-center gap-2 h-44">
+<div class="w-10 bg-primary/20 hover:bg-primary/30 rounded-t-md transition-all h-[82%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹1.32 Cr</div>
+</div>
+<div class="w-10 bg-primary rounded-t-md transition-all h-[98%] relative">
+<div class="hidden group-hover:block absolute -top-8 left-1/2 -translate-x-1/2 bg-inverse-surface text-surface-card text-[10px] font-code-mono px-2 py-1 rounded shadow pointer-events-none whitespace-nowrap">₹1.53 Cr</div>
+</div>
+</div>
+<div class="mt-3 text-center">
+<span class="font-body-base-medium text-body-base-medium text-primary font-bold">Q4 FY24 (Active)</span>
+<span class="block font-caption text-caption text-trust-verified font-semibold">+28.4% Peak</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Metric Sub-Strip -->
+<div class="mt-space-md pt-space-md bg-surface-subtle p-space-md rounded-lg flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">videocam</span>
+<div>
+<span class="font-caption text-caption text-text-muted">Top Growth Sector</span>
+<div class="font-body-base-medium text-body-base-medium font-semibold text-on-surface">Cinema &amp; Broadcast Optics (₹2.18 Cr)</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]">electric_scooter</span>
+<div>
+<span class="font-caption text-caption text-text-muted">Fastest Velocity</span>
+<div class="font-body-base-medium text-body-base-medium font-semibold text-on-surface">Commercial Cargo EVs (94% utilization)</div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-trust-verified text-[20px]">verified</span>
+<div>
+<span class="font-caption text-caption text-text-muted">Payout SLA Rate</span>
+<div class="font-code-mono text-code-mono text-trust-verified">99.4% in &lt;24h</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chart Section 2: Category Loss Ratio & Claims (4 cols) -->
+<div class="lg:col-span-4 bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Category Loss Ratio</h2>
+<span class="font-caption-bold text-caption-bold text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded-full">Below 0.50% SLA</span>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-1">Claim incidents filed vs custody value bonded</p>
+</div>
+<div class="space-y-space-md my-space-md">
+<!-- Category Item: Cinema & Audio -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-caption-bold text-caption-bold">
+<span class="text-on-surface">Cinema &amp; Audio Gear</span>
+<span class="font-code-mono text-code-mono text-trust-verified">0.08%</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full rounded-full" style="width: 16%;"></div>
+</div>
+<div class="flex justify-between text-[11px] text-text-muted font-caption">
+<span>Claims: 2 / ₹2.18 Cr</span>
+<span>Sub-benchmark</span>
+</div>
+</div>
+<!-- Category Item: Drones -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-caption-bold text-caption-bold">
+<span class="text-on-surface">Enterprise Drones (LiDAR/FPV)</span>
+<span class="font-code-mono text-code-mono text-trust-warning">0.32%</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-trust-warning h-full rounded-full" style="width: 64%;"></div>
+</div>
+<div class="flex justify-between text-[11px] text-text-muted font-caption">
+<span>Claims: 5 / ₹74L</span>
+<span>Rotor-impact cover</span>
+</div>
+</div>
+<!-- Category Item: Power Tools -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-caption-bold text-caption-bold">
+<span class="text-on-surface">Industrial Power Tools</span>
+<span class="font-code-mono text-code-mono text-trust-verified">0.18%</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full rounded-full" style="width: 36%;"></div>
+</div>
+<div class="flex justify-between text-[11px] text-text-muted font-caption">
+<span>Claims: 3 / ₹49L</span>
+<span>Mechanical wear pool</span>
+</div>
+</div>
+<!-- Category Item: EVs -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-caption-bold text-caption-bold">
+<span class="text-on-surface">Commercial Mobility &amp; EVs</span>
+<span class="font-code-mono text-code-mono text-trust-verified">0.11%</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full rounded-full" style="width: 22%;"></div>
+</div>
+<div class="flex justify-between text-[11px] text-text-muted font-caption">
+<span>Claims: 4 / ₹92L</span>
+<span>Telematics bonded</span>
+</div>
+</div>
+<!-- Category Item: Surveying -->
+<div class="space-y-1">
+<div class="flex justify-between items-center text-caption-bold text-caption-bold">
+<span class="text-on-surface">Precision Surveying Stations</span>
+<span class="font-code-mono text-code-mono text-trust-verified">0.02%</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full rounded-full" style="width: 4%;"></div>
+</div>
+<div class="flex justify-between text-[11px] text-text-muted font-caption">
+<span>Claims: 0 / ₹49L</span>
+<span>Pristine Record</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm bg-trust-verified-bg rounded-lg flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-trust-verified text-[20px]">gavel</span>
+<span class="font-caption text-caption text-trust-verified">
+<strong>All 14 reported claims</strong> were auto-adjudicated within 48h using cryptographic pre/post rental inspection hashes.
+          </span>
+</div>
+</div>
+</div>
+<!-- Multi-Column Operational Deep Dives: Geo Velocity & Funnel -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Geographic Heatmap & City Velocity Table (7 cols) -->
+<div class="lg:col-span-7 bg-surface-card p-space-lg rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Geographic Velocity &amp; Escrow Distribution</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Top-tier urban operational clusters by rental volume</p>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-primary bg-brand-primary-light px-2.5 py-1 rounded-full font-semibold">4 ACTIVE HUBS</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-subtle text-caption-bold text-caption-bold text-text-secondary">
+<th class="p-space-sm rounded-l">Hub / Metro Area</th>
+<th class="p-space-sm text-right">Settled GMV</th>
+<th class="p-space-sm text-center">Avg. Duration</th>
+<th class="p-space-sm text-center">Dispute Rate</th>
+<th class="p-space-sm text-right rounded-r">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 space-y-2">
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-sm font-body-base-medium text-body-base-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                  Mumbai Metropolitan (MMR)
+                </td>
+<td class="p-space-sm text-right font-code-mono text-code-mono font-bold text-on-surface">₹1.84 Cr</td>
+<td class="p-space-sm text-center font-caption text-caption text-text-secondary">4.2 Days</td>
+<td class="p-space-sm text-center">
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">0.09%</span>
+</td>
+<td class="p-space-sm text-right">
+<span class="font-caption-bold text-caption-bold text-trust-verified">Optimal</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-sm font-body-base-medium text-body-base-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                  Bengaluru Tech Belt
+                </td>
+<td class="p-space-sm text-right font-code-mono text-code-mono font-bold text-on-surface">₹1.62 Cr</td>
+<td class="p-space-sm text-center font-caption text-caption text-text-secondary">6.8 Days</td>
+<td class="p-space-sm text-center">
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">0.14%</span>
+</td>
+<td class="p-space-sm text-right">
+<span class="font-caption-bold text-caption-bold text-trust-verified">Optimal</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-sm font-body-base-medium text-body-base-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                  Delhi NCR &amp; CyberCity
+                </td>
+<td class="p-space-sm text-right font-code-mono text-code-mono font-bold text-on-surface">₹88.0 Lakh</td>
+<td class="p-space-sm text-center font-caption text-caption text-text-secondary">3.4 Days</td>
+<td class="p-space-sm text-center">
+<span class="font-code-mono-sm text-code-mono-sm text-trust-warning bg-trust-warning-bg px-2 py-0.5 rounded">0.19%</span>
+</td>
+<td class="p-space-sm text-right">
+<span class="font-caption-bold text-caption-bold text-trust-warning">Watchlist</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-sm font-body-base-medium text-body-base-medium text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                  Hyderabad Hi-Tech
+                </td>
+<td class="p-space-sm text-right font-code-mono text-code-mono font-bold text-on-surface">₹48.0 Lakh</td>
+<td class="p-space-sm text-center font-caption text-caption text-text-secondary">5.1 Days</td>
+<td class="p-space-sm text-center">
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">0.05%</span>
+</td>
+<td class="p-space-sm text-right">
+<span class="font-caption-bold text-caption-bold text-trust-verified">Optimal</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-space-md p-space-md bg-canvas-slate rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[18px] text-primary">location_city</span>
+<span>Expansion in progress: Chennai, Pune, Kolkata nodes launching Q1 2025.</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold cursor-pointer hover:underline">View Node Topology →</span>
+</div>
+</div>
+<!-- KYC & Conversion Funnel Telemetry (5 cols) -->
+<div class="lg:col-span-5 bg-surface-card p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Identity &amp; Funnel Velocity</h2>
+<span class="material-symbols-outlined text-outline">filter_alt</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Conversion from unverified signups to first escrow deposit completion</p>
+</div>
+<div class="space-y-space-md my-space-md">
+<!-- Funnel Step 1 -->
+<div class="bg-surface-subtle p-space-md rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[13px]">1</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-semibold text-on-surface block">Total Registered Users</span>
+<span class="font-caption text-caption text-text-muted">Unique phone + Aadhaar OTP initiate</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-code-mono font-bold text-on-surface">18,400</span>
+<span class="block font-caption text-caption text-text-muted">100% Base</span>
+</div>
+</div>
+<!-- Down arrow indicator -->
+<div class="flex justify-center -my-2">
+<span class="material-symbols-outlined text-outline text-[18px]">arrow_downward</span>
+</div>
+<!-- Funnel Step 2 -->
+<div class="bg-surface-subtle p-space-md rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-[13px]">2</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-semibold text-on-surface block">KYC Passed &amp; Bond-Eligible</span>
+<span class="font-caption text-caption text-text-muted">CERSAI / DigiLocker instant verification</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-code-mono font-bold text-primary">16,412</span>
+<span class="block font-caption-bold text-caption-bold text-trust-verified">89.2% Pass Rate</span>
+</div>
+</div>
+<!-- Down arrow indicator -->
+<div class="flex justify-center -my-2">
+<span class="material-symbols-outlined text-outline text-[18px]">arrow_downward</span>
+</div>
+<!-- Funnel Step 3 -->
+<div class="bg-brand-primary-light p-space-md rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[13px]">3</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-semibold text-primary block">First Booking Completed</span>
+<span class="font-caption text-caption text-text-secondary">Escrow deposited within 7 days</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-code-mono font-bold text-primary">12,226</span>
+<span class="block font-caption-bold text-caption-bold text-primary">74.5% Active Yield</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-caption text-caption text-text-secondary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-trust-verified">speed</span>
+            Median verification latency: 42s
+          </span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">ID Compliance: RBI-KYC 2023/v4</span>
+</div>
+</div>
+</div>
+<!-- Scheduled Regulatory & Financial Audit Reports Table -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Scheduled Regulatory &amp; Financial Audit Reports</h2>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Automated statutory exports, escrow reconciliation dockets, and taxation ledgers</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="bg-surface-subtle hover:bg-surface-container text-on-surface px-space-md py-1.5 rounded-lg font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Configure Schedules</span>
+</button>
+<button class="bg-surface-subtle hover:bg-surface-container text-on-surface px-space-md py-1.5 rounded-lg font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+<span>Regenerate Ledgers</span>
+</button>
+</div>
+</div>
+<!-- High-Density Regulatory Reports Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-subtle text-caption-bold text-caption-bold text-text-secondary">
+<th class="p-space-md rounded-l">Report Name &amp; Description</th>
+<th class="p-space-md">Cadence</th>
+<th class="p-space-md">Generated On</th>
+<th class="p-space-md">File Size</th>
+<th class="p-space-md">Statutory Standard</th>
+<th class="p-space-md text-right rounded-r">Download</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 space-y-2">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface block">Reserve Bank Escrow Liquidity Ledger</span>
+<span class="font-caption text-caption text-text-muted">Daily account balances with certified bank depository stamps</span>
+</div>
+</div>
+</td>
+<td class="p-space-md">
+<span class="font-caption-bold text-caption-bold text-primary bg-brand-primary-light px-2 py-0.5 rounded">Daily 23:59 IST</span>
+</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-on-surface">31 Dec 2024, 23:59</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-text-muted">14.2 MB</td>
+<td class="p-space-md">
+<span class="font-caption text-caption bg-surface-subtle text-on-surface px-2 py-1 rounded inline-flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+                  RBI Master Dir / P2P Escrow
+                </span>
+</td>
+<td class="p-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF
+                  </button>
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">table_chart</span> XLSX
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface block">Quarterly Platform GST &amp; TCS Reconciliation</span>
+<span class="font-caption text-caption text-text-muted">Consolidated 18% GST output tax and 1% TDS state breakups</span>
+</div>
+</div>
+</td>
+<td class="p-space-md">
+<span class="font-caption-bold text-caption-bold text-secondary bg-surface-subtle px-2 py-0.5 rounded">Quarterly</span>
+</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-on-surface">31 Dec 2024, 18:00</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-text-muted">48.6 MB</td>
+<td class="p-space-md">
+<span class="font-caption text-caption bg-surface-subtle text-on-surface px-2 py-1 rounded inline-flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+                  GSTN / GSTR-8 Section 52
+                </span>
+</td>
+<td class="p-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF
+                  </button>
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">table_chart</span> XLSX
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">shield_person</span>
+</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface block">IT Act Intermediary &amp; Anti-Theft Audit</span>
+<span class="font-caption text-caption text-text-muted">IMEI/Serial registry blacklists, verified police dockets, and KYC hash registers</span>
+</div>
+</div>
+</td>
+<td class="p-space-md">
+<span class="font-caption-bold text-caption-bold text-secondary bg-surface-subtle px-2 py-0.5 rounded">Monthly</span>
+</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-on-surface">01 Jan 2025, 00:00</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-text-muted">8.9 MB</td>
+<td class="p-space-md">
+<span class="font-caption text-caption bg-surface-subtle text-on-surface px-2 py-1 rounded inline-flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+                  IT Intermediary Rules 2021
+                </span>
+</td>
+<td class="p-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF
+                  </button>
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">table_chart</span> XLSX
+                  </button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="p-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-surface-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">assignment_turned_in</span>
+</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface block">Claims Arbitration &amp; Custody Forfeiture Log</span>
+<span class="font-caption text-caption text-text-muted">Itemized dispute settlements, condition inspection discrepancies, and damage recoveries</span>
+</div>
+</div>
+</td>
+<td class="p-space-md">
+<span class="font-caption-bold text-caption-bold text-secondary bg-surface-subtle px-2 py-0.5 rounded">Bi-Weekly</span>
+</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-on-surface">28 Dec 2024, 12:00</td>
+<td class="p-space-md font-code-mono-sm text-code-mono-sm text-text-muted">5.1 MB</td>
+<td class="p-space-md">
+<span class="font-caption text-caption bg-surface-subtle text-on-surface px-2 py-1 rounded inline-flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+                  Arbitration &amp; Conciliation 1996
+                </span>
+</td>
+<td class="p-space-md text-right">
+<div class="inline-flex items-center gap-1">
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span> PDF
+                  </button>
+<button class="bg-canvas-slate hover:bg-surface-container px-2.5 py-1.5 rounded font-code-mono-sm text-code-mono-sm text-text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">table_chart</span> XLSX
+                  </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Institutional Assurance Footer -->
+<div class="pt-space-md flex flex-col sm:flex-row sm:items-center justify-between gap-space-md bg-canvas-slate p-space-md rounded-lg">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-trust-verified text-[22px]">enhanced_encryption</span>
+<div>
+<span class="font-caption-bold text-caption-bold text-on-surface block">Immutable SHA-256 Ledger Signing Active</span>
+<span class="font-caption text-caption text-text-secondary">All downloads are digitally sealed with RentSecure Custody Private Key #04</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm font-code-mono-sm text-code-mono-sm text-text-secondary">
+<span>Ledger Block: <strong>#8,941,209</strong></span>
+<span class="text-outline-variant">•</span>
+<span>Node Time: <strong>14:28:09 IST</strong></span>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

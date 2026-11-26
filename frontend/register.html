@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Register - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+UI.pageShell('register', `<section class="page"><div class="container" style="max-width:640px"><div class="card"><div class="card-body">
+  <h1 class="section-title">Create your account</h1><p class="section-sub" style="margin-bottom:20px">Rent products or list your own assets for earning.</p>
+  <div id="msg"></div>
+  <form id="form">
+    <div class="form-grid">
+      <div class="field"><label>Full name</label><input class="input" name="name" required></div>
+      <div class="field"><label>Phone</label><input class="input" name="phone" required></div>
+    </div>
+    <div class="field"><label>Email</label><input class="input" name="email" type="email" required></div>
+    <div class="form-grid">
+      <div class="field"><label>Password</label><input class="input" name="password" type="password" minlength="6" required></div>
+      <div class="field"><label>Role</label><select class="input" name="role"><option value="customer">Customer</option><option value="owner">Owner</option></select></div>
+    </div>
+    <button class="btn btn-primary" style="width:100%" type="submit">Create account</button>
+  </form>
+  <p class="text-secondary" style="margin-top:16px;font-size:14px">Already have an account? <a href="/login.html">Login</a></p>
+</div></div></div></section>`);
+document.getElementById('form').onsubmit = async (e) => {
+  e.preventDefault(); const msg=document.getElementById('msg'); msg.innerHTML='';
+  const payload=Object.fromEntries(new FormData(e.target).entries());
+  try{const r=await API.post('/api/auth/register', payload); Auth.setSession(r.access_token,r.user);
+    localStorage.setItem('mock_otp', r.mock_otp||''); location.href='/otp.html?email='+encodeURIComponent(payload.email);
+  }catch(err){msg.innerHTML=`<div class="alert alert-danger">${err.message}</div>`}
+};
+</script></body></html>

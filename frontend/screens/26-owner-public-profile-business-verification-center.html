@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Console - Escrow &amp; Fleet</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "primary": "#003c90", "on-surface-variant": "#434653", "brand-primary-light": "#EBF3FF", "surface-container-high": "#e2e7ff", "surface-variant": "#dae2fd", "on-primary-fixed": "#001945", "error-container": "#ffdad6", "on-primary-container": "#bcceff", "trust-verified": "#059669", "border-focus": "#3B82F6", "on-secondary-container": "#005c70", "background": "#faf8ff", "tertiary-fixed-dim": "#c3c0ff", "text-muted": "#94A3B8", "trust-warning": "#D97706", "surface-dim": "#d2d9f4", "trust-danger-bg": "#FEF2F2", "surface": "#faf8ff", "inverse-primary": "#b0c6ff", "primary-container": "#0f52ba", "surface-bright": "#faf8ff", "inverse-surface": "#283044", "on-secondary-fixed-variant": "#004e5f", "surface-container": "#eaedff", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "text-secondary": "#475569", "secondary-fixed": "#b3ebff", "primary-fixed": "#d9e2ff", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-container": "#463cdd", "on-secondary": "#ffffff", "trust-warning-bg": "#FFFBEB", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#4cd6fb", "outline": "#737784", "surface-tint": "#1d59c1", "on-surface": "#131b2e", "border-default": "#E2E8F0", "primary-fixed-dim": "#b0c6ff", "tertiary": "#2c16c6", "trust-verified-bg": "#ECFDF5", "on-error-container": "#93000a", "on-tertiary-container": "#ccc9ff", "brand-primary-hover": "#0B3C8A", "on-primary-fixed-variant": "#00419c", "tertiary-fixed": "#e2dfff", "inverse-on-surface": "#eef0ff", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#0f0069", "on-secondary-fixed": "#001f27", "canvas-slate": "#F8FAFC", "trust-danger": "DC2626", "secondary-container": "#50d9fe", "on-background": "#131b2e", "secondary": "#00677d", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-subtle": "#F1F5F9", "on-tertiary-fixed-variant": "#3323cc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "gutter-desktop": "2rem" }, "fontFamily": { "caption-bold": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "display-hero-mobile": ["Inter"], "body-lg": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "headline-sm": ["Inter"], "caption": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-card z-50 flex flex-col py-space-md shadow-[1px_0_8px_rgba(15,23,42,0.04)]"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-brand-primary-light text-primary font-bold"><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="owner-fleet-dashboard" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span>Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-vault" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">shield</span>Escrow Vault</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="my-bookings" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">receipt_long</span>Active Rentals</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="inspection-manager" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">compare</span>Inspection Loupe</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="dispute-resolution" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">gavel</span>Dispute Center</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-surface-subtle border border-border-default"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold mb-1"><span class="material-symbols-outlined text-[16px]">verified</span>Tier 1 Host</div><p class="font-caption text-caption text-text-secondary">Trust Score: <strong class="font-code-mono text-on-surface">98/100</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/90 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-body-base-medium text-body-base-medium text-text-secondary">Workspace:</span><span class="font-body-base-medium text-body-base-medium font-semibold text-on-surface">Asset &amp; Custody Console</span></div><div class="flex items-center gap-space-md"><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary"></span></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Fleet Manager</span><span class="font-code-mono-sm text-code-mono-sm text-trust-verified leading-none">Bonded • Active</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="p-space-lg lg:p-space-xl max-w-7xl mx-auto w-full space-y-space-lg">
+<!-- Header Block -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs text-primary font-caption-bold text-caption-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+<span>Trust &amp; Identity Matrix</span>
+<span class="text-text-muted">•</span>
+<span class="font-code-mono text-on-surface-variant">MOD-03 / SEC-32</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Public Profile &amp; Host Verification Settings</h1>
+<p class="font-body-base text-body-base text-text-secondary max-w-3xl">
+          Configure your public rental storefront, manage business GST credentials, verified badges, and payout settlement banking.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto shrink-0">
+<button class="px-space-md py-space-sm bg-surface-card hover:bg-surface-subtle text-on-surface font-body-base-medium text-body-base-medium rounded-lg shadow-sm transition-colors flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">visibility</span>
+<span>Public Preview</span>
+</button>
+<button class="px-space-lg py-space-sm bg-primary hover:bg-brand-primary-hover text-on-primary font-body-base-medium text-body-base-medium rounded-lg shadow-sm transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Save Changes</span>
+</button>
+</div>
+</div>
+<!-- Storefront Hero Card / Live Entity Banner -->
+<div class="relative bg-surface-card rounded-xl shadow-md overflow-hidden">
+<!-- Ambient Backing Cover Art -->
+<div class="relative h-48 sm:h-56 w-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cinematic gear locker with anamorphic cine lenses, matte boxes, and ARRI cinema camera rig illuminated by soft sapphire blue studio key light and amber rim lighting on slate grey background, high fidelity commercial studio photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNoLQWA_JBsCBD_52KvqwGtSr18r4LGnk7gkAXVujDFhi1C7I43FLXYkEHUffxraM2O5VdThu24v11fib-OtbMx91W3hJu8fPR4Ge7V29hzrmLNxWr709UCaBNYrL8X1-hK0JwWYwCBZ3-pM9LOI3Nj_IaFMISApy8o6hT-oGe5wOai-TSy-EtYBbhUV_1zi73NqjDguFGMXJQl0qzNlSeuzmU0NlZq0uvyVITGRw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/30 to-transparent"></div>
+<div class="absolute top-space-md right-space-md flex items-center gap-space-xs bg-surface-card/90 backdrop-blur-md px-space-md py-space-xs rounded-full shadow-sm">
+<span class="inline-block w-2 h-2 rounded-full bg-trust-verified animate-pulse"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface">STOREFRONT ONLINE</span>
+</div>
+</div>
+<!-- Avatar & Main Meta Row -->
+<div class="px-space-lg pb-space-lg pt-0 relative">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md -mt-16 sm:-mt-20">
+<!-- Avatar + Titles -->
+<div class="flex items-end gap-space-md">
+<div class="relative w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden shadow-xl bg-surface-card ring-4 ring-surface-card shrink-0">
+<img class="w-full h-full object-cover" data-alt="Editorial close portrait of Indian female cinema director and cinematographer Meera Sen wearing black minimalist studio attire with professional high-density focus light and calm confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuIwRmlF02HJcM2tVyA9alpJ0nbwmb99YzHKwzugEaMlZ6v8Kgrxd7VTTqxiGyODDDFZcKf8bglL6pF2_vrDm30nn-8u4_Sut0yPmQiPkC3p9_MJVv4P24pSH0yf4c2uN07fGGofP_tB7-lF5BQBdNzA1Y2cZJ-WVMC2E0zQZyMl1hkCJiWZv-PvMsfJIPHk_R1yy9UFRxoOx5KaMmwHiZV0VZLnNkPGl9RQBG8cM"/>
+<div class="absolute bottom-1 right-1 bg-trust-verified text-on-primary p-0.5 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+</div>
+<div class="space-y-space-xs pb-1">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h2 class="font-headline-md text-headline-md text-on-surface">Meera Sen</h2>
+<span class="font-caption text-caption text-text-muted">/</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">FrameRate CineWorks</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm text-text-secondary font-caption text-caption">
+<span class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+                  Indiranagar, Bengaluru &amp; Bandra West, Mumbai
+                </span>
+<span class="text-text-muted">•</span>
+<span class="font-code-mono text-on-surface-variant">MCA Entity: FR-CINE-IND-9021</span>
+</div>
+</div>
+</div>
+<!-- Quick URL Share Lockup -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex items-center gap-space-sm self-start md:self-end">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">link</span>
+<span class="font-code-mono text-code-mono text-on-surface select-all" id="storefront-url">rentsecure.in/hosts/framerate-cineworks</span>
+<button class="p-space-xs rounded-lg hover:bg-surface-card text-primary transition-colors" onclick="navigator.clipboard.writeText('https://rentsecure.in/hosts/framerate-cineworks'); alert('Storefront link copied!');" title="Copy public link">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Trust & Metric Pill Strip -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm mt-space-lg pt-space-md bg-surface-subtle p-space-md rounded-xl">
+<!-- Trust Score Gauge Item -->
+<div class="flex items-center gap-space-sm">
+<div class="relative w-12 h-12 flex items-center justify-center shrink-0">
+<svg class="w-12 h-12 -rotate-90" viewbox="0 0 36 36">
+<circle class="text-border-default" cx="18" cy="18" fill="none" r="14" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-trust-verified" cx="18" cy="18" fill="none" r="14" stroke="currentColor" stroke-dasharray="88" stroke-dashoffset="1.76" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute font-code-mono font-bold text-[11px] text-trust-verified">98</span>
+</div>
+<div>
+<div class="font-caption-bold text-caption-bold text-trust-verified flex items-center gap-0.5">
+<span>Tier 1 Platinum</span>
+<span class="material-symbols-outlined text-[14px]">shield</span>
+</div>
+<div class="font-caption text-caption text-text-secondary">Trust Rating: 98/100</div>
+</div>
+</div>
+<!-- Verified Badging -->
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+<div>
+<div class="font-caption-bold text-caption-bold text-on-surface">Identity &amp; MCA Verified</div>
+<div class="font-caption text-caption text-text-secondary">DigiLocker • Aadhaar KYC</div>
+</div>
+</div>
+<!-- Volume & Disputes -->
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+</div>
+<div>
+<div class="font-code-mono font-bold text-body-base text-on-surface">142 Completed</div>
+<div class="font-caption text-caption text-trust-verified font-medium">0.00% Zero-Dispute</div>
+</div>
+</div>
+<!-- Response Cadence -->
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div>
+<div class="font-code-mono font-bold text-body-base text-on-surface">&lt; 10 Mins</div>
+<div class="font-caption text-caption text-text-secondary">Avg Response Turnaround</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex items-center overflow-x-auto gap-space-xs bg-surface-subtle p-1 rounded-xl">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-card text-primary font-body-base-medium text-body-base-medium shadow-sm flex items-center gap-space-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">storefront</span>
+<span>Storefront Profile &amp; Bio</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg hover:bg-surface-card/60 text-text-secondary font-body-base-medium text-body-base-medium transition-colors flex items-center gap-space-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+<span>GSTIN &amp; Legal Business Tax</span>
+<span class="px-1.5 py-0.5 rounded-full text-[10px] font-code-mono-sm bg-trust-verified-bg text-trust-verified">Active</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg hover:bg-surface-card/60 text-text-secondary font-body-base-medium text-body-base-medium transition-colors flex items-center gap-space-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+<span>SafeHub Preferences &amp; Rules</span>
+</button>
+<button class="px-space-md py-space-sm rounded-lg hover:bg-surface-card/60 text-text-secondary font-body-base-medium text-body-base-medium transition-colors flex items-center gap-space-xs whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+<span>Settlement Bank Account</span>
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check_circle</span>
+</button>
+</div>
+<!-- Split Working Canvas (Bento 8x4 Grid) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Configuration Column (8 cols) -->
+<div class="lg:col-span-8 space-y-space-lg">
+<!-- Live Form Surface -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm space-y-space-lg">
+<div class="flex items-center justify-between pb-space-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Storefront Details &amp; Operational Spec</h3>
+<p class="font-caption text-caption text-text-secondary">Visible to authenticated renters prior to escrow commitment</p>
+</div>
+<span class="px-2.5 py-1 rounded-full text-caption-bold font-caption-bold bg-trust-verified-bg text-trust-verified flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+              Public Listing Safe
+            </span>
+</div>
+<div class="space-y-space-md">
+<!-- Business Name Row -->
+<div class="space-y-space-xs">
+<label class="block font-body-base-medium text-body-base-medium text-on-surface">Studio / Registered Brand Display Name</label>
+<div class="relative">
+<input class="w-full h-11 px-space-md bg-canvas-slate text-on-surface rounded-lg font-body-base text-body-base focus:bg-surface-card focus:outline-none focus:ring-2 focus:ring-border-focus transition-all" type="text" value="FrameRate CineWorks (Bangalore &amp; Mumbai)"/>
+<span class="absolute right-3 top-3 text-trust-verified material-symbols-outlined text-[20px]">check</span>
+</div>
+<p class="font-caption text-caption text-text-muted">Matches your verified DigiLocker CIN / Enterprise certificate</p>
+</div>
+<!-- Professional Bio -->
+<div class="space-y-space-xs">
+<label class="block font-body-base-medium text-body-base-medium text-on-surface">Professional Bio &amp; Hardware Specialty</label>
+<textarea class="w-full p-space-md bg-canvas-slate text-on-surface rounded-lg font-body-base text-body-base focus:bg-surface-card focus:outline-none focus:ring-2 focus:ring-border-focus transition-all resize-none" rows="3">Specializing in high-end optical gear, cine prime lenses, and calibrated cinema packages for indie &amp; commercial productions. All sensor cavities inspected via high-magnification optical loupe before each custody handover.</textarea>
+<div class="flex justify-between items-center text-text-muted font-caption text-caption">
+<span>Renter-facing profile introduction</span>
+<span class="font-code-mono-sm text-code-mono-sm">242 / 400 chars</span>
+</div>
+</div>
+<!-- Operating Window & Location Pair -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="space-y-space-xs">
+<label class="block font-body-base-medium text-body-base-medium text-on-surface">Operating Hours (Custody Handover)</label>
+<div class="flex items-center gap-space-xs">
+<div class="relative flex-1">
+<input class="w-full h-11 px-space-md bg-canvas-slate font-code-mono text-code-mono text-on-surface rounded-lg focus:bg-surface-card focus:outline-none focus:ring-2 focus:ring-border-focus" type="text" value="08:00 AM"/>
+</div>
+<span class="font-caption text-caption text-text-muted">to</span>
+<div class="relative flex-1">
+<input class="w-full h-11 px-space-md bg-canvas-slate font-code-mono text-code-mono text-on-surface rounded-lg focus:bg-surface-card focus:outline-none focus:ring-2 focus:ring-border-focus" type="text" value="09:00 PM IST"/>
+</div>
+</div>
+</div>
+<div class="space-y-space-xs">
+<label class="block font-body-base-medium text-body-base-medium text-on-surface">Minimum Rental Notice</label>
+<select class="w-full h-11 px-space-md bg-canvas-slate text-on-surface rounded-lg font-body-base text-body-base focus:bg-surface-card focus:outline-none focus:ring-2 focus:ring-border-focus">
+<option selected="">2 Hours (Instant Prep)</option>
+<option>4 Hours Notice</option>
+<option>12 Hours Notice</option>
+<option>24 Hours Notice</option>
+</select>
+</div>
+</div>
+<!-- Care & Cleaning Protocols -->
+<div class="space-y-space-xs">
+<label class="block font-body-base-medium text-body-base-medium text-on-surface">Equipment Care, Calibrated Storage &amp; Loupe Verification Policy</label>
+<textarea class="w-full p-space-md bg-canvas-slate text-on-surface rounded-lg font-body-base text-body-base focus:bg-surface-card focus:outline-none focus:ring-2 focus:ring-border-focus transition-all resize-none" rows="3">Hermetically packed in Pelican air-tight cases with relative humidity &lt; 40%. Requires return in identical dry packaging. Scratch assessment loupe photos are logged live upon drop-off at SafeHub station lockers.</textarea>
+</div>
+</div>
+</div>
+<!-- Verified Badges & Trust Shields Display Config -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Active Host Shields &amp; Certifications</h3>
+<p class="font-caption text-caption text-text-secondary">Defensive credentials automatically appended to every checkout ticket</p>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">3 of 3 Active</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Shield 1 -->
+<div class="p-space-md rounded-xl bg-surface-subtle flex flex-col justify-between space-y-space-sm">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-trust-verified-bg text-trust-verified flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-border-focus" type="checkbox"/>
+</div>
+<div>
+<div class="font-caption-bold text-caption-bold text-on-surface">Bilateral Protection</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Escrow held damage deposit guarantee up to ₹1,50,000 per booking.</div>
+</div>
+<div class="font-code-mono-sm text-[10px] text-trust-verified pt-1">
+                STATUS: BONDED
+              </div>
+</div>
+<!-- Shield 2 -->
+<div class="p-space-md rounded-xl bg-surface-subtle flex flex-col justify-between space-y-space-sm">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-brand-primary-light text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">lens_blur</span>
+</div>
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-border-focus" type="checkbox"/>
+</div>
+<div>
+<div class="font-caption-bold text-caption-bold text-on-surface">Optical Loupe Certified</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Dual-point digital loupe scans recorded at checkout &amp; return.</div>
+</div>
+<div class="font-code-mono-sm text-[10px] text-primary pt-1">
+                STATUS: INSPECTION GRADE A
+              </div>
+</div>
+<!-- Shield 3 -->
+<div class="p-space-md rounded-xl bg-surface-subtle flex flex-col justify-between space-y-space-sm">
+<div class="flex items-start justify-between">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed-dim text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">electric_bolt</span>
+</div>
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-border-focus" type="checkbox"/>
+</div>
+<div>
+<div class="font-caption-bold text-caption-bold text-on-surface">Fast Track Reserve</div>
+<div class="font-caption text-caption text-text-secondary mt-1">Instant approval enabled strictly for Tier 1 verified creators.</div>
+</div>
+<div class="font-code-mono-sm text-[10px] text-on-secondary-container pt-1">
+                STATUS: INSTANT DISPATCH
+              </div>
+</div>
+</div>
+</div>
+<!-- SafeHub Terminals Map/Card View -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Primary Physical Handover SafeHubs</h3>
+<p class="font-caption text-caption text-text-secondary">Automated high-security locker pods with CCTV &amp; escrow scales</p>
+</div>
+<button class="font-caption-bold text-caption-bold text-primary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add_location_alt</span>
+              Add Hub
+            </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- SafeHub Card 1 -->
+<div class="p-space-md rounded-xl bg-canvas-slate space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-caption-bold bg-primary text-on-primary">Primary Hub</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified"></span> 24/7 Access
+                </span>
+</div>
+<div class="font-headline-sm text-[16px] text-on-surface font-semibold">SafeHub Indiranagar Station #4B</div>
+<p class="font-caption text-caption text-text-secondary">100 Feet Rd, HAL 2nd Stage, Bangalore, Karnataka 560038</p>
+<div class="pt-2 flex items-center justify-between text-text-muted font-code-mono-sm text-code-mono-sm">
+<span>Pod Locker Sizes: L, XL</span>
+<span class="text-primary font-bold">14 Bays Available</span>
+</div>
+</div>
+<!-- SafeHub Card 2 -->
+<div class="p-space-md rounded-xl bg-canvas-slate space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[11px] font-caption-bold bg-surface-container text-on-surface">Secondary Hub</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified"></span> 06:00 - 23:30
+                </span>
+</div>
+<div class="font-headline-sm text-[16px] text-on-surface font-semibold">SafeHub Koramangala Hub #2</div>
+<p class="font-caption text-caption text-text-secondary">Sony World Signal, 80 Feet Rd, Koramangala 4th Block, Bangalore 560034</p>
+<div class="pt-2 flex items-center justify-between text-text-muted font-code-mono-sm text-code-mono-sm">
+<span>Pod Locker Sizes: M, L</span>
+<span class="text-primary font-bold">8 Bays Available</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Audit & Financial Vault Column (4 cols) -->
+<div class="lg:col-span-4 space-y-space-lg">
+<!-- Banking & Settlement Verification Status -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-[18px] text-on-surface font-bold">Settlement Vault</h4>
+<span class="w-7 h-7 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</span>
+</div>
+<!-- Bank Account Details Card -->
+<div class="p-space-md rounded-xl bg-surface-subtle space-y-space-sm">
+<div class="flex items-center justify-between text-caption font-caption text-text-secondary">
+<span>Payout Node</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-semibold">PENNY-DROP OK</span>
+</div>
+<div class="flex items-center gap-space-sm pt-1">
+<div class="w-9 h-9 rounded-lg bg-surface-card flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<div>
+<div class="font-body-base-medium text-body-base-medium text-on-surface font-bold">HDFC Bank Limited</div>
+<div class="font-code-mono text-code-mono text-text-secondary">Current A/c •••• 9102</div>
+</div>
+</div>
+<div class="bg-surface-card p-space-xs rounded font-code-mono-sm text-[11px] text-text-muted flex justify-between items-center">
+<span>IFSC: HDFC0000184</span>
+<span class="text-trust-verified font-bold">₹1.00 Matched</span>
+</div>
+<p class="font-caption text-caption text-text-secondary text-[11px] leading-relaxed pt-1">
+              Instant T+2 hours disbursement post SafeHub return scan and bilateral inspection loupe approval.
+            </p>
+</div>
+<!-- GSTIN Compliance Block -->
+<div class="p-space-md rounded-xl bg-surface-subtle space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Registered GSTIN</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-code-mono-sm bg-trust-verified-bg text-trust-verified font-bold">ACTIVE</span>
+</div>
+<div class="font-code-mono font-bold text-on-surface text-[15px] tracking-wider pt-1">
+              29AAACR4821E1Z8
+            </div>
+<div class="font-caption text-caption text-text-secondary">
+              FrameRate CineWorks LLP (Bangalore South Range)
+            </div>
+<div class="pt-2 text-primary font-caption-bold text-caption-bold flex items-center gap-1 cursor-pointer hover:underline">
+<span class="material-symbols-outlined text-[14px]">download</span>
+<span>Download GST Annexure Certificate</span>
+</div>
+</div>
+<!-- Automated TDS & Invoicing Schedule -->
+<div class="p-space-sm bg-canvas-slate rounded-lg space-y-1">
+<div class="font-caption-bold text-caption-bold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">receipt_long</span>
+<span>B2B Tax Invoice Schedule</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+              Automated monthly credit notes &amp; 18% GST invoices generated on the 1st of every calendar month.
+            </p>
+</div>
+</div>
+<!-- Security & Damage Escrow Reserve -->
+<div class="bg-inverse-surface text-inverse-on-surface p-space-lg rounded-xl shadow-md space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary-container">shield_with_heart</span>
+<h4 class="font-headline-sm text-[16px] text-inverse-on-surface font-bold">Bilateral Escrow Bond</h4>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-secondary-container">ACTIVE</span>
+</div>
+<div class="space-y-space-xs">
+<div class="font-caption text-caption text-outline-variant">Dynamic Host Indemnity Cover</div>
+<div class="font-code-mono font-bold text-headline-sm text-inverse-on-surface">₹10,00,000</div>
+<p class="font-caption text-caption text-outline-variant leading-relaxed">
+              Maintained with RentSecure Trust Vault under ICICI Custody Escrow. Automatically covers catastrophic gear loss during transit or rental window.
+            </p>
+</div>
+<div class="pt-2 flex items-center justify-between font-caption text-caption text-secondary-container">
+<span>Escrow Bond ID: RS-IND-8840</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+<!-- Renter Feedback Highlights Mini Bento -->
+<div class="bg-surface-card p-space-lg rounded-xl shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<h4 class="font-headline-sm text-[16px] text-on-surface font-bold">Host Score Audit</h4>
+<span class="font-caption text-caption text-trust-verified font-bold">100% Positive</span>
+</div>
+<div class="space-y-space-xs pt-1">
+<div class="flex justify-between items-center text-caption font-caption">
+<span class="text-text-secondary">Sensor Cleanliness</span>
+<span class="font-code-mono text-on-surface font-semibold">5.0 / 5.0</span>
+</div>
+<div class="w-full bg-surface-subtle h-1.5 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full w-full"></div>
+</div>
+</div>
+<div class="space-y-space-xs pt-1">
+<div class="flex justify-between items-center text-caption font-caption">
+<span class="text-text-secondary">Punctuality at SafeHub</span>
+<span class="font-code-mono text-on-surface font-semibold">4.9 / 5.0</span>
+</div>
+<div class="w-full bg-surface-subtle h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[98%]"></div>
+</div>
+</div>
+<div class="space-y-space-xs pt-1">
+<div class="flex justify-between items-center text-caption font-caption">
+<span class="text-text-secondary">Dispute Zero Frequency</span>
+<span class="font-code-mono text-on-surface font-semibold">142 Rentals</span>
+</div>
+<div class="w-full bg-surface-subtle h-1.5 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full w-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Persistent Floating Action Rail -->
+<div class="sticky bottom-4 z-30 bg-surface-card/95 backdrop-blur-md p-space-md rounded-xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm text-text-secondary">
+<span class="material-symbols-outlined text-[20px] text-trust-verified">verified</span>
+<span class="font-caption text-caption">All changes update public search indexing within 60 seconds. Escrow terms remain legally locked.</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="px-space-md py-space-sm rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-body-base-medium text-body-base-medium transition-colors">
+          Discard Draft
+        </button>
+<button class="px-space-lg py-space-sm rounded-lg bg-primary hover:bg-brand-primary-hover text-on-primary font-body-base-medium text-body-base-medium shadow transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+<span>Publish Storefront Changes</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

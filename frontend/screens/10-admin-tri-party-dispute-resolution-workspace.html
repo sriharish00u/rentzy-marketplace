@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Console - Escrow &amp; Fleet</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "primary": "#003c90", "on-surface-variant": "#434653", "brand-primary-light": "#EBF3FF", "surface-container-high": "#e2e7ff", "surface-variant": "#dae2fd", "on-primary-fixed": "#001945", "error-container": "#ffdad6", "on-primary-container": "#bcceff", "trust-verified": "#059669", "border-focus": "#3B82F6", "on-secondary-container": "#005c70", "background": "#faf8ff", "tertiary-fixed-dim": "#c3c0ff", "text-muted": "#94A3B8", "trust-warning": "#D97706", "surface-dim": "#d2d9f4", "trust-danger-bg": "#FEF2F2", "surface": "#faf8ff", "inverse-primary": "#b0c6ff", "primary-container": "#0f52ba", "surface-bright": "#faf8ff", "inverse-surface": "#283044", "on-secondary-fixed-variant": "#004e5f", "surface-container": "#eaedff", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "text-secondary": "#475569", "secondary-fixed": "#b3ebff", "primary-fixed": "#d9e2ff", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-container": "#463cdd", "on-secondary": "#ffffff", "trust-warning-bg": "#FFFBEB", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#4cd6fb", "outline": "#737784", "surface-tint": "#1d59c1", "on-surface": "#131b2e", "border-default": "#E2E8F0", "primary-fixed-dim": "#b0c6ff", "tertiary": "#2c16c6", "trust-verified-bg": "#ECFDF5", "on-error-container": "#93000a", "on-tertiary-container": "#ccc9ff", "brand-primary-hover": "#0B3C8A", "on-primary-fixed-variant": "#00419c", "tertiary-fixed": "#e2dfff", "inverse-on-surface": "#eef0ff", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#0f0069", "on-secondary-fixed": "#001f27", "canvas-slate": "#F8FAFC", "trust-danger": "DC2626", "secondary-container": "#50d9fe", "on-background": "#131b2e", "secondary": "#00677d", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-subtle": "#F1F5F9", "on-tertiary-fixed-variant": "#3323cc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "gutter-desktop": "2rem" }, "fontFamily": { "caption-bold": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "display-hero-mobile": ["Inter"], "body-lg": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "headline-sm": ["Inter"], "caption": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-card z-50 flex flex-col py-space-md shadow-[1px_0_8px_rgba(15,23,42,0.04)]"><div class="px-space-lg mb-space-lg flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-brand-primary-light text-primary font-bold"><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="owner-fleet-dashboard" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">dashboard</span>Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-vault" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">shield</span>Escrow Vault</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="my-bookings" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">receipt_long</span>Active Rentals</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="inspection-manager" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">compare</span>Inspection Loupe</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-subtle hover:text-on-surface transition-colors font-body-base-medium text-body-base-medium" data-path="dispute-resolution" href="#"><span class="material-symbols-outlined mr-3 text-[20px]">gavel</span>Dispute Center</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-surface-subtle border border-border-default"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold mb-1"><span class="material-symbols-outlined text-[16px]">verified</span>Tier 1 Host</div><p class="font-caption text-caption text-text-secondary">Trust Score: <strong class="font-code-mono text-on-surface">98/100</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/90 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-sm"><span class="font-body-base-medium text-body-base-medium text-text-secondary">Workspace:</span><span class="font-body-base-medium text-body-base-medium font-semibold text-on-surface">Asset &amp; Custody Console</span></div><div class="flex items-center gap-space-md"><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-primary"></span></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Fleet Manager</span><span class="font-code-mono-sm text-code-mono-sm text-trust-verified leading-none">Bonded • Active</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Operational Breadcrumb & Case Master Header -->
+<div class="w-full bg-surface-card px-space-lg py-space-md shadow-sm">
+<div class="flex flex-col gap-space-xs max-w-[1400px] mx-auto">
+<!-- Breadcrumb Bar -->
+<div class="flex items-center gap-space-xs font-caption text-caption text-text-muted">
+<span>Admin Workspace</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span>Escrow &amp; Dispute Resolution</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold">Case #DISP-84921</span>
+<span class="ml-auto flex items-center gap-space-xs bg-error-container/40 text-error font-caption-bold text-caption-bold px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+          SLA: 14h 22m remaining for Binding Ruling
+        </span>
+</div>
+<!-- Main Title & Status Badges -->
+<div class="flex flex-wrap items-center justify-between gap-space-md mt-1">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-md text-headline-md text-on-surface">
+              Dispute Mediation: Sony Alpha A7 IV Kit
+            </h1>
+<span class="font-code-mono-sm text-code-mono-sm bg-surface-container text-on-surface-variant px-2 py-1 rounded">
+              SN: 882104-EU
+            </span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-0.5">
+            Rental Reference: <span class="font-code-mono-sm text-code-mono-sm font-semibold text-on-surface">#RS-94821</span> • SafeHub Bandra West Depot • Category: Cinematic Glass &amp; Full-Frame Bodies
+          </p>
+</div>
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-caption-bold text-caption-bold">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+            CRITICAL CLAIM - IN MEDIATION
+          </span>
+<span class="flex items-center gap-1 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[15px]">lock</span>
+            ESCROW FROZEN: ₹5,000.00
+          </span>
+</div>
+</div>
+<!-- Parties Involved Identity Ribbon -->
+<div class="mt-space-sm pt-space-sm bg-surface-subtle p-space-sm rounded-xl flex flex-wrap items-center justify-between gap-space-md">
+<!-- Host Profile -->
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-brand-primary-light flex items-center justify-center font-headline-sm text-headline-sm text-primary font-bold">
+            VS
+          </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Vikram Sharma</span>
+<span class="font-caption-bold text-caption-bold text-text-muted">(Owner/Host)</span>
+<span class="flex items-center text-trust-verified bg-trust-verified-bg px-1.5 py-0.2 rounded font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[13px] mr-0.5">verified</span>
+                Host Trust 98/100
+              </span>
+</div>
+<span class="font-caption text-caption text-text-secondary">
+              142 completed rentals • 0.7% historical dispute rate • Mumbai Fleet Partner
+            </span>
+</div>
+</div>
+<!-- Adversarial Icon -->
+<div class="hidden md:flex items-center px-space-md">
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted bg-surface-card px-2 py-1 rounded-full shadow-sm">
+            VS CLAIM
+          </span>
+</div>
+<!-- Renter Profile -->
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-headline-sm text-headline-sm text-on-surface-variant font-bold">
+            AR
+          </div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Alex Rivera</span>
+<span class="font-caption-bold text-caption-bold text-text-muted">(Renter)</span>
+<span class="flex items-center text-primary-container bg-brand-primary-light px-1.5 py-0.2 rounded font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[13px] mr-0.5">verified_user</span>
+                Renter Trust 96/100
+              </span>
+</div>
+<span class="font-caption text-caption text-text-secondary">
+              8 completed rentals • Digilocker KYC Verified • Commercial Cinematographer
+            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Multi-Column Cockpit Workspace -->
+<div class="max-w-[1400px] w-full mx-auto px-space-lg py-space-lg flex flex-col lg:flex-row gap-space-lg items-start">
+<!-- LEFT & CENTER DUAL PANE: Evidence, Optical Loupe Diff, Chronology (Takes 8 cols of 12) -->
+<div class="flex-1 w-full space-y-space-lg">
+<!-- Top Overview & Claims Synthesis Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex flex-wrap items-start justify-between gap-space-sm pb-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-trust-warning text-[22px]">report_problem</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Claim Analysis: Physical Coating Degradation</h2>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5">
+              Raised on Return Physical Inspection • Nov 24, 2024 at 20:30 IST • Attending Agent: SafeHub Tech #SH-409
+            </p>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-text-muted">Total Deposit in Neutral Custody</span>
+<div class="font-code-mono text-headline-sm text-tertiary font-bold">₹5,000.00</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md bg-surface-subtle p-space-md rounded-xl">
+<!-- Host Position -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-primary flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">campaign</span> Host's Claim
+              </span>
+<span class="font-code-mono-sm text-code-mono-sm font-bold text-error">Requested: ₹3,800.00</span>
+</div>
+<p class="font-body-base text-body-base text-on-surface">
+              "Front Lens Element Coating Scratches &amp; Rear Display Bezel Dent. Discovered upon protective UV filter removal during return checkout. Sensor was exposed to fine grit."
+            </p>
+<div class="flex items-center gap-2 text-primary font-caption-bold text-caption-bold pt-1">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+<span>Sony Authorized Service Invoice Attached (Est #SC-8924)</span>
+</div>
+</div>
+<!-- Renter Defense -->
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">shield</span> Renter's Defense
+              </span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Deposit Forfeit: Disputed</span>
+</div>
+<p class="font-body-base text-body-base text-on-surface">
+              "Item was received with pre-existing hairline micro-mark on filter ring; lens glass itself is undamaged; display hairline was present at pickup in low light. I shot with an ND filter attached all day."
+            </p>
+<div class="flex items-center gap-2 text-trust-verified font-caption-bold text-caption-bold pt-1">
+<span class="material-symbols-outlined text-[16px]">videocam</span>
+<span>BTS Timestamped Footage Submitted (4K 50fps EXIF)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- CENTERPIECE: Dual-Evidence 6-Angle Synchronous Loupe Comparison -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">compare</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">6-Angle Forensic Loupe Comparison</h2>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+              Synchronized 100% crop inspection canvas • Optical diff detection enabled
+            </p>
+</div>
+<!-- Confidence Badge -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-trust-verified-bg text-trust-verified">
+<span class="material-symbols-outlined text-[18px]">csv</span>
+<div class="flex flex-col">
+<span class="font-code-mono-sm text-code-mono-sm font-bold leading-none">98.7% Optical Confidence</span>
+<span class="font-caption text-[10px] leading-tight">AI Vision Engine Diff Confirmed</span>
+</div>
+</div>
+</div>
+<!-- 6 Angle Selector Navigation -->
+<div class="flex flex-wrap gap-space-xs pt-1">
+<button class="px-3 py-2 rounded-lg bg-primary text-on-primary font-caption-bold text-caption-bold flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">lens</span>
+            1. Front Lens Glass (Disputed)
+            <span class="w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button class="px-3 py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">sensor_occupied</span>
+            2. Sensor &amp; E-Mount
+          </button>
+<button class="px-3 py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">tv</span>
+            3. Rear LCD Screen (Disputed)
+            <span class="w-2 h-2 rounded-full bg-trust-warning"></span>
+</button>
+<button class="px-3 py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">pixel_4_4xl_4a_5_5a_5g</span>
+            4. Tripod Base &amp; Plate
+          </button>
+<button class="px-3 py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">qr_code</span>
+            5. Serial Plate &amp; Port Caps
+          </button>
+<button class="px-3 py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-caption-bold text-caption-bold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[16px]">luggage</span>
+            6. Kit Case &amp; Hood
+          </button>
+</div>
+<!-- Split Side-by-Side Photographic Viewer -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-2">
+<!-- Left Box: Baseline Handover -->
+<div class="flex flex-col bg-surface-subtle rounded-xl overflow-hidden shadow-sm">
+<div class="px-space-md py-space-sm bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-trust-verified text-[18px]">verified</span>
+<span class="font-caption-bold text-caption-bold text-on-surface">Handover Baseline</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Nov 22, 10:15 AM</span>
+</div>
+<!-- Image Container with Macro Lens View -->
+<div class="relative w-full h-80 bg-inverse-surface overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="Ultra-sharp extreme macro photograph of pristine Sony camera front optical glass element under clean neutral daylight studio lighting. The glass coating is immaculate with emerald and sapphire anti-reflective sheen, perfectly clean without scratches, dust, or blemishes. Digital inspection grid overlay in translucent white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMYVUheyW4dnNF5JMCovwsp9Gb5PSBBU7d-ZNRnt_LeBG5tanXdLC0rqgakI7vGUmRBCcDQbC01QT6FWQYpewjWRnLzozGhVLxEwMLLk5IMLWSsvOTQ6iV6BE4T_1d9Mxk8j7jOXomH6ymet3r9ZYRfyAhC3sHBikVR7lojTGPsg7aSOqhgIbDfI_SaiaqsF-H4OhxoaIgabpEDWnAAMfkME5fIibhvsvgqfT9xCY"/>
+<!-- Baseline Verification HUD Watermark -->
+<div class="absolute bottom-3 left-3 bg-inverse-surface/85 backdrop-blur-md px-2.5 py-1.5 rounded-lg text-inverse-on-surface font-code-mono-sm text-code-mono-sm flex flex-col gap-0.5">
+<span class="text-trust-verified font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span> SHA-256: 7f83b1..9c
+                </span>
+<span class="text-[11px] text-text-muted">EXIF 2024-11-22 10:14:48 | 0 Faults</span>
+</div>
+<div class="absolute top-3 right-3 bg-trust-verified text-on-primary font-caption-bold text-caption-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+                Certified Clean
+              </div>
+</div>
+<div class="p-space-md space-y-1">
+<div class="flex justify-between items-center text-on-surface font-caption-bold text-caption-bold">
+<span>SafeHub Handover Station #04</span>
+<span class="font-code-mono-sm text-trust-verified">Zero Scratches Logged</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+                Digital handover signed via dual-party OTP. High-lumen spectral scanner detected 99.4% optical clarity on front coating.
+              </p>
+</div>
+</div>
+<!-- Right Box: Return Disputed Evidence -->
+<div class="flex flex-col bg-surface-subtle rounded-xl overflow-hidden shadow-sm">
+<div class="px-space-md py-space-sm bg-error-container/50 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[18px]">warning</span>
+<span class="font-caption-bold text-caption-bold text-on-error-container">Return Evidence (SafeHub Check-In)</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-on-error-container">Nov 24, 08:30 PM</span>
+</div>
+<!-- Image Container with Damage Highlight -->
+<div class="relative w-full h-80 bg-inverse-surface overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" data-alt="High-resolution close-up macro photograph of a camera lens glass with three visible distinct 4mm coating abrasions and scratches on the outer perimeter of the glass under clinical spotlighting. Red forensic bounding boxes draw attention to the damaged coating layers. Professional arbitration inspection view." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKf61sKBupOg9jszO1OKb_peBjj2jUhyMZB0EXwROcg2kMVI_4phajrauU_7rN7Bc2jhtOZidbNSi1TNEoTTK5kNXMTOYS4hbpLBonZz2ye_8pDGU7YvLfcrTj1oDXEmeTDlkun8zD6XiiCd9AFd1z_jb2niKPo5hXXp_PfNAH0_46NhkCrtohdzW_8otChTVA_Y8_zWQY5P71iqH8gjov3J3NzF0h-zIifrc5Ofw"/>
+<!-- Red Pinpoint Callout Box (Damaged Optical Element) -->
+<div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 border-2 border-dashed border-error rounded-full animate-pulse bg-error/10 pointer-events-none flex items-center justify-center">
+<span class="bg-error text-on-error font-caption-bold text-[10px] px-1.5 py-0.5 rounded shadow">
+                  3x 4mm Abrasions
+                </span>
+</div>
+<!-- Return Evidence HUD Watermark -->
+<div class="absolute bottom-3 left-3 bg-inverse-surface/85 backdrop-blur-md px-2.5 py-1.5 rounded-lg text-inverse-on-surface font-code-mono-sm text-code-mono-sm flex flex-col gap-0.5">
+<span class="text-error font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">pin_drop</span> Bandra SafeHub Depot
+                </span>
+<span class="text-[11px] text-text-muted">EXIF 2024-11-24 20:31:02 | Anomaly Detected</span>
+</div>
+<div class="absolute top-3 right-3 bg-error text-on-error font-caption-bold text-caption-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">cancel</span>
+                Damage Confirmed
+              </div>
+</div>
+<div class="p-space-md space-y-1">
+<div class="flex justify-between items-center text-on-surface font-caption-bold text-caption-bold">
+<span>SafeHub Return Gate Intake</span>
+<span class="font-code-mono-sm text-error">3 Coating Gouges Found</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">
+                Physical scratch depth estimated at 12 microns. Breaks through multi-coating layer. Host verified with UV light tool.
+              </p>
+</div>
+</div>
+</div>
+<!-- AI Optical Diff Diagnostic Banner -->
+<div class="p-space-md rounded-xl bg-trust-warning-bg text-on-surface flex items-start gap-space-md shadow-sm">
+<div class="w-10 h-10 rounded-full bg-trust-warning/20 flex-shrink-0 flex items-center justify-center text-trust-warning">
+<span class="material-symbols-outlined text-[24px]">psychology</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between flex-wrap">
+<h4 class="font-body-base-medium text-body-base-medium font-bold text-on-surface">
+                Automated Optical Loupe Diff Diagnostics Engine
+              </h4>
+<span class="font-code-mono-sm text-code-mono-sm font-semibold text-trust-warning">Confidence: 98.7% MATCH</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+              "Structural pixel delta confirms <strong class="text-on-surface">new surface abrasions introduced during the 48-hour active rental period</strong>. Zero matching signatures exist on the authenticated Baseline Handover ledger (SHA-256 valid). Damage depth exceeds normal wear-and-tear thresholds; requires front optical element polish or element block replacement."
+            </p>
+<div class="mt-2 flex items-center gap-4 text-xs font-code-mono-sm text-text-muted">
+<span>Diff Engine: v4.2.1-optic</span>
+<span>•</span>
+<span>Spectral Variance: 34.2%</span>
+<span>•</span>
+<span>Photometric Vector Match: Confirmed Negative for Baseline</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Tri-Party Chronological Auditable Timeline -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">history_edu</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Tri-Party Audit Trail &amp; Evidence Ledger</h2>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted bg-surface-subtle px-2.5 py-1 rounded">5 Recorded Actions</span>
+</div>
+<!-- Chronology Items -->
+<div class="relative pl-6 space-y-space-md before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-border-default">
+<!-- Event 1: Baseline Handover -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-trust-verified flex items-center justify-center ring-4 ring-surface-card">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</span>
+<div class="flex-1 bg-surface-subtle p-space-md rounded-xl">
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface">Handover Verification &amp; Baseline Lock</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Nov 22, 10:15 AM IST</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                Handover OTP verified at Bandra SafeHub. 6 certified baseline photos recorded and cryptographically signed by renter Alex Rivera. Security escrow hold of ₹5,000.00 confirmed active.
+              </p>
+</div>
+</div>
+<!-- Event 2: Return Check-in Discrepancy -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-error flex items-center justify-center ring-4 ring-surface-card">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</span>
+<div class="flex-1 bg-surface-subtle p-space-md rounded-xl">
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-body-base-medium text-body-base-medium font-bold text-error">Return Inspection Discrepancy Flagged</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Nov 24, 08:30 PM IST</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                During return check-in at Bandra SafeHub, Host Vikram Sharma identified 3 coating scratches on front optical element. Renter Alex Rivera disagreed, citing pre-existing wear. Deposit payout frozen by Escrow Smart-Lock.
+              </p>
+</div>
+</div>
+<!-- Event 3: Sony Authorized Service Quote -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-card">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</span>
+<div class="flex-1 bg-surface-subtle p-space-md rounded-xl space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface">Sony Authorized Service Estimate Submitted</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Nov 24, 09:15 PM IST</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary">
+                Host uploaded authorized estimate from Sony Service Center (Santa Cruz). Invoice #SC-8924:
+              </p>
+<div class="bg-surface-card p-space-sm rounded-lg font-code-mono-sm text-code-mono-sm text-on-surface space-y-1">
+<div class="flex justify-between">
+<span>Front Element Optical Recalibration &amp; Recoating:</span>
+<span>₹3,200.00</span>
+</div>
+<div class="flex justify-between text-text-muted">
+<span>Express Priority Diagnostic Bench Fee:</span>
+<span>₹600.00</span>
+</div>
+<div class="flex justify-between font-bold pt-1 text-primary">
+<span>Total Host Claim:</span>
+<span>₹3,800.00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 4: Renter Counter-Statement & B-Roll -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary-container flex items-center justify-center ring-4 ring-surface-card">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</span>
+<div class="flex-1 bg-surface-subtle p-space-md rounded-xl">
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface">Renter Counter-Statement &amp; Raw Stills</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Nov 24, 11:20 PM IST</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                Alex Rivera uploaded 3 high-resolution BTS production stills demonstrating screw-on Matte Box usage. Contends that the diagnostic bench fee (₹600) is non-standard and that coating abrasion does not impede f/2.8 optical throughput.
+              </p>
+</div>
+</div>
+<!-- Event 5: Automated Loupe Report -->
+<div class="relative flex items-start gap-space-md">
+<span class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-tertiary flex items-center justify-center ring-4 ring-surface-card">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+</span>
+<div class="flex-1 bg-surface-subtle p-space-md rounded-xl">
+<div class="flex flex-wrap items-center justify-between gap-1">
+<span class="font-body-base-medium text-body-base-medium font-bold text-tertiary">Admin Automated Forensic Loupe Report Generated</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Nov 25, 08:00 AM IST</span>
+</div>
+<p class="font-body-base text-body-base text-text-secondary mt-1">
+                System matched macro pixels across both timestamps. Case docket escalated to Tier-3 Arbitration Officer for final escrow release disbursement order.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT STICKY ACTION PANEL: Binding Escrow Allocation & Arbitration Console (Takes 4 cols of 12) -->
+<div class="w-full lg:w-[420px] lg:sticky lg:top-20 space-y-space-md">
+<!-- Main Escrow Settlement Form Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-md space-y-space-md">
+<!-- Header -->
+<div class="pb-space-sm space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-tertiary flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">balance</span>
+              Binding Escrow Settlement
+            </span>
+<span class="font-code-mono-sm text-code-mono-sm bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded font-bold">
+              Neutral Escrow (RBI Reg.)
+            </span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Escrow Deposit Allocation Ruling</h3>
+<p class="font-caption text-caption text-text-secondary">
+            Execute binding distribution from locked deposit vault. Ruling is irrevocable once signed by Admin key.
+          </p>
+</div>
+<!-- Available Collateral Banner -->
+<div class="bg-surface-subtle p-space-md rounded-xl flex items-center justify-between">
+<div>
+<span class="font-caption text-caption text-text-muted block">Total Available Escrow Hold</span>
+<span class="font-code-mono text-headline-sm text-on-surface font-bold">₹5,000.00</span>
+</div>
+<div class="text-right">
+<span class="font-caption-bold text-caption-bold text-trust-verified flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span> 100% Held
+            </span>
+<span class="font-caption text-caption text-text-muted">Account #ESC-40992</span>
+</div>
+</div>
+<!-- Interactive Allocation Sliders & Splits -->
+<div class="space-y-space-md pt-1">
+<!-- Slider Component -->
+<div class="space-y-2">
+<div class="flex justify-between items-center font-body-base-medium text-body-base-medium">
+<label class="text-on-surface font-semibold flex items-center gap-1.5" for="splitSlider">
+<span class="material-symbols-outlined text-primary text-[18px]">handshake</span>
+                Owner Compensation Split
+              </label>
+<span class="font-code-mono text-primary font-bold" id="sliderValueText">₹3,200.00</span>
+</div>
+<input class="w-full h-2 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" id="splitSlider" max="5000" min="0" oninput="updateArbitration(this.value)" step="50" type="range" value="3200"/>
+<div class="flex justify-between font-caption text-caption text-text-muted">
+<span>₹0 (Full Refund)</span>
+<span>₹2,500 (50/50 Split)</span>
+<span>₹5,000 (Total Forfeit)</span>
+</div>
+</div>
+<!-- Breakdown Line Items -->
+<div class="space-y-2.5 bg-surface-subtle p-space-md rounded-xl font-body-base text-body-base">
+<!-- Owner Line Item -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+<span class="text-on-surface font-medium">Disburse to Owner (Vikram):</span>
+</div>
+<span class="font-code-mono font-bold text-primary" id="ownerDisburseAmount">₹3,200.00</span>
+</div>
+<p class="font-caption text-caption text-text-secondary pl-4">
+              Covers certified Sony Authorized repair invoice #SC-8924 for optical recoating.
+            </p>
+<div class="h-px bg-border-default"></div>
+<!-- Renter Line Item -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-trust-verified"></span>
+<span class="text-on-surface font-medium">Refund to Renter (Alex):</span>
+</div>
+<span class="font-code-mono font-bold text-trust-verified" id="renterRefundAmount">₹1,800.00</span>
+</div>
+<p class="font-caption text-caption text-text-secondary pl-4">
+              Instant refund to source UPI ID (alex.rivera@okaxis). Zero platform penalty deducted.
+            </p>
+<div class="h-px bg-border-default"></div>
+<!-- Host Shield Guarantee -->
+<div class="flex items-center justify-between text-text-muted">
+<span class="text-caption">Platform Host Shield Guarantee:</span>
+<span class="font-code-mono-sm text-code-mono-sm">₹0.00 (Unused)</span>
+</div>
+</div>
+<!-- Trust Score Impact Preview -->
+<div class="p-space-sm bg-surface-container rounded-xl space-y-1.5">
+<span class="font-caption-bold text-caption-bold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary">insights</span>
+              Post-Ruling Trust Rating Projection
+            </span>
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<div class="bg-surface-card p-2 rounded-lg flex flex-col">
+<span class="font-caption text-caption text-text-muted">Renter Trust Score</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-mono text-body-base-medium font-bold text-on-surface">96</span>
+<span class="material-symbols-outlined text-[14px] text-error">trending_down</span>
+<span class="font-code-mono text-body-base-medium font-bold text-trust-warning">91/100</span>
+</div>
+<span class="font-caption text-[10px] text-text-secondary mt-0.5">Minor damage record</span>
+</div>
+<div class="bg-surface-card p-2 rounded-lg flex flex-col">
+<span class="font-caption text-caption text-text-muted">Owner Trust Score</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-code-mono text-body-base-medium font-bold text-trust-verified">98</span>
+<span class="material-symbols-outlined text-[14px] text-trust-verified">check</span>
+<span class="font-code-mono text-body-base-medium font-bold text-trust-verified">98/100</span>
+</div>
+<span class="font-caption text-[10px] text-text-secondary mt-0.5">Verified claim integrity</span>
+</div>
+</div>
+</div>
+<!-- Mandatory Arbitration Legal Finding Justification -->
+<div class="space-y-1.5">
+<label class="font-caption-bold text-caption-bold text-on-surface flex items-center justify-between">
+<span>Arbitration Findings &amp; Legal Justification:</span>
+<span class="text-text-muted font-normal text-caption">Mandatory for Payout</span>
+</label>
+<textarea class="w-full text-caption font-body-base p-space-sm rounded-lg bg-surface-subtle text-on-surface focus:outline-none focus:ring-2 focus:ring-primary" rows="3">Verified optical comparison shows indisputable new coating damage not present in Baseline #SHA-7f83b1. Sony Authorized repair quote validated at ₹3,200. Express bench fee disallowance applied. Remainder ₹1,800 returned immediately to renter Alex Rivera.</textarea>
+</div>
+<!-- Ruling Trigger Actions -->
+<div class="space-y-2 pt-2">
+<!-- Primary Execution Button -->
+<button class="w-full py-3 px-space-md rounded-xl bg-primary hover:bg-brand-primary-hover text-on-primary font-body-base-medium text-body-base-medium font-bold shadow-md transition-all flex items-center justify-center gap-2" id="executeRulingBtn" onclick="confirmSettlement()">
+<span class="material-symbols-outlined text-[20px]">gavel</span>
+<span id="executeBtnText">Execute Settlement (₹3,200 / ₹1,800)</span>
+</button>
+<!-- Secondary Actions -->
+<button class="w-full py-2.5 px-space-md rounded-xl bg-surface-subtle hover:bg-surface-container text-on-surface font-body-base-medium text-body-base-medium transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">csv</span>
+              Request Re-inspection at Central SafeHub Lab
+            </button>
+<button class="w-full py-2 px-space-md rounded-xl text-error hover:bg-error-container/30 font-caption-bold text-caption-bold transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+              Escalate to Human Appeals Board
+            </button>
+</div>
+</div>
+</div>
+<!-- Quick Inspection Guide / Policy Reference Card -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm space-y-2">
+<div class="flex items-center gap-1.5 text-on-surface font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-primary text-[18px]">policy</span>
+          RentSecure Arbitration Doctrine § 14.3
+        </div>
+<p class="font-caption text-caption text-text-secondary leading-relaxed">
+          Coating scratches exceeding 2mm on optical glass elements do not constitute fair wear-and-tear. Repair costs are capped at OEM Authorized quote value. Express bench diagnostic surcharges are excluded unless prior host authorization exists.
+        </p>
+<div class="flex items-center justify-between pt-1 text-[11px] font-code-mono-sm text-text-muted">
+<span>SafeHub Protocol Rev 2.4</span>
+<a class="text-primary hover:underline" href="#">Read Escrow Bylaws →</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive JavaScript for Split Adjustment & Live Calculations -->
+<script>
+    function updateArbitration(val) {
+      const ownerVal = parseInt(val, 10);
+      const renterVal = 5000 - ownerVal;
+      
+      const formatCurrency = (amt) => '₹' + amt.toLocaleString('en-IN') + '.00';
+
+      document.getElementById('sliderValueText').innerText = formatCurrency(ownerVal);
+      document.getElementById('ownerDisburseAmount').innerText = formatCurrency(ownerVal);
+      document.getElementById('renterRefundAmount').innerText = formatCurrency(renterVal);
+      
+      document.getElementById('executeBtnText').innerText = 
+        `Execute Settlement (${formatCurrency(ownerVal)} / ${formatCurrency(renterVal)})`;
+    }
+
+    function confirmSettlement() {
+      const btn = document.getElementById('executeRulingBtn');
+      const originalHtml = btn.innerHTML;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span> Releasing Escrow Vault Funds...`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check_circle</span> Binding Order Dispatched!`;
+        btn.classList.remove('bg-primary');
+        btn.classList.add('bg-trust-verified');
+      }, 1200);
+    }
+  </script>
+</div></main></div></body></html>

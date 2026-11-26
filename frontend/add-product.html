@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Add Product - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['customer','owner','admin']);
+UI.pageShell('add', `<section class="page"><div class="container" style="max-width:900px"><div class="card"><div class="card-body">
+  <h1 class="section-title">List a product</h1><p class="section-sub" style="margin-bottom:20px">Add your asset for rental. Admin approval is required before it appears publicly.</p>
+  <div id="msg"></div>
+  <form id="form">
+    <div class="form-grid"><div class="field"><label>Title</label><input class="input" name="title" required></div><div class="field"><label>Category</label><select class="input" name="category_id" id="category_id"></select></div></div>
+    <div class="field"><label>Description</label><textarea class="input" name="description" rows="4" required></textarea></div>
+    <div class="form-grid"><div class="field"><label>Location</label><input class="input" name="location" required></div><div class="field"><label>Image URL</label><input class="input" name="image" placeholder="https://..."></div></div>
+    <div class="form-grid"><div class="field"><label>Price/day (₹)</label><input class="input" name="price_day" type="number" min="0" required></div><div class="field"><label>Deposit (₹)</label><input class="input" name="deposit" type="number" min="0" required></div></div>
+    <div class="form-grid"><div class="field"><label>Price/hour (₹)</label><input class="input" name="price_hour" type="number" min="0" value="0"></div><div class="field"><label>Price/week (₹)</label><input class="input" name="price_week" type="number" min="0" value="0"></div></div>
+    <button class="btn btn-primary" type="submit">Submit product</button>
+  </form>
+</div></div></div></section>`);
+(async()=>{const cats=await API.get('/api/categories'); const sel=document.getElementById('category_id'); sel.innerHTML=cats.map(c=>`<option value="${c.id}" data-name="${c.name}">${c.name}</option>`).join('');})();
+document.getElementById('form').onsubmit=async(e)=>{e.preventDefault(); const msg=document.getElementById('msg'); msg.innerHTML='';
+ const fd=new FormData(e.target); const payload=Object.fromEntries(fd.entries());
+ const sel=document.getElementById('category_id'); payload.category_name=sel.selectedOptions[0]?.dataset.name||''; payload.images=payload.image?[payload.image]:[]; delete payload.image;
+ ['price_day','price_hour','price_week','deposit'].forEach(k=>payload[k]=Number(payload[k]||0));
+ try{await API.post('/api/products',payload); msg.innerHTML='<div class="alert alert-success">Product submitted. Waiting for admin approval.</div>'; e.target.reset();}
+ catch(err){msg.innerHTML=`<div class="alert alert-danger">${err.message}</div>`}
+};
+</script></body></html>

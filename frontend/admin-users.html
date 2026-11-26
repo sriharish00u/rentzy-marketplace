@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Users & KYC Verification - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+<style>
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+.modal-card { background: var(--surface); border-radius: 12px; width: 100%; max-width: 780px; max-height: 90vh; overflow-y: auto; padding: 24px; box-shadow: var(--shadow-lg); }
+</style>
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+
+<div id="kycModal" class="modal-overlay">
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:16px">
+      <h2 style="font-weight:700;margin:0" id="m-title">Review User & KYC</h2>
+      <button class="btn btn-outline btn-sm" onclick="closeModal()">✕ Close</button>
+    </div>
+    <div id="modal-content">Loading user dossier...</div>
+  </div>
+</div>
+
+<script src="/assets/js/api.js?v=3"></script><script src="/assets/js/auth.js?v=3"></script><script src="/assets/js/ui.js?v=3"></script>
+<script>
+Auth.requireAuth(['admin']);
+UI.pageShell('users', `
+<section class="page"><div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <div>
+      <h1 class="section-title">User KYC & Governance</h1>
+      <p class="section-sub">Comprehensive audit of all registered accounts, listed inventory, rental history, KYC status, and security controls.</p>
+    </div>
+    <div style="display:flex;gap:8px">
+      <input type="text" id="user-filter" placeholder="Filter by name, email, role..." class="input" style="width:260px" oninput="filterUsers()">
+    </div>
+  </div>
+
+  <div id="alert-zone" style="margin-top:16px"></div>
+
+  <div class="card" style="margin-top:16px"><div class="card-body table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Role</th>
+          <th>KYC Status</th>
+          <th>Account</th>
+          <th>Listings</th>
+          <th>Bookings</th>
+          <th>Governance Actions</th>
+        </tr>
+      </thead>
+      <tbody id="rows"><tr><td colspan="7"><div class="empty">Loading user directory...</div></td></tr></tbody>
+    </table>
+  </div></div>
+</div></section>
+`);
+
+let allUsers = [];
+
+async function loadUsers() {
+  try {
+    allUsers = await API.get('/api/users');
+    renderUsers(allUsers);
+  } catch (e) {
+    UI.error(document.getElementById('rows'), e);
+  }
+}
+
+function renderUsers(items) {
+  if (!items.length) {
+    document.getElementById('rows').innerHTML = '<tr><td colspan="7"><div class="empty">No matching users found.</div></td></tr>';
+    return;
+  }
+  document.getElementById('rows').innerHTML = items.map(u => `
+    <tr>
+      <td>
+        <strong style="color:var(--text-primary)">${u.name}</strong><br>
+        <span class="mono text-secondary" style="font-size:12px">${u.email}</span><br>
+        <span class="text-secondary" style="font-size:11px">${u.phone || 'No phone'}</span>
+      </td>
+      <td><span class="badge badge-info">${u.role}</span></td>
+      <td>${UI.badge(u.kyc_status || 'pending')}</td>
+      <td>${u.blocked ? UI.badge('blocked') : UI.badge('active')}</td>
+      <td class="mono font-bold">${u.products_count || 0}</td>
+      <td class="mono font-bold">${u.bookings_count || 0}</td>
+      <td>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn btn-sm btn-primary" onclick="reviewUser('${u.id}')">Audit & Review KYC</button>
+          <button class="btn btn-sm ${u.blocked ? 'btn-outline' : 'btn-danger'}" onclick="toggleBlock('${u.id}', ${!u.blocked})">${u.blocked ? 'Unblock' : 'Block'}</button>
+          <button class="btn btn-sm btn-outline" style="color:var(--danger);border-color:var(--danger)" onclick="deleteUserRole('${u.id}', '${u.name}')">Delete</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function filterUsers() {
+  const q = document.getElementById('user-filter').value.toLowerCase().trim();
+  if (!q) return renderUsers(allUsers);
+  renderUsers(allUsers.filter(u => 
+    (u.name || '').toLowerCase().includes(q) ||
+    (u.email || '').toLowerCase().includes(q) ||
+    (u.role || '').toLowerCase().includes(q) ||
+    (u.kyc_status || '').toLowerCase().includes(q)
+  ));
+}
+
+async function reviewUser(userId) {
+  document.getElementById('kycModal').style.display = 'flex';
+  const c = document.getElementById('modal-content');
+  c.innerHTML = '<div class="empty">Loading comprehensive dossier...</div>';
+
+  try {
+    const data = await API.get('/api/users/' + userId);
+    document.getElementById('m-title').textContent = `Audit: ${data.name}`;
+
+    c.innerHTML = `
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--surface-subtle);padding:16px;border-radius:8px">
+        <div>
+          <div><strong>Email:</strong> <span class="mono">${data.email}</span></div>
+          <div><strong>Phone:</strong> ${data.phone || 'N/A'}</div>
+          <div><strong>Role:</strong> ${data.role}</div>
+          <div><strong>Trust Score:</strong> <span class="badge badge-success">${data.trust_score || 50}/100</span></div>
+        </div>
+        <div>
+          <div><strong>KYC Status:</strong> ${UI.badge(data.kyc_status || 'pending')}</div>
+          <div><strong>Account Status:</strong> ${data.blocked ? UI.badge('blocked') : UI.badge('active')}</div>
+          <div><strong>Member Since:</strong> ${data.created_at ? new Date(data.created_at).toLocaleDateString() : 'N/A'}</div>
+          <div><strong>Bio:</strong> <em>${data.bio || 'No bio submitted'}</em></div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;display:flex;gap:10px;align-items:center;padding:12px;border:1px solid var(--border);border-radius:8px;background:white">
+        <strong style="margin-right:8px">Admin KYC Decision:</strong>
+        <button class="btn btn-sm btn-primary" onclick="setKYC('${data.id}', 'verified')">✓ Approve KYC (Verified)</button>
+        <button class="btn btn-sm btn-outline" onclick="setKYC('${data.id}', 'pending')">⏱ Mark Pending</button>
+        <button class="btn btn-sm btn-danger" onclick="setKYC('${data.id}', 'rejected')">✕ Reject KYC</button>
+      </div>
+
+      <h4 style="margin-top:20px;font-weight:700">Listed Products (${data.products?.length || 0})</h4>
+      <div class="table-wrap" style="max-height:160px;overflow-y:auto">
+        <table class="table" style="font-size:12px">
+          <thead><tr><th>Item</th><th>Category</th><th>Day Rate</th><th>Deposit</th><th>Status</th></tr></thead>
+          <tbody>
+            ${(data.products || []).map(p => `<tr><td><strong>${p.title}</strong></td><td>${p.category_name}</td><td class="mono">${UI.fmtINR(p.pricing?.day)}</td><td class="mono">${UI.fmtINR(p.deposit)}</td><td>${UI.badge(p.status)}</td></tr>`).join('') || '<tr><td colspan="5"><div class="empty">No products listed by this user.</div></td></tr>'}
+          </tbody>
+        </table>
+      </div>
+
+      <h4 style="margin-top:20px;font-weight:700">Rental Activity (${(data.as_customer_bookings?.length || 0) + (data.as_owner_bookings?.length || 0)} bookings)</h4>
+      <div class="table-wrap" style="max-height:160px;overflow-y:auto">
+        <table class="table" style="font-size:12px">
+          <thead><tr><th>Role</th><th>Product</th><th>Dates</th><th>Status</th><th>Total</th></tr></thead>
+          <tbody>
+            ${(data.as_customer_bookings || []).map(b => `<tr><td><span class="badge badge-info">Renter</span></td><td>${b.product_title}</td><td class="mono">${b.start_date} → ${b.end_date}</td><td>${UI.badge(b.status)}</td><td class="mono">${UI.fmtINR(b.pricing_breakdown?.total)}</td></tr>`).join('')}
+            ${(data.as_owner_bookings || []).map(b => `<tr><td><span class="badge badge-success">Host</span></td><td>${b.product_title}</td><td class="mono">${b.start_date} → ${b.end_date}</td><td>${UI.badge(b.status)}</td><td class="mono">${UI.fmtINR(b.pricing_breakdown?.total)}</td></tr>`).join('')}
+            ${(!data.as_customer_bookings?.length && !data.as_owner_bookings?.length) ? '<tr><td colspan="5"><div class="empty">No bookings found.</div></td></tr>' : ''}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } catch (err) {
+    c.innerHTML = `<div class="alert alert-danger">${err.message || 'Error loading user dossier'}</div>`;
+  }
+}
+
+function closeModal() {
+  document.getElementById('kycModal').style.display = 'none';
+}
+
+async function setKYC(id, status) {
+  try {
+    await API.patch('/api/users/' + id + '/verify', { kyc_status: status });
+    reviewUser(id);
+    loadUsers();
+  } catch (e) { alert(e.message); }
+}
+
+async function toggleBlock(id, blocked) {
+  try {
+    await API.patch('/api/users/' + id + '/block', { blocked });
+    loadUsers();
+  } catch (e) { alert(e.message); }
+}
+
+async function deleteUserRole(id, name) {
+  if (!confirm(`Are you sure you want to permanently delete user "${name}"? This removes their account profile.`)) return;
+  try {
+    await API.del('/api/users/' + id);
+    loadUsers();
+  } catch (e) { alert(e.message); }
+}
+
+loadUsers();
+</script></body></html>

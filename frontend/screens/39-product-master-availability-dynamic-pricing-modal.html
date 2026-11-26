@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>RentSecure - Verified Rental Marketplace</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "error": "#ba1a1a", "primary": "#003c90", "on-surface-variant": "#434653", "brand-primary-light": "#EBF3FF", "surface-container-high": "#e2e7ff", "surface-variant": "#dae2fd", "on-primary-fixed": "#001945", "error-container": "#ffdad6", "on-primary-container": "#bcceff", "trust-verified": "#059669", "border-focus": "#3B82F6", "on-secondary-container": "#005c70", "background": "#faf8ff", "tertiary-fixed-dim": "#c3c0ff", "text-muted": "#94A3B8", "trust-warning": "#D97706", "surface-dim": "#d2d9f4", "trust-danger-bg": "#FEF2F2", "surface": "#faf8ff", "inverse-primary": "#b0c6ff", "primary-container": "#0f52ba", "surface-bright": "#faf8ff", "inverse-surface": "#283044", "on-secondary-fixed-variant": "#004e5f", "surface-container": "#eaedff", "outline-variant": "#c3c6d5", "on-tertiary": "#ffffff", "text-secondary": "#475569", "secondary-fixed": "#b3ebff", "primary-fixed": "#d9e2ff", "on-primary": "#ffffff", "on-error": "#ffffff", "tertiary-container": "#463cdd", "on-secondary": "#ffffff", "trust-warning-bg": "#FFFBEB", "surface-container-lowest": "#ffffff", "secondary-fixed-dim": "#4cd6fb", "outline": "#737784", "surface-tint": "#1d59c1", "on-surface": "#131b2e", "border-default": "#E2E8F0", "primary-fixed-dim": "#b0c6ff", "tertiary": "#2c16c6", "trust-verified-bg": "#ECFDF5", "on-error-container": "#93000a", "on-tertiary-container": "#ccc9ff", "brand-primary-hover": "#0B3C8A", "on-primary-fixed-variant": "#00419c", "tertiary-fixed": "#e2dfff", "inverse-on-surface": "#eef0ff", "surface-card": "#FFFFFF", "on-tertiary-fixed": "#0f0069", "on-secondary-fixed": "#001f27", "canvas-slate": "#F8FAFC", "trust-danger": "DC2626", "secondary-container": "#50d9fe", "on-background": "#131b2e", "secondary": "#00677d", "surface-container-low": "#f2f3ff", "surface-container-highest": "#dae2fd", "surface-subtle": "#F1F5F9", "on-tertiary-fixed-variant": "#3323cc" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "gutter": "1rem", "margin": "1rem", "space-lg": "1.5rem", "margin-desktop": "3rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "gutter-desktop": "2rem" }, "fontFamily": { "caption-bold": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "display-hero-mobile": ["Inter"], "body-lg": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "headline-sm": ["Inter"], "caption": ["Inter"], "body-base": ["Inter"] }, "fontSize": { "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)]"><div class="h-20 max-w-7xl mx-auto px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="home" href="#"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></a><div class="hidden xl:flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-subtle text-on-surface cursor-pointer hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-primary text-[20px]">location_on</span><div class="flex flex-col text-left"><span class="font-caption text-caption text-text-secondary leading-none">Deliver to</span><span class="font-caption-bold text-caption-bold text-on-surface flex items-center gap-1 leading-tight">Mumbai 400001<span class="material-symbols-outlined text-[16px]">expand_more</span></span></div></div></div><div class="hidden md:flex flex-1 max-w-2xl items-center bg-surface-subtle rounded-xl p-1 shadow-[0_1px_3px_rgba(15,23,42,0.04)]"><div class="flex items-center gap-space-xs px-space-md py-space-xs text-on-surface border-r border-border-default cursor-pointer"><span class="font-body-base-medium text-body-base-medium">All Categories</span><span class="material-symbols-outlined text-[18px] text-text-secondary">keyboard_arrow_down</span></div><div class="flex-1 flex items-center px-space-md gap-space-xs"><span class="material-symbols-outlined text-text-muted text-[20px]">search</span><input class="w-full bg-transparent text-on-surface font-body-base text-body-base placeholder-text-muted focus:outline-none" placeholder="Search camera gear, EVs, precision tools..." type="text"/></div><div class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-card rounded-lg text-on-surface shadow-[0_1px_2px_rgba(15,23,42,0.05)] cursor-pointer"><span class="material-symbols-outlined text-primary text-[18px]">calendar_month</span><span class="font-code-mono-sm text-code-mono-sm font-semibold">Select Dates</span></div></div><div class="flex items-center gap-space-md"><nav class="hidden lg:flex items-center gap-space-sm" data-active-classes="bg-brand-primary-light text-primary font-bold rounded-lg"><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface-variant hover:text-on-surface transition-colors" data-path="explore-marketplace" href="#">Explore</a><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface-variant hover:text-on-surface transition-colors" data-path="my-bookings" href="#">My Bookings</a><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-primary hover:bg-brand-primary-light hover:text-brand-primary-hover rounded-lg transition-colors font-semibold" data-path="list-item" href="#">List Item</a></nav><div class="flex items-center gap-space-xs"><a aria-label="Wishlist" class="relative p-space-sm text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-subtle transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[24px]">favorite</span><span class="absolute top-1 right-1 bg-primary text-on-primary font-caption-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center leading-none">3</span></a><a aria-label="Notifications" class="relative p-space-sm text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-subtle transition-colors" data-path="notifications" href="#"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-trust-verified"></span></a></div><div class="flex items-center gap-space-xs pl-space-xs"><div class="relative cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><span class="absolute -bottom-0.5 -right-0.5 bg-trust-verified text-on-primary rounded-full p-0.5 flex items-center justify-center" title="Identity &amp; Deposit Verified"><span class="material-symbols-outlined text-[10px]">verified</span></span></div></div></div></div></header><main class="w-full pt-20 bg-canvas-slate flex-1"><div class="flex flex-col w-full">
+<!-- Dynamic Price & Availability Backdrop Section -->
+<section class="max-w-7xl mx-auto px-gutter md:px-gutter-desktop py-space-lg w-full">
+<!-- Breadcrumb & Status Telemetry Bar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm mb-space-md text-on-surface">
+<div class="flex items-center gap-space-xs font-caption text-caption text-text-secondary">
+<a class="hover:text-primary transition-colors" href="#">Marketplace</a>
+<span>/</span>
+<a class="hover:text-primary transition-colors" href="#">Cinema Gear</a>
+<span>/</span>
+<span class="text-on-surface font-semibold">Sony FX3 Cinema Line (#PRD-8821)</span>
+<span>/</span>
+<span class="text-primary font-caption-bold">Live Inventory Schedule</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-space-xs px-space-sm py-1 bg-trust-verified-bg text-trust-verified rounded-full text-caption-bold font-caption-bold">
+<span class="w-2 h-2 rounded-full bg-trust-verified animate-pulse"></span>
+<span>Escrow Vault Operational</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-1 bg-surface-subtle text-text-secondary rounded-full font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[14px] text-text-muted">schedule</span>
+<span>Synced 2m ago</span>
+</div>
+</div>
+</div>
+<!-- Main Inspection Container Card -->
+<div class="bg-surface-card rounded-xl shadow-[0_12px_32px_-8px_rgba(15,23,42,0.08)] overflow-hidden">
+<!-- 1. Product Context Header Bar -->
+<div class="bg-surface-subtle p-space-md md:p-space-lg flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="relative w-20 h-20 rounded-lg overflow-hidden bg-surface-container flex-shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Studio product photograph of a Sony FX3 full frame cinema line camera body with top handle XLR audio unit attached, crisp dark slate industrial background, clean studio rim lighting, mint optical finish, 8k resolution commercial capture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXoDf-bc2HOarcUQJfj9BZaUYXNgSKoBTWLHUXXjhGuucSI_MhrdCj1yMm-kbMOMutZz7eAXGIUCO2eQLpqgMovz4Sit6JXVLBpr2POTo-7kNR26Fcik3jiqLZOAZ5f1Zq7Skv2UZHE-r3Pm0VaJiYIw93MruQOXOCwAcqDPxWEM8z6BzdlwzF8-Nd4STaMJtNHEdTePF79BIeD4HtJyByTkGa5O0w1X8G6w-iXAg"/>
+<span class="absolute bottom-1 right-1 bg-surface-card/90 text-primary rounded px-1 py-0.5 font-code-mono-sm text-[10px] font-bold leading-none">4K FX</span>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface tracking-tight">Sony FX3 Cinema Camera Body</span>
+<span class="font-code-mono-sm text-code-mono-sm px-space-xs py-0.5 bg-brand-primary-light text-primary rounded font-semibold">#PRD-8821</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm font-caption text-caption text-text-secondary">
+<span class="flex items-center gap-1 font-code-mono-sm text-code-mono-sm font-medium">
+<span class="material-symbols-outlined text-[15px] text-text-muted">qr_code_2</span>
+                SN: #8493102-MUM
+              </span>
+<span>•</span>
+<span class="px-2 py-0.5 bg-surface-card text-on-surface font-caption-bold rounded shadow-xs flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified"></span>
+                Grade: Mint 9.8/10
+              </span>
+<span>•</span>
+<span class="flex items-center gap-1 text-trust-verified font-caption-bold">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Physical Serial Audited
+              </span>
+</div>
+</div>
+</div>
+<!-- Metric & Rate Block -->
+<div class="flex flex-wrap sm:flex-nowrap items-center gap-space-md w-full lg:w-auto justify-between lg:justify-end">
+<!-- Demand Meter -->
+<div class="bg-surface-card px-space-md py-space-sm rounded-lg shadow-sm flex items-center gap-space-sm">
+<div class="relative w-11 h-11 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-subtle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-trust-warning" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="72, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<span class="absolute font-code-mono-sm text-[11px] font-bold text-on-surface">72%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface leading-tight">High Demand</span>
+<span class="font-caption text-[11px] text-text-secondary">72% booked Dec 2024</span>
+</div>
+</div>
+<!-- Base Rate Tag -->
+<div class="bg-brand-primary-light px-space-md py-space-sm rounded-lg text-left sm:text-right">
+<span class="font-caption text-caption text-text-secondary block">Base Rental Rate</span>
+<div class="flex items-baseline gap-1">
+<span class="font-code-mono text-headline-sm text-primary font-bold">₹3,800</span>
+<span class="font-caption text-caption text-text-secondary">/ day</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Calendar & Financial Breakdown Grid -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg p-space-md md:p-space-lg">
+<!-- Left: Dual-Month Calendar Suite (7 Columns) -->
+<div class="xl:col-span-7 flex flex-col space-y-space-md">
+<!-- Month Control Nav -->
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px]">date_range</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Select Rental Duration</h2>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="w-8 h-8 rounded-lg bg-surface-subtle hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="font-caption-bold text-caption-bold px-space-xs text-text-secondary">Q4 2024 - Q1 2025</span>
+<button class="w-8 h-8 rounded-lg bg-surface-subtle hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Status Legend -->
+<div class="p-space-sm bg-surface-subtle rounded-lg flex flex-wrap items-center justify-between gap-x-space-md gap-y-space-xs text-caption font-caption">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-trust-verified inline-block"></span>
+<span class="text-on-surface">Available (₹3.8k)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-trust-warning inline-block"></span>
+<span class="text-on-surface">Peak / Weekend (+15%)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-3 h-3 rounded bg-trust-danger-bg text-trust-danger flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="text-text-secondary">Reserved</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-surface-dim opacity-75 inline-block [background-image:repeating-linear-gradient(45deg,#94a3b8_0,#94a3b8_2px,transparent_0,transparent_4px)]"></span>
+<span class="text-text-secondary">Maintenance</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-3 rounded bg-primary inline-block"></span>
+<span class="text-primary font-semibold">Your Selection</span>
+</div>
+</div>
+<!-- Dual Calendar View (Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Month 1: December 2024 -->
+<div class="bg-surface-subtle/50 p-space-sm rounded-xl">
+<div class="flex items-center justify-between mb-space-sm px-1">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">December 2024</span>
+<span class="font-code-mono-sm text-[11px] text-text-secondary uppercase">28 Days Active</span>
+</div>
+<!-- Day Headings -->
+<div class="grid grid-cols-7 text-center font-caption-bold text-[11px] text-text-muted mb-space-xs">
+<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+</div>
+<!-- Month 1 Cells -->
+<div class="grid grid-cols-7 gap-1 text-center font-body-base">
+<!-- Nov trailing days -->
+<div class="h-12 p-0.5 rounded opacity-25 flex flex-col items-center justify-center text-text-muted">
+<span class="text-[12px]">25</span>
+</div>
+<div class="h-12 p-0.5 rounded opacity-25 flex flex-col items-center justify-center text-text-muted">
+<span class="text-[12px]">26</span>
+</div>
+<div class="h-12 p-0.5 rounded opacity-25 flex flex-col items-center justify-center text-text-muted">
+<span class="text-[12px]">27</span>
+</div>
+<div class="h-12 p-0.5 rounded opacity-25 flex flex-col items-center justify-center text-text-muted">
+<span class="text-[12px]">28</span>
+</div>
+<div class="h-12 p-0.5 rounded opacity-25 flex flex-col items-center justify-center text-text-muted">
+<span class="text-[12px]">29</span>
+</div>
+<div class="h-12 p-0.5 rounded opacity-25 flex flex-col items-center justify-center text-text-muted">
+<span class="text-[12px]">30</span>
+</div>
+<!-- Dec 1 - Weekend Peak -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">1</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<!-- Dec 2-4: Maintenance Recalibration -->
+<div class="h-12 p-0.5 rounded bg-surface-dim/40 [background-image:repeating-linear-gradient(45deg,#c3c6d5_0,#c3c6d5_2px,transparent_0,transparent_4px)] flex flex-col items-center justify-center cursor-not-allowed">
+<span class="text-[12px] text-text-muted font-medium">2</span>
+<span class="font-code-mono-sm text-[8px] text-text-muted">CALIB</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-dim/40 [background-image:repeating-linear-gradient(45deg,#c3c6d5_0,#c3c6d5_2px,transparent_0,transparent_4px)] flex flex-col items-center justify-center cursor-not-allowed">
+<span class="text-[12px] text-text-muted font-medium">3</span>
+<span class="font-code-mono-sm text-[8px] text-text-muted">CALIB</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">4</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">5</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<!-- Dec 6 to Dec 10: SELECTED RENTAL WINDOW -->
+<div class="h-12 p-0.5 rounded-l bg-primary text-on-primary flex flex-col items-center justify-center shadow-xs">
+<span class="text-[12px] font-bold">6</span>
+<span class="font-code-mono-sm text-[9px] text-primary-fixed">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 bg-primary text-on-primary flex flex-col items-center justify-center shadow-xs">
+<span class="text-[12px] font-bold">7</span>
+<span class="font-code-mono-sm text-[9px] text-primary-fixed">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 bg-primary text-on-primary flex flex-col items-center justify-center shadow-xs">
+<span class="text-[12px] font-bold">8</span>
+<span class="font-code-mono-sm text-[9px] text-primary-fixed">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 bg-primary text-on-primary flex flex-col items-center justify-center shadow-xs">
+<span class="text-[12px] font-bold">9</span>
+<span class="font-code-mono-sm text-[9px] text-primary-fixed">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded-r bg-primary text-on-primary flex flex-col items-center justify-center shadow-xs">
+<span class="text-[12px] font-bold">10</span>
+<span class="font-code-mono-sm text-[8px] text-primary-fixed uppercase">Ret 11A</span>
+</div>
+<!-- Dec 11-14: Standard Availability -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">11</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">12</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">13</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">14</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">15</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<!-- Dec 16-20: Booked by other verified renter -->
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">16</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">Rented</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">17</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">Rented</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">18</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">Rented</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">19</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">Rented</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">20</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">Rented</span>
+</div>
+<!-- Dec 21-25: Available -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">21</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">22</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">23</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">24</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">25</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">26</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">27</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">28</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">29</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">30</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">Rented</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-trust-danger-bg text-trust-danger flex flex-col items-center justify-center cursor-not-allowed">
+<div class="flex items-center gap-0.5">
+<span class="text-[11px] font-medium">31</span>
+<span class="material-symbols-outlined text-[10px]">lock</span>
+</div>
+<span class="font-code-mono-sm text-[8px] uppercase">NYE</span>
+</div>
+</div>
+</div>
+<!-- Month 2: January 2025 -->
+<div class="bg-surface-subtle/50 p-space-sm rounded-xl">
+<div class="flex items-center justify-between mb-space-sm px-1">
+<span class="font-body-base-medium text-body-base-medium text-on-surface font-bold">January 2025</span>
+<span class="font-code-mono-sm text-[11px] text-text-secondary uppercase">Open For Bookings</span>
+</div>
+<!-- Day Headings -->
+<div class="grid grid-cols-7 text-center font-caption-bold text-[11px] text-text-muted mb-space-xs">
+<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+</div>
+<!-- Month 2 Cells -->
+<div class="grid grid-cols-7 gap-1 text-center font-body-base">
+<!-- Leading Empty Cells -->
+<div class="h-12"></div>
+<div class="h-12"></div>
+<!-- Jan 1 - Holiday Peak -->
+<div class="h-12 p-0.5 rounded bg-trust-warning-bg flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">1</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">2</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">3</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">4</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">5</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<!-- Jan 6 - 12 -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">6</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">7</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">8</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">9</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">10</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">11</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">12</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<!-- Jan 13 - 19 -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">13</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">14</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">15</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">16</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">17</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">18</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">19</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<!-- Jan 20 - 26 -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">20</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">21</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">22</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">23</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">24</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">25</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">26</span>
+<span class="font-code-mono-sm text-[9px] text-trust-warning font-semibold">₹4.3k</span>
+</div>
+<!-- Jan 27 - 31 -->
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">27</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">28</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">29</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">30</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+<div class="h-12 p-0.5 rounded bg-surface-card flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container">
+<span class="text-[12px] font-medium text-on-surface">31</span>
+<span class="font-code-mono-sm text-[9px] text-trust-verified font-semibold">₹3.8k</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Policy Rule Pill Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<div class="bg-surface-subtle p-space-sm rounded-lg flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">timelapse</span>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Min Duration</p>
+<p class="font-caption text-caption text-text-secondary">1 Day (24-hour block)</p>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-sm rounded-lg flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">verified</span>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Max Continuous</p>
+<p class="font-caption text-caption text-text-secondary">14 Days (Re-escrow for 14+)</p>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-sm rounded-lg flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-trust-verified text-[18px] mt-0.5">hourglass_bottom</span>
+<div>
+<p class="font-caption-bold text-caption-bold text-on-surface">Grace Window</p>
+<p class="font-caption text-caption text-text-secondary">60 Mins Locker Overrun</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Dynamic Pricing & Escrow Shield Breakdown (5 Columns) -->
+<div class="xl:col-span-5 flex flex-col justify-between bg-surface-subtle/70 rounded-xl p-space-md lg:p-space-lg shadow-sm">
+<div>
+<!-- Selection Summary Header Card -->
+<div class="bg-surface-card p-space-md rounded-xl shadow-xs mb-space-md">
+<div class="flex items-center justify-between pb-space-xs mb-space-xs">
+<span class="font-caption text-caption text-text-secondary uppercase tracking-wider font-semibold">Active Selection</span>
+<span class="px-space-xs py-0.5 bg-brand-primary-light text-primary font-code-mono-sm text-code-mono-sm font-bold rounded">4 Continuous Days</span>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Dec 06 – Dec 10</span>
+<p class="font-caption text-caption text-text-secondary">Pickup: Fri 10:00 AM • Return: Tue 11:00 AM</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+</div>
+</div>
+<!-- Escrow Trust Callout Banner -->
+<div class="bg-brand-primary-light p-space-md rounded-xl mb-space-md flex items-start gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">security</span>
+</div>
+<div>
+<span class="font-body-base-medium text-body-base-medium text-primary font-bold">ICICI Institutional Escrow Custody</span>
+<p class="font-caption text-caption text-text-secondary leading-snug mt-0.5">
+                  Rental funds and your deposit remain sequestered until the 2-hour digital optical condition check is verified at return.
+                </p>
+</div>
+</div>
+<!-- Dynamic Pricing Itemized Ledger -->
+<div class="space-y-space-sm pb-space-sm">
+<div class="flex items-center justify-between text-body-base font-body-base">
+<span class="text-on-surface">2 Standard Days (Thu, Mon)</span>
+<span class="font-code-mono text-code-mono font-medium text-on-surface">₹7,600</span>
+</div>
+<div class="flex items-center justify-between text-body-base font-body-base">
+<span class="text-on-surface">2 Weekend Surge Days (Fri, Sat @ +15%)</span>
+<span class="font-code-mono text-code-mono font-medium text-on-surface">₹8,740</span>
+</div>
+<div class="flex items-center justify-between text-caption font-caption text-text-secondary pl-space-sm">
+<span>Subtotal Rental Days (4 Days)</span>
+<span class="font-code-mono-sm text-code-mono-sm">₹16,340</span>
+</div>
+<!-- Multi-day Discount Line -->
+<div class="flex items-center justify-between text-body-base font-body-base text-trust-verified bg-trust-verified-bg p-space-xs rounded-lg">
+<div class="flex items-center gap-1 font-medium">
+<span class="material-symbols-outlined text-[16px]">percent</span>
+<span>Multi-Day Tier Discount (4+ Days: 10%)</span>
+</div>
+<span class="font-code-mono text-code-mono font-bold">-₹1,634</span>
+</div>
+<!-- Locker Logistics -->
+<div class="flex items-center justify-between text-body-base font-body-base">
+<div class="flex items-center gap-1 text-on-surface">
+<span>SafeHub Locker Access (Bandra Kurla)</span>
+<span class="material-symbols-outlined text-[15px] text-text-muted" title="Automated contactless secure drop &amp; loupe chamber">info</span>
+</div>
+<span class="font-code-mono text-code-mono font-medium text-trust-verified">FREE</span>
+</div>
+<!-- Security Deposit Component -->
+<div class="flex items-center justify-between text-body-base font-body-base bg-surface-card p-space-sm rounded-lg shadow-xs">
+<div>
+<div class="flex items-center gap-1.5 font-body-base-medium text-body-base-medium text-on-surface font-semibold">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance</span>
+<span>Refundable Escrow Deposit</span>
+</div>
+<span class="font-caption text-caption text-text-secondary block">Auto-refunded 120 mins post return log</span>
+</div>
+<span class="font-code-mono text-body-base font-bold text-primary">₹15,000</span>
+</div>
+</div>
+</div>
+<!-- Total Due Today & Call to Actions -->
+<div class="mt-space-md pt-space-md bg-surface-card p-space-md rounded-xl shadow-sm">
+<div class="flex items-end justify-between mb-space-md">
+<div>
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider block">Total To Lock Dates</span>
+<span class="font-caption text-caption text-text-secondary">Includes ₹15,000 fully refundable collateral</span>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-headline-lg text-primary font-bold leading-none">₹29,706</span>
+<span class="font-caption-bold text-[11px] text-trust-verified block mt-0.5">₹14,706 Net Rental Cost</span>
+</div>
+</div>
+<!-- Action Buttons Container -->
+<div class="flex flex-col gap-space-xs">
+<button class="w-full bg-primary hover:bg-brand-primary-hover active:scale-[0.99] text-on-primary font-body-base-medium text-body-base-medium py-3 px-space-md rounded-lg shadow-md transition-all flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span>Apply Dates &amp; Continue to Checkout (Dec 06 – Dec 10)</span>
+</button>
+<button class="w-full bg-surface-subtle hover:bg-surface-container active:scale-[0.99] text-on-surface font-body-base-medium text-body-base-medium py-2.5 px-space-md rounded-lg transition-colors flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">calendar_view_week</span>
+<span>Select Flexible Alternate Dates</span>
+</button>
+</div>
+<div class="flex items-center justify-center gap-space-xs mt-space-sm text-text-muted font-caption text-[11px]">
+<span class="material-symbols-outlined text-[14px] text-trust-verified">verified_user</span>
+<span>Cancellation penalty free up to 48 hours prior to handover</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-surface-card shadow-[0_-1px_6px_rgba(15,23,42,0.03)]"><div class="w-full bg-surface-subtle py-space-md"><div class="max-w-7xl mx-auto px-gutter-desktop grid grid-cols-1 md:grid-cols-3 gap-space-md"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">shield_locked</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">100% Escrow Protection</p><p class="font-caption text-caption text-text-secondary">Rental funds held securely until post-inspection check</p></div></div><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">verified_user</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">KYC &amp; Product Verified</p><p class="font-caption text-caption text-text-secondary">Serial number inspection, legal ID, and tamper audits</p></div></div><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">gavel</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Resolution Guarantee</p><p class="font-caption text-caption text-text-secondary">Objective digital condition logs &amp; instant mediation</p></div></div></div></div><div class="max-w-7xl mx-auto px-gutter-desktop py-space-xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-space-lg"><div class="col-span-2"><div class="flex items-center gap-space-sm mb-space-md"><img alt="RentSecure Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold">RentSecure</span></div><p class="font-body-base text-body-base text-text-secondary max-w-sm mb-space-md">The verified peer-to-peer and B2C infrastructure for high-value equipment, mobility, and property leasing. Backed by institutional collateral custody.</p><div class="flex items-center gap-space-xs text-text-muted font-caption text-caption"><span class="material-symbols-outlined text-[16px] text-trust-verified">lock</span>ISO 27001 Certified • Encrypted Telemetry</div></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Rental Categories</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Cinema &amp; Audio Gear</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Electric Mobility &amp; EVs</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Precision Industrial Tools</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Medical &amp; Lab Tech</a></li><li><a class="hover:text-primary transition-colors" data-path="explore-marketplace" href="#">Premium Event Tech</a></li></ul></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Trust &amp; Escrow</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Escrow Custody Model</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Condition Logs &amp; Loupe</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Dispute Arbitration</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Security Deposit Shield</a></li><li><a class="hover:text-primary transition-colors" data-path="dispute-resolution" href="#">Insurance Coverage Tiers</a></li></ul></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Platform</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="list-item" href="#">Owner Protection Pact</a></li><li><a class="hover:text-primary transition-colors" data-path="my-bookings" href="#">Identity Verification (KYC)</a></li><li><a class="hover:text-primary transition-colors" data-path="home" href="#">API &amp; Commercial Fleet</a></li><li><a class="hover:text-primary transition-colors" data-path="home" href="#">Safety Guidelines</a></li><li><a class="hover:text-primary transition-colors" data-path="home" href="#">Support Center</a></li></ul></div></div><div class="border-t border-border-default"><div class="max-w-7xl mx-auto px-gutter-desktop py-space-md flex flex-col sm:flex-row items-center justify-between text-text-secondary font-caption text-caption gap-space-sm"><p>© 2025 RentSecure Technologies Inc. All escrow transactions legally bonded and monitored.</p><div class="flex items-center gap-space-lg"><a class="hover:text-primary transition-colors" href="#">Terms of Custody</a><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">Audit Reports</a></div></div></div></footer></body></html>

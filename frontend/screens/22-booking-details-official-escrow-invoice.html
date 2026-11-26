@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>RentSecure - Verified Rental Marketplace</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-container": "#eaedff", "canvas-slate": "#F8FAFC", "secondary-fixed": "#b3ebff", "surface-container-lowest": "#ffffff", "trust-verified": "#059669", "on-background": "#131b2e", "surface-container-high": "#e2e7ff", "primary-container": "#0f52ba", "surface-tint": "#1d59c1", "on-secondary-fixed-variant": "#004e5f", "on-surface-variant": "#434653", "on-error": "#ffffff", "on-primary-fixed": "#001945", "trust-danger": "#DC2626", "on-tertiary": "#ffffff", "secondary-container": "#50d9fe", "surface-container-highest": "#dae2fd", "on-error-container": "#93000a", "background": "#faf8ff", "text-secondary": "#475569", "tertiary": "#2c16c6", "surface-card": "#FFFFFF", "trust-warning": "#D97706", "outline": "#737784", "trust-verified-bg": "#ECFDF5", "tertiary-fixed": "#e2dfff", "primary-fixed": "#d9e2ff", "brand-primary-hover": "#0B3C8A", "on-primary-container": "#bcceff", "inverse-on-surface": "#eef0ff", "inverse-surface": "#283044", "on-secondary-fixed": "#001f27", "text-muted": "#94A3B8", "on-primary-fixed-variant": "#00419c", "on-secondary": "#ffffff", "on-tertiary-fixed-variant": "#3323cc", "surface-dim": "#d2d9f4", "brand-primary-light": "#EBF3FF", "trust-danger-bg": "#FEF2F2", "error": "#ba1a1a", "outline-variant": "#c3c6d5", "primary-fixed-dim": "#b0c6ff", "on-tertiary-fixed": "#0f0069", "on-secondary-container": "#005c70", "on-tertiary-container": "#ccc9ff", "tertiary-container": "#463cdd", "surface-container-low": "#f2f3ff", "surface": "#faf8ff", "surface-subtle": "#F1F5F9", "border-default": "#E2E8F0", "trust-warning-bg": "#FFFBEB", "on-surface": "#131b2e", "inverse-primary": "#b0c6ff", "primary": "#003c90", "surface-bright": "#faf8ff", "secondary-fixed-dim": "#4cd6fb", "on-primary": "#ffffff", "tertiary-fixed-dim": "#c3c0ff", "surface-variant": "#dae2fd", "secondary": "#00677d", "border-focus": "#3B82F6", "error-container": "#ffdad6" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "1rem", "gutter": "1rem", "gutter-desktop": "2rem", "gutter-tablet": "1.5rem", "space-sm": "0.5rem", "space-xl": "2rem", "margin-tablet": "2rem", "space-lg": "1.5rem", "space-md": "1rem", "margin-desktop": "3rem" }, "fontFamily": { "headline-lg": ["Inter"], "body-base-medium": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base": ["Inter"], "display-hero": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-sm": ["Inter"], "display-hero-mobile": ["Inter"], "headline-md": ["Inter"], "code-mono-sm": ["JetBrains Mono"], "caption": ["Inter"], "body-lg": ["Inter"], "caption-bold": ["Inter"] }, "fontSize": { "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }] } } } }</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)]"><div class="h-20 max-w-7xl mx-auto px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="customer-home-explore" href="#"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">RentSecure</span></a><div class="hidden xl:flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-subtle text-on-surface cursor-pointer hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-primary text-[20px]">location_on</span><div class="flex flex-col text-left"><span class="font-caption text-caption text-text-secondary leading-none">Deliver to</span><span class="font-caption-bold text-caption-bold text-on-surface flex items-center gap-1 leading-tight">Mumbai 400001<span class="material-symbols-outlined text-[16px]">expand_more</span></span></div></div></div><div class="hidden md:flex flex-1 max-w-2xl items-center bg-surface-subtle rounded-xl p-1 shadow-[0_1px_3px_rgba(15,23,42,0.04)]"><div class="flex items-center gap-space-xs px-space-md py-space-xs text-on-surface border-r border-border-default cursor-pointer"><span class="font-body-base-medium text-body-base-medium">All Categories</span><span class="material-symbols-outlined text-[18px] text-text-secondary">keyboard_arrow_down</span></div><div class="flex-1 flex items-center px-space-md gap-space-xs"><span class="material-symbols-outlined text-text-muted text-[20px]">search</span><input class="w-full bg-transparent text-on-surface font-body-base text-body-base placeholder-text-muted focus:outline-none" placeholder="Search camera gear, EVs, precision tools..." type="text"/></div><div class="flex items-center gap-space-xs px-space-md py-space-xs bg-surface-card rounded-lg text-on-surface shadow-[0_1px_2px_rgba(15,23,42,0.05)] cursor-pointer"><span class="material-symbols-outlined text-primary text-[18px]">calendar_month</span><span class="font-code-mono-sm text-code-mono-sm font-semibold">Select Dates</span></div></div><div class="flex items-center gap-space-md"><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="bg-brand-primary-light text-primary font-semibold rounded-lg"><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface-variant hover:text-on-surface transition-colors" data-path="customer-home-explore" href="#">Explore</a><a class="px-space-md py-space-sm font-body-base-medium text-body-base-medium text-on-surface-variant hover:text-on-surface transition-colors" data-path="booking-details-tax-invoice" href="#">My Bookings</a></nav><a class="inline-flex items-center justify-center px-space-md py-space-sm font-body-base-medium text-body-base-medium font-semibold text-on-primary bg-primary hover:bg-brand-primary-hover rounded-lg transition-colors shadow-sm" data-path="booking-confirmation" href="#">List Item</a><div class="flex items-center gap-space-xs"><a aria-label="Wishlist" class="relative p-space-sm text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-subtle transition-colors" data-path="wishlist" href="#"><span class="material-symbols-outlined text-[24px]">favorite</span><span class="absolute top-1 right-1 bg-primary text-on-primary font-caption-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center leading-none">3</span></a><a aria-label="Notifications" class="relative p-space-sm text-on-surface-variant hover:text-on-surface rounded-full hover:bg-surface-subtle transition-colors" data-path="notifications-escrow-action-center" href="#"><span class="material-symbols-outlined text-[24px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-trust-verified"></span></a></div><div class="flex items-center gap-space-xs pl-space-xs"><div class="relative cursor-pointer"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><span class="absolute -bottom-0.5 -right-0.5 bg-trust-verified text-on-primary rounded-full p-0.5 flex items-center justify-center" title="Identity &amp; Deposit Verified"><span class="material-symbols-outlined text-[10px]">verified</span></span></div></div></div></div></header><main class="w-full pt-20 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Utility Context Bar (Breadcrumb & Live Status Hub) -->
+<section class="w-full bg-surface-card shadow-sm py-space-md mb-space-lg">
+<div class="max-w-7xl mx-auto px-gutter-desktop flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<!-- Breadcrumb Navigation -->
+<nav class="flex items-center gap-space-xs text-text-secondary font-caption text-caption">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="material-symbols-outlined text-[14px] text-text-muted">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">My Bookings</a>
+<span class="material-symbols-outlined text-[14px] text-text-muted">chevron_right</span>
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface font-semibold">RS-94821</span>
+</nav>
+<!-- Booking Identifiers & High-Trust Status Badge -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight flex items-center gap-space-xs">
+            Order <span class="font-code-mono text-primary font-bold">#RS-94821</span>
+</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="w-2 h-2 rounded-full bg-trust-verified animate-pulse"></span>
+            Active Rental • Return Due in 2 Days
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-subtle text-text-secondary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[14px] text-primary">verified_user</span>
+            Escrow Guarded
+          </span>
+</div>
+</div>
+<!-- Action Primary Cluster -->
+<div class="flex items-center gap-space-sm self-start md:self-center">
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-subtle hover:bg-surface-container-high text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-all duration-150" id="downloadInvoiceBtn">
+<span class="material-symbols-outlined text-[18px] text-primary">download</span>
+          Download GST Tax Invoice
+        </button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-primary hover:bg-brand-primary-hover text-on-primary font-body-base-medium text-body-base-medium shadow-sm transition-all duration-150" id="initiateReturnBtn">
+<span class="material-symbols-outlined text-[18px]">keyboard_return</span>
+          Initiate Return Request
+        </button>
+</div>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="max-w-7xl mx-auto px-gutter-desktop w-full pb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-desktop">
+<!-- LEFT COLUMN: Gear, Baseline Inspection, Timeline, Insurance (Cols 7/12) -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<!-- Equipment Card & Accessories Checklist -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex flex-col sm:flex-row gap-space-md items-start">
+<div class="relative w-full sm:w-44 h-36 rounded-lg overflow-hidden bg-surface-subtle shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up studio shot of Sony Alpha A7 IV mirrorless digital camera mounted with Sony FE 24-70mm GM lens, pristine condition, soft studio product lighting with sapphire blue tint reflections, sharp detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMXg12S4oYgZ2HphWRpAtYb2KLyF4kFua1F_Ing1FrtAR484f9r97d4mMOcXvaPfJs_L0eEQBPBEDTQCsdzhmTSGmfAG_u5TRfX4oCWgIbAiHyIwyVLJ7lNVEbMRCN3VUqRZe0vNjSqK0cfqTqPbHS9x64zFrxBv5KZ9Kub30s-5VshvJZ7ErMCqG9g-upz97UKBpuapRmw_3hG9MJkGZ3FQEWy7vEDxzEKIF5eDk"/>
+<span class="absolute top-2 left-2 bg-on-surface/85 backdrop-blur-md text-surface-card px-2 py-0.5 rounded text-[11px] font-code-mono uppercase tracking-wide">
+                SN: 3829104-M
+              </span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-caption-bold text-caption text-primary tracking-wider uppercase">Cinema &amp; Optical Rig</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                    Grade: Mint
+                  </span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Sony Alpha A7 IV Kit + FE 24-70mm GM</h2>
+<p class="font-caption text-caption text-text-secondary mt-1">High-resolution hybrid camera body with constant f/2.8 standard zoom G Master lens.</p>
+</div>
+<!-- Telemetry & Hub Custody Mini Badge -->
+<div class="mt-space-md pt-space-xs flex flex-wrap items-center gap-space-md text-text-secondary font-caption text-caption bg-surface-subtle p-2.5 rounded-lg">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">pin_drop</span>
+                  SafeHub Indiranagar Station
+                </span>
+<span class="flex items-center gap-1 font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[16px] text-trust-verified">fingerprint</span>
+                  NFC Tag: #04:9A:88:C1
+                </span>
+</div>
+</div>
+</div>
+<!-- Included Accessories Checklist -->
+<div class="mt-space-lg pt-space-md bg-canvas-slate rounded-lg p-space-md">
+<h3 class="font-caption-bold text-caption text-on-surface uppercase tracking-wider mb-space-sm flex items-center justify-between">
+<span>Verified Custody Checklist (4 items)</span>
+<span class="text-trust-verified font-code-mono-sm font-semibold text-[11px]">All Tagged &amp; Verified</span>
+</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-xs">
+<div class="flex items-center gap-space-xs text-on-surface font-body-base text-body-base">
+<span class="material-symbols-outlined text-[18px] text-trust-verified">check_box</span>
+<span>2× Sony NP-FZ100 Batteries</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface font-body-base text-body-base">
+<span class="material-symbols-outlined text-[18px] text-trust-verified">check_box</span>
+<span>Dual Fast USB-C Hub Charger</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface font-body-base text-body-base">
+<span class="material-symbols-outlined text-[18px] text-trust-verified">check_box</span>
+<span>128GB SanDisk Extreme PRO V90 SD</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface font-body-base text-body-base">
+<span class="material-symbols-outlined text-[18px] text-trust-verified">check_box</span>
+<span>Pelican 1510 Hard Waterproof Case</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Handover Condition Baseline Loupe Viewer -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Physical Baseline Inspection</h3>
+<span class="px-2 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-[11px]">
+                  0 Imperfections Logged
+                </span>
+</div>
+<p class="font-caption text-caption text-text-secondary mt-0.5">Automated 360° capture logged at SafeHub locker station prior to digital seal release.</p>
+</div>
+<div class="hidden sm:flex items-center gap-1 text-primary font-caption-bold text-caption bg-brand-primary-light px-2.5 py-1 rounded-full">
+<span class="material-symbols-outlined text-[16px]">zoom_in</span>
+              Interactive Loupe Enabled
+            </div>
+</div>
+<!-- Featured Loupe Showcase & 6 Thumbnail Micro Grid -->
+<div class="space-y-space-sm">
+<div class="relative w-full h-64 rounded-lg overflow-hidden bg-surface-subtle group cursor-crosshair" id="loupeViewport">
+<img class="w-full h-full object-cover transition-transform duration-200 group-hover:scale-105" data-alt="High-resolution mechanical inspection photo showing the pristine front lens glass element of Sony FE 24-70mm GM lens without scratches, clean coating reflections under calibrated laboratory inspection illumination." id="activeInspectionImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAymHLq4oQNYfEesb4ha4aKNmUu-iSF9Qa_TqShRcmk_EFjsd0a8byttc--KLPvgboPnxxMikON0IkD27L3UugspgrYBIaRYYZ373cA_9GHsVhAlmIa3AFu_HKrqH0XZGCziUfepsRVj67xome31KztsHZNvofIfLf80WPZ_E70etizPTi3KCmI_OH6JW3D0sLfarzo7OON-qdklM-ALDFGEsBP6RjoM3t7iwkv-UA"/>
+<!-- Telemetry Metadata Tag Overlaid -->
+<div class="absolute bottom-3 left-3 bg-inverse-surface/90 text-inverse-on-surface backdrop-blur-md px-3 py-1.5 rounded-md font-code-mono-sm text-code-mono-sm flex items-center gap-space-md">
+<span>ANGLE: FRONT OPTICS</span>
+<span class="text-text-muted">|</span>
+<span>TIMESTAMP: 12-OCT 10:14:02 IST</span>
+<span class="text-text-muted">|</span>
+<span class="text-trust-verified flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-trust-verified"></span>VERIFIED</span>
+</div>
+<!-- Loupe Target Ring visual marker -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-20 h-20 rounded-full border-2 border-surface-card/80 shadow-md flex items-center justify-center">
+<span class="font-code-mono-sm text-[10px] text-surface-card bg-primary px-1 rounded">2× LOUPE</span>
+</div>
+</div>
+<!-- 6 Thumbnails of Handover Baseline -->
+<div class="grid grid-cols-6 gap-space-xs pt-space-xs">
+<button class="thumb-btn relative aspect-square rounded-md overflow-hidden bg-surface-subtle ring-2 ring-primary focus:outline-none" data-angle="Front Optics" data-timestamp="12-OCT 10:14:02 IST">
+<img class="w-full h-full object-cover" data-alt="Macro view of camera sensor and front lens glass element with clean anti-reflective coating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8ZpDgOAGYfABU8ZfPwQ1gSiuWRz6kK3qjqTFgkN_cNR3o20xjuz1uzZdgCnHyPjCQoozSQM3lwpNiUZTmCK_loGJ5uLSBalcoLEUHJAeBfxaaBn4IgVmgrWTOBCj79vYcMwAuybIqvRU3RrMe9kdF9r5Xqce_DMX8FKyfD5EMCMG5r4Q4Zx0kotZBaorroe56VQuekxyDIpk9cXCJ5djYtXvSOQXMK-yvyYT9AEU"/>
+</button>
+<button class="thumb-btn relative aspect-square rounded-md overflow-hidden bg-surface-subtle opacity-80 hover:opacity-100 transition-opacity focus:outline-none" data-angle="Top Dial &amp; Hotshoe" data-timestamp="12-OCT 10:14:15 IST">
+<img class="w-full h-full object-cover" data-alt="Camera body top view showing clean magnesium alloy dials, mode switch, and hotshoe without scuffs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMoyfL1-2XdoVKrE-z9ppTqDYe8XB2uuhlJ9CPGQKqlvQ6CD80YqhyrgQZK9uqHi-4a-pun88_53kGW68IOZlo36OkjFS9s6qVLzO_MnaXmkXqI48gukqroIT-dBfmY1oo7m8WlM3Rq45t3GQn5YDoLFeeXKC0dza9Yym9k-DHLe10kTgNV-UUiz_-RP_IuvtJClsNEmA9eAZpK1XjVQlMa49NhbqL3smVkG-hK0w"/>
+</button>
+<button class="thumb-btn relative aspect-square rounded-md overflow-hidden bg-surface-subtle opacity-80 hover:opacity-100 transition-opacity focus:outline-none" data-angle="Rear LCD Articulating Screen" data-timestamp="12-OCT 10:14:28 IST">
+<img class="w-full h-full object-cover" data-alt="Rear display of Sony A7 IV camera with tempered glass protector installed, zero scratches or dead pixels." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF3W0InUQCpOdue8JTAEPKIHoNRdefKHZQs4zP-ielSONxZghlsMTQysBuEWl81sDgZO8ePugu336sRMsaozCtF83Y2_Cip7HQ5pbFSSki_db0ztAXeZZnVwD6-xCV5ma63wEiyF9e_Z428DDn3_LodhisbzteeO7RqxIGfmz2B5-PeDz_dOpeJIDvWrNcw_NC10mm5D40t8a7-q3pteK_OY8aYdILUQuTxtAk8yc"/>
+</button>
+<button class="thumb-btn relative aspect-square rounded-md overflow-hidden bg-surface-subtle opacity-80 hover:opacity-100 transition-opacity focus:outline-none" data-angle="Lens Mount &amp; Gold Pins" data-timestamp="12-OCT 10:14:41 IST">
+<img class="w-full h-full object-cover" data-alt="E-mount mechanical bayonet ring with untouched gold electronic contact pins under studio light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVG92mrV8Ubu_P68bHyDARYOhyMv1iMEH0w-exmGQbJGPI3fUMu4Q7TR7M_MHdEcSio6vdS7G8hA28kpd4REkvF2PHGZ2eVMc8jR7o4oza6SsQRzAEybFw72MmdatpZBB1-HfmMz8Icrkj_TGM3Nt0SDjJ5KWWC-ShMQp1Zb0lRtwCzOa-RnHRJHzl6HoOxyjcV6d1FN4K8pnW1-J23mTlR32O4Og-_UxO0f2KtRs"/>
+</button>
+<button class="thumb-btn relative aspect-square rounded-md overflow-hidden bg-surface-subtle opacity-80 hover:opacity-100 transition-opacity focus:outline-none" data-angle="Battery Chamber &amp; SD Ports" data-timestamp="12-OCT 10:14:52 IST">
+<img class="w-full h-full object-cover" data-alt="Dual SD card slot bay and battery latch compartment opened, immaculate clean seals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7Bu9lQscEg6z7rtWY1fjn4miFIbUgsGDEfj0rMKbq_uDJSaGd94SRDgK1Jh2hFxa9pZwZ8_-c-wSB-tD1TrPq4GkC7S-ASpvbaBJkUKI42CjBSu99ZI6zq8f6MZ3b5hq46kopuQOZHfVlwl8c8t5axOrxhpw2B-SPIIuFijGDrhgsxbAizUbzl16o345cAuq61YJA_m8ptwQsOjDqYIr932B40Hj1jDF8OV1n770"/>
+</button>
+<button class="thumb-btn relative aspect-square rounded-md overflow-hidden bg-surface-subtle opacity-80 hover:opacity-100 transition-opacity focus:outline-none" data-angle="Pelican Case Interior Kit" data-timestamp="12-OCT 10:15:08 IST">
+<img class="w-full h-full object-cover" data-alt="Pelican 1510 rugged transport case with custom cut black foam insert securely cradling lenses and batteries." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVwTFFIfQYIcnb-edIEDDJ5vJEVprXvjv1Squivg05Sf4tniSARaGA1S4fKLci-AoR250lk6q23fjWePuvT4vuhTnKKtoSu-7Pa-d4vGG8FbplLdmZlVheeHKXQ6ZGKtxZztUSNFBomAjitvuYeGgSzr6eGCUP5bL8843GANvj6KQUbPAu_RIJcFJ4VByaLYFllxnQapVNSPpwVsUmItzfRcJFS31xkzUAAQm4BAc"/>
+</button>
+</div>
+</div>
+</div>
+<!-- Custody & Telemetry Stepper Timeline -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Custody &amp; Telemetry Log</h3>
+<p class="font-caption text-caption text-text-secondary">Immutable escrow custody chain with GPS-anchored handover proofs.</p>
+</div>
+<span class="inline-flex items-center gap-1 font-code-mono-sm text-code-mono-sm text-primary bg-surface-subtle px-2.5 py-1 rounded">
+<span class="material-symbols-outlined text-[16px]">lock_clock</span>
+              Node Synced
+            </span>
+</div>
+<!-- Stepper Track -->
+<div class="relative pl-6 space-y-space-lg before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-3 before:w-0.5 before:bg-surface-container-highest">
+<!-- Step 1: Placed -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-trust-verified flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[12px]">done</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Booking Order Placed &amp; Identity Verified</h4>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">11 Oct 2025, 14:22 IST</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Renter identity verified via DigiLocker Aadhaar KYC. Pre-auth authorization accepted.</p>
+</div>
+<!-- Step 2: Escrow Locked -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-trust-verified flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[12px]">done</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">₹5,000 Escrow Collateral Locked</h4>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">11 Oct 2025, 14:23 IST</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Collateral transferred to ICICI Trustee Vault escrow account (#ESC-992-04). Zero owner access until checkout inspection.</p>
+</div>
+<!-- Step 3: Physical Pickup & Handover -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-trust-verified flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[12px]">done</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">SafeHub Locker Handover &amp; Baseline Scanned</h4>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">12 Oct 2025, 10:15 IST</span>
+</div>
+<div class="text-caption font-caption text-text-secondary bg-surface-subtle p-2.5 rounded-lg mt-1 space-y-1">
+<div class="flex items-center justify-between">
+<span class="font-code-mono-sm text-code-mono-sm text-on-surface">Location: SafeHub Indiranagar Pod #14</span>
+<span class="text-primary font-code-mono-sm">GPS: 12.9784° N, 77.6408° E</span>
+</div>
+<p>Digital condition sign-off dual-acknowledged via OTP authorization #582-901.</p>
+</div>
+</div>
+<!-- Step 4: Scheduled Return (Active Stage) -->
+<div class="relative flex flex-col gap-1">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[12px] animate-spin">sync</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="font-body-base-medium text-body-base-medium text-primary font-semibold">Scheduled Return Window</h4>
+<span class="font-code-mono-sm text-code-mono-sm font-semibold text-primary">16 Oct 2025, by 18:00 IST</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Designated Drop Locker: SafeHub Indiranagar Pods or courier collection request.</p>
+</div>
+<!-- Step 5: Post Inspection & Escrow Release (Pending) -->
+<div class="relative flex flex-col gap-1 opacity-60">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-surface-container-high flex items-center justify-center text-text-muted">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+</div>
+<div class="flex items-center justify-between">
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-medium">SafeHub Telemetry Check &amp; Escrow Release</h4>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Estimated 16 Oct, 19:30 IST</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">₹5,000 security deposit hold automatically released back to source method within 2 hours of sensor match.</p>
+</div>
+</div>
+</div>
+<!-- Bilateral Protection & Insurance Contract Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-border-default pb-space-sm mb-space-md">
+<div class="flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<h4 class="font-body-base-medium text-body-base-medium text-on-surface font-bold">Bilateral Protection &amp; Escrow Treaty</h4>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Policy #POL-8942-RS • Underwritten by HDFC Ergo</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-subtle font-code-mono-sm text-code-mono-sm text-on-surface">Active Coverage</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md mb-space-md">
+<div class="bg-canvas-slate p-space-sm rounded-lg">
+<span class="font-caption text-caption text-text-secondary block">Damage Indemnity</span>
+<span class="font-code-mono text-body-base font-semibold text-on-surface">Up to ₹3,50,000</span>
+<span class="font-caption text-[11px] text-trust-verified block mt-0.5">Zero renter liability on sensor wear</span>
+</div>
+<div class="bg-canvas-slate p-space-sm rounded-lg">
+<span class="font-caption text-caption text-text-secondary block">Theft / Transit Shield</span>
+<span class="font-code-mono text-body-base font-semibold text-on-surface">100% Replacement</span>
+<span class="font-caption text-[11px] text-text-secondary block mt-0.5">Secured by GPS &amp; FIR protocol</span>
+</div>
+<div class="bg-canvas-slate p-space-sm rounded-lg">
+<span class="font-caption text-caption text-text-secondary block">Arbitration Speed</span>
+<span class="font-code-mono text-body-base font-semibold text-on-surface">4-Hour Max</span>
+<span class="font-caption text-[11px] text-text-secondary block mt-0.5">Objective digital photo referee</span>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm pt-space-xs text-text-secondary font-caption text-caption">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-trust-danger">phone_in_talk</span>
+<span>24/7 Priority Dispute &amp; Breakdown Hotline: <span class="font-code-mono font-semibold text-on-surface">1800-419-SECURE</span></span>
+</div>
+<a class="text-primary hover:underline font-caption-bold flex items-center gap-0.5" href="#">
+              Read Policy PDF
+              <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: Financial Ledger, Host Profile, Emergency Concierge (Cols 5/12) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<!-- Itemized Financial & Escrow Ledger (Tax Invoice breakdown) -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Tax Invoice &amp; Escrow Ledger</h3>
+<p class="font-caption text-caption text-text-secondary">Official GST compliant receipt &amp; trust custody report</p>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-text-secondary block">Invoice Date</span>
+<span class="font-code-mono-sm text-code-mono-sm font-semibold text-on-surface">11-Oct-2025</span>
+</div>
+</div>
+<!-- GST Identification Strip -->
+<div class="bg-canvas-slate p-2.5 rounded-lg flex items-center justify-between text-text-secondary font-caption text-caption mb-space-md">
+<span>Supplier GSTIN: <strong class="font-code-mono-sm text-on-surface">29AAACR4821E1Z8</strong></span>
+<span>SAC Code: <strong class="font-code-mono-sm text-on-surface">997314</strong></span>
+</div>
+<!-- Itemized Breakdown Table -->
+<div class="space-y-space-sm border-b border-border-default pb-space-md font-body-base text-body-base">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-body-base-medium">Base Daily Rental</span>
+<span class="font-caption text-caption text-text-secondary">₹1,200 × 4 Days (12 Oct – 16 Oct)</span>
+</div>
+<span class="font-code-mono font-semibold text-on-surface">₹4,800.00</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-body-base-medium">SafeHub Logistics &amp; Locker Access</span>
+<span class="font-caption text-caption text-text-secondary">Indiranagar Station smart locker terminal</span>
+</div>
+<span class="font-code-mono font-semibold text-on-surface">₹350.00</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-body-base-medium">Platform Trust &amp; Insurance Shield</span>
+<span class="font-caption text-caption text-text-secondary">Underwritten equipment coverage &amp; escrow fee</span>
+</div>
+<span class="font-code-mono font-semibold text-on-surface">₹180.00</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-on-surface font-body-base-medium">Goods &amp; Services Tax (GST @ 18%)</span>
+<span class="font-caption text-caption text-text-secondary">CGST 9% (₹479.70) + SGST 9% (₹479.70)</span>
+</div>
+<span class="font-code-mono font-semibold text-on-surface">₹959.40</span>
+</div>
+</div>
+<!-- Subtotal Rental Cost -->
+<div class="flex items-center justify-between py-space-sm border-b border-border-default font-body-base-medium text-body-base-medium">
+<span class="text-text-secondary">Net Rental Cost (Inclusive of Taxes)</span>
+<span class="font-code-mono font-semibold text-on-surface">₹6,289.40</span>
+</div>
+<!-- Escrow Shield Bonded Deposit Section -->
+<div class="my-space-md p-space-md rounded-xl bg-surface-subtle">
+<div class="flex items-center justify-between mb-space-xs">
+<div class="flex items-center gap-space-xs">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+</div>
+<span class="font-body-base-medium text-body-base-medium font-bold text-on-surface">Security Deposit (Escrow Shield)</span>
+</div>
+<span class="font-code-mono font-bold text-on-surface">₹5,000.00</span>
+</div>
+<div class="flex items-start gap-space-xs mt-2 text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[16px] text-trust-verified shrink-0 mt-0.5">lock</span>
+<p>Status: <span class="font-code-mono-sm text-trust-verified font-semibold">Locked in ICICI Trustee Vault</span>. Funds do not touch the owner's bank account. Automatically refunded upon condition confirmation at drop-off.</p>
+</div>
+</div>
+<!-- Total Settled Grand Sum -->
+<div class="bg-primary/5 p-space-md rounded-lg flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-body-base font-bold text-on-surface block">Total Settled via UPI</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Txn: UPI/529810482910/HDFC</span>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md font-extrabold text-primary font-code-mono">₹11,289.40</span>
+<span class="font-caption-bold text-[11px] text-trust-verified block uppercase tracking-wide">Paid in Full</span>
+</div>
+</div>
+<!-- Legal Fine Print -->
+<p class="font-caption text-caption text-text-muted mt-space-md text-center">
+            Electronically generated document compliant with Section 31 of CGST Act. Certified cryptographic signature stored in RentSecure Ledger.
+          </p>
+</div>
+<!-- Verified Host & Lender Profile Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-caption-bold text-caption text-text-secondary uppercase tracking-wider">Equipment Custodian / Owner</span>
+<span class="inline-flex items-center gap-1 text-trust-verified font-caption-bold text-caption-bold bg-trust-verified-bg px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+              Identity &amp; Deposit Verified
+            </span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<img class="w-14 h-14 rounded-full object-cover" data-alt="Professional headshot portrait of Meera Sen, warm friendly Indian woman with camera strap over shoulder, natural bokeh background, warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW353OPuAOsefI3-WQikScAhDkv0pBsCTH8fdmkyODWCeAwqWcH_2ieBahts9zNGcQSYzaGEBqCHjhZ8ZwxU0E_UsusIk2YyJEMDpPzXvzYzAVieFFGOTkv773TSw38KKxGMwih4WI-x0hILPNx8Bev38Mv2XRTi46L57fQUndTvErSoYrKT_F-_E_6jfwC4cPRTPmtlHgQXyEHH7FjG6yGUnHTt4s29uioUl5to0"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-trust-verified border-2 border-surface-card" title="Online now"></span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline-sm text-body-lg font-bold text-on-surface">Meera Sen</h4>
+<p class="font-caption text-caption text-text-secondary">Cinematographer • 48 Rentals Hosted</p>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="flex items-center gap-0.5 font-code-mono-sm text-code-mono-sm font-semibold text-on-surface">
+<span class="material-symbols-outlined text-trust-warning text-[15px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                  4.98
+                </span>
+<span class="text-text-muted text-caption">•</span>
+<span class="font-caption text-caption text-trust-verified font-medium">100% Zero-Dispute Record</span>
+</div>
+</div>
+</div>
+<!-- Contact Actions -->
+<div class="grid grid-cols-2 gap-space-sm mt-space-md">
+<button class="inline-flex items-center justify-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-subtle hover:bg-surface-container-high text-on-surface font-body-base-medium text-body-base-medium transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">chat</span>
+              Message Host
+            </button>
+<button class="inline-flex items-center justify-center gap-1.5 px-space-md py-2 rounded-lg bg-surface-subtle hover:bg-surface-container-high text-on-surface font-body-base-medium text-body-base-medium transition-colors">
+<span class="material-symbols-outlined text-[18px] text-primary">call</span>
+              Call Meera (+91)
+            </button>
+</div>
+</div>
+<!-- Emergency Help / Report Claim CTA Box -->
+<div class="bg-gradient-to-br from-surface-card to-canvas-slate rounded-xl p-space-lg shadow-sm border-l-4 border-l-primary flex flex-col gap-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]">support_agent</span>
+</div>
+<div>
+<h4 class="font-body-base-medium text-body-lg font-bold text-on-surface">Encountered an Issue or Need Extension?</h4>
+<p class="font-caption text-caption text-text-secondary mt-1">
+                Hardware glitch, rain contingency, or wish to extend for 2 more days? Contact our dedicated SafeHub Concierge team immediately to preserve continuous insurance shield.
+              </p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs">
+<button class="w-full sm:flex-1 py-2.5 px-space-md rounded-lg bg-surface-card hover:bg-surface-subtle text-on-surface font-body-base-medium text-body-base-medium shadow-sm transition-colors text-center" id="extendRentalBtn">
+              Request Extension
+            </button>
+<button class="w-full sm:flex-1 py-2.5 px-space-md rounded-lg bg-trust-danger-bg hover:bg-red-100 text-trust-danger font-body-base-medium text-body-base-medium transition-colors text-center flex items-center justify-center gap-1" id="reportIssueBtn">
+<span class="material-symbols-outlined text-[16px]">report_problem</span>
+              Report Malfunction
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Client-side Script for Micro-Interactions (Loupe Switching & Action Prompts) -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Handover baseline thumbnail switcher
+      const thumbButtons = document.querySelectorAll('.thumb-btn');
+      const activeImg = document.getElementById('activeInspectionImg');
+      const loupeViewport = document.getElementById('loupeViewport');
+
+      thumbButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Reset borders
+          thumbButtons.forEach(b => {
+            b.classList.remove('ring-2', 'ring-primary', 'opacity-100');
+            b.classList.add('opacity-80');
+          });
+          btn.classList.add('ring-2', 'ring-primary', 'opacity-100');
+          btn.classList.remove('opacity-80');
+
+          const childImg = btn.querySelector('img');
+          if (childImg && activeImg) {
+            activeImg.src = childImg.src;
+            activeImg.setAttribute('data-alt', childImg.getAttribute('data-alt') || '');
+          }
+
+          const angleText = btn.getAttribute('data-angle');
+          const timeText = btn.getAttribute('data-timestamp');
+          const tagBox = loupeViewport ? loupeViewport.querySelector('.absolute.bottom-3') : null;
+          if (tagBox && angleText && timeText) {
+            tagBox.innerHTML = `
+              <span>ANGLE: ${angleText.toUpperCase()}</span>
+              <span class="text-text-muted">|</span>
+              <span>TIMESTAMP: ${timeText}</span>
+              <span class="text-text-muted">|</span>
+              <span class="text-trust-verified flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-trust-verified"></span>VERIFIED</span>
+            `;
+          }
+        });
+      });
+
+      // Simple interactive notifications
+      const downloadBtn = document.getElementById('downloadInvoiceBtn');
+      if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+          const original = downloadBtn.innerHTML;
+          downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">progress_activity</span> Generating Signed PDF...';
+          setTimeout(() => {
+            downloadBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-trust-verified">check</span> Invoice Saved';
+            setTimeout(() => { downloadBtn.innerHTML = original; }, 2500);
+          }, 1200);
+        });
+      }
+
+      const returnBtn = document.getElementById('initiateReturnBtn');
+      if (returnBtn) {
+        returnBtn.addEventListener('click', () => {
+          alert('Return checklist initiated. SafeHub Indiranagar smart locker PIN #4819 generated and sent via SMS.');
+        });
+      }
+
+      const extendBtn = document.getElementById('extendRentalBtn');
+      if (extendBtn) {
+        extendBtn.addEventListener('click', () => {
+          alert('Extension request: Daily escrow hold of ₹1,200 + GST will be computed. Host Meera Sen has been notified for confirmation.');
+        });
+      }
+
+      const reportBtn = document.getElementById('reportIssueBtn');
+      if (reportBtn) {
+        reportBtn.addEventListener('click', () => {
+          alert('Emergency protocol opened. SafeHub technical referee on call at 1800-419-SECURE. Escrow deposit lock held in freeze.');
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-card shadow-[0_-1px_6px_rgba(15,23,42,0.03)]"><div class="w-full bg-surface-subtle py-space-md"><div class="max-w-7xl mx-auto px-gutter-desktop grid grid-cols-1 md:grid-cols-3 gap-space-md"><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-brand-primary-light text-primary flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">shield_locked</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">100% Escrow Protection</p><p class="font-caption text-caption text-text-secondary">Rental funds held securely until post-inspection check</p></div></div><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">verified_user</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">KYC &amp; Product Verified</p><p class="font-caption text-caption text-text-secondary">Serial number inspection, legal ID, and tamper audits</p></div></div><div class="flex items-center gap-space-md"><div class="w-10 h-10 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center"><span class="material-symbols-outlined text-[22px]">gavel</span></div><div><p class="font-body-base-medium text-body-base-medium text-on-surface font-semibold">Resolution Guarantee</p><p class="font-caption text-caption text-text-secondary">Objective digital condition logs &amp; instant mediation</p></div></div></div></div><div class="max-w-7xl mx-auto px-gutter-desktop py-space-xl grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-space-lg"><div class="col-span-2"><div class="flex items-center gap-space-sm mb-space-md"><img alt="RentSecure Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><span class="font-headline-sm text-headline-sm text-primary font-bold">RentSecure</span></div><p class="font-body-base text-body-base text-text-secondary max-w-sm mb-space-md">The verified peer-to-peer and B2C infrastructure for high-value equipment, mobility, and property leasing. Backed by institutional collateral custody.</p><div class="flex items-center gap-space-xs text-text-muted font-caption text-caption"><span class="material-symbols-outlined text-[16px] text-trust-verified">lock</span>ISO 27001 Certified • Encrypted Telemetry</div></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Rental Categories</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Cinema &amp; Audio Gear</a></li><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Electric Mobility &amp; EVs</a></li><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Precision Industrial Tools</a></li><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Medical &amp; Lab Tech</a></li><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Premium Event Tech</a></li></ul></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Trust &amp; Escrow</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Escrow Custody Model</a></li><li><a class="hover:text-primary transition-colors" data-path="booking-details-tax-invoice" href="#">Condition Logs &amp; Loupe</a></li><li><a class="hover:text-primary transition-colors" data-path="booking-details-tax-invoice" href="#">Dispute Arbitration</a></li><li><a class="hover:text-primary transition-colors" data-path="booking-confirmation" href="#">Security Deposit Shield</a></li><li><a class="hover:text-primary transition-colors" data-path="booking-confirmation" href="#">Insurance Coverage Tiers</a></li></ul></div><div><h4 class="font-headline-sm text-body-base text-on-surface font-bold mb-space-md">Platform</h4><ul class="space-y-space-sm font-body-base text-body-base text-text-secondary"><li><a class="hover:text-primary transition-colors" data-path="booking-confirmation" href="#">Owner Protection Pact</a></li><li><a class="hover:text-primary transition-colors" data-path="booking-details-tax-invoice" href="#">Identity Verification (KYC)</a></li><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">API &amp; Commercial Fleet</a></li><li><a class="hover:text-primary transition-colors" data-path="customer-home-explore" href="#">Safety Guidelines</a></li><li><a class="hover:text-primary transition-colors" data-path="notifications-escrow-action-center" href="#">Support Center</a></li></ul></div></div><div class="border-t border-border-default"><div class="max-w-7xl mx-auto px-gutter-desktop py-space-md flex flex-col sm:flex-row items-center justify-between text-text-secondary font-caption text-caption gap-space-sm"><p>© 2025 RentSecure Technologies Inc. All escrow transactions legally bonded and monitored.</p><div class="flex items-center gap-space-lg"><a class="hover:text-primary transition-colors" href="#">Terms of Custody</a><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a><a class="hover:text-primary transition-colors" href="#">Audit Reports</a></div></div></div></footer></body></html>

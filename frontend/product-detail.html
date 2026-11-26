@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Product Detail - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+UI.pageShell('search','<section class="page"><div class="container" id="wrap"></div></section>');
+const id=new URLSearchParams(location.search).get('id');
+(async()=>{
+  const wrap=document.getElementById('wrap'); UI.loading(wrap);
+  try{const p=await API.get('/api/products/'+id);
+    wrap.innerHTML=`<div class="grid" style="grid-template-columns:1.2fr .8fr;gap:24px">
+      <div>
+        <div class="card" style="overflow:hidden"><img src="${(p.images&&p.images[0])||'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80'}" style="width:100%;aspect-ratio:16/10;object-fit:cover"></div>
+        <div class="card card-body" style="margin-top:16px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">${UI.badge(p.status)} <span class="badge badge-info">${p.category_name||'Category'}</span></div>
+          <h1 style="font-size:32px;line-height:1.2;font-weight:800">${p.title}</h1>
+          <p class="text-secondary" style="margin-top:8px">${p.location||''}</p>
+          <p style="margin-top:16px;color:var(--text-secondary)">${p.description||''}</p>
+          <div class="grid grid-4" style="margin-top:20px">
+            <div class="card card-body"><div class="text-secondary" style="font-size:12px">Hour</div><div class="price">${UI.fmtINR(p.pricing?.hour||0)}</div></div>
+            <div class="card card-body"><div class="text-secondary" style="font-size:12px">Day</div><div class="price">${UI.fmtINR(p.pricing?.day||0)}</div></div>
+            <div class="card card-body"><div class="text-secondary" style="font-size:12px">Week</div><div class="price">${UI.fmtINR(p.pricing?.week||0)}</div></div>
+            <div class="card card-body"><div class="text-secondary" style="font-size:12px">Month</div><div class="price">${UI.fmtINR(p.pricing?.month||0)}</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card"><div class="card-body">
+          <h3 style="font-size:20px;font-weight:700">Rental summary</h3>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;font-size:14px">
+            <div style="display:flex;justify-content:space-between"><span class="text-secondary">Day rate</span><span class="mono">${UI.fmtINR(p.pricing?.day||0)}</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="text-secondary">Security deposit</span><span class="mono">${UI.fmtINR(p.deposit||0)}</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="text-secondary">Owner</span><span>${p.owner?.name||'Owner'}</span></div>
+            <div style="display:flex;justify-content:space-between"><span class="text-secondary">Owner KYC</span>${UI.badge(p.owner?.kyc_status||'pending')}</div>
+          </div>
+          <div class="alert alert-success" style="margin-top:16px">Escrow-aware checkout: deposit and platform fee shown before payment.</div>
+          <a class="btn btn-primary" style="width:100%" href="/checkout.html?product_id=${p.id}">Book this product</a>
+        </div></div>
+      </div>
+    </div>`;
+  }catch(e){UI.error(wrap,e)}
+})();
+</script></body></html>

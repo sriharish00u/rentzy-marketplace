@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Governance &amp; Custody Audit Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#50d9fe", "primary": "#003c90", "brand-primary-hover": "#0B3C8A", "tertiary": "#2c16c6", "surface-subtle": "#F1F5F9", "on-surface-variant": "#434653", "primary-container": "#0f52ba", "background": "#faf8ff", "on-tertiary-container": "#ccc9ff", "on-secondary-container": "#005c70", "trust-danger": "#DC2626", "trust-warning": "#D97706", "on-secondary": "#ffffff", "tertiary-fixed": "#e2dfff", "surface-variant": "#dae2fd", "border-focus": "#3B82F6", "surface-container-highest": "#dae2fd", "surface": "#faf8ff", "on-tertiary-fixed": "#0f0069", "outline": "#737784", "surface-dim": "#d2d9f4", "primary-fixed-dim": "#b0c6ff", "surface-card": "#FFFFFF", "canvas-slate": "#F8FAFC", "on-surface": "#131b2e", "on-error-container": "#93000a", "on-primary-fixed": "#001945", "outline-variant": "#c3c6d5", "on-tertiary-fixed-variant": "#3323cc", "inverse-surface": "#283044", "trust-warning-bg": "#FFFBEB", "on-primary": "#ffffff", "border-default": "#E2E8F0", "secondary-fixed": "#b3ebff", "on-background": "#131b2e", "trust-verified": "#059669", "tertiary-fixed-dim": "#c3c0ff", "surface-container-lowest": "#ffffff", "surface-container-low": "#f2f3ff", "on-secondary-fixed": "#001f27", "on-error": "#ffffff", "trust-verified-bg": "#ECFDF5", "on-tertiary": "#ffffff", "tertiary-container": "#463cdd", "on-secondary-fixed-variant": "#004e5f", "text-muted": "#94A3B8", "text-secondary": "#475569", "error-container": "#ffdad6", "surface-container-high": "#e2e7ff", "surface-tint": "#1d59c1", "inverse-primary": "#b0c6ff", "surface-bright": "#faf8ff", "brand-primary-light": "#EBF3FF", "primary-fixed": "#d9e2ff", "surface-container": "#eaedff", "inverse-on-surface": "#eef0ff", "on-primary-fixed-variant": "#00419c", "secondary": "#00677d", "error": "#ba1a1a", "secondary-fixed-dim": "#4cd6fb", "on-primary-container": "#bcceff", "trust-danger-bg": "#FEF2F2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "2rem", "gutter": "1rem", "gutter-tablet": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "1rem", "margin-desktop": "3rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-tablet": "2rem" }, "fontFamily": { "caption": ["Inter"], "headline-lg": ["Inter"], "caption-bold": ["Inter"], "display-hero-mobile": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Inter"], "headline-md": ["Inter"], "body-base": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "code-mono-sm": ["JetBrains Mono"] }, "fontSize": { "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }] } } } };</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-inverse-surface z-50 flex flex-col py-space-md shadow-[2px_0_12px_rgba(15,23,42,0.15)]"><div class="px-space-lg mb-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface-card font-bold tracking-tight leading-none">RentSecure</span><span class="font-caption text-caption text-inverse-primary text-[10px] tracking-widest uppercase font-semibold mt-0.5">Governance Core</span></div></div></div><div class="px-space-md mb-space-sm"><span class="font-caption-bold text-caption-bold text-outline-variant uppercase tracking-wider text-[11px] px-space-sm">Audit &amp; Operations</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-primary text-white font-semibold shadow-sm"><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="disputes" href="#">Disputes</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="users-accounts" href="#">Users &amp; Accounts</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="kyc-identity-audits" href="#">KYC &amp; Identity Audits</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="product-verifications-anti-theft" href="#">Product Verifications &amp; Anti-Theft</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-disbursal-ledger" href="#">Escrow &amp; Disbursal Ledger</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-on-surface/50 border border-outline-variant/30 text-surface-card"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold"><span class="material-symbols-outlined text-[16px]">lock_open</span>Level 4 Security</div><span class="font-code-mono-sm text-code-mono-sm text-inverse-primary text-[10px]">2FA OK</span></div><p class="font-caption text-caption text-outline-variant">Session ID: <strong class="font-code-mono text-surface-card">SEC-88219A</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-subtle border border-border-default rounded-lg font-body-base text-body-base text-on-surface placeholder:text-text-muted focus:outline-none focus:border-border-focus focus:ring-2 focus:ring-border-focus/15 transition-all" placeholder="Global search: Custody Escrow ID, Asset IMEI, User Hash..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-trust-danger-bg border border-trust-danger/20 rounded-full"><span class="material-symbols-outlined text-trust-danger text-[16px]">warning</span><span class="font-caption-bold text-caption-bold text-trust-danger">3 Risk Alerts</span></div><button class="flex items-center gap-1.5 px-space-sm py-1.5 text-on-surface-variant hover:text-primary hover:bg-brand-primary-light rounded-lg transition-colors font-body-base-medium text-body-base-medium"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="hidden lg:inline font-caption-bold text-caption-bold">Audit Logs</span></button><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-trust-danger"></span></div><div class="h-6 w-px bg-border-default"></div><div class="flex items-center gap-space-sm"><img alt="Admin Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Super Admin</span><span class="font-code-mono-sm text-code-mono-sm text-text-secondary leading-none">Custody Officer #04</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<div class="px-space-lg py-space-lg bg-surface-card shadow-sm">
+<div class="max-w-[1400px] mx-auto flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs text-primary font-caption-bold text-caption-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">verified_user</span>
+          Hardware Custody &amp; Chain-of-Title
+        </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+          Product Ownership &amp; Anti-Theft Verification Queue
+        </h1>
+<p class="font-body-base text-body-base text-text-secondary max-w-3xl">
+          High-throughput inspection interface validating serial authenticity, manufacturer warranties, optical sensor baselines, and national stolen registry databases.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<div class="flex items-center gap-space-xs px-space-md py-space-sm bg-trust-verified-bg rounded-xl shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-trust-verified animate-pulse"></span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-trust-verified">Registry Link Active</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">NCRB • Sony Asset API</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Filter Tabs -->
+<div class="max-w-[1400px] mx-auto mt-space-lg flex flex-wrap items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-body-base-medium text-body-base-medium flex items-center gap-space-xs shadow-sm">
+<span>Pending Verifications</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-card/20 text-on-primary font-code-mono-sm text-code-mono-sm">14</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface-variant font-body-base-medium text-body-base-medium flex items-center gap-space-xs transition-colors">
+<span class="w-2 h-2 rounded-full bg-trust-danger"></span>
+<span>Anti-Theft Blacklist Checks</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-card text-trust-danger font-code-mono-sm text-code-mono-sm shadow-sm">5</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface-variant font-body-base-medium text-body-base-medium flex items-center gap-space-xs transition-colors">
+<span class="w-2 h-2 rounded-full bg-trust-warning"></span>
+<span>Escalated Condition Audits</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-card text-trust-warning font-code-mono-sm text-code-mono-sm shadow-sm">2</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface-variant font-body-base-medium text-body-base-medium flex items-center gap-space-xs transition-colors">
+<span>Approved Today</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-card text-trust-verified font-code-mono-sm text-code-mono-sm shadow-sm">38</span>
+</button>
+</div>
+</div>
+<!-- Main Work Area: 2-Column Responsive Workspace -->
+<div class="max-w-[1400px] mx-auto w-full px-space-lg py-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left 8 Columns: Active Review Showcase PRD-8821 -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Showcase Main Card -->
+<div class="bg-surface-card rounded-xl p-space-lg shadow-sm">
+<!-- Top Row: Badge, ID, Timing -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pb-space-md bg-surface-subtle -mx-space-lg -mt-space-lg px-space-lg pt-space-md rounded-t-xl">
+<div class="flex items-center gap-space-sm">
+<span class="px-2.5 py-1 rounded-full bg-primary-fixed text-primary font-code-mono text-code-mono text-xs font-bold">
+                AUDIT #PRD-8821
+              </span>
+<span class="px-2.5 py-1 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">hourglass_top</span> Under L3 Specialist Review
+              </span>
+</div>
+<div class="flex items-center gap-space-xs text-text-secondary font-code-mono-sm text-code-mono-sm">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+              Submitted: 18 mins ago (Auto-Scan Complete)
+            </div>
+</div>
+<!-- Product Title & Host Lockup -->
+<div class="mt-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">
+                Sony FX6 Full-Frame Cinema Camera Body + Top Handle
+              </h2>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-caption text-caption text-text-secondary">Custodian:</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Framerate CineWorks (Meera Sen)</span>
+<span class="text-outline-variant">•</span>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span>98/100 Tier 1 Platinum</span>
+</div>
+</div>
+</div>
+<div class="text-left md:text-right bg-surface-subtle p-space-sm rounded-lg">
+<div class="font-caption text-caption text-text-secondary uppercase tracking-wider">Replacement Escrow Bond</div>
+<div class="font-code-mono text-headline-sm text-primary font-bold">₹4,80,000</div>
+</div>
+</div>
+<!-- Submitted Hardware Claims Grid -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm mt-space-lg p-space-md bg-canvas-slate rounded-lg">
+<div>
+<div class="font-caption text-caption text-text-secondary uppercase tracking-wider">Serial Number</div>
+<div class="font-code-mono text-body-base-medium text-on-surface font-bold mt-0.5">8493102-MUM</div>
+</div>
+<div>
+<div class="font-caption text-caption text-text-secondary uppercase tracking-wider">Lens Mount</div>
+<div class="font-body-base-medium text-body-base-medium text-on-surface mt-0.5">Sony E-Mount (Titanium)</div>
+</div>
+<div>
+<div class="font-caption text-caption text-text-secondary uppercase tracking-wider">Optical Sensor</div>
+<div class="font-body-base-medium text-body-base-medium text-on-surface mt-0.5">4K Full-Frame Exmor R</div>
+</div>
+<div>
+<div class="font-caption text-caption text-text-secondary uppercase tracking-wider">Submittal Type</div>
+<div class="font-body-base-medium text-body-base-medium text-on-surface mt-0.5">Primary Commercial Asset</div>
+</div>
+</div>
+<!-- Three-Way Verification Evidence Panel -->
+<div class="mt-space-xl">
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary">fact_check</span>
+                Three-Way Verification Evidence
+              </h3>
+<span class="font-caption-bold text-caption-bold text-text-secondary">All 3 Vectors Mandatory for Shield</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Evidence 1: Serial Plate High-Res -->
+<div class="bg-surface-subtle rounded-xl p-space-sm flex flex-col group hover:shadow-md transition-shadow">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-on-surface/5">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="High resolution macro photograph of Sony FX6 camera underside laser-etched metal baseplate showing clear readable serial number SN 8493102-MUM with crisp mechanical typography on matte magnesium alloy texture in neutral laboratory lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOsZhhSKNsKJOhaEzl5HHuu4_hSecBP-nqDI7JL20mg5OkwJeZcaKRjN_0Zzw_PJuWS9uNrXpyUWfRYZsR-19MUCazLkVEv16EdqXIqvfQJ85hUrWEVmwcMs_ImM9CdgUE0mWBSgqZTBSFaqF8qX89ILI5l79oeb2TYU03JGiNo6yD7ksKQb1lZRZeR9kaarZtiWrkFefbr3pwyCoVaUV_jy_2YYmlFiIjnJmEfPc"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-inverse-surface/80 text-surface-card font-code-mono-sm text-code-mono-sm backdrop-blur-sm">
+                    1. Serial Plate Macro
+                  </span>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-trust-verified text-on-primary font-caption-bold text-caption-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">check</span> OCR: 100% Match
+                  </span>
+</div>
+<div class="mt-space-sm px-1">
+<div class="font-caption-bold text-caption-bold text-on-surface">Laser-Etched Chassis Plate</div>
+<div class="font-code-mono-sm text-code-mono-sm text-text-secondary mt-0.5">OCR parsed: 8493102-MUM</div>
+<div class="font-caption text-caption text-trust-verified mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">lock</span> Zero tampering detected
+                  </div>
+</div>
+</div>
+<!-- Evidence 2: Dealer Invoice -->
+<div class="bg-surface-subtle rounded-xl p-space-sm flex flex-col group hover:shadow-md transition-shadow">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-on-surface/5">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Official Sony India Authorized Dealer tax invoice paper document scan dated 14-Jan-2023 with verified digital GST stamp, line item Sony FX6 cinema camera, and highlighted serial number matching 8493102-MUM cleanly on white document background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhPtwnZE7zIFnGrgS-8dxrpc44lBgSxvMK0wlrHV6OZgI2irRd9xkm5C6RMUoIGvfl_B1DURLl9gWTSVHiG9s8PqM0Qz2c2KQ7RzBvhDysvzZ9RXy_ozR6eq-r8KPs9CJFF-uKsT2uLdO7-e8wh3SiIeC_pcnjNeFidQB_NsP4uUoOSWcfKtQL5jVDZh7CcctVwRmZejlgIzgB5MVzpDOlE9WBVOR90QuzxO0nHk0"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-inverse-surface/80 text-surface-card font-code-mono-sm text-code-mono-sm backdrop-blur-sm">
+                    2. GST Dealer Invoice
+                  </span>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-trust-verified text-on-primary font-caption-bold text-caption-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span> Sony Alpha Pro Valid
+                  </span>
+</div>
+<div class="mt-space-sm px-1">
+<div class="font-caption-bold text-caption-bold text-on-surface">Authorized Purchase Proof</div>
+<div class="font-caption text-caption text-text-secondary mt-0.5">Invoice #SN-IND-9021-V (14-Jan-2023)</div>
+<div class="font-caption text-caption text-trust-verified mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">shield</span> Sony 3-Yr Warranty Active
+                  </div>
+</div>
+</div>
+<!-- Evidence 3: Live Selfie with Dynamic Slate -->
+<div class="bg-surface-subtle rounded-xl p-space-sm flex flex-col group hover:shadow-md transition-shadow">
+<div class="relative w-full h-44 rounded-lg overflow-hidden bg-on-surface/5">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Meera Sen verified filmmaker holding the Sony FX6 cinema camera in one hand and a mobile phone slate displaying large digital security token RNT-7492 in modern high-key studio office background with clean daylight illuminating face and serial barcode" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeAqJKWFp5KJcAWW2b8q7nGniwW1anuyNDy9VDXeziUntrwhxP31MMdlf0iMHQn1ULuWOBMvYEoPVpfEgOXakanfUO3NpNvbBoGlY0tdrRDE-PCDK--BfCO-APlh1KjDFOjIH7tPXj6g6Xx6-ejcTdAR8u_1EhQvAsPt7XhbqaqFpnxcyTN0SYpqN05zVITAVZl2MvivSJ6spHLJp6XL2n4pt8uN4IYfknp8SZVOM"/>
+<span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-inverse-surface/80 text-surface-card font-code-mono-sm text-code-mono-sm backdrop-blur-sm">
+                    3. Dynamic Slate Verification
+                  </span>
+<span class="absolute bottom-2 right-2 px-2 py-0.5 rounded-full bg-trust-verified text-on-primary font-caption-bold text-caption-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">tag</span> OTP Token OK
+                  </span>
+</div>
+<div class="mt-space-sm px-1">
+<div class="font-caption-bold text-caption-bold text-on-surface">Custodian Possession Proof</div>
+<div class="font-code-mono-sm text-code-mono-sm text-text-secondary mt-0.5">Token: RNT-7492 (Issued: 22m ago)</div>
+<div class="font-caption text-caption text-trust-verified mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">face</span> Biometric KYC Match 99.8%
+                  </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Anti-Theft & Stolen Goods Database Check (Full Width Within Card) -->
+<div class="mt-space-xl p-space-md bg-canvas-slate rounded-xl">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary font-semibold">policy</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Anti-Theft &amp; Police Registry Telemetry</h4>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified px-2.5 py-1 bg-trust-verified-bg rounded-full">
+                0 THREAT FLAGS
+              </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Check 1: NCRB Stolen Equipment -->
+<div class="bg-surface-card p-space-md rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">NCRB / Police Registry</span>
+<span class="material-symbols-outlined text-trust-verified text-[20px]">check_circle</span>
+</div>
+<div class="font-code-mono text-headline-sm text-trust-verified font-bold mt-2">CLEAN</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+                  EquipmentWatch &amp; National Crime Records: 0 active loss reports.
+                </p>
+<div class="font-code-mono-sm text-code-mono-sm text-text-muted mt-2 text-[10px]">
+                  Ref: NCRB-QUERY-2025-991A
+                </div>
+</div>
+<!-- Check 2: Sony Pro Asset Registry -->
+<div class="bg-surface-card p-space-md rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Manufacturer Blacklist</span>
+<span class="material-symbols-outlined text-trust-verified text-[20px]">check_circle</span>
+</div>
+<div class="font-code-mono text-headline-sm text-trust-verified font-bold mt-2">REGISTERED</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+                  Sony Pro Asset Registry: Legitimate import, warranty tier valid.
+                </p>
+<div class="font-code-mono-sm text-code-mono-sm text-text-muted mt-2 text-[10px]">
+                  Ref: SONY-ASSET-APAC-88402
+                </div>
+</div>
+<!-- Check 3: RentSecure Internal Deduplication -->
+<div class="bg-surface-card p-space-md rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Cross-Owner Collision</span>
+<span class="material-symbols-outlined text-trust-verified text-[20px]">check_circle</span>
+</div>
+<div class="font-code-mono text-headline-sm text-trust-verified font-bold mt-2">UNIQUE</div>
+<p class="font-caption text-caption text-text-secondary mt-1">
+                  0 collisions across 14,290 historical camera listings platform-wide.
+                </p>
+<div class="font-code-mono-sm text-code-mono-sm text-text-muted mt-2 text-[10px]">
+                  Indexed in 0.04s via Ledger
+                </div>
+</div>
+</div>
+</div>
+<!-- Optical Condition & Bench Test Report -->
+<div class="mt-space-lg p-space-md bg-surface-subtle rounded-xl">
+<h4 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-space-xs mb-space-md">
+<span class="material-symbols-outlined text-primary">csv</span>
+              Optical Baseline &amp; Bench Test Diagnostic
+            </h4>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Cleanliness Metric -->
+<div class="bg-surface-card p-space-md rounded-lg shadow-sm flex items-center justify-between">
+<div>
+<div class="font-caption text-caption text-text-secondary uppercase">Sensor Cleanliness Baseline</div>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-md text-headline-md text-trust-verified font-bold">99.4%</span>
+<span class="font-caption-bold text-caption-bold text-trust-verified">Zero dead pixels</span>
+</div>
+<div class="font-caption text-caption text-text-secondary mt-1">
+                    Spectral flat-field test: zero fungal spores or coating scuffs.
+                  </div>
+</div>
+<!-- Inline Micro SVG Visual Gauge -->
+<div class="w-14 h-14 relative flex items-center justify-center">
+<svg class="w-14 h-14 -rotate-90" viewbox="0 0 36 36">
+<circle class="text-surface-subtle" cx="18" cy="18" fill="none" r="15.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-trust-verified" cx="18" cy="18" fill="none" r="15.5" stroke="currentColor" stroke-dasharray="97.4, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute material-symbols-outlined text-trust-verified text-[18px]">lens</span>
+</div>
+</div>
+<!-- Shutter / Actuations -->
+<div class="bg-surface-card p-space-md rounded-lg shadow-sm flex items-center justify-between">
+<div>
+<div class="font-caption text-caption text-text-secondary uppercase">Sensor Shutter Cycles</div>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-md text-headline-md text-on-surface font-bold">4,120</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded">Grade: Mint</span>
+</div>
+<div class="font-caption text-caption text-text-secondary mt-1">
+                    Rated lifespan: 200,000 actuations (2.06% utilized).
+                  </div>
+</div>
+<!-- Inline Micro SVG Visual Gauge -->
+<div class="w-14 h-14 relative flex items-center justify-center">
+<svg class="w-14 h-14 -rotate-90" viewbox="0 0 36 36">
+<circle class="text-surface-subtle" cx="18" cy="18" fill="none" r="15.5" stroke="currentColor" stroke-width="3"></circle>
+<circle class="text-primary" cx="18" cy="18" fill="none" r="15.5" stroke="currentColor" stroke-dasharray="14, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<span class="absolute material-symbols-outlined text-primary text-[18px]">shutter_speed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Review Controls & Decision Actions Bar -->
+<div class="mt-space-xl pt-space-lg flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md bg-canvas-slate -mx-space-lg -mb-space-lg p-space-lg rounded-b-xl">
+<div class="flex items-center gap-space-xs text-text-secondary font-caption text-caption">
+<span class="material-symbols-outlined text-[18px] text-primary">security</span>
+<span>Decision stamps immutable cryptographic signature on ledger.</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<!-- Action 3: Reject / Flag Stolen -->
+<button class="px-space-md py-2.5 rounded-lg bg-surface-card text-trust-danger hover:bg-trust-danger-bg font-body-base-medium text-body-base-medium flex items-center gap-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+<span>Reject / Flag Stolen</span>
+</button>
+<!-- Action 2: Approve Standard -->
+<button class="px-space-md py-2.5 rounded-lg bg-surface-card text-on-surface hover:bg-surface-subtle font-body-base-medium text-body-base-medium flex items-center gap-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Approve as Standard (Unverified)</span>
+</button>
+<!-- Action 1: Approve & Issue Shield (Primary) -->
+<button class="px-space-lg py-2.5 rounded-lg bg-primary hover:bg-brand-primary-hover text-on-primary font-body-base-medium text-body-base-medium flex items-center gap-space-xs shadow-md transition-all active:scale-[0.99] group relative">
+<span class="material-symbols-outlined text-[20px] text-secondary-container">verified_user</span>
+<span class="font-bold">Approve &amp; Issue [Product Verified] Shield</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right 4 Columns: Quick Audit Queue Sidebar & Upcoming Items -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Queue Sidebar Card -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">queue_play_next</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Queue Stream</h3>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-subtle text-text-secondary font-code-mono-sm text-code-mono-sm">
+              3 in line
+            </span>
+</div>
+<!-- Queue List Items -->
+<div class="flex flex-col gap-space-sm">
+<!-- Item 1: RED V-Raptor -->
+<div class="p-space-sm rounded-lg bg-surface-subtle hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-card text-text-secondary font-code-mono-sm text-code-mono-sm">
+                    #PRD-8822
+                  </span>
+<h4 class="font-caption-bold text-caption-bold text-on-surface mt-1 group-hover:text-primary transition-colors">
+                    RED V-Raptor 8K VV Cinema Package
+                  </h4>
+<div class="font-code-mono-sm text-code-mono-sm text-text-secondary mt-0.5">
+                    SN: 9021-VRP-04
+                  </div>
+</div>
+<div class="text-right">
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold">₹12,50,000</span>
+<div class="font-caption text-caption text-trust-verified flex items-center justify-end gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">shield_with_heart</span> Ready
+                  </div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-2 pt-2 text-[11px] text-text-secondary">
+<span>Custodian: CineCore Rentals (Bangalore)</span>
+<span>•</span>
+<span>KYC Level 4</span>
+</div>
+</div>
+<!-- Item 2: DJI Inspire 3 -->
+<div class="p-space-sm rounded-lg bg-surface-subtle hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-card text-text-secondary font-code-mono-sm text-code-mono-sm">
+                    #PRD-8823
+                  </span>
+<h4 class="font-caption-bold text-caption-bold text-on-surface mt-1 group-hover:text-primary transition-colors">
+                    DJI Inspire 3 Aerial Combo + RTK Base
+                  </h4>
+<div class="font-code-mono-sm text-code-mono-sm text-text-secondary mt-0.5">
+                    SN: 1109-DJI-INS3
+                  </div>
+</div>
+<div class="text-right">
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold">₹9,20,000</span>
+<div class="font-caption text-caption text-trust-warning flex items-center justify-end gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">flight</span> DGCA Stamped
+                  </div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-2 pt-2 text-[11px] text-text-secondary">
+<span>Custodian: SkySight Dynamics</span>
+<span>•</span>
+<span>Remote Pilot License Matched</span>
+</div>
+</div>
+<!-- Item 3: Leica RTC360 Scanner -->
+<div class="p-space-sm rounded-lg bg-surface-subtle hover:bg-surface-container transition-colors cursor-pointer group">
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex-1">
+<span class="px-1.5 py-0.5 rounded bg-surface-card text-text-secondary font-code-mono-sm text-code-mono-sm">
+                    #PRD-8824
+                  </span>
+<h4 class="font-caption-bold text-caption-bold text-on-surface mt-1 group-hover:text-primary transition-colors">
+                    Leica RTC360 3D Reality Capture Laser Scanner
+                  </h4>
+<div class="font-code-mono-sm text-code-mono-sm text-text-secondary mt-0.5">
+                    SN: 4402-LCA-GEO
+                  </div>
+</div>
+<div class="text-right">
+<span class="font-code-mono-sm text-code-mono-sm text-primary font-bold">₹28,00,000</span>
+<div class="font-caption text-caption text-primary flex items-center justify-end gap-0.5 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">precision_manufacturing</span> Calibration Logged
+                  </div>
+</div>
+</div>
+<div class="flex items-center gap-space-xs mt-2 pt-2 text-[11px] text-text-secondary">
+<span>Custodian: GeoSpatial Labs India</span>
+<span>•</span>
+<span>Enterprise Verified</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-space-md py-2 bg-canvas-slate hover:bg-surface-subtle text-on-surface-variant font-caption-bold text-caption-bold rounded-lg transition-colors flex items-center justify-center gap-1">
+<span>View All 14 Items in Queue</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Verification Checklist & Policy Guidance Widget -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm">
+<div class="flex items-center gap-space-xs mb-space-sm">
+<span class="material-symbols-outlined text-trust-verified text-[20px]">rule</span>
+<h4 class="font-caption-bold text-caption-bold text-on-surface uppercase tracking-wider">
+              Verification Compliance Rulebook
+            </h4>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-trust-verified text-[16px] mt-0.5">check_box</span>
+<p class="font-caption text-caption text-text-secondary">
+<strong class="text-on-surface font-semibold">Chassis Etching:</strong> Serial must be directly engraved into the chassis body or sealed OEM badge. Printed paper stickers must be denied verified status.
+              </p>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-trust-verified text-[16px] mt-0.5">check_box</span>
+<p class="font-caption text-caption text-text-secondary">
+<strong class="text-on-surface font-semibold">Invoice Matching:</strong> Buyer name or company GST on invoice must correlate with the custodian's legal account entity.
+              </p>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-trust-verified text-[16px] mt-0.5">check_box</span>
+<p class="font-caption text-caption text-text-secondary">
+<strong class="text-on-surface font-semibold">Anti-Theft Dual Run:</strong> Both NCRB and Manufacturer API sweeps must return zero criminal claims within the prior 48 hours.
+              </p>
+</div>
+</div>
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-subtle flex items-center justify-between text-text-secondary">
+<span class="font-code-mono-sm text-code-mono-sm">Auditor SOP v4.2.1</span>
+<a class="font-caption-bold text-caption-bold text-primary hover:underline" href="#">Download Handbook</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

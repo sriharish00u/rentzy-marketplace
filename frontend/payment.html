@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Payment - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['customer','owner','admin']);
+const bookingId=new URLSearchParams(location.search).get('booking_id');
+UI.pageShell('bookings','<section class="page"><div class="container" id="wrap"></div></section>');
+let payment;
+(async()=>{
+  const wrap=document.getElementById('wrap'); UI.loading(wrap);
+  try{
+    const booking=await API.get('/api/bookings/'+bookingId);
+    payment=await API.post('/api/payments/upi-intent',{booking_id:bookingId});
+    wrap.innerHTML=`<div class="grid" style="grid-template-columns:1fr .9fr;gap:24px">
+      <div class="card"><div class="card-body">
+        <span class="badge badge-warning">Mock UPI Intent</span>
+        <h1 style="font-size:32px;font-weight:800;margin:12px 0 8px">Complete payment</h1>
+        <p class="text-secondary">Use the UPI intent link below or simulate the app callback for MVP testing.</p>
+        <div id="msg" style="margin-top:16px"></div>
+        <div class="card" style="margin-top:16px;background:var(--surface-subtle)"><div class="card-body">
+          <div class="text-secondary" style="font-size:12px">UPI Intent URL</div>
+          <div class="mono" style="font-size:12px;word-break:break-all;margin-top:8px">${payment.intent_url}</div>
+        </div></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+          <a class="btn btn-primary" href="${payment.intent_url}">Open UPI App</a>
+          <button class="btn btn-outline" id="simOk">Simulate successful callback</button>
+          <button class="btn btn-danger" id="simFail">Simulate failed callback</button>
+        </div>
+        <p class="text-secondary" style="font-size:13px;margin-top:14px">In production, the UPI app would return to a callback/deeplink. Here we simulate it.</p>
+      </div></div>
+      <div class="card"><div class="card-body">
+        <h3 style="font-weight:700">Booking summary</h3>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;font-size:14px">
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Booking</span><span class="mono">${booking.id.slice(-8)}</span></div>
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Product</span><span>${booking.product_title||''}</span></div>
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Dates</span><span class="mono">${booking.start_date} → ${booking.end_date}</span></div>
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Status</span>${UI.badge(booking.status)}</div>
+          <hr style="border:none;border-top:1px solid var(--border)">
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Rental</span><span class="mono">${UI.fmtINR(booking.pricing_breakdown?.rental)}</span></div>
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Platform fee</span><span class="mono">${UI.fmtINR(booking.pricing_breakdown?.platform_fee)}</span></div>
+          <div style="display:flex;justify-content:space-between"><span class="text-secondary">Deposit</span><span class="mono">${UI.fmtINR(booking.pricing_breakdown?.deposit)}</span></div>
+          <div style="display:flex;justify-content:space-between;font-weight:700"><span>Total</span><span class="mono" style="color:var(--primary)">${UI.fmtINR(booking.pricing_breakdown?.total)}</span></div>
+        </div>
+      </div></div>
+    </div>`;
+    document.getElementById('simOk').onclick=()=>simulate('success');
+    document.getElementById('simFail').onclick=()=>simulate('failed');
+  }catch(e){UI.error(wrap,e)}
+})();
+async function simulate(status){
+  const msg=document.getElementById('msg'); msg.innerHTML='';
+  try{const r=await API.post('/api/payments/mock-callback',{payment_id:payment.id,status});
+    if(status==='success'){location.href='/booking-confirmation.html?booking_id='+bookingId;}
+    else msg.innerHTML='<div class="alert alert-danger">Payment failed. You can try again.</div>';
+  }catch(e){msg.innerHTML=`<div class="alert alert-danger">${e.message}</div>`}
+}
+</script></body></html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Login - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+UI.pageShell('login', `<section class="page"><div class="container" style="max-width:560px"><div class="card"><div class="card-body">
+  <h1 class="section-title">Welcome back</h1><p class="section-sub" style="margin-bottom:20px">Login to manage rentals, bookings, and approvals.</p>
+  <div id="msg"></div>
+  <form id="form">
+    <div class="field"><label>Email</label><input class="input" name="email" type="email" required></div>
+    <div class="field"><label>Password</label><input class="input" name="password" type="password" required></div>
+    <button class="btn btn-primary" style="width:100%" type="submit">Login</button>
+  </form>
+  <p class="text-secondary" style="margin-top:16px;font-size:14px">No account? <a href="/register.html">Register</a> · <a href="/admin-login.html">Admin login</a></p>
+  <div class="alert alert-success" style="margin-top:16px;font-size:13px">
+    <strong>Demo Credentials:</strong><br>
+    Customer: <code>customer.ananya@rentzy.com</code> / <code>Password@123</code><br>
+    Owner: <code>owner.aarav@rentzy.com</code> / <code>Password@123</code><br>
+    Admin: <code>admin.rajesh@rentzy.com</code> / <code>Password@123</code>
+  </div>
+</div></div></div></section>`);
+document.getElementById('form').onsubmit = async (e) => {
+  e.preventDefault(); const msg=document.getElementById('msg'); msg.innerHTML='';
+  const fd=new FormData(e.target); const payload=Object.fromEntries(fd.entries());
+  try{
+    const r=await API.post('/api/auth/login', payload);
+    try {
+      Auth.setSession(r.access_token, r.user);
+    } catch(storageErr) {
+      console.warn("Storage failed silently:", storageErr);
+    }
+    const role=r.user.role;
+    location.href = role==='admin'?'/admin-dashboard.html':'/owner-dashboard.html';
+  }catch(err){
+    msg.innerHTML=`<div class="alert alert-danger">${err.message || 'Login failed'}</div>`;
+  }
+};
+</script></body></html>

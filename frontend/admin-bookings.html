@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Bookings - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['admin']);
+UI.pageShell('bookings', `<section class="page"><div class="container"><h1 class="section-title">Booking management</h1><p class="section-sub">Monitor all platform bookings and payment states.</p>
+<div class="card" style="margin-top:20px"><div class="card-body table-wrap"><table class="table"><thead><tr><th>Booking</th><th>Product</th><th>Customer</th><th>Dates</th><th>Total</th><th>Status</th><th>Payment</th></tr></thead><tbody id="rows"></tbody></table></div></div></div></section>`);
+(async()=>{try{const items=await API.get('/api/bookings'); document.getElementById('rows').innerHTML=items.map(b=>`<tr><td class="mono" style="font-size:12px">${b.id.slice(-8)}</td><td>${b.product_title||''}</td><td>${b.customer_name||''}</td><td class="mono" style="font-size:13px">${b.start_date} → ${b.end_date}</td><td class="mono">${UI.fmtINR(b.pricing_breakdown?.total)}</td><td>${UI.badge(b.status)}</td><td>${UI.badge(b.payment_status)}</td></tr>`).join('') || '<tr><td colspan="7"><div class="empty">No bookings.</div></td></tr>';}catch(e){UI.error(document.getElementById('rows'),e)}})();
+</script></body></html>

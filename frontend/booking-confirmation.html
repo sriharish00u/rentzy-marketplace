@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Booking Confirmed - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['customer','owner','admin']);
+const id=new URLSearchParams(location.search).get('booking_id');
+UI.pageShell('bookings','<section class="page"><div class="container" id="wrap"></div></section>');
+(async()=>{const wrap=document.getElementById('wrap'); UI.loading(wrap);
+ try{const b=await API.get('/api/bookings/'+id);
+  wrap.innerHTML=`<div class="card" style="max-width:760px;margin:0 auto"><div class="card-body" style="text-align:center;padding:40px">
+    <div style="width:64px;height:64px;border-radius:50%;background:var(--success-bg);color:var(--success);display:grid;place-items:center;margin:0 auto;font-size:28px">✓</div>
+    <h1 style="font-size:34px;font-weight:800;margin-top:16px">Booking confirmed</h1>
+    <p class="text-secondary" style="margin-top:8px">Your mock UPI payment was successful and the booking is confirmed.</p>
+    <div class="card" style="margin-top:24px;text-align:left"><div class="card-body" style="display:grid;gap:10px;font-size:14px">
+      <div style="display:flex;justify-content:space-between"><span class="text-secondary">Booking ID</span><span class="mono">${b.id}</span></div>
+      <div style="display:flex;justify-content:space-between"><span class="text-secondary">Product</span><span>${b.product_title||''}</span></div>
+      <div style="display:flex;justify-content:space-between"><span class="text-secondary">Dates</span><span class="mono">${b.start_date} → ${b.end_date}</span></div>
+      <div style="display:flex;justify-content:space-between"><span class="text-secondary">Status</span>${UI.badge(b.status)}</div>
+      <div style="display:flex;justify-content:space-between"><span class="text-secondary">Payment</span>${UI.badge(b.payment_status)}</div>
+      <div style="display:flex;justify-content:space-between;font-weight:700"><span>Total paid</span><span class="mono">${UI.fmtINR(b.pricing_breakdown?.total)}</span></div>
+    </div></div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:24px"><a class="btn btn-primary" href="/my-bookings.html">View my bookings</a><a class="btn btn-outline" href="/home.html">Back to home</a></div>
+  </div></div>`;
+ }catch(e){UI.error(wrap,e)}
+})();
+</script></body></html>

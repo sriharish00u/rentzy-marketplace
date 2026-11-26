@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>RentSecure Governance &amp; Custody Audit Console</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#50d9fe", "primary": "#003c90", "brand-primary-hover": "#0B3C8A", "tertiary": "#2c16c6", "surface-subtle": "#F1F5F9", "on-surface-variant": "#434653", "primary-container": "#0f52ba", "background": "#faf8ff", "on-tertiary-container": "#ccc9ff", "on-secondary-container": "#005c70", "trust-danger": "#DC2626", "trust-warning": "#D97706", "on-secondary": "#ffffff", "tertiary-fixed": "#e2dfff", "surface-variant": "#dae2fd", "border-focus": "#3B82F6", "surface-container-highest": "#dae2fd", "surface": "#faf8ff", "on-tertiary-fixed": "#0f0069", "outline": "#737784", "surface-dim": "#d2d9f4", "primary-fixed-dim": "#b0c6ff", "surface-card": "#FFFFFF", "canvas-slate": "#F8FAFC", "on-surface": "#131b2e", "on-error-container": "#93000a", "on-primary-fixed": "#001945", "outline-variant": "#c3c6d5", "on-tertiary-fixed-variant": "#3323cc", "inverse-surface": "#283044", "trust-warning-bg": "#FFFBEB", "on-primary": "#ffffff", "border-default": "#E2E8F0", "secondary-fixed": "#b3ebff", "on-background": "#131b2e", "trust-verified": "#059669", "tertiary-fixed-dim": "#c3c0ff", "surface-container-lowest": "#ffffff", "surface-container-low": "#f2f3ff", "on-secondary-fixed": "#001f27", "on-error": "#ffffff", "trust-verified-bg": "#ECFDF5", "on-tertiary": "#ffffff", "tertiary-container": "#463cdd", "on-secondary-fixed-variant": "#004e5f", "text-muted": "#94A3B8", "text-secondary": "#475569", "error-container": "#ffdad6", "surface-container-high": "#e2e7ff", "surface-tint": "#1d59c1", "inverse-primary": "#b0c6ff", "surface-bright": "#faf8ff", "brand-primary-light": "#EBF3FF", "primary-fixed": "#d9e2ff", "surface-container": "#eaedff", "inverse-on-surface": "#eef0ff", "on-primary-fixed-variant": "#00419c", "secondary": "#00677d", "error": "#ba1a1a", "secondary-fixed-dim": "#4cd6fb", "on-primary-container": "#bcceff", "trust-danger-bg": "#FEF2F2" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-desktop": "2rem", "gutter": "1rem", "gutter-tablet": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem", "margin": "1rem", "margin-desktop": "3rem", "space-xl": "2rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "margin-tablet": "2rem" }, "fontFamily": { "caption": ["Inter"], "headline-lg": ["Inter"], "caption-bold": ["Inter"], "display-hero-mobile": ["Inter"], "code-mono": ["JetBrains Mono"], "body-base-medium": ["Inter"], "body-lg": ["Inter"], "headline-sm": ["Inter"], "headline-md": ["Inter"], "body-base": ["Inter"], "headline-lg-mobile": ["Inter"], "display-hero": ["Inter"], "code-mono-sm": ["JetBrains Mono"] }, "fontSize": { "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "caption-bold": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "display-hero-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800" }], "code-mono": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }], "body-base-medium": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "body-base": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "code-mono-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }] } } } };</script></head><body class="bg-canvas-slate text-on-surface font-body-base antialiased min-h-screen"><aside class="fixed left-0 top-0 h-full w-64 bg-inverse-surface z-50 flex flex-col py-space-md shadow-[2px_0_12px_rgba(15,23,42,0.15)]"><div class="px-space-lg mb-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="RentSecure Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrBhmTog6tsa08E-krxCEjtiAQCVmdEkDTF7JbmSF5asj3odLGOoHSpMRSIxCUJfEc2vkEYLE3OFnGJS3CDaXHYoJMCS6_OeAuaitWPUh5jzPHH0QnmIKDYksNBYxLxapl3llEZo3A7_jNvxsxoDyhgKyl07zhoap3ZvmKBAKaR9bPtzItDKVLg4zGG4pLG5Kz3YU7NT0LjTaetzFIaqFqPyGCn-u544oFuD_aUCXCQw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface-card font-bold tracking-tight leading-none">RentSecure</span><span class="font-caption text-caption text-inverse-primary text-[10px] tracking-widest uppercase font-semibold mt-0.5">Governance Core</span></div></div></div><div class="px-space-md mb-space-sm"><span class="font-caption-bold text-caption-bold text-outline-variant uppercase tracking-wider text-[11px] px-space-sm">Audit &amp; Operations</span></div><nav class="flex-1 px-space-md space-y-1" data-active-classes="bg-primary text-white font-semibold shadow-sm"><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="disputes" href="#">Disputes</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="users-accounts" href="#">Users &amp; Accounts</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="kyc-identity-audits" href="#">KYC &amp; Identity Audits</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="product-verifications-anti-theft" href="#">Product Verifications &amp; Anti-Theft</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-inverse-on-surface hover:bg-on-surface hover:text-white transition-colors font-body-base-medium text-body-base-medium" data-path="escrow-disbursal-ledger" href="#">Escrow &amp; Disbursal Ledger</a></nav><div class="px-space-md mt-auto"><div class="p-space-md rounded-xl bg-on-surface/50 border border-outline-variant/30 text-surface-card"><div class="flex items-center justify-between mb-1"><div class="flex items-center gap-space-xs text-trust-verified font-caption-bold text-caption-bold"><span class="material-symbols-outlined text-[16px]">lock_open</span>Level 4 Security</div><span class="font-code-mono-sm text-code-mono-sm text-inverse-primary text-[10px]">2FA OK</span></div><p class="font-caption text-caption text-outline-variant">Session ID: <strong class="font-code-mono text-surface-card">SEC-88219A</strong></p></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-card/95 backdrop-blur-md shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-xl"><div class="relative w-full max-w-md"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span><input class="w-full pl-10 pr-4 py-2 bg-surface-subtle border border-border-default rounded-lg font-body-base text-body-base text-on-surface placeholder:text-text-muted focus:outline-none focus:border-border-focus focus:ring-2 focus:ring-border-focus/15 transition-all" placeholder="Global search: Custody Escrow ID, Asset IMEI, User Hash..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 bg-trust-danger-bg border border-trust-danger/20 rounded-full"><span class="material-symbols-outlined text-trust-danger text-[16px]">warning</span><span class="font-caption-bold text-caption-bold text-trust-danger">3 Risk Alerts</span></div><button class="flex items-center gap-1.5 px-space-sm py-1.5 text-on-surface-variant hover:text-primary hover:bg-brand-primary-light rounded-lg transition-colors font-body-base-medium text-body-base-medium"><span class="material-symbols-outlined text-[20px]">history_edu</span><span class="hidden lg:inline font-caption-bold text-caption-bold">Audit Logs</span></button><div class="relative cursor-pointer"><span class="material-symbols-outlined text-on-surface-variant text-[22px]">notifications</span><span class="absolute top-0 right-0 w-2 h-2 rounded-full bg-trust-danger"></span></div><div class="h-6 w-px bg-border-default"></div><div class="flex items-center gap-space-sm"><img alt="Admin Profile" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3EIj6RS35KiH4ukHBSMHE1hSOugGGMe2hQtg7MJLDZjKZBnxbf6sgmn_MYILcOCKwxwzM7PE0-ZSmEDk10Qf4o4qwY1eHQsJeQzhPbDTZsYz8x9psw42PG8AkETHyFiCbcPmlJ7ojzb_4VwtL8DwniPFMZB7zZtU8mD5lkAOmD6WY63XZdjpov2da7vrZ4nn-wFo5trvA6WRCBZESRZjtG-grYvA6gnGmGUop0aA"/><div class="hidden sm:flex flex-col text-left"><span class="font-caption-bold text-caption-bold text-on-surface leading-tight">Super Admin</span><span class="font-code-mono-sm text-code-mono-sm text-text-secondary leading-none">Custody Officer #04</span></div></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Protocol Breadcrumb & Regulatory Notice Strip -->
+<div class="px-gutter-desktop py-space-sm bg-surface-subtle flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+        RBI Tri-Party Trustee Bonded
+      </span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Vault Partition: IND-NODE-ICICI-0994</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Master Escrow Treaty Hash: 0x9f88c...b41d</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 text-trust-verified">
+<span class="inline-block w-2 h-2 rounded-full bg-trust-verified animate-pulse"></span>
+<span class="font-caption-bold text-caption-bold">Trustee Ledger Synchronized</span>
+</div>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">UTC+05:30 14:32:08</span>
+</div>
+</div>
+<!-- Header Section with High-Impact Hierarchy -->
+<section class="px-gutter-desktop pt-space-lg pb-space-md flex flex-col lg:flex-row lg:items-center justify-between gap-space-lg">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-sm mb-1">
+<span class="font-caption-bold text-caption-bold text-primary uppercase tracking-wider">Custodial Treasury Operations</span>
+<span class="px-space-xs py-0.5 rounded bg-brand-primary-light font-code-mono-sm text-code-mono-sm text-primary">v4.8.2 Live</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Escrow Vault &amp; Disbursal Ledger</h1>
+<p class="font-body-base text-body-base text-text-secondary mt-1 max-w-4xl">
+        Monitor bonded customer security deposits, automated ICICI/Razorpay trustee escrow pools, pending host disbursals, and fee reconciliations.
+      </p>
+</div>
+<div class="flex items-center gap-space-sm self-start lg:self-auto">
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-surface-card text-on-surface shadow-sm hover:bg-surface-subtle transition-all font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">download</span>
+<span>Download RBI Audit PDF</span>
+</button>
+<button class="flex items-center gap-1.5 px-space-md py-2.5 rounded-lg bg-primary text-on-primary shadow-sm hover:bg-brand-primary-hover transition-all font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-[18px]">sync_saved_locally</span>
+<span>Run Reconciliation Batch</span>
+</button>
+</div>
+</section>
+<!-- Master Escrow KPI Metrics (Bento Grid Style) -->
+<section class="px-gutter-desktop py-space-sm">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Metric Card 1 -->
+<div class="relative overflow-hidden p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Total Escrow Capital</span>
+<span class="p-2 rounded-lg bg-brand-primary-light text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg font-code-mono text-on-surface">₹1,42,80,000</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="inline-flex items-center text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">format_image_left</span>
+              100% Bonded
+            </span>
+<span class="font-caption text-caption text-text-muted">RBI Tri-Party Pool</span>
+</div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="relative overflow-hidden p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Deposits in Transit</span>
+<span class="p-2 rounded-lg bg-surface-subtle text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg font-code-mono text-on-surface">₹8,45,000</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-caption-bold text-caption-bold text-text-secondary">18 Transactions</span>
+<span class="font-caption text-caption text-text-muted">Post-inspection released</span>
+</div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="relative overflow-hidden p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-trust-warning/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Pending Host Payouts</span>
+<span class="p-2 rounded-lg bg-trust-warning-bg text-trust-warning flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg font-code-mono text-on-surface">₹24,18,500</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-caption-bold text-caption-bold text-trust-warning">T+2 Settlement</span>
+<span class="font-caption text-caption text-text-muted">IMPS Batch at 17:00</span>
+</div>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="relative overflow-hidden p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-tertiary/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-text-secondary uppercase tracking-wider">Net Platform Revenue (MTD)</span>
+<span class="p-2 rounded-lg bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-lg text-headline-lg font-code-mono text-on-surface">₹12,94,200</div>
+<div class="flex items-center gap-1 mt-1">
+<span class="font-caption-bold text-caption-bold text-tertiary">10% Take + ₹180/txn</span>
+<span class="font-caption text-caption text-text-muted">Net Escrow Fee</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Escrow Liquidity Allocation & Custody Distribution Canvas -->
+<section class="px-gutter-desktop py-space-md">
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Escrow Liquidity &amp; Custody Allocation Bar</h2>
+<p class="font-caption text-caption text-text-secondary">Dynamic reserve ratio calculated in real-time under Master Trust Agreement RBI/2023/182-SEC</p>
+</div>
+<div class="flex items-center gap-space-sm font-code-mono-sm text-code-mono-sm">
+<span class="text-text-muted">Total Partitioned Cap:</span>
+<span class="font-bold text-on-surface">₹1,42,80,000.00</span>
+</div>
+</div>
+<!-- Segmented Visual Bar -->
+<div class="w-full flex flex-col gap-2">
+<div class="h-4 w-full rounded-full bg-surface-subtle overflow-hidden flex shadow-inner">
+<div class="h-full bg-primary transition-all duration-500" style="width: 68%;" title="Active Rental Security Deposits: 68%"></div>
+<div class="h-full bg-secondary-container transition-all duration-500" style="width: 22%;" title="Pending Host Settlement Float: 22%"></div>
+<div class="h-full bg-trust-danger transition-all duration-500" style="width: 6%;" title="Dispute Quarantine Vault: 6%"></div>
+<div class="h-full bg-trust-verified transition-all duration-500" style="width: 4%;" title="Available Cash Buffer: 4%"></div>
+</div>
+<!-- Breakdown Legends -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-xs">
+<div class="flex items-start gap-space-xs">
+<span class="inline-block w-3 h-3 rounded-full bg-primary mt-1 shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Active Security Deposits (68%)</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">₹97,10,400</span>
+<span class="font-caption text-caption text-text-muted text-[11px]">Protected in ICICI Escrow Shield</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="inline-block w-3 h-3 rounded-full bg-secondary-container mt-1 shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Pending Host Settlement (22%)</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">₹31,41,600</span>
+<span class="font-caption text-caption text-text-muted text-[11px]">T+2 Disbursal Queue</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="inline-block w-3 h-3 rounded-full bg-trust-danger mt-1 shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Dispute Quarantine Vault (6%)</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">₹8,56,800</span>
+<span class="font-caption text-caption text-text-muted text-[11px]">Frozen by Governance Tribunal</span>
+</div>
+</div>
+<div class="flex items-start gap-space-xs">
+<span class="inline-block w-3 h-3 rounded-full bg-trust-verified mt-1 shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Available Cash Buffer (4%)</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">₹5,71,200</span>
+<span class="font-caption text-caption text-text-muted text-[11px]">Surplus Node Float</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Real-Time Escrow Transaction Ledger -->
+<section class="px-gutter-desktop py-space-md">
+<div class="rounded-xl bg-surface-card shadow-sm overflow-hidden flex flex-col">
+<!-- Filter Bar and Action Headers -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-card">
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-body-base-medium text-body-base-medium shadow-sm">
+            All Escrow Flows
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-subtle text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-base-medium text-body-base-medium">
+            Active Deposit Holds (142)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-subtle text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-base-medium text-body-base-medium">
+            Disbursed to Host (318)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-subtle text-on-surface-variant hover:bg-surface-container-high transition-colors font-body-base-medium text-body-base-medium">
+            Refunded to Renter (98)
+          </button>
+<button class="px-space-md py-1.5 rounded-lg bg-trust-danger-bg text-trust-danger hover:bg-error-container transition-colors font-body-base-medium text-body-base-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+            Quarantined in Dispute (9)
+          </button>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span>
+<input class="w-64 pl-8 pr-3 py-1.5 text-body-base font-body-base bg-surface-subtle rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 placeholder:text-text-muted" placeholder="Filter transaction or hash..." type="text"/>
+</div>
+<button class="p-1.5 rounded-lg text-text-secondary hover:bg-surface-subtle transition-colors" title="Export Ledger to CSV">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+</button>
+</div>
+</div>
+<!-- Ledger Table -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-subtle text-text-secondary font-caption-bold text-caption-bold uppercase tracking-wider">
+<th class="py-space-md px-space-lg">Transaction ID</th>
+<th class="py-space-md px-space-md">Escrow Vault Ref</th>
+<th class="py-space-md px-space-md">Booking &amp; Asset</th>
+<th class="py-space-md px-space-md">Parties Involved</th>
+<th class="py-space-md px-space-md text-right">Gross Escrow</th>
+<th class="py-space-md px-space-md">Status</th>
+<th class="py-space-md px-space-md">Time &amp; Settlement</th>
+<th class="py-space-md px-space-lg text-right">Escrow Controls</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-default/50 text-body-base font-body-base">
+<!-- Row 1 -->
+<tr class="hover:bg-canvas-slate/80 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-code-mono text-code-mono text-primary font-bold">TXN-ESC-99201</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Batch #B-9901</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+<span class="font-code-mono text-code-mono text-on-surface">#RS-94821</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">ICICI-VLT-A4</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm min-w-[180px]">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-subtle shrink-0" data-alt="Close up product photograph of a modern high-end mirrorless digital camera Sony Alpha A7 IV with 24-70mm GM lens resting on dark studio reflective acrylic surface with cinematic blue rim lighting and subtle atmospheric mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCagzbzI-a8Fp1Vh-T-L2i0JDQ1piPUdK0QKYv88vyy2Do9d5lYyXS2kbFW0FrrQe-r73NdACM9m-BMVfPOgLiOotU3pFaCBdDYSjm7tp3AHAxoW5GPYiBHPiq3jRttvAmoly33aWGgk00GLyF5ca6fQgnRi1FBt1YaUlExECYEjtmMrPTRO_PtM-9q4uc82R9QFGqJ-TuuXj77IcBRwPuTri9bQDkoHV0bILDHgHM"/>
+<div class="flex flex-col min-w-0">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Sony Alpha A7 IV Kit</span>
+<span class="font-caption text-caption text-text-muted">4K 60p Full-Frame</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md min-w-[200px]">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">R:</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Alex Rivera</span>
+<span class="w-1.5 h-1.5 rounded-full bg-trust-verified" title="Identity Verified"></span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">H:</span>
+<span class="font-body-base text-body-base text-text-secondary">Meera Sen</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="font-code-mono text-code-mono font-bold text-on-surface">₹9,800</div>
+<div class="font-caption text-caption text-text-secondary">
+<span class="text-primary font-code-mono-sm">₹5,000 Dep</span> + ₹4,800 Rent
+                </div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-brand-primary-light text-primary font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">lock_clock</span>
+                  Quarantined In Vault (Rental Active)
+                </span>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Auto-release trigger</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">16 Oct 2025 • 18:00</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-subtle text-primary hover:bg-brand-primary-light transition-colors font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-[16px]">policy</span>
+<span>View Escrow Treaty</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-canvas-slate/80 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-code-mono text-code-mono text-primary font-bold">TXN-ESC-98914</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Batch #B-9889</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-code-mono text-code-mono text-on-surface">#RS-91842</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">RAZOR-ESC-NODE1</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm min-w-[180px]">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-subtle shrink-0" data-alt="High-end cinema camera package Sony FX6 Cinema line with matte box, V-mount battery module, and carbon fiber rig on professional production studio rolling stand with amber studio key lights and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaMKoRXD4ip-VnwLGTvWPlcRhrwXlDjolEp_-dkowSBGC_m5gZslHh21G7X9RseCuZdSeJX9_dDiHPR6mTiUzVmXiOqtq0fGD6Zg_Cm3vbYydYZJXXo_H9bnUAK1Ho_pf_jMeduGocpJra2Y7Bzsdys5CIMu6UoHQ-JGG1fJCJ0fkgSJeS-adfdZDrrgvVQKgGY_qi4yIJfUmEbqRGevYI-zmwwCAABI5Z-wOT0ds"/>
+<div class="flex flex-col min-w-0">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Sony FX6 Cinema Line</span>
+<span class="font-caption text-caption text-text-muted">Pro Rig Bundle</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md min-w-[200px]">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">R:</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Maya Sen</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">H:</span>
+<span class="font-body-base text-body-base text-text-secondary">FrameRate CineWorks</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary" title="Enterprise Partner"></span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="font-code-mono text-code-mono font-bold text-on-surface">₹23,450</div>
+<div class="font-caption text-caption text-text-secondary">
+<span class="text-trust-verified font-code-mono-sm">₹20,000 Dep</span> + ₹3,450 Host net
+                </div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-trust-warning-bg text-trust-warning font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px] animate-spin">refresh</span>
+                  IMPS Auto-Disbursal Queued
+                </span>
+<div class="font-caption text-caption text-text-muted mt-0.5">Post 2x loupe approval</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-trust-warning">Queue Window</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">ETA: 18 mins (T+0 Flash)</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-primary text-on-primary hover:bg-brand-primary-hover transition-colors font-body-base-medium text-body-base-medium shadow-sm">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span>Expedite Disbursal</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-canvas-slate/80 transition-colors bg-trust-danger-bg/20">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-code-mono text-code-mono text-trust-danger font-bold">TXN-ESC-88412</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Tribunal Execution</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-trust-danger text-[18px]">gavel</span>
+<span class="font-code-mono text-code-mono text-trust-danger">#CLM-8911</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">QUARANTINE-VLT</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm min-w-[180px]">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-subtle shrink-0" data-alt="High power film lighting fixture Aputure 1200d with massive metal reflector and heavy power ballast box showing digital wattage display on an industrial photography studio floor with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNbKhINKgBNLxHWdwZfrsgfCN5GxcaSVzRfu67411xuuSkW5S1RapX2ORD-Z02vdTBoY6Slo9B1WJQ9eAj6u1vZMm9ngDkadtI4Xj04RkeMZfuIcTVIwQwsZq_JLnebbkoWkk7c9pGZkHkWLnjlaAXI_r6I74Br7mvGFsi00vHkuTJdBsYIbbT4TpUeeRQQljFqJHulBDVCERl4dHpCbigduKPsM76xONtWYF7F40"/>
+<div class="flex flex-col min-w-0">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Aputure 1200d Blown Ballast</span>
+<span class="font-caption text-caption text-trust-danger">Hardware Damage Dispute</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md min-w-[200px]">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">H:</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">LightCraft India</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">R:</span>
+<span class="font-body-base text-body-base text-text-secondary">DocuFilms Ltd</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="font-code-mono text-code-mono font-bold text-trust-danger">₹25,000</div>
+<div class="font-caption text-caption text-text-secondary">
+                  Quarantined Dispute Hold
+                </div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-trust-danger-bg text-trust-danger font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">call_split</span>
+                  Split Allocation Executed
+                </span>
+<div class="font-caption text-caption text-text-muted mt-0.5">₹15k Host / ₹10k Renter</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Resolved by Judge #02</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Today, 11:20 AM</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-[16px]">fingerprint</span>
+<span>Audit Settlement Hash</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-canvas-slate/80 transition-colors">
+<td class="py-space-md px-space-lg">
+<div class="flex flex-col">
+<span class="font-code-mono text-code-mono text-on-surface font-bold">TXN-ESC-87109</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Batch #B-8640</span>
+</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-trust-verified text-[18px]">check_circle</span>
+<span class="font-code-mono text-code-mono text-on-surface">#RS-89842</span>
+</div>
+<span class="font-caption text-caption text-text-secondary">ICICI-VLT-ARCHIVED</span>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-sm min-w-[180px]">
+<div class="w-10 h-10 rounded-lg bg-surface-subtle flex items-center justify-center text-text-secondary font-bold text-[11px] shrink-0">
+                    6K G2
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Blackmagic 6K G2 Bundle</span>
+<span class="font-caption text-caption text-text-muted">Standard Rental</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md min-w-[200px]">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">R:</span>
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Rohan Mehra</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="font-caption-bold text-caption-bold text-text-muted">H:</span>
+<span class="font-body-base text-body-base text-text-secondary">CineRent Mumbai</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-right whitespace-nowrap">
+<div class="font-code-mono text-code-mono font-bold text-on-surface">₹4,200</div>
+<div class="font-caption text-caption text-text-secondary">
+                  Direct Disbursal
+                </div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+                  Disbursed to Bank
+                </span>
+<div class="font-code-mono-sm text-code-mono-sm text-text-muted mt-0.5">IMPS #8921-99B</div>
+</td>
+<td class="py-space-md px-space-md whitespace-nowrap">
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Settled</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-secondary">Yesterday, 16:45 PM</span>
+</div>
+</td>
+<td class="py-space-md px-space-lg text-right whitespace-nowrap">
+<button class="inline-flex items-center gap-1 px-space-sm py-1 rounded bg-surface-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high transition-colors font-body-base-medium text-body-base-medium">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>View UTR Receipt</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Footer Pagination & Live Counters -->
+<div class="px-space-lg py-space-md bg-surface-subtle flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<span class="font-caption text-caption text-text-secondary">
+          Displaying <strong class="font-code-mono text-on-surface">1 - 4</strong> of <strong class="font-code-mono text-on-surface">567</strong> custody escrows in current fiscal cycle
+        </span>
+<div class="flex items-center gap-1">
+<button class="px-3 py-1 rounded bg-surface-card text-text-muted shadow-sm hover:text-on-surface font-code-mono-sm text-code-mono-sm">Prev</button>
+<button class="px-3 py-1 rounded bg-primary text-on-primary font-code-mono-sm text-code-mono-sm shadow-sm font-bold">1</button>
+<button class="px-3 py-1 rounded bg-surface-card text-on-surface shadow-sm hover:bg-surface-container-high font-code-mono-sm text-code-mono-sm">2</button>
+<button class="px-3 py-1 rounded bg-surface-card text-on-surface shadow-sm hover:bg-surface-container-high font-code-mono-sm text-code-mono-sm">3</button>
+<span class="px-2 text-text-muted font-code-mono-sm">...</span>
+<button class="px-3 py-1 rounded bg-surface-card text-on-surface shadow-sm hover:bg-surface-container-high font-code-mono-sm text-code-mono-sm">142</button>
+<button class="px-3 py-1 rounded bg-surface-card text-on-surface shadow-sm hover:bg-surface-container-high font-code-mono-sm text-code-mono-sm">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Administrative Emergency Controls & Reconciliation Drawer -->
+<section class="px-gutter-desktop py-space-md mb-space-xl">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Node Health & Banking Telemetry -->
+<div class="lg:col-span-2 p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">dns</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Escrow Bank Trustee Node Health</h3>
+</div>
+<span class="px-space-sm py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+              Global Nodes Active
+            </span>
+</div>
+<p class="font-caption text-caption text-text-secondary mb-space-md">
+            Direct API connectivity with automated fallback pathways into Reserve Bank of India tri-party settlements.
+          </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- ICICI Node -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">ICICI Trustee Vault</span>
+<span class="w-2 h-2 rounded-full bg-trust-verified animate-ping"></span>
+</div>
+<div class="font-code-mono text-code-mono text-primary font-bold">Latency 42ms</div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption">
+<span>Sync State:</span>
+<span class="font-code-mono-sm text-trust-verified font-bold">100% OK</span>
+</div>
+</div>
+<!-- Razorpay Direct Node -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Razorpay Escrow Direct</span>
+<span class="w-2 h-2 rounded-full bg-trust-verified"></span>
+</div>
+<div class="font-code-mono text-code-mono text-secondary font-bold">Online / Live</div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption">
+<span>Success Rate:</span>
+<span class="font-code-mono-sm text-trust-verified font-bold">99.98%</span>
+</div>
+</div>
+<!-- ACH/IMPS Live -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">ACH / IMPS Rail</span>
+<span class="w-2 h-2 rounded-full bg-trust-verified"></span>
+</div>
+<div class="font-code-mono text-code-mono text-on-surface font-bold">ACH/IMPS Live</div>
+<div class="flex items-center justify-between text-text-muted font-caption text-caption">
+<span>Settlement Queue:</span>
+<span class="font-code-mono-sm text-trust-warning font-bold">18 pending</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md bg-canvas-slate rounded-lg p-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">verified</span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">Daily Regulatory Escrow Audit PDF</span>
+<span class="font-caption text-caption text-text-muted">Generated under RBI Master Direction 2024-DPR/88</span>
+</div>
+</div>
+<button class="px-space-md py-1.5 rounded-lg bg-surface-card hover:bg-surface-subtle text-primary font-body-base-medium text-body-base-medium shadow-sm transition-all flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">file_open</span>
+<span>Download Signed Report</span>
+</button>
+</div>
+</div>
+<!-- Emergency Override & Multi-Sig Vault Lock -->
+<div class="p-space-lg rounded-xl bg-surface-card shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center gap-space-xs text-trust-danger mb-2">
+<span class="material-symbols-outlined text-[24px]">encrypted</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Emergency Override</h3>
+</div>
+<p class="font-caption text-caption text-text-secondary mb-space-md">
+          Manual escrow release bypasses automated condition inspection triggers. Enforces strict cryptographic audit trail.
+        </p>
+<!-- YubiKey / Dual-Key Authentication Block -->
+<div class="p-space-md rounded-lg bg-surface-subtle flex flex-col gap-space-sm mb-space-md">
+<div class="flex items-center justify-between">
+<span class="font-caption-bold text-caption-bold text-on-surface">Dual-Admin Authorization</span>
+<span class="px-1.5 py-0.5 rounded bg-trust-warning-bg text-trust-warning font-code-mono-sm text-code-mono-sm">1 of 2 Keys Present</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-trust-verified-bg text-trust-verified flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">key</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Admin #04 (Hardware Slot A)</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted truncate">YubiKey 5C NFC • Validated</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm opacity-60">
+<div class="w-8 h-8 rounded-full bg-outline-variant/30 text-text-muted flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Admin #02 (Secondary Key)</span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">Awaiting physical insertion...</span>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-subtle text-text-muted cursor-not-allowed font-body-base-medium text-body-base-medium flex items-center justify-center gap-2" disabled="">
+<span class="material-symbols-outlined text-[18px]">security</span>
+<span>Initiate Manual Override</span>
+</button>
+</div>
+</div>
+</section>
+</div></main></div></body></html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Products - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['admin']);
+UI.pageShell('products', `<section class="page"><div class="container"><h1 class="section-title">Product approvals</h1><p class="section-sub">Review and approve owner listings.</p>
+<div class="card" style="margin-top:20px"><div class="card-body table-wrap"><table class="table"><thead><tr><th>Product</th><th>Owner</th><th>Category</th><th>Day rate</th><th>Status</th><th>Actions</th></tr></thead><tbody id="rows"></tbody></table></div></div></div></section>`);
+async function load(){try{const items=await API.get('/api/products?status='); document.getElementById('rows').innerHTML=items.map(p=>`<tr><td><div style="font-weight:600">${p.title}</div><div class="text-secondary" style="font-size:12px">${p.location||''}</div></td><td class="mono" style="font-size:12px">${(p.owner_id||'').slice(-8)}</td><td>${p.category_name||''}</td><td class="mono">${UI.fmtINR(p.pricing?.day||0)}</td><td>${UI.badge(p.status)}</td><td style="display:flex;gap:6px"><button class="btn btn-sm btn-primary" onclick="setStatus('${p.id}','approved')">Approve</button><button class="btn btn-sm btn-danger" onclick="setStatus('${p.id}','rejected')">Reject</button></td></tr>`).join('') || '<tr><td colspan="6"><div class="empty">No products.</div></td></tr>';}catch(e){UI.error(document.getElementById('rows'),e)}}
+window.setStatus=async(id,status)=>{await API.patch('/api/products/'+id+'/status',{status}); load();};
+load();
+</script></body></html>

@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "error-container": "#ffdad6",
+        "surface-dim": "#d2d9f4",
+        "on-primary-fixed": "#001945",
+        "surface-container-high": "#e2e7ff",
+        "on-tertiary": "#ffffff",
+        "outline": "#737784",
+        "error": "#ba1a1a",
+        "surface-bright": "#faf8ff",
+        "canvas-slate": "#F8FAFC",
+        "surface": "#faf8ff",
+        "trust-danger": "#DC2626",
+        "primary-container": "#0f52ba",
+        "inverse-surface": "#283044",
+        "on-secondary": "#ffffff",
+        "surface-container-low": "#f2f3ff",
+        "primary-fixed-dim": "#b0c6ff",
+        "on-tertiary-fixed-variant": "#3323cc",
+        "on-tertiary-fixed": "#0f0069",
+        "surface-tint": "#1d59c1",
+        "on-secondary-container": "#005c70",
+        "on-error-container": "#93000a",
+        "on-error": "#ffffff",
+        "border-focus": "#3B82F6",
+        "text-secondary": "#475569",
+        "surface-container-lowest": "#ffffff",
+        "secondary-fixed": "#b3ebff",
+        "primary-fixed": "#d9e2ff",
+        "on-surface": "#131b2e",
+        "tertiary-fixed": "#e2dfff",
+        "background": "#faf8ff",
+        "tertiary": "#2c16c6",
+        "on-tertiary-container": "#ccc9ff",
+        "on-background": "#131b2e",
+        "surface-card": "#FFFFFF",
+        "on-surface-variant": "#434653",
+        "on-secondary-fixed-variant": "#004e5f",
+        "trust-warning-bg": "#FFFBEB",
+        "on-primary-fixed-variant": "#00419c",
+        "outline-variant": "#c3c6d5",
+        "secondary": "#00677d",
+        "on-secondary-fixed": "#001f27",
+        "secondary-container": "#50d9fe",
+        "inverse-on-surface": "#eef0ff",
+        "surface-variant": "#dae2fd",
+        "on-primary-container": "#bcceff",
+        "surface-subtle": "#F1F5F9",
+        "border-default": "#E2E8F0",
+        "brand-primary-light": "#EBF3FF",
+        "inverse-primary": "#b0c6ff",
+        "trust-danger-bg": "#FEF2F2",
+        "on-primary": "#ffffff",
+        "surface-container-highest": "#dae2fd",
+        "trust-verified": "#059669",
+        "trust-verified-bg": "#ECFDF5",
+        "brand-primary-hover": "#0B3C8A",
+        "text-muted": "#94A3B8",
+        "primary": "#003c90",
+        "secondary-fixed-dim": "#4cd6fb",
+        "tertiary-container": "#463cdd",
+        "tertiary-fixed-dim": "#c3c0ff",
+        "trust-warning": "#D97706",
+        "surface-container": "#eaedff"
+      },
+      "borderRadius": {
+        "DEFAULT": "0.25rem",
+        "lg": "0.5rem",
+        "xl": "0.75rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-md": "1rem",
+        "gutter": "1rem",
+        "space-xs": "0.25rem",
+        "margin": "1rem",
+        "space-sm": "0.5rem",
+        "space-lg": "1.5rem",
+        "margin-desktop": "3rem",
+        "gutter-desktop": "2rem",
+        "margin-tablet": "2rem",
+        "gutter-tablet": "1.5rem",
+        "space-xl": "2rem"
+      },
+      "fontFamily": {
+        "headline-sm": ["Inter"],
+        "display-hero-mobile": ["Inter"],
+        "headline-lg-mobile": ["Inter"],
+        "caption": ["Inter"],
+        "caption-bold": ["Inter"],
+        "body-base": ["Inter"],
+        "body-base-medium": ["Inter"],
+        "headline-md": ["Inter"],
+        "code-mono": ["JetBrains Mono"],
+        "code-mono-sm": ["JetBrains Mono"],
+        "headline-lg": ["Inter"],
+        "body-lg": ["Inter"],
+        "display-hero": ["Inter"]
+      },
+      "fontSize": {
+        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+        "display-hero-mobile": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "800"}],
+        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "caption-bold": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+        "body-base": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "body-base-medium": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+        "code-mono": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+        "code-mono-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+        "display-hero": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+      }
+    }
+  }
+};</script></head><body class="bg-canvas-slate font-body-base text-body-base text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-50 flex flex-col justify-between p-space-lg"><div class="flex flex-col gap-space-lg"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[30px]">verified_user</span><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-none tracking-tight">RentSecure</span><span class="font-caption text-caption text-text-muted leading-none tracking-wider uppercase mt-1">Custody Console</span></div></div><div class="bg-surface-subtle p-space-md rounded-xl shadow-[0_1px_3px_rgba(15,23,42,0.05)]"><div class="flex items-center justify-between mb-space-xs"><span class="font-caption text-caption text-text-secondary uppercase tracking-wider">Trust Score</span><span class="font-code-mono text-code-mono text-trust-verified font-bold">96.4</span></div><div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden mb-space-xs"><div class="h-full bg-trust-verified rounded-full w-[96%]"></div></div><div class="flex items-center justify-between text-text-muted font-caption text-caption"><span>Tier 1 Platinum</span><span class="flex items-center text-trust-verified gap-0.5"><span class="material-symbols-outlined text-[12px]">verified</span>Certified</span></div></div><nav class="flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-body-base-medium shadow-[0_1px_3px_rgba(15,23,42,0.05)]"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg transition-all bg-primary-container text-on-primary font-body-base-medium shadow-[0_1px_3px_rgba(15,23,42,0.05)]" data-path="overview" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-body-base text-body-base">Overview</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="escrow-vault" href="#"><span class="material-symbols-outlined text-[20px]">account_balance_wallet</span><span class="font-body-base text-body-base">Escrow Vault</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="active-rentals" href="#"><span class="material-symbols-outlined text-[20px]">key</span><span class="font-body-base text-body-base">Active Rentals</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="inspection-loupe" href="#"><span class="material-symbols-outlined text-[20px]">loupe</span><span class="font-body-base text-body-base">Inspection Loupe</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="dispute-center" href="#"><span class="material-symbols-outlined text-[20px]">gavel</span><span class="font-body-base text-body-base">Dispute Center</span></a></nav></div><div class="flex flex-col gap-space-sm pt-space-md"><div class="p-space-md rounded-xl bg-brand-primary-light flex items-start gap-space-sm"><span class="material-symbols-outlined text-primary text-[20px] mt-0.5">shield_locked</span><div class="flex flex-col"><span class="font-caption-bold text-caption-bold text-primary">Bilateral Bond Intact</span><span class="font-caption text-caption text-text-secondary leading-tight mt-0.5">Deposits held in cold multi-sig custody vaults.</span></div></div><div class="flex items-center justify-between px-space-xs text-text-muted font-caption text-caption"><span>Node ID: RS-7704</span><span class="font-code-mono text-code-mono-sm">v4.18.2</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(15,23,42,0.06)] z-40 flex items-center justify-between px-gutter-desktop"><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs bg-surface-subtle px-space-md py-space-xs rounded-lg text-text-secondary"><span class="material-symbols-outlined text-[18px]">terminal</span><span class="font-code-mono text-code-mono-sm text-on-surface">ESCROW_NET // LIVE_MAINNET</span></div><div class="hidden sm:flex items-center gap-space-xs text-trust-verified bg-trust-verified-bg px-space-sm py-space-xs rounded-full"><span class="material-symbols-outlined text-[14px]">verified</span><span class="font-caption-bold text-caption-bold">KYC Identity Level 3</span></div></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-text-secondary text-[20px]">shield</span><span class="font-caption text-caption text-text-secondary">Coverage:</span><span class="font-code-mono text-code-mono text-primary font-bold">$250,000</span></div><button class="relative p-space-xs rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-trust-warning"></span></button><button class="p-space-xs rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant"><span class="material-symbols-outlined text-[20px]">help_center</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="w-full pt-16 bg-canvas-slate min-h-screen px-gutter-desktop py-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Command & Governance Bar -->
+<section class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col xl:flex-row xl:items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-space-xs bg-trust-verified-bg px-space-sm py-1 rounded-full text-trust-verified">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-caption-bold text-caption-bold">System Governance: Healthy (99.98% Uptime)</span>
+</div>
+<div class="flex items-center gap-space-xs text-text-secondary">
+<span class="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+<span class="font-body-base text-body-base">Active Admin: <strong class="text-on-surface">Sarah Chen</strong> (SuperAdmin #SA-01)</span>
+</div>
+<div class="flex items-center gap-space-xs text-text-secondary bg-surface-subtle px-space-sm py-1 rounded-md">
+<span class="material-symbols-outlined text-[16px] text-primary">verified_user</span>
+<span class="font-code-mono-sm text-code-mono-sm">IP_ALLOWLIST: 104.28.192.14 [ENFORCED]</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface font-body-base-medium transition-colors flex items-center gap-1.5 shadow-sm" onclick="document.getElementById('sys-diag-modal').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+        System Diagnostic
+      </button>
+<button class="px-space-md py-2 rounded-lg bg-trust-danger hover:bg-red-700 text-white font-body-base-medium transition-colors flex items-center gap-1.5 shadow-sm" id="freeze-btn" onclick="toggleFreeze()">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+<span id="freeze-text">Emergency Freeze Switch</span>
+</button>
+</div>
+</section>
+<!-- Metric Ribbon (4 Key Cards) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1: Total Platform GMV -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider block">Total Platform GMV</span>
+<span class="font-display-hero text-[32px] text-on-surface font-bold tracking-tight">₹1.84 Cr</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-brand-primary-light flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption pt-space-xs">
+<span class="inline-flex items-center gap-1 text-trust-verified font-caption-bold bg-trust-verified-bg px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +14.2% MoM
+        </span>
+<span class="text-text-muted font-code-mono-sm">Vol: 1,420 txn</span>
+</div>
+</div>
+<!-- Card 2: Neutral Vault Escrow -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider block">Active Escrow Custody</span>
+<span class="font-display-hero text-[32px] text-tertiary font-bold tracking-tight">₹42,50,000</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[22px]">shield_lock</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption pt-space-xs">
+<span class="inline-flex items-center gap-1 text-tertiary font-caption-bold bg-surface-container-low px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">assured_workload</span> 100% RBI Escrow Backed
+        </span>
+<span class="text-text-muted font-code-mono-sm">ICICI Dual-Key</span>
+</div>
+</div>
+<!-- Card 3: Active Rentals in Field -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider block">Active In-Field Rentals</span>
+<span class="font-display-hero text-[32px] text-on-surface font-bold tracking-tight">312 Units</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-emerald-50 flex items-center justify-center text-trust-verified">
+<span class="material-symbols-outlined text-[22px]">radar</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption pt-space-xs">
+<span class="inline-flex items-center gap-1 text-trust-verified font-caption-bold bg-trust-verified-bg px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">sensors</span> 99.4% Telemetry Active
+        </span>
+<span class="text-text-muted font-code-mono-sm">2 Offline Nodes</span>
+</div>
+</div>
+<!-- Card 4: Dispute Escalation -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm relative overflow-hidden flex flex-col justify-between">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-caption text-caption text-text-muted uppercase tracking-wider block">Dispute Escalation Rate</span>
+<span class="font-display-hero text-[32px] text-trust-danger font-bold tracking-tight">0.42%</span>
+</div>
+<div class="w-10 h-10 rounded-lg bg-trust-danger-bg flex items-center justify-center text-trust-danger">
+<span class="material-symbols-outlined text-[22px]">gavel</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-caption pt-space-xs">
+<span class="inline-flex items-center gap-1 text-trust-danger font-caption-bold bg-trust-danger-bg px-1.5 py-0.5 rounded">
+          3 Open Cases
+        </span>
+<span class="text-text-secondary font-code-mono-sm">SLA Rem: 4h 12m</span>
+</div>
+</div>
+</section>
+<!-- Real-Time Operational Queue Columns (3 Queues) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Queue A: Product Verifications -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-pulse"></span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Queue A: Product Verifications</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-code-mono text-code-mono-sm font-bold">14 Pending</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">AI Serial OCR matching against National Equipment Anti-Theft Register (NEATR).</p>
+<div class="flex flex-col gap-space-sm">
+<!-- Item Card 1 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex gap-space-sm">
+<img class="w-16 h-16 rounded-md object-cover flex-shrink-0" data-alt="High precision cinema camera Sony FX6 body close up studio shot showing brushed metal finish, detailed optical sensor mount, and engraved serial chassis plate in industrial lighting with cool sapphire tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGuS_yX_7hznj6bOk1eh6qrcVNbKhZhvbKFTF_k0cAAv9OrU_cBdD2IvYt4ClfonTSyd9RoTm1UHnQS8M77sfXWc-nFavnDgcEq-MHk9o-8Idc-dLVOsKyDPX6Nqo83nSVuxFsrRHVcQKHbG41xRilKX_sz9MAPwP2aDlV9ofZjescakh4UcwbsH-B6OPKZ16tgLA1SnfGUBYkCTMM5hNbJeCxDLyoVd8W7BRQ_4E"/>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Sony FX6 Cinema Camera</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-bold">99.8% Match</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Owner: Apex Motion Ltd. (Score: 98)</span>
+<span class="font-code-mono-sm text-[11px] text-text-secondary truncate mt-0.5">SN: FX6-992014-IND</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-primary hover:bg-brand-primary-hover text-on-primary rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').remove()">
+              Approve &amp; Bond
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container-high hover:bg-trust-danger-bg text-trust-danger rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').classList.add('bg-trust-danger-bg')">
+              Flag Stolen Registry
+            </button>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex gap-space-sm">
+<img class="w-16 h-16 rounded-md object-cover flex-shrink-0" data-alt="Red Komodo 6K digital cinema camera mounted on carbon fiber cage on a neutral clean desk with detailed serial sticker scanning crosshair in sapphire blue and sharp slate contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCalN93bMAsfKiPdsEzpGdUtt8Fvs6sjKIs4crDATXW70Tm1xNRHJeWv2TUvd7FC88yJFUQv_6Qy-XdyCLktJGrq27-FCYBZLfv7d488IZ4RnPQN_xuPdKCutmqNXAoQQsj-FG7hpozKDhzcKZixdjlWBYxKvf2igivzOWi0qtK8AcJo5jKxgTpygZ74OY9nxSl16D7q1rk1PfHx5zOB_EixzRpK1af-6eZJcQ2-Zg"/>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">RED Komodo 6K Brain</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified font-bold">97.4% Match</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Owner: Rohan Verma (Score: 89)</span>
+<span class="font-code-mono-sm text-[11px] text-text-secondary truncate mt-0.5">SN: R-KOM-81992-B</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-primary hover:bg-brand-primary-hover text-on-primary rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').remove()">
+              Approve &amp; Bond
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container-high hover:bg-trust-danger-bg text-trust-danger rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').classList.add('bg-trust-danger-bg')">
+              Flag Stolen Registry
+            </button>
+</div>
+</div>
+<!-- Item Card 3 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex gap-space-sm">
+<img class="w-16 h-16 rounded-md object-cover flex-shrink-0" data-alt="Industrial Leica Geosystems RTC360 3D laser scanner surveying tool on an aluminum tripod against clean technical studio backdrop with soft blue backlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwnEO_QYsJmvNOKW_iVrnLWImO_SvepvJGZKGPdTCsZD-RJx009O2LUcPfOUoeQf_ViwBwzEzivGdwuFTUIpYIhpFUvPm_qPyQXZFZbX20H-cD969lDCAul52VUvfcrILUL3hZBFM5My_VO1FNlynOlbZ178N31dXeg37x7NlTaoCmMu1IL8DWOXEbTrdrFWrMcd4xX_u2WpENXHzYA7WOCNkzH8A0BsMnJBUkCKM"/>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<span class="font-body-base-medium text-body-base-medium text-on-surface truncate">Leica RTC360 3D Scanner</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-warning font-bold">88.2% OCR</span>
+</div>
+<span class="font-caption text-caption text-text-muted">Owner: GeoSpatial Infra Tech</span>
+<span class="font-code-mono-sm text-[11px] text-text-secondary truncate mt-0.5">SN: LC-360-00418-EXP</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-primary hover:bg-brand-primary-hover text-on-primary rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').remove()">
+              Approve &amp; Bond
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container-high hover:bg-trust-danger-bg text-trust-danger rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').classList.add('bg-trust-danger-bg')">
+              Flag Stolen Registry
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Queue B: KYC Biometric Audits -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-trust-verified animate-pulse"></span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Queue B: KYC Biometrics</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-code-mono text-code-mono-sm font-bold">28 Pending</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">DigiLocker Aadhaar XML check &amp; passive 3D liveness match validation.</p>
+<div class="flex flex-col gap-space-sm">
+<!-- KYC User 1 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">
+                VK
+              </div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Vikramaditya K.</span>
+<span class="font-caption text-caption text-text-muted">Aadhaar: **** **** 4812</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-code-mono text-trust-verified font-bold">99.1%</span>
+<span class="block font-caption text-[10px] text-trust-verified uppercase tracking-wider">Liveness Passed</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-card px-space-xs py-1 rounded">
+<span class="font-caption text-caption text-text-secondary">Risk Profile: <strong class="text-trust-verified">Low Risk (Tier 1)</strong></span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">LGD: 0.02%</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-trust-verified hover:bg-emerald-700 text-white rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').remove()">
+              Grant Tier 3 Access
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container text-text-secondary hover:text-on-surface rounded text-caption font-caption-bold transition-all text-center">
+              Request Video Re-scan
+            </button>
+</div>
+</div>
+<!-- KYC User 2 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-primary">
+                AN
+              </div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Ananya Narang</span>
+<span class="font-caption text-caption text-text-muted">Passport: Z6481029</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-code-mono text-trust-verified font-bold">98.4%</span>
+<span class="block font-caption text-[10px] text-trust-verified uppercase tracking-wider">Liveness Passed</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-card px-space-xs py-1 rounded">
+<span class="font-caption text-caption text-text-secondary">Risk Profile: <strong class="text-trust-verified">Low Risk (Tier 1)</strong></span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">LGD: 0.04%</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-trust-verified hover:bg-emerald-700 text-white rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').remove()">
+              Grant Tier 3 Access
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container text-text-secondary hover:text-on-surface rounded text-caption font-caption-bold transition-all text-center">
+              Request Video Re-scan
+            </button>
+</div>
+</div>
+<!-- KYC User 3 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center font-bold text-trust-warning">
+                DS
+              </div>
+<div class="flex flex-col">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Devendra S.</span>
+<span class="font-caption text-caption text-text-muted">Aadhaar: **** **** 1093</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-code-mono text-code-mono text-trust-warning font-bold">91.0%</span>
+<span class="block font-caption text-[10px] text-trust-warning uppercase tracking-wider">Soft Liveness Warn</span>
+</div>
+</div>
+<div class="flex items-center justify-between bg-surface-card px-space-xs py-1 rounded">
+<span class="font-caption text-caption text-text-secondary">Risk Profile: <strong class="text-trust-warning">Medium (Review)</strong></span>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">LGD: 1.12%</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-primary hover:bg-brand-primary-hover text-on-primary rounded text-caption font-caption-bold transition-all text-center" onclick="this.closest('.bg-surface-subtle').remove()">
+              Approve Conditional
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container text-trust-danger hover:bg-trust-danger-bg rounded text-caption font-caption-bold transition-all text-center">
+              Demand Biometric 2FA
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Queue C: Critical Damage Claims -->
+<div class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="w-2.5 h-2.5 rounded-full bg-trust-danger animate-ping"></span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Queue C: Critical Claims</h2>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-trust-danger-bg text-trust-danger font-code-mono text-code-mono-sm font-bold">3 Unresolved</span>
+</div>
+<p class="font-caption text-caption text-text-secondary">Dual-signature escrow locked pending loupe inspection damage confirmation.</p>
+<div class="flex flex-col gap-space-sm">
+<!-- Claim 1 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs border-l-4 border-trust-danger">
+<div class="flex items-center justify-between">
+<span class="font-code-mono text-code-mono-sm text-on-surface font-bold">CASE #CLM-9041</span>
+<span class="px-1.5 py-0.5 bg-trust-danger-bg text-trust-danger text-caption font-caption-bold rounded">
+              01h 48m left
+            </span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">RED V-Raptor XL Scratch on Sensor Mount</span>
+<span class="font-caption text-caption text-text-muted">Lender: Studio Kinetix vs. Renter: CineWorks Pro</span>
+</div>
+<div class="flex items-center justify-between bg-surface-card p-space-xs rounded">
+<span class="font-caption text-caption text-text-secondary">Frozen Deposit:</span>
+<span class="font-code-mono text-code-mono text-trust-danger font-bold">₹1,50,000</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-tertiary hover:bg-tertiary-container text-white rounded text-caption font-caption-bold transition-all flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">loupe</span> Open Loupe
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container text-on-surface hover:bg-surface-container-high rounded text-caption font-caption-bold transition-all">
+              Execute Split Bond
+            </button>
+</div>
+</div>
+<!-- Claim 2 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs border-l-4 border-trust-warning">
+<div class="flex items-center justify-between">
+<span class="font-code-mono text-code-mono-sm text-on-surface font-bold">CASE #CLM-8982</span>
+<span class="px-1.5 py-0.5 bg-trust-warning-bg text-trust-warning text-caption font-caption-bold rounded">
+              03h 14m left
+            </span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">DJI Ronin 4D Broken Gimbal Yaw Lock</span>
+<span class="font-caption text-caption text-text-muted">Lender: CineEquip BLR vs. Renter: Karan Joshi</span>
+</div>
+<div class="flex items-center justify-between bg-surface-card p-space-xs rounded">
+<span class="font-caption text-caption text-text-secondary">Frozen Deposit:</span>
+<span class="font-code-mono text-code-mono text-trust-warning font-bold">₹65,000</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-tertiary hover:bg-tertiary-container text-white rounded text-caption font-caption-bold transition-all flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">loupe</span> Open Loupe
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container text-on-surface hover:bg-surface-container-high rounded text-caption font-caption-bold transition-all">
+              Arbitrate Claim
+            </button>
+</div>
+</div>
+<!-- Claim 3 -->
+<div class="bg-surface-subtle p-space-sm rounded-lg flex flex-col gap-space-xs border-l-4 border-trust-warning">
+<div class="flex items-center justify-between">
+<span class="font-code-mono text-code-mono-sm text-on-surface font-bold">CASE #CLM-8911</span>
+<span class="px-1.5 py-0.5 bg-trust-warning-bg text-trust-warning text-caption font-caption-bold rounded">
+              04h 12m left
+            </span>
+</div>
+<div class="flex flex-col gap-0.5">
+<span class="font-body-base-medium text-body-base-medium text-on-surface">Aputure 1200d Blown Ballast Unit</span>
+<span class="font-caption text-caption text-text-muted">Lender: NorthLights Delhi vs. Renter: PixelForge</span>
+</div>
+<div class="flex items-center justify-between bg-surface-card p-space-xs rounded">
+<span class="font-caption text-caption text-text-secondary">Frozen Deposit:</span>
+<span class="font-code-mono text-code-mono text-trust-warning font-bold">₹40,000</span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="w-full py-1.5 px-space-xs bg-tertiary hover:bg-tertiary-container text-white rounded text-caption font-caption-bold transition-all flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">loupe</span> Open Loupe
+            </button>
+<button class="w-full py-1.5 px-space-xs bg-surface-container text-on-surface hover:bg-surface-container-high rounded text-caption font-caption-bold transition-all">
+              Arbitrate Claim
+            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Geospatial & Fleet Demand Heatmap Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Map & Node Breakdown (8 cols) -->
+<div class="lg:col-span-8 bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Geospatial Vault &amp; Fleet Node Heatmap</h2>
+<span class="font-caption text-caption text-text-secondary">Real-time custody distribution across high-security verified locker hubs</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-trust-verified opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-trust-verified"></span>
+</span>
+<span class="font-code-mono-sm text-code-mono-sm text-trust-verified">312 In-Field Devices Tracked</span>
+</div>
+</div>
+<!-- Static Map Container -->
+<div class="relative w-full h-72 rounded-lg overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-location="Mumbai, Maharashtra, India" style=""></div>
+<!-- Overlaid Node Status HUD -->
+<div class="absolute bottom-3 left-3 right-3 bg-surface/90 backdrop-blur-md p-space-sm rounded-lg flex flex-wrap items-center justify-between gap-space-xs text-caption">
+<div class="flex items-center gap-space-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-body-base-medium">Bandra SafeHub:</span>
+<span class="font-code-mono text-primary font-bold">142 Units</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-body-base-medium">Andheri Hub:</span>
+<span class="font-code-mono text-secondary font-bold">89 Units</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-body-base-medium">Indiranagar BLR:</span>
+<span class="font-code-mono text-tertiary font-bold">54 Units</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-trust-verified"></span>
+<span class="font-body-base-medium">CyberHub NCR:</span>
+<span class="font-code-mono text-trust-verified font-bold">27 Units</span>
+</div>
+</div>
+<span class="font-code-mono-sm text-[11px] text-text-muted">LAT/LONG SYNC: OK</span>
+</div>
+</div>
+<!-- Quick Node Utilization Indicators -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="bg-surface-subtle p-space-sm rounded-lg">
+<div class="flex items-center justify-between text-caption text-text-secondary">
+<span>Bandra SafeHub</span>
+<span class="font-code-mono text-primary font-bold">92%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-sm rounded-lg">
+<div class="flex items-center justify-between text-caption text-text-secondary">
+<span>Andheri Hub</span>
+<span class="font-code-mono text-secondary font-bold">78%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-sm rounded-lg">
+<div class="flex items-center justify-between text-caption text-text-secondary">
+<span>Indiranagar BLR</span>
+<span class="font-code-mono text-tertiary font-bold">84%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 84%"></div>
+</div>
+</div>
+<div class="bg-surface-subtle p-space-sm rounded-lg">
+<div class="flex items-center justify-between text-caption text-text-secondary">
+<span>CyberHub NCR</span>
+<span class="font-code-mono text-trust-verified font-bold">65%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-trust-verified h-full rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Velocity & Risk Concentration (4 cols) -->
+<div class="lg:col-span-4 bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col justify-between gap-space-md">
+<div>
+<div class="flex items-center justify-between pb-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Category Velocity</h2>
+<span class="font-code-mono-sm text-code-mono-sm text-text-muted">30D Moving Avg</span>
+</div>
+<p class="font-caption text-caption text-text-secondary mb-space-md">Live capital exposure per vertical.</p>
+<!-- Donut / Progress Breakdown -->
+<div class="flex flex-col gap-space-md">
+<!-- Item 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-base">
+<span class="flex items-center gap-1.5 text-on-surface font-body-base-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">videocam</span> Cinema Gear
+              </span>
+<span class="font-code-mono text-code-mono text-primary font-bold">44% (₹81.0L)</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 44%"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-base">
+<span class="flex items-center gap-1.5 text-on-surface font-body-base-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary">electric_scooter</span> EVs &amp; Mobility
+              </span>
+<span class="font-code-mono text-code-mono text-secondary font-bold">26% (₹47.8L)</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 26%"></div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-base">
+<span class="flex items-center gap-1.5 text-on-surface font-body-base-medium">
+<span class="material-symbols-outlined text-[16px] text-tertiary">construction</span> Industrial Tools
+              </span>
+<span class="font-code-mono text-code-mono text-tertiary font-bold">18% (₹33.1L)</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 18%"></div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-base">
+<span class="flex items-center gap-1.5 text-on-surface font-body-base-medium">
+<span class="material-symbols-outlined text-[16px] text-trust-verified">lightbulb</span> Audio &amp; Lighting
+              </span>
+<span class="font-code-mono text-code-mono text-trust-verified font-bold">12% (₹22.1L)</span>
+</div>
+<div class="w-full bg-surface-subtle h-2 rounded-full overflow-hidden">
+<div class="bg-trust-verified h-full rounded-full" style="width: 12%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Underwriting Reserve Shield Alert -->
+<div class="p-space-sm rounded-lg bg-surface-subtle flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-trust-verified text-[20px]">verified</span>
+<div class="flex flex-col">
+<span class="font-caption-bold text-caption-bold text-on-surface">100% RBI Escrow Backed Reserve</span>
+<span class="font-caption text-caption text-text-secondary mt-0.5">Platform insurance pool: ₹2.50 Cr untouched. Liquidity coverage ratio at 588%.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Event Audit Stream (Data Table) -->
+<section class="bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt_long</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Live Event Audit Stream</h2>
+</div>
+<span class="font-caption text-caption text-text-secondary">Immutable ledger recording on-chain escrow state transitions, OTP releases, and automated telemetry triggers</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<div class="relative">
+<input class="bg-surface-subtle text-body-base px-space-md py-1.5 pl-8 rounded-lg font-code-mono text-code-mono-sm w-64 focus:outline-none focus:bg-surface-container" placeholder="Filter by Hash / Custody ID..." type="text"/>
+<span class="material-symbols-outlined absolute left-2 top-2 text-[16px] text-text-muted">search</span>
+</div>
+<button class="p-2 rounded-lg bg-surface-subtle hover:bg-surface-container text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-subtle text-text-muted font-caption text-caption uppercase tracking-wider">
+<th class="py-2.5 px-space-sm rounded-l-lg">Timestamp</th>
+<th class="py-2.5 px-space-sm">Event Type</th>
+<th class="py-2.5 px-space-sm">Contract Hash / Node</th>
+<th class="py-2.5 px-space-sm">Involved Counterparties</th>
+<th class="py-2.5 px-space-sm text-right">Value Held</th>
+<th class="py-2.5 px-space-sm text-center rounded-r-lg">Audit Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/60 font-body-base text-body-base">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-text-secondary whitespace-nowrap">
+              14:24:02.810
+            </td>
+<td class="py-3 px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-brand-primary-light text-primary font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">lock_open</span> OTP Handover OK
+              </span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-on-surface">
+              0x7f2a...890c <span class="text-text-muted text-[11px]">(Node: BLR-01)</span>
+</td>
+<td class="py-3 px-space-sm text-text-secondary">
+              Lender: <span class="text-on-surface font-body-base-medium">Karan Johar Studio</span> ➔ Renter: <span class="text-on-surface font-body-base-medium">Arjun R.</span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono text-right text-on-surface font-bold">
+              ₹85,000
+            </td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded-full font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[12px]">verified</span> Dual-Signed
+              </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-text-secondary whitespace-nowrap">
+              14:21:49.102
+            </td>
+<td class="py-3 px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-tertiary font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">account_balance_wallet</span> Escrow Vault Initialized
+              </span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-on-surface">
+              0x3bc1...fa92 <span class="text-text-muted text-[11px]">(Node: BOM-04)</span>
+</td>
+<td class="py-3 px-space-sm text-text-secondary">
+              Lender: <span class="text-on-surface font-body-base-medium">Prime Optics</span> ➔ Renter: <span class="text-on-surface font-body-base-medium">Vikramaditya K.</span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono text-right text-on-surface font-bold">
+              ₹1,20,000
+            </td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded-full font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[12px]">done_all</span> Reserve Locked
+              </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-text-secondary whitespace-nowrap">
+              14:18:15.542
+            </td>
+<td class="py-3 px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-trust-danger-bg text-trust-danger font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">warning</span> Fraud Score Trigger (&gt;80)
+              </span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-on-surface">
+              0x99dd...0112 <span class="text-text-muted text-[11px]">(Node: DEL-02)</span>
+</td>
+<td class="py-3 px-space-sm text-text-secondary">
+              Attempted Booking: <span class="text-trust-danger font-body-base-medium">Unverified Anonymous Device</span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono text-right text-text-muted font-bold">
+              ₹2,40,000
+            </td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 text-trust-danger bg-trust-danger-bg px-2 py-0.5 rounded-full font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[12px]">block</span> Auto-Intercepted
+              </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-text-secondary whitespace-nowrap">
+              14:12:08.330
+            </td>
+<td class="py-3 px-space-sm">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-trust-verified-bg text-trust-verified font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[14px]">price_check</span> Deposit Released Clean
+              </span>
+</td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono-sm text-on-surface">
+              0x11ce...44aa <span class="text-text-muted text-[11px]">(Node: BOM-01)</span>
+</td>
+<td class="py-3 px-space-sm text-text-secondary">
+              Renter: <span class="text-on-surface font-body-base-medium">Maya Sen</span> (Loupe Check Passed 100%)
+            </td>
+<td class="py-3 px-space-sm font-code-mono text-code-mono text-right text-trust-verified font-bold">
+              ₹35,000
+            </td>
+<td class="py-3 px-space-sm text-center">
+<span class="inline-flex items-center gap-1 text-trust-verified bg-trust-verified-bg px-2 py-0.5 rounded-full font-caption-bold text-caption-bold">
+<span class="material-symbols-outlined text-[12px]">check</span> Settled (IMPS)
+              </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between pt-space-xs text-caption text-text-secondary">
+<span>Displaying 4 of 1,842 event transitions recorded today</span>
+<div class="flex items-center gap-1">
+<button class="px-2 py-1 rounded bg-surface-subtle text-text-muted hover:text-on-surface">Prev</button>
+<span class="font-code-mono text-code-mono-sm text-on-surface px-1">Page 1 of 461</span>
+<button class="px-2 py-1 rounded bg-surface-subtle text-text-secondary hover:text-on-surface">Next</button>
+</div>
+</div>
+</section>
+<!-- Interactive System Diagnostics Modal (Hidden by default) -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center bg-inverse-surface/40 backdrop-blur-sm p-space-md" id="sys-diag-modal">
+<div class="bg-surface-card rounded-xl max-w-lg w-full p-space-lg shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">troubleshoot</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">System Diagnostic Overview</h3>
+</div>
+<button class="p-1 rounded hover:bg-surface-subtle text-text-secondary" onclick="document.getElementById('sys-diag-modal').classList.add('hidden')">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-xs text-body-base">
+<div class="flex justify-between py-1 bg-surface-subtle px-space-sm rounded">
+<span class="text-text-secondary">Cold Multi-Sig Custody:</span>
+<span class="font-code-mono-sm text-trust-verified font-bold">ONLINE (3/4 Quorum)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-subtle px-space-sm rounded">
+<span class="text-text-secondary">Aadhaar DigiLocker Gateway:</span>
+<span class="font-code-mono-sm text-trust-verified font-bold">RESPONSIVE (124ms)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-subtle px-space-sm rounded">
+<span class="text-text-secondary">NEATR Stolen Registry API:</span>
+<span class="font-code-mono-sm text-trust-verified font-bold">SYNCED (v2025.2)</span>
+</div>
+<div class="flex justify-between py-1 bg-surface-subtle px-space-sm rounded">
+<span class="text-text-secondary">Escrow Node Failover Latency:</span>
+<span class="font-code-mono-sm text-on-surface font-bold">18ms (Mumbai Core)</span>
+</div>
+</div>
+<button class="w-full py-2 bg-primary text-on-primary rounded-lg font-body-base-medium mt-space-xs" onclick="document.getElementById('sys-diag-modal').classList.add('hidden')">
+        Dismiss Diagnostic
+      </button>
+</div>
+</div>
+</div>
+<script>
+  let isFrozen = false;
+  function toggleFreeze() {
+    const btn = document.getElementById('freeze-btn');
+    const txt = document.getElementById('freeze-text');
+    if (!isFrozen) {
+      if (confirm("CRITICAL WARNING: Are you certain you want to activate Emergency Freeze? All live escrows will halt automatic disbursement and locks will remain engaged.")) {
+        isFrozen = true;
+        btn.classList.remove('bg-trust-danger');
+        btn.classList.add('bg-on-surface');
+        txt.textContent = "FREEZE ENGAGED (Click to Revert)";
+        alert("Platform Custody System has been locked. Emergency protocol ALPHA active.");
+      }
+    } else {
+      isFrozen = false;
+      btn.classList.add('bg-trust-danger');
+      btn.classList.remove('bg-on-surface');
+      txt.textContent = "Emergency Freeze Switch";
+      alert("Emergency freeze lifted. Regular automated escrow triggers restored.");
+    }
+  }
+</script></main></div></body></html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Browse Rentals - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+UI.pageShell('search', `<section class="page"><div class="container">
+  <h1 class="section-title">Browse rentals</h1><p class="section-sub">Search by name, location, or category.</p>
+  <div class="card" style="margin:20px 0"><div class="card-body"><form id="f" class="grid grid-3">
+    <div class="field" style="margin:0"><label>Search</label><input class="input" name="q" id="q"></div>
+    <div class="field" style="margin:0"><label>Category</label><select class="input" name="category_id" id="category_id"><option value="">All categories</option></select></div>
+    <div class="field" style="margin:0"><label>&nbsp;</label><button class="btn btn-primary" type="submit">Apply filters</button></div>
+  </form></div></div>
+  <div id="results" class="grid grid-3"></div>
+</div></section>`);
+const params=new URLSearchParams(location.search);
+document.getElementById('q').value=params.get('q')||'';
+async function loadCats(){const cats=await API.get('/api/categories'); const sel=document.getElementById('category_id'); cats.forEach(c=>{const o=document.createElement('option'); o.value=c.id; o.textContent=c.name; if(params.get('category_id')===c.id) o.selected=true; sel.appendChild(o);});}
+async function load(){const el=document.getElementById('results'); UI.loading(el);
+  const q=document.getElementById('q').value; const cat=document.getElementById('category_id').value;
+  const qs=new URLSearchParams({status:'approved'}); if(q) qs.set('q',q); if(cat) qs.set('category_id',cat);
+  try{const items=await API.get('/api/products?'+qs.toString());
+    el.innerHTML=items.map(x=>`<a class="card product-card" href="/product-detail.html?id=${x.id}"><img class="img" src="${(x.images&&x.images[0])||'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80'}"><div class="body"><div class="title">${x.title}</div><div class="meta">${x.category_name||''} · ${x.location||''}</div><p class="text-secondary" style="font-size:13px;margin-top:8px;min-height:40px">${(x.description||'').slice(0,90)}</p><div style="display:flex;justify-content:space-between;margin-top:12px"><span class="price">${UI.fmtINR(x.pricing?.day||0)}/day</span><span class="text-secondary" style="font-size:13px">Deposit ${UI.fmtINR(x.deposit||0)}</span></div></div></a>`).join('') || '<div class="empty">No products match your filters.</div>';
+  }catch(e){UI.error(el,e)}
+}
+document.getElementById('f').onsubmit=(e)=>{e.preventDefault(); load();};
+loadCats().then(load);
+</script></body></html>

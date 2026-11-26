@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Home - Rentzy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tokens.css"><link rel="stylesheet" href="/assets/css/base.css"><link rel="stylesheet" href="/assets/css/components.css">
+</head><body><div id="app-nav"></div><main id="app-main"></main>
+<script src="/assets/js/api.js?v=2"></script><script src="/assets/js/auth.js?v=2"></script><script src="/assets/js/ui.js"></script>
+<script>
+Auth.requireAuth(['customer','owner','admin']);
+UI.pageShell('home', `<section class="page"><div class="container">
+  <div style="display:flex;justify-content:space-between;gap:16px;align-items:end;flex-wrap:wrap">
+    <div><h1 class="section-title">Discover rentals</h1><p class="section-sub">Verified products with transparent deposits and escrow-aware pricing.</p></div>
+    <form id="searchForm" style="display:flex;gap:8px"><input class="input" name="q" placeholder="Search products, location..." style="min-width:260px"><button class="btn btn-primary">Search</button></form>
+  </div>
+  <div id="cats" class="grid grid-4" style="margin-top:24px"></div>
+  <h2 style="font-size:22px;font-weight:700;margin:32px 0 14px">Featured products</h2>
+  <div id="products" class="grid grid-3"></div>
+</div></section>`);
+document.getElementById('searchForm').onsubmit=(e)=>{e.preventDefault(); location.href='/search.html?q='+encodeURIComponent(new FormData(e.target).get('q')||'');};
+(async()=>{
+  const cats=document.getElementById('cats'), prods=document.getElementById('products');
+  try{const [c,p]=await Promise.all([API.get('/api/categories'), API.get('/api/products?status=approved')]);
+    cats.innerHTML=c.map(x=>`<a class="card card-body" href="/search.html?category_id=${x.id}"><div style="font-weight:700">${x.name}</div><div class="text-secondary" style="font-size:13px;margin-top:4px">Browse category</div></a>`).join('') || '<div class="empty">No categories</div>';
+    prods.innerHTML=p.map(x=>`<a class="card product-card" href="/product-detail.html?id=${x.id}"><img class="img" src="${(x.images&&x.images[0])||'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80'}"><div class="body"><div class="title">${x.title}</div><div class="meta">${x.category_name||''} · ${x.location||''}</div><div style="display:flex;justify-content:space-between;margin-top:12px"><span class="price">${UI.fmtINR(x.pricing?.day||0)}/day</span>${UI.badge(x.status)}</div></div></a>`).join('') || '<div class="empty">No products found</div>';
+  }catch(e){UI.error(prods,e)}
+})();
+</script></body></html>
